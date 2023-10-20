@@ -22,7 +22,6 @@ function WeatherGrid() {
     "Saturday",
   ];
 
-  //check if is first is necessary
   useEffect(() => {
     if (!isFirst.current) {
       debounce(fetchCity(), 1000);
@@ -86,7 +85,6 @@ function WeatherGrid() {
       )
       .then((res) => {
         fetchCoordData(res.data[0].latitude, res.data[0].longitude);
-        // return res;
       })
       .catch((error) => {
         setErrormsg("Couldn't find city.");
@@ -102,13 +100,13 @@ function WeatherGrid() {
   //debounces city input change handler to avoid unnecessary API requests
   const debouncedHandleCityChange = debounce(handleCityChange, 500);
 
-  //handles location (country) input change
+  //handles country input change
   function handleLocationChange(event) {
     event.preventDefault();
     setCountry(event.target.value);
   }
 
-  //debounces city input change handler to avoid unnecessary API requests
+  //debounces country input change handler to avoid unnecessary API requests
   const debouncedHandleLocationChange = debounce(handleLocationChange, 500);
 
   return (
