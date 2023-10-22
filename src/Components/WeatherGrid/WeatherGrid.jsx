@@ -126,7 +126,7 @@ function WeatherGrid() {
           type="text"
           name="country"
           id="country"
-          placeholder="Enter country"
+          placeholder="Enter country (optional)"
           onChange={debouncedHandleLocationChange}
         />
       </div>

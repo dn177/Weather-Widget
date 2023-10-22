@@ -4,6 +4,8 @@ To use this you have to add an API Key from the API Ninjas Geolocation API [http
 
 After downloading, make sure to run "npm install" in the App root folder.
 
+![Preview](Preview.png?raw=true "Preview")
+
 ## Available Scripts
 
 In the project directory, you can run:
