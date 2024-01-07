@@ -134,7 +134,7 @@ function WeatherGrid() {
         <div className="weathergrid mx-auto">
           {weather.daily.rain_sum.map((wdata, index) => {
             return (
-              <div className="weathergrid__el" key={index}>
+              <div className="weathergrid__el" key={weather.daily.time[index]}>
                 <p className="weekday">
                   {index === 0
                     ? "Today"
