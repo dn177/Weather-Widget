@@ -177,17 +177,17 @@ function Learning() {
             alt="Daniel Marass's Dev Card"
           />
         </a>
+        <a href="https://frontendmasters.com" target="_blank" rel="noreferrer">
+          <img src={fem} alt="Frontend Masters" loading="lazy" />
+        </a>
+      </div>
+      <div className="ereact mt-row">
         <a
-          href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.epicreact.dev/&ved=2ahUKEwj7gMyJ4PaJAxWlSvEDHfn-LMgQFnoECA8QAQ&usg=AOvVaw1hEflH7Sft3aPkSpsP4vi5"
+          href="https://www.epicreact.dev/"
           rel="noreferrer"
           target="_blank"
         >
           <img src={ereact} alt="Epic React" loading="lazy" />
-        </a>
-      </div>
-      <div className="fem mt-row">
-        <a href="https://frontendmasters.com" target="_blank" rel="noreferrer">
-          <img src={fem} alt="Frontend Masters" loading="lazy" />
         </a>
       </div>
       <div className="learning_sites mt-row">
