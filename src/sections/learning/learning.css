@@ -22,9 +22,37 @@
   height: auto;
 }
 
-[alt="Frontend Masters"] {
-  height: clamp(120px, 18vw, 200px);
-  width: auto;
+/* Frontend Masters sits next to the daily.dev devcard (large slot) */
+.devcard-wrapper a:has([alt="Frontend Masters"]) {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: clamp(300px, 40vw, 540px);
+}
+
+.devcard-wrapper [alt="Frontend Masters"] {
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Epic React occupies the small centered slot */
+.ereact {
+  display: flex;
+  justify-content: center;
+}
+
+.ereact a {
+  display: block;
+  width: clamp(220px, 30vw, 320px);
+}
+
+.ereact img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
 }
 
 [class^="swiper-button"] {
