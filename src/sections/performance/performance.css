@@ -1,0 +1,14 @@
+#performance {
+  /* background-color: var(--color-main); */
+  background-color: #d45d79;
+  /* background-image: url("../../assets/2.jpg"); */
+  color: white;
+}
+
+#performance h2 {
+  font-size: 40px;
+}
+
+.w-fit-content {
+  width: fit-content;
+}
