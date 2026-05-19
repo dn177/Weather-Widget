@@ -1,9 +1,7 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
 :root {
-  /* --color-main: # 292d3e; */
-  /* --color-tertiary: # 323232; */
-  /* --color-tertiary: #f6c94e; */
+  /* Legacy tokens — kept for backwards compatibility with section CSS */
   --color-main: #876445;
   --color-secondary: #f6f193;
   --color-tertiary: #004a99;
@@ -30,6 +28,43 @@
   --transition: all 500ms ease;
 
   --text-shadow: 2px 2px 4px black;
+
+  /* ─── Editorial palette refresh ──────────────────────────── */
+
+  /* Royal purple ladder */
+  --purple-50: #f6f0fb;
+  --purple-100: #ead8f5;
+  --purple-200: #d4b1ea;
+  --purple-300: #b88adc;
+  --purple-400: #9c5fc9;
+  --purple-500: #7b219f;
+  --purple-600: #690cc6;
+  --purple-700: #4f0a8c;
+  --purple-800: #320757;
+  --purple-900: #1a0330;
+  --purple-950: #0d011e;
+
+  /* Champagne / gold accents */
+  --gold-100: #f3e5c4;
+  --gold-300: #d9b56e;
+  --gold-500: #c9a96e;
+  --gold-700: #8a6f3a;
+
+  /* Ivory / paper tones */
+  --ivory: #f7f1e6;
+  --ivory-deep: #ede4d0;
+  --ink: #1b0a26;
+  --ink-soft: #3a2748;
+
+  /* Typography */
+  --font-body: "Lora", Georgia, "Times New Roman", serif;
+  --font-display: "Fraunces", "Lora", Georgia, serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Ornament glyphs */
+  --ornament-dot: "·";
+  --ornament-diamond: "◆";
+  --ornament-section: "§";
 }
 
 html,
@@ -130,8 +165,23 @@ h4,
 h5,
 h6 {
   line-height: 1.15;
-  color: var(--color-black);
+  color: var(--ink, var(--color-black));
   overflow-wrap: break-word;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variation-settings: "opsz" 96;
+  letter-spacing: -0.01em;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+  font-variation-settings: "opsz" 144;
+}
+
+h5,
+h6 {
+  font-variation-settings: "opsz" 36;
 }
 
 h1 {
@@ -269,4 +319,91 @@ video {
   section {
     padding: 2rem 0;
   }
+}
+
+/* ════════════════════════════════════════════════════════
+   Editorial utilities — reusable across sections
+   ════════════════════════════════════════════════════════ */
+
+/* Mono eyebrow label with flanking gold ornaments */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.6rem + 0.4vw, 0.85rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--purple-700, #4f0a8c);
+  margin: 0 auto clamp(0.85rem, 0.5rem + 1vw, 1.25rem);
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: "◆";
+  color: var(--gold-500, #c9a96e);
+  font-size: 0.55em;
+  transform: translateY(-0.15em);
+}
+
+/* Ornamental section divider rule used between major sections */
+.section-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: clamp(1rem, 0.5rem + 2vw, 2rem) auto;
+  max-width: 30rem;
+  color: var(--gold-500, #c9a96e);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.section-rule::before,
+.section-rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 169, 110, 0.55) 50%,
+    transparent 100%
+  );
+}
+
+/* Section subhead with a small italic display preface */
+.section-pretitle {
+  display: block;
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-700, #8a6f3a);
+  font-size: clamp(0.95rem, 0.8rem + 0.5vw, 1.1rem);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+/* Selection — soft purple wash + ivory text */
+::selection {
+  background-color: var(--purple-500, #7b219f);
+  color: var(--ivory, #f7f1e6);
+}
+
+/* Body uses Lora — reaffirm here to win over Bootstrap's body font reset */
+body {
+  font-family: var(--font-body);
+  color: var(--ink, #1b0a26);
+}
+
+/* Restore Bootstrap defaults where serif body hurts readability */
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
 }
