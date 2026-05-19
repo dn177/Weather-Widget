@@ -1,0 +1,60 @@
+#hustle {
+  background-color: #4169e1;
+  overflow: hidden;
+}
+
+.flip-wrapper {
+  transition: transform 1s ease-in-out;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  aspect-ratio: 4 / 3;
+}
+
+.flip-wrapper:hover {
+  transition-delay: 5s;
+  transform: rotateY(180deg);
+}
+
+.flip-wrapper img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.flip-frontside {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.flip-backside {
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.flip-backside:after {
+  content: "While the equipment changed, the motivation didn't";
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .flip-wrapper {
+    aspect-ratio: 1 / 1;
+    max-width: 92%;
+  }
+  /* Disable flip on touch — there's no hover */
+  .flip-wrapper:hover {
+    transform: rotateY(0deg);
+    transition-delay: 0s;
+  }
+}
