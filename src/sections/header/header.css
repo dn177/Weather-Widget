@@ -1,30 +1,63 @@
 header {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-  height: calc(100vh - 5rem);
+  /* margin-top: 5rem;
+  margin-bottom: 5rem; */
+  min-height: calc(100vh - var(--navbar-height));
   display: grid;
   place-items: center;
-  background: var(--color-white);
-  transition: var(--transition);
+  transition: opacity 0.3s ease-in-out;
+  /* background-image moved to inline style in component */
+  background-size: cover;
+  background-position: top;
+  /* Removed background-attachment: fixed for better performance */
+  color: white;
+  opacity: 0.95; /* Slight opacity to help with perceived performance */
+}
+
+/* Smooth transition when image loads */
+header.image-loaded {
+  opacity: 1;
+}
+
+/* #header h3 {
+  color: inherit;
+} */
+
+/* hover über buttons auch anpassen */
+
+.header__image {
+  min-height: calc(100vh - var(--navbar-height));
 }
 
 .header__container {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  width: min(92%, 720px);
+  text-align: center;
+}
+
+.header__container h1 {
+  color: white;
+  font-size: clamp(1.6rem, 1.1rem + 3.4vw, 3.25rem) !important;
+  margin-bottom: clamp(1.25rem, 0.75rem + 2vw, 3rem);
+  line-height: 1.2;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
 }
 
 .header__profile {
-  width: 18rem;
-  height: 22rem;
+  width: clamp(10rem, 30vw, 18rem);
+  height: clamp(12rem, 36vw, 22rem);
   border-radius: 9rem 9rem 2rem 2rem;
   overflow: hidden;
   margin-bottom: 1.5rem;
 }
 
 .header__container p {
-  width: 35rem;
+  width: min(35rem, 92vw);
   text-align: center;
   margin: 0.6rem 0 2rem;
 }
@@ -32,7 +65,9 @@ header {
 .header__cta {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: clamp(0.6rem, 0.4rem + 0.6vw, 1.2rem);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* .header__socials {
@@ -43,11 +78,17 @@ header {
   flex-direction: column;
   gap: 1rem;
 } */
+.header__socials {
+  display: flex;
+  gap: clamp(0.75rem, 0.4rem + 1vw, 1.2rem);
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 .header__socials a {
-  height: 4rem;
-  width: 4rem;
-  font-size: 4rem;
+  height: clamp(2.75rem, 2rem + 1.6vw, 4rem);
+  width: clamp(3rem, 2.25rem + 2vw, 5rem);
+  font-size: clamp(2rem, 1.4rem + 2vw, 4rem);
   aspect-ratio: 1/1;
   background: var(--color-light);
   color: var(--color-black);
@@ -67,6 +108,54 @@ header {
   color: black;
 }
 
+.thirtythree {
+  font-size: clamp(3.5rem, 2rem + 6vw, 7.5rem);
+  line-height: 1;
+  position: absolute;
+  top: clamp(8%, 6vh, 15%);
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: rgb(105, 12, 198);
+  animation-name: blink;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  margin: 0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.crown {
+  display: none;
+  position: fixed;
+  top: 140px;
+  left: 49.5%;
+  transform: translateX(-49.5%);
+}
+
+.intersect {
+  display: block;
+  animation-name: blink;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.7;
+  }
+  30% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
 /* media query tablets */
 @media screen and (max-width: 1024px) {
   header {
@@ -77,19 +166,22 @@ header {
 
 /* media query phones */
 @media screen and (max-width: 600px) {
+  .header__image {
+    object-fit: contain;
+    object-position: 0 15%;
+  }
   .header__profile {
-    width: 14rem;
-    height: 17rem;
     max-width: 60%;
     max-height: 35vh;
   }
 
-  .header__container p {
-    width: 100%;
+  .header__container {
+    width: 92%;
+    padding: 0 0.5rem;
   }
 
-  .header__cta {
-    gap: 1rem;
+  .header__container p {
+    width: 100%;
   }
 
   /* .header__socials {
