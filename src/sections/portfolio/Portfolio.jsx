@@ -1,53 +1,95 @@
 import "./portfolio.css";
 import Projects from "./Projects";
 import ProjectsCategories from "./ProjectsCategories";
-import data from "./data";
-import React, { useState } from "react";
+import ScrollBehaviorToggle from "./ScrollBehaviorToggle";
+import { portfolioProjects, techCategories, getProjectsByTechnology } from "./portfolioData";
+import React, { useState, useCallback } from "react";
+import { useTranslation } from 'react-i18next';
+import Learning from "../learning/Learning";
+import Typewriter from "../../lib/Typewriter";
+// Assets are now in public directory
+const Leetcode = `${process.env.PUBLIC_URL}/Practice/Leetcode.png`;
 
 const Portfolio = () => {
-  const [projects, setProjects] = useState(data);
+  const { t } = useTranslation();
+  const [projects, setProjects] = useState(portfolioProjects);
+  const [activeTech, setActiveTech] = useState("all");
+  const [scrollBehavior, setScrollBehavior] = useState("contain");
 
-  const categories = data.map((item) => item.category);
-  const uniqueCategories = ["all", ...new Set(categories)];
+  // Get unique technologies for filtering
+  const technologies = Object.keys(techCategories);
 
-  const filterProjectsHandler = (category) => {
-    if (category === "all") {
-      setProjects(data);
-      return;
-    }
-
-    const filterProjects = data.filter(
-      (project) => project.category === category
-    );
-    setProjects(filterProjects);
-  };
+  const filterProjectsHandler = useCallback((technology) => {
+    setActiveTech(technology);
+    const filteredProjects = getProjectsByTechnology(technology);
+    setProjects(filteredProjects);
+  }, []);
 
   return (
     <section id="portfolio">
-      <h2>Projects</h2>
-      <p className="mt-3">
-        Check out some of the projects I worked on for my clients who agreed for
-        such a represantative usage (or often rather own private projects). The
-        buttons below toggle different categories.
-        <div className="header_oldportfolio">
-          You can also take a look at my
-          <a
-            className="fst-italic"
-            href="https://www.cdtio.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            &nbsp;old playground portfolio&nbsp;
-          </a>
-          Website.
-        </div>
-      </p>
-      <div className="container portfolio__container">
-        <ProjectsCategories
-          categories={uniqueCategories}
-          onFilterProjects={filterProjectsHandler}
+      <a
+        href="https://explainshell.com/explain?cmd=curl+-sv+https%3A%2F%2Fwww.cdtio.com%2F+--stderr+-+%7C+grep+Portfolio"
+        target="_blank"
+        rel="noreferrer"
+        className="text-reset text-decoration-none text-center d-block typewriter-wrapper"
+        aria-label="Shell command explanation link"
+      >
+        <Typewriter
+          text={t('portfolio.typewriter')}
+          delay={80}
+          infinite
+          className="typewriter"
         />
-        <Projects projects={projects} />
+      </a>
+      <h2 className="h1 mt-5">{t('portfolio.title')}</h2>
+      <div className="container portfolio__container">
+        <ScrollBehaviorToggle onChange={setScrollBehavior} />
+        <ProjectsCategories
+          categories={technologies}
+          techCategories={techCategories}
+          onFilterProjects={filterProjectsHandler}
+          activeTech={activeTech}
+        />
+        <Projects projects={projects} scrollBehavior={scrollBehavior} />
+      </div>
+      <h2 className="h1 mt-row">{t('portfolio.leetcode')}</h2>
+      <div className="container portfolio__container d-flex flex-column gap-4">
+        <a
+          href="https://leetcard.jacoblin.cool/cdtio?font=Lora"
+          rel="noreferrer"
+          target="_blank"
+          aria-label="Leetcode Stats Card"
+        >
+          <img
+            src="https://leetcard.jacoblin.cool/cdtio?font=Lora"
+            alt="Leetcode Stats"
+            loading="lazy"
+            width="100%"
+            height="auto"
+          />
+        </a>
+        <a
+          href="https://leetcode.com/problems/reverse-integer/"
+          className="leetcode__solution"
+          rel="noreferrer"
+          target="_blank"
+          aria-label="Leetcode Solution for Reverse Integer problem"
+        >
+          <span className="leetcode__solution-text">
+            {t('portfolio.leetcodeSolutionText')}
+          </span>
+          <img 
+            src={Leetcode} 
+            alt="Leetcode Solution for Reverse Integer problem" 
+            loading="lazy"
+            width="100%" 
+            height="auto" 
+          />
+        </a>
+      </div>
+      <h2 className="h1 mt-row">Input</h2>
+      <div className="container portfolio__container">
+        <Learning />
       </div>
     </section>
   );
