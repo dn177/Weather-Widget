@@ -70,6 +70,91 @@ header.image-loaded {
   justify-content: center;
 }
 
+/* Editorial CTA — mono label, offset corner brackets, lift-on-hover */
+.header__cta .btn {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.6rem + 0.3vw, 0.82rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.6rem;
+  border-radius: 4px;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.3, 1),
+    box-shadow 0.35s ease,
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.header__cta .btn::before,
+.header__cta .btn::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-color: var(--gold-300, #d9b56e);
+  border-style: solid;
+  border-width: 0;
+  transition: all 0.35s ease;
+  opacity: 0.85;
+}
+
+.header__cta .btn::before {
+  top: -4px;
+  left: -4px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.header__cta .btn::after {
+  bottom: -4px;
+  right: -4px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+.header__cta .btn:hover::before,
+.header__cta .btn:hover::after {
+  width: 14px;
+  height: 14px;
+}
+
+.header__cta .btn.primary {
+  background: var(--purple-600, #690cc6);
+  color: var(--ivory, #f7f1e6);
+  border: 1px solid transparent;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 14px 24px -14px rgba(80, 7, 130, 0.55);
+}
+
+.header__cta .btn.primary:hover {
+  background: var(--purple-700, #4f0a8c);
+  color: var(--gold-300, #d9b56e);
+  border-color: var(--gold-300, #d9b56e);
+  transform: translate(-2px, -2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    6px 6px 0 0 var(--gold-300, #d9b56e),
+    0 20px 30px -16px rgba(80, 7, 130, 0.7);
+}
+
+.header__cta .btn.light {
+  background: var(--ivory, #f7f1e6);
+  color: var(--ink, #1b0a26);
+  border: 1px solid rgba(123, 33, 159, 0.25);
+}
+
+.header__cta .btn.light:hover {
+  background: var(--ivory-deep, #ede4d0);
+  color: var(--purple-700, #4f0a8c);
+  border-color: var(--gold-300, #d9b56e);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--purple-700, #4f0a8c);
+}
+
 /* .header__socials {
   position: absolute;
   left: 0;
