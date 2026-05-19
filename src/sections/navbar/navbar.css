@@ -1,6 +1,7 @@
 nav {
   line-height: 1.4;
   font-size: 1rem;
+  padding: 0.75rem 0 !important;
 }
 
 nav ul {
@@ -8,32 +9,97 @@ nav ul {
 }
 
 .navbar {
-  /* background-color: var(--color-tertiary, rgb(161, 149, 149)) !important; */
-  background-color: #983de7 !important;
-  /* border-bottom: 0.5px solid hsl(0deg 0% 100%); */
-  /* border-bottom: 1px solid # 983de7; */
+  background-color: rgba(105, 12, 198, 0.92) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .navbar-brand {
-  margin-left: 1.5rem;
-  /* border-bottom: 2px solid white; */
+  margin-left: 1.25rem;
   padding-bottom: 0rem;
   padding-top: 0rem;
+  font-size: clamp(0.95rem, 0.85rem + 0.4vw, 1.2rem);
 }
 
 #navbarSupportedContent {
   padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  justify-content: flex-end;
 }
 
 li.nav-item {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
+  font-size: 16px;
+}
+
+li.nav-item:hover {
+  text-decoration: line-through;
+}
+
+.nav-link {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .show > .nav-link {
-  /* color: red !important; */
-  /* color: # 983de7 !important; */
-  /* color: # f6c94e; */
   color: #dfb53d;
-  /* #a33b39 */
+}
+
+/* ========================================
+   Mobile (< 992px) — show hamburger, collapse menu
+   ======================================== */
+
+@media (max-width: 991.98px) {
+  .navbar-toggler {
+    display: inline-block;
+    margin-right: 1rem;
+    border-color: rgba(255, 255, 255, 0.5);
+    padding: 0.35rem 0.55rem;
+  }
+  .navbar-toggler:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+  .navbar-toggler-icon {
+    width: 1.4em;
+    height: 1.4em;
+  }
+
+  #navbarSupportedContent {
+    flex-basis: 100%;
+    padding: 0.5rem 1.25rem 1rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.25s ease,
+      padding 0.3s ease;
+    justify-content: flex-start;
+  }
+
+  #navbarSupportedContent.show {
+    max-height: 60vh;
+    opacity: 1;
+    overflow: auto;
+  }
+
+  .navbar--open {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .navbar-nav {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.6rem 0 !important;
+    font-size: 1.05rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
 }
