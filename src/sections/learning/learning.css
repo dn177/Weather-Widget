@@ -1,0 +1,195 @@
+.learning__books {
+  display: flex;
+  justify-content: space-between;
+  min-height: 300px;
+}
+.learning__books img {
+  object-fit: contain;
+  /* height: 300px; */
+}
+
+.devcard-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 0.5rem + 1.5vw, 2rem);
+  margin-top: clamp(2rem, 1rem + 3vw, 4rem);
+  justify-content: center;
+  align-items: center;
+}
+
+.devcard-img {
+  width: clamp(200px, 30vw, 300px);
+  height: auto;
+}
+
+[alt="Frontend Masters"] {
+  height: clamp(120px, 18vw, 200px);
+  width: auto;
+}
+
+[class^="swiper-button"] {
+  color: #983de7 !important;
+}
+.swiper-pagination-bullet {
+  border-radius: 0 !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: #983de7 !important;
+}
+
+/* ========================================
+   AI Input Sources
+   ======================================== */
+
+.ai-sources {
+  margin-bottom: clamp(2rem, 1rem + 3vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 0.5rem + 1.5vw, 1.75rem);
+}
+
+.ai-sources__title {
+  text-align: center;
+  font-size: clamp(0.75rem, 0.65rem + 0.4vw, 0.95rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+  width: min(32rem, 100%);
+  font-weight: 600;
+}
+
+.ai-sources__title::before,
+.ai-sources__title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(147, 51, 234, 0.4),
+    transparent
+  );
+}
+
+.ai-sources__stanford {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.5rem, 0.4rem + 0.4vw, 0.75rem)
+    clamp(0.85rem, 0.6rem + 1vw, 1.5rem);
+  background: #fff;
+  border: 1px solid rgba(147, 51, 234, 0.18);
+  border-radius: 14px;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.ai-sources__stanford:hover,
+.ai-sources__stanford:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(147, 51, 234, 0.45);
+  box-shadow: 0 10px 24px rgba(123, 33, 159, 0.12);
+}
+
+.ai-sources__stanford:focus-visible {
+  outline: 2px solid #9333ea;
+  outline-offset: 3px;
+}
+
+.ai-sources__stanford img {
+  display: block;
+  height: clamp(48px, 6vw + 1rem, 72px);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.ai-sources__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.5rem, 0.35rem + 0.6vw, 0.85rem);
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.ai-source {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.55rem, 0.45rem + 0.4vw, 0.75rem)
+    clamp(0.9rem, 0.6rem + 1.2vw, 1.5rem);
+  background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #fff;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+  text-align: center;
+  min-height: 40px;
+  box-shadow: 0 4px 14px rgba(147, 51, 234, 0.2);
+}
+
+.ai-source:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #7c3aed 0%, #6b21a8 100%);
+  box-shadow: 0 8px 22px rgba(147, 51, 234, 0.32);
+  color: #fff;
+}
+
+.ai-source:focus-visible {
+  outline: 2px solid #c084fc;
+  outline-offset: 3px;
+}
+
+.ai-source__label {
+  font-size: clamp(0.8rem, 0.7rem + 0.3vw, 0.95rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media screen and (max-width: 600px) {
+  .learning__books {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  [alt="Frontend Masters"] {
+    object-fit: contain;
+  }
+
+  .ai-sources__grid {
+    gap: 0.5rem;
+  }
+
+  .ai-source {
+    padding: 0.55rem 1rem;
+    min-height: 38px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .ai-sources__stanford {
+    background: rgba(255, 255, 255, 0.95);
+  }
+}
