@@ -32,16 +32,19 @@ const StanfordLogo = PUBLIC_URL + "/AISources/SE-StanfordOnline.png";
 const aiSources = [
   {
     id: "mlst",
+    number: "01",
     label: "ML Street Talk",
     href: "https://www.youtube.com/@MachineLearningStreetTalk",
   },
   {
     id: "jbhuang",
+    number: "02",
     label: "Jia-Bin Huang",
     href: "https://www.youtube.com/@jbhuang0604",
   },
   {
     id: "3b1b",
+    number: "03",
     label: "3Blue1Brown",
     href: "https://www.youtube.com/c/3blue1brown",
   },
@@ -52,10 +55,17 @@ function Learning() {
 
   return (
     <div>
-      <div className="ai-sources" aria-label="AI learning sources">
-        <p className="ai-sources__title">
-          {t("learning.aiSourcesTitle", "AI Input Sources")}
-        </p>
+      <div className="ai-sources" aria-label="AI learning sources" role="region">
+        <div className="ai-sources__header">
+          <span className="ai-sources__rule" aria-hidden="true" />
+          <p className="ai-sources__eyebrow">
+            <span className="ai-sources__diamond" aria-hidden="true">◆</span>
+            {t("learning.aiSourcesTitle", "AI Input Sources")}
+            <span className="ai-sources__diamond" aria-hidden="true">◆</span>
+          </p>
+          <span className="ai-sources__rule" aria-hidden="true" />
+        </div>
+
         <a
           href="https://www.youtube.com/@stanfordonline/featured"
           target="_blank"
@@ -63,6 +73,10 @@ function Learning() {
           className="ai-sources__stanford"
           aria-label="Stanford Online YouTube channel"
         >
+          <span className="ai-sources__featured-tag">
+            <span className="ai-sources__featured-no">00</span>
+            <span className="ai-sources__featured-text">Featured</span>
+          </span>
           <img
             src={StanfordLogo}
             alt="Stanford Engineering"
@@ -70,21 +84,29 @@ function Learning() {
             width="280"
             height="100"
           />
+          <span className="ai-sources__featured-meta">
+            youtube.com/@stanfordonline
+            <span className="ai-sources__arrow" aria-hidden="true">↗</span>
+          </span>
         </a>
-        <div className="ai-sources__grid">
+
+        <ul className="ai-sources__list">
           {aiSources.map((source) => (
-            <a
-              key={source.id}
-              href={source.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ai-source"
-              aria-label={source.label}
-            >
-              <span className="ai-source__label">{source.label}</span>
-            </a>
+            <li key={source.id} className="ai-source__item">
+              <a
+                href={source.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ai-source"
+                aria-label={source.label}
+              >
+                <span className="ai-source__number">{source.number}</span>
+                <span className="ai-source__name">{source.label}</span>
+                <span className="ai-source__arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       <div className="learning__books d-none d-md-flex">
