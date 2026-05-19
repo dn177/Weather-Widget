@@ -1,6 +1,6 @@
 import { HiOutlineMail } from "react-icons/hi";
-import { RiMessengerLine } from "react-icons/ri";
-import { FaWhatsapp } from "react-icons/fa";
+// import { RiMessengerLine } from "react-icons/ri";
+// import { FaWhatsapp } from "react-icons/fa";
 
 const data = [
   { id: 1, icon: <HiOutlineMail />, link: "mailto:dan177@live.de" },
