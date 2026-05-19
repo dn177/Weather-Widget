@@ -1,0 +1,116 @@
+.min-vh-50 {
+  min-height: 50vh;
+}
+
+#pixelperfect {
+  /* background moved to inline style in component */
+  color: white;
+}
+
+.pixelperfect__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 2rem;
+  column-gap: 3rem;
+  width: 100%;
+}
+
+.pixelperfect__imgs img {
+  width: 45%;
+}
+
+.iconboxes-wrapper {
+  display: flex;
+}
+
+.iconbox {
+  display: flex;
+}
+
+.iconbox .img-fluid {
+  height: 50px;
+  width: 50px;
+  max-height: 50px;
+  object-fit: contain;
+}
+
+img[alt="Realized Design"] {
+  object-position: left;
+  cursor: pointer;
+}
+
+img[alt="Design"] {
+  cursor: pointer;
+}
+
+/* Accessible clickable image holders */
+.holder {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.holder:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.holder:focus-visible {
+  outline: 3px solid #7b219f;
+  outline-offset: 2px;
+}
+
+.holder img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+.holder:hover img {
+  transform: scale(1.02);
+}
+
+@media screen and (max-width: 600px) {
+  #pixelperfect {
+    background-repeat: repeat;
+    background-size: contain;
+    /* background: url(/react/static/media/Vitruv.2bb64641ba71883f43ae.jpg) repeat
+      10% 10% / contain; */
+  }
+  .pixelperfect__grid {
+    grid-template-columns: repeat(1, 1fr);
+    width: var(--container-width-md);
+  }
+
+  img[alt="Design"] {
+    order: 1;
+    object-position: right;
+    object-fit: contain;
+  }
+
+  .iconbox:nth-child(2) {
+    grid-row: 3 / 4;
+  }
+
+  img[alt="Realized Design"] {
+    order: 3;
+    object-fit: contain;
+  }
+
+  #pixelperfect h2 {
+    margin-bottom: 8rem;
+  }
+
+  .pixelperfect__imgs {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .pixelperfect__imgs img {
+    width: 90%;
+  }
+}
