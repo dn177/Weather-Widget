@@ -1,24 +1,26 @@
 import { useState, useEffect, useRef } from "react";
+import { useTranslation } from 'react-i18next';
 import "./Weather.css";
 import axios from "axios";
 
 function WeatherGrid() {
+  const { t } = useTranslation();
   const [weather, setWeather] = useState({});
   const [city, setCity] = useState("Munich");
   const [country, setCountry] = useState("Germany");
-  const [errormsg, setErrormsg] = useState("No weather data found.");
+  const [errormsg, setErrormsg] = useState(t('weather.errors.noData'));
   const isFirst = useRef(true);
   const url =
     "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max,temperature_2m_min,rain_sum&timezone=Europe%2FBerlin";
   const NINJAS_API_KEY = "ZO9arBg2KlmXrGAGiWT1/A==Jis6QiHm09iT7ySH";
   const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
+    t('weather.weekdays.sunday'),
+    t('weather.weekdays.monday'),
+    t('weather.weekdays.tuesday'),
+    t('weather.weekdays.wednesday'),
+    t('weather.weekdays.thursday'),
+    t('weather.weekdays.friday'),
+    t('weather.weekdays.saturday'),
   ];
   const production = false;
 
@@ -52,7 +54,7 @@ function WeatherGrid() {
         setWeather(res?.data);
       })
       .catch((error) => {
-        setErrormsg("Couldn't fetch default weather data.");
+        setErrormsg(t('weather.errors.fetchDefault'));
       });
   }
 
@@ -67,7 +69,7 @@ function WeatherGrid() {
         setWeather(res?.data);
       })
       .catch((err) => {
-        setErrormsg("Couldn't fetch weather data with given input values.");
+        setErrormsg(t('weather.errors.fetchCoords'));
       });
   }
 
@@ -89,7 +91,7 @@ function WeatherGrid() {
         // return res;
       })
       .catch((error) => {
-        setErrormsg("Couldn't find city.");
+        setErrormsg(t('weather.errors.cityNotFound'));
       });
   }
 
@@ -114,21 +116,21 @@ function WeatherGrid() {
   return (
     <div className="weather-widget">
       <h2 className="weather-widget__headline">
-        Random Weather Forecast using Open Meteo API
+        {t('weather.headline')}
       </h2>
       <div className="input-wrapper">
         <input
           type="text"
           name="city"
           id="city"
-          placeholder="Enter city"
+          placeholder={t('weather.placeholders.city')}
           onChange={debouncedHandleCityChange}
         />
         <input
           type="text"
           name="country"
           id="country"
-          placeholder="Enter country"
+          placeholder={t('weather.placeholders.country')}
           onChange={debouncedHandleLocationChange}
         />
       </div>
@@ -140,20 +142,20 @@ function WeatherGrid() {
                 <div className="weathergrid__el" key={index}>
                   <p className="weekday">
                     {index === 0
-                      ? "Today"
+                      ? t('weather.today')
                       : days[new Date(weather.daily.time[index]).getDay()]}
                   </p>
                   <div className="temp-wrapper">
                     <span className="temp">
                       {weather.daily.temperature_2m_max[index]}&deg;
                     </span>
-                    <span className="temp__type">Max</span>
+                    <span className="temp__type">{t('weather.max')}</span>
                   </div>
                   <div className="temp-wrapper">
                     <span className="temp">
                       {weather.daily.temperature_2m_min[index]}&deg;
                     </span>
-                    <span className="temp__type">Min</span>
+                    <span className="temp__type">{t('weather.min')}</span>
                   </div>
                 </div>
               );
@@ -163,11 +165,14 @@ function WeatherGrid() {
       ) : (
         <p>{errormsg}</p>
       )}
-      <button
-        className="github-btn"
-        href="https://github.com/dn177/Weather-Widget"
-      >
-        View on my Github
+      <button className="github-btn">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://github.com/dn177/Weather-Widget"
+        >
+          {t('weather.githubButton')}
+        </a>
       </button>
     </div>
   );
