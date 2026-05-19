@@ -1,0 +1,389 @@
+{
+  "navbar": {
+    "brand": "cd /tio/root",
+    "portfolio": "portfolio",
+    "pixelperfect": "pixelperfect",
+    "contact": "contact"
+  },
+  "header": {
+    "title": "私の名前は Daniel M です。",
+    "buttons": {
+      "letsTalk": "Let's Talk",
+      "myWork": "My Work"
+    }
+  },
+  "portfolio": {
+    "title": "Projects",
+    "leetcode": "Leetcode",
+    "typewriter": "curl -sv https://www.cdtio.com/react/ --stderr - | grep Projects",
+    "leetcodeSolutionText": "Initial solution for integer reversal after 5 minutes. Further optimization possible.",
+    "categories": {
+      "all": "All",
+      "react": "React",
+      "vue": "Vue.js",
+      "nodejs": "Node.js",
+      "php": "PHP",
+      "electron": "Electron",
+      "nextjs": "Next.js"
+    },
+    "viewCode": "View Code",
+    "loadMoreProjects": "Load More Projects",
+    "readMore": "Read Case Study",
+    "overview": "Overview",
+    "highlights": "Key Features"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "Send me a message if you want to work with me or build a pyramid on the the 33rd parallel."
+  },
+  "pixelperfect": {
+    "title": "Pixelperfect",
+    "viewDesign": "View design mockup in full size",
+    "viewRealized": "View realized website in full size",
+    "designAlt": "Design mockup",
+    "realizedAlt": "Realized website",
+    "designModalTitle": "Design Mockup",
+    "realizedModalTitle": "Realized Website",
+    "designModalAlt": "Full size design mockup showing the original design concept",
+    "realizedModalAlt": "Full size screenshot of the realized website implementation"
+  },
+  "badges": {
+    "title": "Badges",
+    "subtitle": "I don't care, you probably also don't.",
+    "typewriter": "git reset --hard blablabla"
+  },
+  "hustle": {
+    "title": "Discipline & Dedication.",
+    "subtitle": "Evidently since 2016, even earlier."
+  },
+  "performance": {
+    "title": "Performance.",
+    "before": "Before:",
+    "afterOptimization": "After 1h of optimization:",
+    "measuredWith": "Measured using Google Lighthouse:",
+    "measuredNote": "Measured on this website."
+  },
+  "sustainability": {
+    "title": "Sustainability",
+    "subtitle": "Keeping the nature and environment in mind.",
+    "mainText": "Responsibility towards the nature following the principles of sustainable software engineering.",
+    "carbonEfficiency": {
+      "title": "Carbon Efficiency:",
+      "description": "Building applications that are carbon efficient."
+    },
+    "electricityEfficiency": {
+      "title": "Electricity Efficiency:",
+      "description": "Building applications that are energy efficient."
+    },
+    "carbonAwareness": {
+      "title": "Carbon Awareness:",
+      "description": "Consuming electricity with the lowest carbon intensity."
+    },
+    "hardwareEfficiency": {
+      "title": "Hardware Efficiency:",
+      "description": "Building applications that are hardware efficient."
+    },
+    "measurement": {
+      "title": "Measurement:",
+      "description": "Improving sustainability through measurement."
+    },
+    "climateCommitments": {
+      "title": "Climate Commitments:",
+      "description": "Defining the exact mechanism of carbon reduction."
+    }
+  },
+  "footer": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "weather": {
+    "headline": "Might want to take a look at the weather.",
+    "placeholders": {
+      "city": "Enter city",
+      "country": "Enter country (optional)"
+    },
+    "today": "Today",
+    "max": "Max",
+    "min": "Min",
+    "githubButton": "View on my Github",
+    "weekdays": {
+      "sunday": "Sunday",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday"
+    },
+    "errors": {
+      "noData": "No weather data found.",
+      "fetchDefault": "Couldn't fetch default weather data.",
+      "fetchCoords": "Couldn't fetch weather data with given input values.",
+      "cityNotFound": "Couldn't find city."
+    }
+  },
+  "learning": {
+    "mediumArticlesText": "Click the logo to view my favorite Medium articles"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "tryAgain": "Try Again"
+  },
+  "projects": {
+    "quantum-performance": {
+      "title": "Enterprise CRM Performance Optimization & Vue 3 Migration",
+      "description": "Migrated a multi-tenant CRM application from Vue 2 to Vue 3 with exceptional performance results.",
+      "highlights": {
+        "0": "16ms average INP (vs 200ms \"good\" threshold)",
+        "1": "Vue 2 → Vue 3 complete migration",
+        "2": "7,000+ item virtual scrolling implementation"
+      }
+    },
+    "33": {
+      "title": "33 - The Master Number",
+      "description": "An interactive 3D experience exploring the significance of the number 33. Built with React Three Fiber and GSAP animations.",
+      "highlights": {
+        "0": "Immersive 3D visualization with Three.js",
+        "1": "Smooth animations powered by GSAP",
+        "2": "Interactive exploration of numerology and symbolism"
+      },
+      "links": {
+        "0": "Explore 33"
+      }
+    },
+    "release-radar": {
+      "title": "Release Reader",
+      "description": "A tool to find relevant changes in GitHub release notes. Filter releases by version range, keywords, and display options.",
+      "highlights": {
+        "0": "Version range filtering to focus on specific releases",
+        "1": "Keyword-based filtering for breaking changes, deprecations, and more",
+        "2": "Customizable display options with context lines"
+      },
+      "links": {
+        "0": "Open Release Reader"
+      }
+    },
+    "markdown-downloader": {
+      "title": "Markdown Downloader - Raycast Extension",
+      "description": "A powerful Raycast extension that converts webpages to clean markdown files with advanced content extraction, image downloading, and customizable output options. Built for efficient knowledge management and content archiving.",
+      "highlights": {
+        "0": "Intelligent content extraction with regex-based HTML parsing",
+        "1": "Local image downloading with automatic path conversion",
+        "2": "Medium-specific content cleanup and optimization",
+        "3": "Affiliate link cleaning for cleaner markdown output",
+        "4": "Native macOS folder picker with recent folders dropdown",
+        "5": "Customizable output settings and auto-filename generation",
+        "6": "Support for metadata headers and title insertion"
+      },
+      "links": {
+        "0": "View on GitHub"
+      }
+    },
+    "space-studio": {
+      "title": "Space Studio - Interactive Rocket Science Education",
+      "description": "An interactive web application for teaching rocket science and engineering concepts through engaging 3D simulations, hands-on learning experiences, and progressive lessons from basic rocketry to advanced orbital mechanics.",
+      "highlights": {
+        "0": "60+ interactive 3D simulations including rocket launches, orbital mechanics, and black hole physics",
+        "1": "WebAssembly-powered physics calculations achieving 10-50x performance improvements",
+        "2": "24 comprehensive lessons covering topics from Newton's Laws to advanced propulsion systems",
+        "3": "Real-time physics engine with Matter.js for realistic simulations",
+        "4": "Gamification features including progress tracking, achievements, and assessments"
+      },
+      "links": {
+        "0": "Launch Space Studio"
+      }
+    },
+    "contao-website": {
+      "title": "Example Contao Website",
+      "description": "Contao CMS with special contact form implementation using grid-template-areas.",
+      "highlights": {
+        "0": "Background colors outside of container implemented with pseudo elements, not negative margins",
+        "1": "Contact form implemented using grid-template-areas"
+      },
+      "links": {
+        "0": "View the Website"
+      }
+    },
+    "inlearning": {
+      "title": "InLearning Platform",
+      "description": "Learning platform with materials for the topics: AI / ML, Python, React.js, Rust and Vue.js.",
+      "highlights": {
+        "0": "In-browser code completion and syntax highlighting",
+        "1": "Live preview of compiled code"
+      },
+      "links": {
+        "0": "View the Website"
+      }
+    },
+    "pictureplatform": {
+      "title": "Picture Playground Platform",
+      "description": "Platform initially developed for showcasing performance improvements by using Webassembly for computationally expensive tasks, later on added C++, Java and Scala.",
+      "highlights": {
+        "0": "Comparison of Rust, C++, Java and Scala and JS Performance"
+      },
+      "links": {
+        "0": "View the Website"
+      }
+    },
+    "mathtron-vue": {
+      "title": "Mathtron Vue Migration",
+      "description": "Vue.js migration of Mathtron with Vuetify UI framework. Desktop app built with Electron.",
+      "highlights": {
+        "0": "Migrated from React to Vue.js",
+        "1": "Modern Material Design with Vuetify",
+        "2": "Improved performance and user experience",
+        "3": "Sanitized user input, don't try your luck"
+      },
+      "links": {
+        "0": "Open the project"
+      }
+    },
+    "learn2sort": {
+      "title": "Learn2Sort",
+      "description": "App build with React.js mainly to visualize sorting algorithms.",
+      "highlights": {
+        "0": "Shows important information about the respective algirthm at the bottom.",
+        "1": "Adjustable speed for learning purposes"
+      },
+      "links": {
+        "0": "Open the project"
+      }
+    },
+    "nextjs-portfolio": {
+      "title": "Next.js Portfolio Website",
+      "description": "Alternative portfolio built with Next.js, featuring static export optimizations.",
+      "highlights": {
+        "0": "Created custom static export path fix script as byproduct",
+        "1": "Optimized for performance and SEO"
+      },
+      "links": {
+        "0": "Open the script code in Github",
+        "1": "Open the Next Portfolio"
+      }
+    },
+    "mathtron": {
+      "title": "Mathtron",
+      "description": "Spontaneously made LaTeX editor aiming to give a good experience for taking math notes and doing math exercises on the Desktop.",
+      "highlights": {
+        "0": "Real-time LaTeX rendering",
+        "1": "Intuitive math-focused UI",
+        "2": "Cross-platform desktop application"
+      },
+      "links": {
+        "0": "View on Github"
+      }
+    },
+    "private-blog": {
+      "title": "Private Blog",
+      "description": "Selfmade Blog with authentication and rich text editing capabilities.",
+      "highlights": {
+        "0": "Full authentication system with NextAuth",
+        "1": "Rich text editor with syntax highlighting",
+        "2": "Real-time data updates with SWR"
+      },
+      "links": {
+        "0": "My Medium Blog Posts"
+      }
+    },
+    "rest-fullstack": {
+      "title": "REST Fullstack Code Example",
+      "description": "Full-stack application demonstrating clean REST API architecture.",
+      "highlights": {
+        "0": "Clean REST API design",
+        "1": "TypeScript for type safety",
+        "2": "SQLite3 for data persistence"
+      },
+      "links": {
+        "0": "View on Github"
+      }
+    },
+    "e-commerce": {
+      "title": "E-Commerce",
+      "description": "Modern e-commerce platform with secure authentication and REST API.",
+      "highlights": {
+        "0": "Secure authentication with NextAuth",
+        "1": "Pre-hashed passwords with base64 and bcrypt",
+        "2": "Modern UI with Tailwind CSS and shadcn/ui",
+        "3": "Strapi Backend with REST API"
+      },
+      "links": {}
+    },
+    "emmet-demo": {
+      "title": "Emmet Live Coding Demo",
+      "description": "Live coding demonstration showing proficiency with Emmet and CSS shortcuts.",
+      "highlights": {
+        "0": "Efficient HTML/CSS workflow",
+        "1": "Advanced Emmet techniques"
+      },
+      "links": {}
+    },
+    "kanban-board": {
+      "title": "Kanban Board",
+      "description": "Drag and drop Kanban board for task management.",
+      "highlights": {
+        "0": "Drag and drop functionality",
+        "1": "Persistent storage with localStorage",
+        "2": "Clean and intuitive UI"
+      },
+      "links": {}
+    },
+    "car-platform": {
+      "title": "Car Selling Platform",
+      "description": "Initial prototype for a car selling platform with advanced filtering.",
+      "highlights": {
+        "0": "Advanced filter functionality",
+        "1": "Considers all input values simultaneously",
+        "2": "Responsive design with Bootstrap"
+      },
+      "links": {}
+    },
+    "company-website": {
+      "title": "Company Website",
+      "description": "Multi-site company web presence with contact form functionality.",
+      "highlights": {
+        "0": "Three separate themed websites",
+        "1": "PHP contact form functionality",
+        "2": "AOS.js animations"
+      },
+      "links": {
+        "0": "\"Solar\" Website",
+        "1": "\"Gala\" Website",
+        "2": "\"Bau\" Website"
+      }
+    },
+    "chart": {
+      "title": "Chart",
+      "description": "Interactive chart with options to redraw with different time units.",
+      "highlights": {
+        "0": "Interactive time unit switching",
+        "1": "Chart.js implementation",
+        "2": "Responsive design"
+      },
+      "links": {}
+    },
+    "cdn-manager": {
+      "title": "cdnManager jQuery Version",
+      "description": "Private project that manages and stores CDNs.",
+      "highlights": {
+        "0": "CDN management functionality",
+        "1": "Built for private usage",
+        "2": "Electron desktop app"
+      },
+      "links": {}
+    },
+    "molar": {
+      "title": "Molar",
+      "description": "Enhanced bluetooth keyboard experience with iOS devices. For example ability to launch applications with keyboard shortcuts. Initially simply was a port of the iPad App Switcher to the iPhone.",
+      "highlights": {
+        "0": "Featured in iDownloadBlog article"
+      },
+      "links": {
+        "0": "View Article"
+      }
+    }
+  }
+}

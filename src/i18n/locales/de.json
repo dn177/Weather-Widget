@@ -1,0 +1,389 @@
+{
+  "navbar": {
+    "brand": "cd /tio/root",
+    "portfolio": "Portfolio",
+    "pixelperfect": "Pixelperfekt",
+    "contact": "Kontakt"
+  },
+  "header": {
+    "title": "私の名前は Daniel M です。",
+    "buttons": {
+      "letsTalk": "Lass uns reden",
+      "myWork": "Meine Arbeiten"
+    }
+  },
+  "portfolio": {
+    "title": "Projekte",
+    "leetcode": "Leetcode",
+    "typewriter": "curl -sv https://www.cdtio.com/react/ --stderr - | grep Projekte",
+    "leetcodeSolutionText": "Erste Lösung für Integer-Umkehrung nach 5 Minuten. Weitere Optimierung möglich.",
+    "categories": {
+      "all": "Alle",
+      "react": "React",
+      "vue": "Vue.js",
+      "nodejs": "Node.js",
+      "php": "PHP",
+      "electron": "Electron",
+      "nextjs": "Next.js"
+    },
+    "viewCode": "Code ansehen",
+    "loadMoreProjects": "Mehr Projekte laden",
+    "readMore": "Fallstudie lesen",
+    "overview": "Überblick",
+    "highlights": "Highlights"
+  },
+  "contact": {
+    "title": "Kontaktiere mich",
+    "description": "Sende mir eine Nachricht, wenn du mit mir arbeiten oder eine Pyramide auf dem 33. Breitengrad bauen möchtest."
+  },
+  "pixelperfect": {
+    "title": "Pixelperfekt",
+    "viewDesign": "Design-Mockup in voller Größe anzeigen",
+    "viewRealized": "Umgesetzte Website in voller Größe anzeigen",
+    "designAlt": "Design-Mockup",
+    "realizedAlt": "Umgesetzte Website",
+    "designModalTitle": "Design-Mockup",
+    "realizedModalTitle": "Umgesetzte Website",
+    "designModalAlt": "Design-Mockup in voller Größe mit dem ursprünglichen Designkonzept",
+    "realizedModalAlt": "Screenshot der umgesetzten Website-Implementierung in voller Größe"
+  },
+  "badges": {
+    "title": "Abzeichen",
+    "subtitle": "Es ist mir egal, dir wahrscheinlich auch.",
+    "typewriter": "git reset --hard blablabla"
+  },
+  "hustle": {
+    "title": "Disziplin & Hingabe.",
+    "subtitle": "Offensichtlich seit 2016, sogar früher."
+  },
+  "performance": {
+    "title": "Performance.",
+    "before": "Vorher:",
+    "afterOptimization": "Nach 1 Stunde Optimierung:",
+    "measuredWith": "Gemessen mit Google Lighthouse:",
+    "measuredNote": "Gemessen auf dieser Website."
+  },
+  "sustainability": {
+    "title": "Nachhaltigkeit",
+    "subtitle": "Die Natur und Umwelt im Blick behalten.",
+    "mainText": "Verantwortung gegenüber der Natur nach den Prinzipien der nachhaltigen Softwareentwicklung.",
+    "carbonEfficiency": {
+      "title": "Kohlenstoffeffizienz:",
+      "description": "Entwicklung kohlenstoffeffizienter Anwendungen."
+    },
+    "electricityEfficiency": {
+      "title": "Stromeffizienz:",
+      "description": "Entwicklung energieeffizienter Anwendungen."
+    },
+    "carbonAwareness": {
+      "title": "Kohlenstoffbewusstsein:",
+      "description": "Stromverbrauch mit der niedrigsten Kohlenstoffintensität."
+    },
+    "hardwareEfficiency": {
+      "title": "Hardwareeffizienz:",
+      "description": "Entwicklung hardwareeffizienter Anwendungen."
+    },
+    "measurement": {
+      "title": "Messung:",
+      "description": "Verbesserung der Nachhaltigkeit durch Messung."
+    },
+    "climateCommitments": {
+      "title": "Klimaverpflichtungen:",
+      "description": "Definition des genauen Mechanismus zur Kohlenstoffreduzierung."
+    }
+  },
+  "footer": {
+    "home": "Startseite",
+    "about": "Über",
+    "services": "Dienstleistungen",
+    "portfolio": "Portfolio",
+    "contact": "Kontakt"
+  },
+  "weather": {
+    "headline": "Vielleicht möchtest du einen Blick auf das Wetter werfen.",
+    "placeholders": {
+      "city": "Stadt eingeben",
+      "country": "Land eingeben (optional)"
+    },
+    "today": "Heute",
+    "max": "Max",
+    "min": "Min",
+    "githubButton": "Auf meinem Github ansehen",
+    "weekdays": {
+      "sunday": "Sonntag",
+      "monday": "Montag",
+      "tuesday": "Dienstag",
+      "wednesday": "Mittwoch",
+      "thursday": "Donnerstag",
+      "friday": "Freitag",
+      "saturday": "Samstag"
+    },
+    "errors": {
+      "noData": "Keine Wetterdaten gefunden.",
+      "fetchDefault": "Standard-Wetterdaten konnten nicht abgerufen werden.",
+      "fetchCoords": "Wetterdaten mit den angegebenen Eingabewerten konnten nicht abgerufen werden.",
+      "cityNotFound": "Stadt konnte nicht gefunden werden."
+    }
+  },
+  "learning": {
+    "mediumArticlesText": "Klicke auf das Logo, um meine Lieblings-Medium-Artikel anzusehen"
+  },
+  "common": {
+    "loading": "Lädt...",
+    "error": "Fehler",
+    "tryAgain": "Erneut versuchen"
+  },
+  "projects": {
+    "quantum-performance": {
+      "title": "Enterprise CRM Performance-Optimierung & Vue 3 Migration",
+      "description": "Migration einer Multi-Tenant-CRM-Anwendung von Vue 2 zu Vue 3 mit herausragenden Performance-Ergebnissen.",
+      "highlights": {
+        "0": "16ms durchschnittliche INP (vs 200ms \"gut\"-Schwelle)",
+        "1": "Vue 2 → Vue 3 vollständige Migration",
+        "2": "7.000+ Elemente virtuelles Scrolling"
+      }
+    },
+    "33": {
+      "title": "33 - Die Meisterzahl",
+      "description": "Ein interaktives 3D-Erlebnis zur Bedeutung der Zahl 33. Entwickelt mit React Three Fiber und GSAP-Animationen.",
+      "highlights": {
+        "0": "Immersive 3D-Visualisierung mit Three.js",
+        "1": "Flüssige Animationen mit GSAP",
+        "2": "Interaktive Erkundung von Numerologie und Symbolik"
+      },
+      "links": {
+        "0": "33 erkunden"
+      }
+    },
+    "release-radar": {
+      "title": "Release Reader",
+      "description": "Ein Tool zum Finden relevanter Änderungen in GitHub Release Notes. Releases nach Versionsbereich, Schlüsselwörtern und Anzeigeoptionen filtern.",
+      "highlights": {
+        "0": "Versionsbereichsfilterung für bestimmte Releases",
+        "1": "Schlüsselwortbasiertes Filtern nach Breaking Changes, Deprecations und mehr",
+        "2": "Anpassbare Anzeigeoptionen mit Kontextzeilen"
+      },
+      "links": {
+        "0": "Release Reader öffnen"
+      }
+    },
+    "markdown-downloader": {
+      "title": "Markdown Downloader - Raycast Erweiterung",
+      "description": "Eine leistungsstarke Raycast-Erweiterung, die Webseiten in saubere Markdown-Dateien konvertiert - mit fortschrittlicher Inhaltsextraktion, Bild-Download und anpassbaren Ausgabeoptionen. Entwickelt für effizientes Wissensmanagement und Content-Archivierung.",
+      "highlights": {
+        "0": "Intelligente Inhaltsextraktion mit regex-basiertem HTML-Parsing",
+        "1": "Lokaler Bild-Download mit automatischer Pfadkonvertierung",
+        "2": "Medium-spezifische Inhaltsbereinigung und Optimierung",
+        "3": "Affiliate-Link-Bereinigung für sauberere Markdown-Ausgabe",
+        "4": "Native macOS Ordnerauswahl mit Dropdown für kürzlich verwendete Ordner",
+        "5": "Anpassbare Ausgabeeinstellungen und automatische Dateinamengenerierung",
+        "6": "Unterstützung für Metadaten-Header und Titel-Einfügung"
+      },
+      "links": {
+        "0": "Auf GitHub ansehen"
+      }
+    },
+    "space-studio": {
+      "title": "Space Studio - Interaktive Raketenforschungs-Bildung",
+      "description": "Eine interaktive Webanwendung zum Unterrichten von Raketenwissenschaft und Ingenieurkonzepten durch fesselnde 3D-Simulationen, praktische Lernerfahrungen und progressive Lektionen von grundlegender Raketentechnik bis zu fortgeschrittener Orbitalmechanik.",
+      "highlights": {
+        "0": "60+ interaktive 3D-Simulationen inklusive Raketenstarts, Orbitalmechanik und Schwarze-Loch-Physik",
+        "1": "WebAssembly-gestützte Physikberechnungen mit 10-50x Leistungssteigerung",
+        "2": "24 umfassende Lektionen von Newtons Gesetzen bis zu fortgeschrittenen Antriebssystemen",
+        "3": "Echtzeit-Physik-Engine mit Matter.js für realistische Simulationen",
+        "4": "Gamification-Features inklusive Fortschrittsverfolgung, Erfolge und Bewertungen"
+      },
+      "links": {
+        "0": "Space Studio starten"
+      }
+    },
+    "contao-website": {
+      "title": "Beispiel Contao Website",
+      "description": "Contao CMS mit spezieller Kontaktformular-Implementierung unter Verwendung von grid-template-areas.",
+      "highlights": {
+        "0": "Hintergrundfarben außerhalb des Containers mit Pseudo-Elementen implementiert, nicht mit negativen Margins",
+        "1": "Kontaktformular mit grid-template-areas implementiert"
+      },
+      "links": {
+        "0": "Website ansehen"
+      }
+    },
+    "inlearning": {
+      "title": "InLearning Plattform",
+      "description": "Lernplattform mit Materialien für die Themen: KI / ML, Python, React.js, Rust und Vue.js.",
+      "highlights": {
+        "0": "Code-Vervollständigung und Syntax-Highlighting im Browser",
+        "1": "Live-Vorschau des kompilierten Codes"
+      },
+      "links": {
+        "0": "Website ansehen"
+      }
+    },
+    "pictureplatform": {
+      "title": "Picture Playground Plattform",
+      "description": "Plattform, die ursprünglich entwickelt wurde, um Leistungsverbesserungen durch die Verwendung von WebAssembly für rechenintensive Aufgaben zu zeigen. Später wurden C++, Java und Scala hinzugefügt.",
+      "highlights": {
+        "0": "Vergleich von Rust, C++, Java, Scala und JS Performance"
+      },
+      "links": {
+        "0": "Website ansehen"
+      }
+    },
+    "mathtron-vue": {
+      "title": "Mathtron Vue Migration",
+      "description": "Vue.js Migration von Mathtron mit Vuetify UI Framework. Desktop-App mit Electron erstellt.",
+      "highlights": {
+        "0": "Von React zu Vue.js migriert",
+        "1": "Modernes Material Design mit Vuetify",
+        "2": "Verbesserte Performance und Benutzererfahrung",
+        "3": "Gesäuberte Benutzereingaben, versuchen Sie nicht Ihr Glück"
+      },
+      "links": {
+        "0": "Projekt öffnen"
+      }
+    },
+    "learn2sort": {
+      "title": "Learn2Sort",
+      "description": "App mit React.js erstellt, hauptsächlich zur Visualisierung von Sortieralgorithmen.",
+      "highlights": {
+        "0": "Zeigt wichtige Informationen über den jeweiligen Algorithmus am unteren Rand",
+        "1": "Einstellbare Geschwindigkeit für Lernzwecke"
+      },
+      "links": {
+        "0": "Projekt öffnen"
+      }
+    },
+    "nextjs-portfolio": {
+      "title": "Next.js Portfolio Website",
+      "description": "Alternatives Portfolio mit Next.js erstellt, mit statischen Export-Optimierungen.",
+      "highlights": {
+        "0": "Eigenes statisches Export-Pfad-Fix-Skript als Nebenprodukt erstellt",
+        "1": "Optimiert für Performance und SEO"
+      },
+      "links": {
+        "0": "Skript-Code auf Github öffnen",
+        "1": "Next Portfolio öffnen"
+      }
+    },
+    "mathtron": {
+      "title": "Mathtron",
+      "description": "Spontan erstellter LaTeX-Editor mit dem Ziel, ein gutes Erlebnis für Mathe-Notizen und Mathe-Übungen auf dem Desktop zu bieten.",
+      "highlights": {
+        "0": "Echtzeit LaTeX-Rendering",
+        "1": "Intuitive mathematik-fokussierte Benutzeroberfläche",
+        "2": "Plattformübergreifende Desktop-Anwendung"
+      },
+      "links": {
+        "0": "Auf Github ansehen"
+      }
+    },
+    "private-blog": {
+      "title": "Privater Blog",
+      "description": "Selbstgemachter Blog mit Authentifizierung und Rich-Text-Bearbeitungsfunktionen.",
+      "highlights": {
+        "0": "Vollständiges Authentifizierungssystem mit NextAuth",
+        "1": "Rich-Text-Editor mit Syntax-Highlighting",
+        "2": "Echtzeit-Datenaktualisierungen mit SWR"
+      },
+      "links": {
+        "0": "Meine Medium Blog-Beiträge"
+      }
+    },
+    "rest-fullstack": {
+      "title": "REST Fullstack Code-Beispiel",
+      "description": "Full-Stack-Anwendung, die saubere REST-API-Architektur demonstriert.",
+      "highlights": {
+        "0": "Sauberes REST-API-Design",
+        "1": "TypeScript für Typsicherheit",
+        "2": "SQLite3 für Datenpersistenz"
+      },
+      "links": {
+        "0": "Auf Github ansehen"
+      }
+    },
+    "e-commerce": {
+      "title": "E-Commerce",
+      "description": "Moderne E-Commerce-Plattform mit sicherer Authentifizierung und REST API.",
+      "highlights": {
+        "0": "Sichere Authentifizierung mit NextAuth",
+        "1": "Vorgehashte Passwörter mit base64 und bcrypt",
+        "2": "Moderne UI mit Tailwind CSS und shadcn/ui",
+        "3": "Strapi Backend mit REST API"
+      },
+      "links": {}
+    },
+    "emmet-demo": {
+      "title": "Emmet Live Coding Demo",
+      "description": "Live-Coding-Demonstration, die Kompetenz mit Emmet und CSS-Shortcuts zeigt.",
+      "highlights": {
+        "0": "Effizienter HTML/CSS-Workflow",
+        "1": "Fortgeschrittene Emmet-Techniken"
+      },
+      "links": {}
+    },
+    "kanban-board": {
+      "title": "Kanban Board",
+      "description": "Drag-and-Drop Kanban Board für Aufgabenverwaltung.",
+      "highlights": {
+        "0": "Drag-and-Drop-Funktionalität",
+        "1": "Persistente Speicherung mit localStorage",
+        "2": "Saubere und intuitive Benutzeroberfläche"
+      },
+      "links": {}
+    },
+    "car-platform": {
+      "title": "Auto-Verkaufsplattform",
+      "description": "Erster Prototyp für eine Auto-Verkaufsplattform mit erweiterten Filterfunktionen.",
+      "highlights": {
+        "0": "Erweiterte Filterfunktionalität",
+        "1": "Berücksichtigt alle Eingabewerte gleichzeitig",
+        "2": "Responsives Design mit Bootstrap"
+      },
+      "links": {}
+    },
+    "company-website": {
+      "title": "Firmenwebsite",
+      "description": "Multi-Site Firmenpräsenz mit Kontaktformular-Funktionalität.",
+      "highlights": {
+        "0": "Drei separate thematische Websites",
+        "1": "PHP Kontaktformular-Funktionalität",
+        "2": "AOS.js Animationen"
+      },
+      "links": {
+        "0": "\"Solar\" Website",
+        "1": "\"Gala\" Website",
+        "2": "\"Bau\" Website"
+      }
+    },
+    "chart": {
+      "title": "Diagramm",
+      "description": "Interaktives Diagramm mit Optionen zum Neuzeichnen mit verschiedenen Zeiteinheiten.",
+      "highlights": {
+        "0": "Interaktive Zeiteinheiten-Umschaltung",
+        "1": "Chart.js Implementierung",
+        "2": "Responsives Design"
+      },
+      "links": {}
+    },
+    "cdn-manager": {
+      "title": "cdnManager jQuery Version",
+      "description": "Privates Projekt, das CDNs verwaltet und speichert.",
+      "highlights": {
+        "0": "CDN-Verwaltungsfunktionalität",
+        "1": "Für private Nutzung erstellt",
+        "2": "Electron Desktop-App"
+      },
+      "links": {}
+    },
+    "molar": {
+      "title": "Molar",
+      "description": "Erweiterte Bluetooth-Tastatur-Erfahrung mit iOS-Geräten. Zum Beispiel die Fähigkeit, Anwendungen mit Tastaturkürzeln zu starten. War anfangs einfach ein Port des iPad App Switchers auf das iPhone.",
+      "highlights": {
+        "0": "Vorgestellt im iDownloadBlog Artikel"
+      },
+      "links": {
+        "0": "Artikel ansehen"
+      }
+    }
+  }
+}
