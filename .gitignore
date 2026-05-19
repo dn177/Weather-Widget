@@ -17,7 +17,23 @@
 .env.development.local
 .env.test.local
 .env.production.local
+/file_log
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Editor / AI tooling state
+/.claude
+/.playwright-mcp
+/.vscode
+/.idea
+
+# Local backups
+*.bak
+package_backup_*.json
+/anotes.txt
+/quantum.md
+/QuantumPerformance.jpg
+/Screenshot*.png
+/mobile-*.png
