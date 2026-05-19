@@ -367,48 +367,54 @@ h4 {
   color: var(--color-white);
 }
 
-/* Tech filter buttons - modern underline style */
+/* Tech filter buttons — editorial mono with gold underline on active */
 .btn.tech__btn {
-  text-transform: none;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
   font-weight: 500;
-  padding: 0.75rem 1.75rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  padding: 0.7rem 1.4rem;
   border: none;
   background: transparent;
-  color: #6b7280;
+  color: var(--ink-soft, #3a2748);
+  opacity: 0.6;
   cursor: pointer;
   position: relative;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  letter-spacing: 0.02em;
+  transition:
+    color 0.3s ease,
+    opacity 0.3s ease;
   border-radius: 0;
 }
 
-/* Underline on active */
+/* Gold underline that draws in from center on active */
 .btn.tech__btn::before {
   content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%) scaleX(0);
-  width: 100%;
-  height: 2px;
-  background: #9333ea;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 80%;
+  height: 1px;
+  background: var(--gold-500, #c9a96e);
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
-/* Subtle background on hover */
+/* Subtle ivory background ghost on hover */
 .btn.tech__btn::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: #ede9fe;
+  background: rgba(123, 33, 159, 0.05);
   opacity: 0;
   transition: opacity 0.3s ease;
-  border-radius: 8px;
+  border-radius: 2px;
   z-index: -1;
 }
 
 .btn.tech__btn:hover {
-  color: #7c3aed;
+  color: var(--purple-700, #4f0a8c);
+  opacity: 1;
   transform: translateY(0);
   box-shadow: none;
 }
@@ -418,14 +424,16 @@ h4 {
 }
 
 .btn.tech__btn.active {
-  color: #9333ea;
-  font-weight: 600;
+  color: var(--purple-700, #4f0a8c);
+  font-weight: 700;
+  opacity: 1;
   background: transparent;
   transform: scale(1);
 }
 
 .btn.tech__btn.active::before {
   transform: translateX(-50%) scaleX(1);
+  height: 2px;
 }
 
 /* Tech stack pills in project cards */
