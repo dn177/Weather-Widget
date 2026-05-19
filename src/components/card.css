@@ -7,9 +7,10 @@
 }
 
 .card:hover {
-  background: transparent;
+  /* background: transparent; */
+  /* transform: translateY(-0.5rem); */
+  box-shadow: 0 4px 7px 0 rgba(34, 34, 34, 0.15);
   border-color: var(--color-white);
-  transform: translateY(-0.5rem);
 }
 
 .card.light {
