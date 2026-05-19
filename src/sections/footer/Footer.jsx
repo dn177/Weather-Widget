@@ -1,14 +1,17 @@
 import { links, socials } from "./data";
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
-const footer = () => {
+const Footer = () => {
+  const { t } = useTranslation();
+  
   return (
     <footer>
       <div className="container footer__container">
         <ul className="nav__menu">
           {links.map((fLink) => (
             <li key={fLink.id}>
-              <a href={fLink.link}>{fLink.title}</a>
+              <a href={fLink.link}>{t(fLink.titleKey)}</a>
             </li>
           ))}
         </ul>
@@ -29,4 +32,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;
