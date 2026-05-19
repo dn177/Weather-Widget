@@ -1,23 +1,60 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import "./badges.css";
-import JBadge from "../../assets/Badges/JBadge.png";
-import FBadge from "../../assets/Badges/FrontendBadge.png";
-import CBadge from "../../assets/Badges/CSSBadge.png";
+import Typewriter from "../../lib/Typewriter";
+
+// Assets are now in public directory
+const PUBLIC_URL = process.env.PUBLIC_URL || '';
+const BADGES_PATH = PUBLIC_URL + '/Badges/';
+const JBadge = BADGES_PATH + "JBadge.png";
+const FBadge = BADGES_PATH + "FrontendBadge.png";
+const CBadge = BADGES_PATH + "CSSBadge.png";
 
 function Badges() {
+  const { t } = useTranslation();
+  
   return (
     <section id="badges">
-      <h2 class="mb-4 text-center">Some badges.</h2>
-      <h3 class="mb-5 text-center"> Who cares? I don't, but maybe you do.</h3>
-      <div className="img-wrapper d-flex justify-content-between mx-auto">
-        <img className="badge-img" src={FBadge} alt="" />
-        <img
-          className="badge-img"
-          // src={require("../../assets/Badges/jQueryBadge.png")}
-          src={JBadge}
-          alt=""
-        />
-        <img className="badge-img" src={CBadge} alt="" />
+      <div className="container-2 mx-auto">
+        <a
+          href="https://explainshell.com/explain?cmd=git+reset+--hard+blablabla"
+          target="_blank"
+          rel="noreferrer"
+          className="text-reset text-decoration-none text-center d-block typewriter-wrapper"
+          aria-label="Shell command explanation link"
+        >
+          <Typewriter
+            text={t('badges.typewriter')}
+            delay={80}
+            infinite
+            className="typewriter"
+          />
+        </a>
+        <h5 className="text-center h1 mb-headline mt-4">
+          {t('badges.title')}
+          <p className="fs-4 mt-4">{t('badges.subtitle')}</p>
+        </h5>
+        <div className="img-wrapper d-flex justify-content-between mx-auto">
+          <img
+            loading="lazy"
+            className="badge-img"
+            src={FBadge}
+            alt="Frontend Badge"
+          />
+          <img
+            loading="lazy"
+            className="badge-img"
+            // src={require("../../assets/Badges/jQueryBadge.png")}
+            src={JBadge}
+            alt="jQuery Badge"
+          />
+          <img
+            loading="lazy"
+            className="badge-img"
+            src={CBadge}
+            alt="CSS Badge"
+          />
+        </div>
       </div>
     </section>
   );
