@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="SelfHelpRAG Hybrid retrieval RAG pipeline architecture">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .title { font: 600 22px "Inter", sans-serif; fill: #f1f5f9; }
+      .subtitle { font: 13px "Inter", sans-serif; fill: #94a3b8; }
+      .stage-box { fill: #1e293b; stroke: #334155; stroke-width: 1.5; }
+      .stage-box-accent { fill: #1e3a8a; stroke: #3b82f6; stroke-width: 1.5; }
+      .stage-box-llm { fill: #312e81; stroke: #6366f1; stroke-width: 1.5; }
+      .stage-box-eval { fill: #422006; stroke: #d97706; stroke-width: 1.5; }
+      .stage-title { font: 600 14px "Inter", sans-serif; fill: #f1f5f9; text-anchor: middle; }
+      .stage-sub { font: 11px "Menlo", monospace; fill: #94a3b8; text-anchor: middle; }
+      .flow-arrow { stroke: #64748b; stroke-width: 2; fill: none; }
+      .branch-label { font: 11px "Inter", sans-serif; fill: #94a3b8; text-anchor: middle; }
+      .tag { font: 600 10px "Inter", sans-serif; fill: #fbbf24; }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#64748b"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="450"/>
+  <text class="title" x="40" y="42">SelfHelpRAG</text>
+  <text class="subtitle" x="40" y="62">Hybrid retrieval &#183; Qdrant + BM25 &#183; Eval-driven &#183; DSGVO via on-prem LLM</text>
+  <text class="tag" x="40" y="98">INDEXING (offline)</text>
+  <g transform="translate(40, 110)"><rect class="stage-box" width="110" height="58" rx="6"/><text class="stage-title" x="55" y="26">Corpus</text><text class="stage-sub" x="55" y="44">FAQ &#183; HowTo &#183; Release</text></g>
+  <g transform="translate(190, 110)"><rect class="stage-box" width="110" height="58" rx="6"/><text class="stage-title" x="55" y="26">Chunker</text><text class="stage-sub" x="55" y="44">overlap + headings</text></g>
+  <g transform="translate(340, 110)"><rect class="stage-box" width="110" height="58" rx="6"/><text class="stage-title" x="55" y="26">Embed</text><text class="stage-sub" x="55" y="44">local model</text></g>
+  <g transform="translate(490, 110)"><rect class="stage-box-accent" width="160" height="58" rx="6"/><text class="stage-title" x="80" y="26">Qdrant &#183; BM25</text><text class="stage-sub" x="80" y="44">dense + sparse index</text></g>
+  <line class="flow-arrow" x1="150" y1="139" x2="190" y2="139" marker-end="url(#ah)"/>
+  <line class="flow-arrow" x1="300" y1="139" x2="340" y2="139" marker-end="url(#ah)"/>
+  <line class="flow-arrow" x1="450" y1="139" x2="490" y2="139" marker-end="url(#ah)"/>
+  <text class="tag" x="40" y="218">QUERY (runtime)</text>
+  <g transform="translate(40, 230)"><rect class="stage-box" width="120" height="64" rx="6"/><text class="stage-title" x="60" y="26">User Frage</text><text class="stage-sub" x="60" y="44">deutsch</text><text class="stage-sub" x="60" y="58">ERP-Domaene</text></g>
+  <g transform="translate(200, 230)"><rect class="stage-box-accent" width="160" height="64" rx="6"/><text class="stage-title" x="80" y="26">Hybrid Retrieve</text><text class="stage-sub" x="80" y="44">dense + sparse</text><text class="stage-sub" x="80" y="58">rerank top-k</text></g>
+  <g transform="translate(400, 230)"><rect class="stage-box" width="160" height="64" rx="6"/><text class="stage-title" x="80" y="26">Prompt Assembly</text><text class="stage-sub" x="80" y="44">injection-aware</text><text class="stage-sub" x="80" y="58">cite + refuse rules</text></g>
+  <g transform="translate(600, 230)"><rect class="stage-box-llm" width="160" height="64" rx="6"/><text class="stage-title" x="80" y="26">LLM &#183; LM Studio</text><text class="stage-sub" x="80" y="44">on-premise</text><text class="stage-sub" x="80" y="58">DGX Spark</text></g>
+  <path class="flow-arrow" d="M 570 168 V 200 H 280 V 230" marker-end="url(#ah)"/>
+  <text class="branch-label" x="430" y="194">indexed vectors + BM25 postings</text>
+  <line class="flow-arrow" x1="160" y1="262" x2="200" y2="262" marker-end="url(#ah)"/>
+  <line class="flow-arrow" x1="360" y1="262" x2="400" y2="262" marker-end="url(#ah)"/>
+  <line class="flow-arrow" x1="560" y1="262" x2="600" y2="262" marker-end="url(#ah)"/>
+  <g transform="translate(280, 330)"><rect class="stage-box" width="280" height="56" rx="6"/><text class="stage-title" x="140" y="26">Answer + Citation</text><text class="stage-sub" x="140" y="44">"[Quelle: &lt;Dokumenttitel&gt;]" or refusal</text></g>
+  <path class="flow-arrow" d="M 680 294 V 318 H 420 V 330" marker-end="url(#ah)"/>
+  <g transform="translate(580, 350)"><rect class="stage-box-eval" width="180" height="56" rx="6"/><text class="stage-title" x="90" y="26">Eval Harness</text><text class="stage-sub" x="90" y="44">labeled set &#183; scored</text></g>
+  <path class="flow-arrow" d="M 580 378 H 560 V 358" marker-end="url(#ah)" stroke-dasharray="4 3"/>
+  <text class="subtitle" x="40" y="426">Refuses when no relevant chunk found. Ignores injected instructions inside retrieved docs (prompt-injection defence).</text>
+</svg>

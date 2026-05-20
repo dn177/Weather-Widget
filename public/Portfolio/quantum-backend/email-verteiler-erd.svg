@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 440" role="img" aria-label="ER-Diagramm: two-table distribution list schema, 1-to-many relationship via foreign key">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .entity-box { fill: #1e293b; stroke: #475569; stroke-width: 1.5; }
+      .entity-header { fill: #2563eb; }
+      .entity-title { font: 600 15px "Inter", -apple-system, BlinkMacSystemFont, sans-serif; fill: #ffffff; }
+      .col-name { font: 500 13px "Menlo", "Monaco", monospace; fill: #e2e8f0; }
+      .col-type { font: 13px "Menlo", "Monaco", monospace; fill: #94a3b8; }
+      .col-constraint { font: 600 11px "Inter", sans-serif; fill: #fbbf24; }
+      .col-fk { font: 600 11px "Inter", sans-serif; fill: #60a5fa; }
+      .divider { stroke: #334155; stroke-width: 1; }
+      .rel-line { stroke: #94a3b8; stroke-width: 2; fill: none; }
+      .rel-label { font: 600 18px "Inter", sans-serif; fill: #cbd5e1; }
+      .title { font: 600 17px "Inter", sans-serif; fill: #f1f5f9; }
+      .subtitle { font: 13px "Inter", sans-serif; fill: #94a3b8; }
+      .caption { font: 12px "Inter", sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+  <rect class="bg" width="920" height="440"/>
+  <text class="title" x="40" y="36">Email Distribution List &#183; ER-Diagramm</text>
+  <text class="subtitle" x="40" y="56">SQL Server &#183; 1-to-many &#183; referential integrity via foreign key</text>
+  <g transform="translate(40, 90)">
+    <rect class="entity-box" width="380" height="220" rx="6"/>
+    <rect class="entity-header" width="380" height="36" rx="6"/>
+    <rect class="entity-header" y="24" width="380" height="12"/>
+    <text class="entity-title" x="16" y="24">dist_list</text>
+    <g transform="translate(0, 36)">
+      <text class="col-constraint" x="16" y="22">PK</text>
+      <text class="col-name" x="50" y="22">id</text>
+      <text class="col-type" x="150" y="22">BIGINT IDENTITY(1,1)</text>
+      <line class="divider" x1="0" y1="32" x2="380" y2="32"/>
+      <text class="col-name" x="50" y="54">title</text>
+      <text class="col-type" x="150" y="54">NVARCHAR(200) NOT NULL</text>
+      <line class="divider" x1="0" y1="64" x2="380" y2="64"/>
+      <text class="col-name" x="50" y="86">is_newsletter</text>
+      <text class="col-type" x="150" y="86">BIT DEFAULT 0</text>
+      <line class="divider" x1="0" y1="96" x2="380" y2="96"/>
+      <text class="col-name" x="50" y="118">created_at</text>
+      <text class="col-type" x="150" y="118">DATETIME DEFAULT GETDATE()</text>
+      <line class="divider" x1="0" y1="128" x2="380" y2="128"/>
+      <text class="col-name" x="50" y="150">updated_at</text>
+      <text class="col-type" x="150" y="150">DATETIME DEFAULT GETDATE()</text>
+    </g>
+  </g>
+  <g transform="translate(510, 90)">
+    <rect class="entity-box" width="380" height="220" rx="6"/>
+    <rect class="entity-header" width="380" height="36" rx="6"/>
+    <rect class="entity-header" y="24" width="380" height="12"/>
+    <text class="entity-title" x="16" y="24">dist_list_address</text>
+    <g transform="translate(0, 36)">
+      <text class="col-constraint" x="16" y="22">PK</text>
+      <text class="col-name" x="50" y="22">id</text>
+      <text class="col-type" x="150" y="22">BIGINT IDENTITY(1,1)</text>
+      <line class="divider" x1="0" y1="32" x2="380" y2="32"/>
+      <text class="col-fk" x="16" y="54">FK</text>
+      <text class="col-name" x="50" y="54">list_id</text>
+      <text class="col-type" x="150" y="54">BIGINT NOT NULL</text>
+      <line class="divider" x1="0" y1="64" x2="380" y2="64"/>
+      <text class="col-name" x="50" y="86">email</text>
+      <text class="col-type" x="150" y="86">NVARCHAR(300) NOT NULL</text>
+    </g>
+  </g>
+  <path class="rel-line" d="M 420 158 H 465 V 180 H 510"/>
+  <text class="rel-label" x="438" y="150">1</text>
+  <text class="rel-label" x="480" y="174">&#8734;</text>
+  <g stroke="#94a3b8" stroke-width="2" fill="none">
+    <line x1="510" y1="180" x2="498" y2="170"/>
+    <line x1="510" y1="180" x2="498" y2="190"/>
+  </g>
+  <line stroke="#94a3b8" stroke-width="2" x1="436" y1="148" x2="436" y2="168"/>
+  <text class="caption" x="40" y="400">Foreign key enforces referential integrity. Address rows cannot be inserted without an existing list;</text>
+  <text class="caption" x="40" y="416">list deletion fails (or cascades) while children exist. Raw email strings &#8212; addresses are values, not contact-FKs.</text>
+</svg>

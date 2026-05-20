@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-label="Sequenzdiagramm Serial Mail Integration mit emailOverrides Override-Pattern">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .lane-box { fill: #1e293b; stroke: #475569; stroke-width: 1.5; }
+      .lane-title { font: 600 13px "Inter", sans-serif; fill: #f1f5f9; text-anchor: middle; }
+      .lane-sub { font: 11px "Inter", sans-serif; fill: #94a3b8; text-anchor: middle; }
+      .lifeline { stroke: #475569; stroke-width: 1; stroke-dasharray: 4 4; }
+      .msg-line { stroke: #cbd5e1; stroke-width: 1.5; fill: none; }
+      .msg-line-return { stroke: #94a3b8; stroke-width: 1.5; stroke-dasharray: 5 3; fill: none; }
+      .msg-label { font: 12px "Menlo", monospace; fill: #e2e8f0; }
+      .msg-label-em { font: 600 12px "Menlo", monospace; fill: #fbbf24; }
+      .note-box { fill: #422006; stroke: #d97706; stroke-width: 1; }
+      .note-text { font: 11px "Inter", sans-serif; fill: #fcd34d; }
+      .loop-box { fill: none; stroke: #60a5fa; stroke-width: 1; stroke-dasharray: 6 3; }
+      .loop-label { font: 600 11px "Inter", sans-serif; fill: #60a5fa; }
+      .title { font: 600 17px "Inter", sans-serif; fill: #f1f5f9; }
+      .subtitle { font: 13px "Inter", sans-serif; fill: #94a3b8; }
+      .caption { font: 11px "Inter", sans-serif; fill: #64748b; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#cbd5e1"/></marker>
+    <marker id="arrow-return" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect class="bg" width="960" height="620"/>
+  <text class="title" x="40" y="32">Serial Mail Integration &#183; Email Override Pattern</text>
+  <text class="subtitle" x="40" y="52">out Dictionary&lt;long, string&gt; emailOverrides &#8212; per-recipient address substitution without bloating the list table</text>
+  <rect class="lane-box" x="50" y="78" width="160" height="44" rx="4"/>
+  <text class="lane-title" x="130" y="98">Vue Client</text>
+  <text class="lane-sub" x="130" y="114">Newsletter UI</text>
+  <rect class="lane-box" x="290" y="78" width="160" height="44" rx="4"/>
+  <text class="lane-title" x="370" y="98">API</text>
+  <text class="lane-sub" x="370" y="114">C# .NET</text>
+  <rect class="lane-box" x="530" y="78" width="160" height="44" rx="4"/>
+  <text class="lane-title" x="610" y="98">Mail Dispatcher</text>
+  <text class="lane-sub" x="610" y="114">service layer</text>
+  <rect class="lane-box" x="770" y="78" width="160" height="44" rx="4"/>
+  <text class="lane-title" x="850" y="98">SQL Server</text>
+  <text class="lane-sub" x="850" y="114"></text>
+  <line class="lifeline" x1="130" y1="122" x2="130" y2="590"/>
+  <line class="lifeline" x1="370" y1="122" x2="370" y2="590"/>
+  <line class="lifeline" x1="610" y1="122" x2="610" y2="590"/>
+  <line class="lifeline" x1="850" y1="122" x2="850" y2="590"/>
+  <line class="msg-line" x1="130" y1="155" x2="370" y2="155" marker-end="url(#arrow)"/>
+  <text class="msg-label" x="138" y="148">POST SendSerialMail(listId, body, attachments)</text>
+  <line class="msg-line" x1="370" y1="190" x2="850" y2="190" marker-end="url(#arrow)"/>
+  <text class="msg-label" x="378" y="183">SELECT a.email, c.id FROM dist_list_address a</text>
+  <text class="msg-label" x="378" y="200">  LEFT JOIN contacts c ON c.primary_email = a.email</text>
+  <line class="msg-line-return" x1="850" y1="240" x2="370" y2="240" marker-end="url(#arrow-return)"/>
+  <text class="msg-label" x="540" y="232">recipients[]: { contact_id, email }</text>
+  <line class="msg-line" x1="370" y1="278" x2="610" y2="278" marker-end="url(#arrow)"/>
+  <text class="msg-label" x="378" y="270">SendBulk(recipients, body,</text>
+  <text class="msg-label-em" x="378" y="288">  out Dictionary&lt;long, string&gt; emailOverrides)</text>
+  <rect class="loop-box" x="395" y="310" width="500" height="180" rx="3"/>
+  <text class="loop-label" x="405" y="324">loop  [for each recipient]</text>
+  <path class="msg-line" d="M 610 350 H 660 V 365 H 610" marker-end="url(#arrow)"/>
+  <text class="msg-label" x="666" y="358">emailOverrides.TryGetValue(contact_id, out alt)</text>
+  <text class="msg-label" x="666" y="375">? alt : recipient.email</text>
+  <rect class="note-box" x="540" y="400" width="170" height="40" rx="4"/>
+  <text class="note-text" x="548" y="416">SMTP send</text>
+  <text class="note-text" x="548" y="430">via configured relay</text>
+  <line class="msg-line" x1="610" y1="470" x2="850" y2="470" marker-end="url(#arrow)"/>
+  <text class="msg-label" x="618" y="462">INSERT comm_history (campaign, status, ...)</text>
+  <text class="msg-label" x="618" y="480">via batched DataTable (one round-trip)</text>
+  <line class="msg-line-return" x1="610" y1="520" x2="370" y2="520" marker-end="url(#arrow-return)"/>
+  <text class="msg-label" x="380" y="513">{ sent: n, failed: m, overridesApplied: k }</text>
+  <line class="msg-line-return" x1="370" y1="555" x2="130" y2="555" marker-end="url(#arrow-return)"/>
+  <text class="msg-label" x="138" y="548">{ sent, failed, overridesApplied }</text>
+  <text class="caption" x="40" y="608">Override pattern keeps the persisted recipient list canonical (one row per address) while allowing per-send substitutions &#8212; driven by a Dictionary keyed on contact id.</text>
+</svg>
