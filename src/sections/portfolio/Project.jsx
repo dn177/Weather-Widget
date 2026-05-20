@@ -354,6 +354,14 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
                     <li key={itemIndex}>{item}</li>
                   ))}
                 </ul>
+                {section.image && (
+                  <img
+                    src={section.image}
+                    alt={section.imageAlt || section.title}
+                    className="detail-modal-section-image"
+                    loading="lazy"
+                  />
+                )}
               </div>
             ))}
 
