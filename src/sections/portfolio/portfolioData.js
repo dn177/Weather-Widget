@@ -27,6 +27,12 @@ const markdownDownImage = PORTFOLIO_PATH + "MarkdownDown.png";
 const releaseRadarImage = PORTFOLIO_PATH + "ReleaseRadar.jpg";
 const project33Image = PORTFOLIO_PATH + "33.jpg";
 const quantumPerformanceImage = PORTFOLIO_PATH + "QuantumPerformance.jpg";
+const emailVerteilerErd = PORTFOLIO_PATH + "quantum-backend/email-verteiler-erd.svg";
+const serialMailSequence = PORTFOLIO_PATH + "quantum-backend/serial-mail-sequence.svg";
+const selfHelpRagImage = PORTFOLIO_PATH + "SelfHelpRAG.svg";
+const mcpServersImage = PORTFOLIO_PATH + "MCPServers.svg";
+const aiChatImage = PORTFOLIO_PATH + "AIChat.gif";
+const resourceOrchestrationImage = PORTFOLIO_PATH + "ResourceOrchestration.png";
 
 // Define poster paths
 const poster2 = POSTER_PATH + "poster2.png";
@@ -117,6 +123,37 @@ export const portfolioProjects = [
             "Optimized Core Web Vitals from initial scores of 300-400ms INP down to 16ms through targeted refactoring",
           ],
         },
+        {
+          title: "Backend & Data Architecture",
+          items: [
+            "Designed and shipped a normalized two-table schema for a new email distribution list feature, with proper referential integrity — chosen after a schema-discovery audit confirmed no existing table fit the use case",
+            "Built the corresponding WCF service layer in C# .NET with explicit SqlParameter arrays — the codebase uses direct ADO.NET, not an ORM",
+            "Integrated with the existing VB.NET service layer and the legacy communications-history audit table for bulk-insert tracking of every dispatched message",
+            "Followed the established naming conventions of the existing schema for consistency with adjacent features",
+          ],
+          image: emailVerteilerErd,
+          imageAlt: "ER-Diagramm: two-table distribution list schema, 1-to-many relationship via foreign key",
+        },
+        {
+          title: "Serial Mail Integration · Override Pattern",
+          items: [
+            "Implemented the serial-mail dispatch flow with an `out Dictionary<long, string>` override map keyed by contact id — per-recipient address substitution at send-time without bloating the canonical recipient list",
+            "Persisted recipient lists stay normalised (one row per address); deviations are an ephemeral, per-send concern handled in C# memory",
+            "Bulk-INSERT to the communications-history audit table via batched DataTable to keep round-trips low even with thousands of recipients",
+            "Server-side search, exclusion-based selection, and collection-based recipient loading complete the newsletter feature end-to-end",
+          ],
+          image: serialMailSequence,
+          imageAlt: "Sequenzdiagramm: Vue Client → .NET API → mail dispatcher → SQL Server mit emailOverrides Override-Pattern",
+        },
+        {
+          title: "DSGVO-conformant Duplicate Cleanup",
+          items: [
+            "Stored-procedure approach to potential-companies deduplication, with a paired dry-run variant that returns the exact deletion preview without mutating data",
+            "Anchored the DSGVO basis on the contact's juridical creation timestamp rather than category-assignment dates — prevents compliance gaps where a re-categorised contact would appear newer than it is",
+            "Caught a configuration error in test: the dry-run preview showed >99% of records in a target category would have been deleted in production — averted a faulty mass-delete before release",
+            "Established the dry-run-first protocol for further data-cleanup operations on the system",
+          ],
+        },
       ],
     },
 
@@ -132,6 +169,9 @@ export const portfolioProjects = [
       "Pinia",
       "TypeScript",
       "C# .NET",
+      "WCF",
+      "VB.NET",
+      "SQL Server",
       "FlexSearch",
     ],
     mainTech: "vue",
@@ -145,6 +185,303 @@ export const portfolioProjects = [
       "enterprise",
       "crm",
       "optimization",
+    ],
+  },
+  {
+    id: "selfhelp-rag",
+    title: "SelfHelpRAG — On-Premise RAG with Hybrid Retrieval",
+    category: "web-app",
+    featured: true,
+    date: "2026-04-15",
+    sortOrder: -3.8,
+
+    media: {
+      type: "image",
+      src: selfHelpRagImage,
+      alt: "SelfHelpRAG — hybrid retrieval RAG pipeline architecture",
+    },
+
+    description:
+      "A retrieval-augmented Q&A system for an enterprise ERP knowledge base. German-language, runs entirely on-premise against a self-hosted LLM — built with DSGVO-sensitive data in mind from day one.",
+
+    detailedContent: {
+      overview:
+        "End-to-end RAG pipeline for self-help on the COMDOK ERP documentation. The system retrieves from a hybrid dense + sparse index, assembles an injection-aware prompt with explicit citation and refusal rules, and generates the answer on a local LLM endpoint (LM Studio on NVIDIA DGX Spark). A separate eval harness scores retrieval and citation quality against a labelled question set.",
+      sections: [
+        {
+          title: "Hybrid Retrieval Pipeline",
+          items: [
+            "Indexing splits documents on heading boundaries with overlap, embeds with a locally hosted model, and writes both dense vectors (Qdrant) and sparse postings (BM25) per chunk",
+            "Query time fuses both signals and reranks top-k — recall comes from dense, precision from sparse",
+            "Corpus covers configuration docs, FAQ, how-tos, glossary, release notes, and troubleshooting — each chunk carries its source title for citation",
+          ],
+        },
+        {
+          title: "Prompt Design as Engineering",
+          items: [
+            "System prompt enforces machine-checkable rules: cite as '[Quelle: <Dokumenttitel>]' or return the verbatim refusal sentence if no answer is grounded in the chunks",
+            "Explicit rule against following instructions embedded in retrieved documents — prompt-injection defence baked into the contract, not bolted on",
+            "User message keeps retrieved chunks clearly delimited and numbered so the model can reference them; system role and user role are ruthlessly separated",
+          ],
+        },
+        {
+          title: "Eval Harness",
+          items: [
+            "Labelled eval set (questions + expected answer + source document) checked into the repo alongside the eval runner",
+            "Scores both the answer text (refusal correctness, citation format) and the retrieval (whether the right chunk was even fetched)",
+            "Result snapshots persist under evals/results — regression-friendly when prompt or chunker changes",
+          ],
+        },
+        {
+          title: "On-Premise & DSGVO Posture",
+          items: [
+            "No data leaves the network: embeddings, retrieval, and generation all run against local endpoints",
+            "Designed for the COMDOK enterprise ERP domain where contact and customer data must stay on-premise",
+            "LM Studio on NVIDIA DGX Spark — same hardware used for experimentation, vLLM, and llama.cpp exploration",
+          ],
+        },
+      ],
+    },
+
+    highlights: [
+      "Hybrid retrieval — dense (Qdrant) + sparse (BM25) with rerank",
+      "Eval harness with labelled question set scoring retrieval + citation",
+      "Injection-aware system prompt with explicit refusal sentence",
+    ],
+
+    technologies: [
+      "Python",
+      "Qdrant",
+      "BM25",
+      "LM Studio",
+      "OpenAI SDK",
+      "NVIDIA DGX",
+    ],
+    mainTech: "all",
+
+    links: [],
+
+    tags: [
+      "rag",
+      "llm",
+      "ai",
+      "qdrant",
+      "python",
+      "on-premise",
+      "dsgvo",
+      "evals",
+    ],
+  },
+  {
+    id: "aichat",
+    title: "AIChat — On-Premise LLM Chat Frontend",
+    category: "web-app",
+    featured: true,
+    date: "2026-03-20",
+    sortOrder: -3.6,
+
+    media: {
+      type: "image",
+      src: aiChatImage,
+      alt: "AIChat — React 19 LLM chat client with LM Studio + MCP integration",
+    },
+
+    description:
+      "A self-hosted chat frontend for LM Studio endpoints with first-class MCP tool-calling. Streaming SSE with proper state separation between pre-tool narration and final answer. Runs over Tailscale to a private DGX Spark.",
+
+    detailedContent: {
+      overview:
+        "React 19 + TypeScript chat client built specifically for self-hosted LLM workflows. Speaks LM Studio's native /api/v1/chat with full MCP integration support, falls back to the OpenAI-compatible /v1/chat/completions endpoint when MCP isn't needed. The non-trivial work sits in the streaming layer.",
+      sections: [
+        {
+          title: "Streaming SSE State Machine",
+          items: [
+            "Custom async generator parses the named SSE event format: message.start, message.delta, tool_call.start/arguments/success/failure, reasoning.delta, chat.end",
+            "State machine distinguishes pre-tool narration (the model thinking out loud before calling a tool) from the final answer text after tool calls finish",
+            "Falls through to OpenAI-style data: chunks if no event: prefix is present — handles mixed-spec endpoints gracefully",
+          ],
+        },
+        {
+          title: "MCP Integration",
+          items: [
+            "Plugin shorthand (named server ID) and full ephemeral_mcp config with server_url + allowed_tools filtering",
+            "Multi-turn context is stateful server-side via previous_response_id — only the latest user message is sent each round",
+            "Reasoning, tool start, tool arguments, tool success, and tool failure all surface as distinct events in the UI",
+          ],
+        },
+        {
+          title: "Self-Hosted Posture",
+          items: [
+            "Connects to an OpenAI-compatible endpoint at runtime — model list auto-discovered via /v1/models",
+            "Designed to talk to a DGX Spark over Tailscale — no third-party API in the loop",
+            "Settings include temperature, max tokens, system prompt, theme, and MCP integration list",
+          ],
+        },
+      ],
+    },
+
+    highlights: [
+      "Streaming SSE state machine separating narration / tool calls / final answer",
+      "First-class MCP integration with plugin + ephemeral_mcp support",
+      "Runs over Tailscale to a self-hosted DGX Spark — no cloud dependency",
+    ],
+
+    technologies: [
+      "React 19",
+      "TypeScript",
+      "Vite 6",
+      "Tailwind 4",
+      "MCP",
+      "LM Studio",
+    ],
+    mainTech: "react",
+
+    links: [],
+
+    tags: [
+      "llm",
+      "ai",
+      "react",
+      "mcp",
+      "streaming",
+      "on-premise",
+      "tailscale",
+    ],
+  },
+  {
+    id: "mcp-servers",
+    title: "MCP Server Development",
+    category: "desktop-app",
+    featured: true,
+    date: "2026-02-10",
+    sortOrder: -3.4,
+
+    media: {
+      type: "image",
+      src: mcpServersImage,
+      alt: "MCP server development — design-perfect-mcp and adobe-xd-mcp custom tools",
+    },
+
+    description:
+      "Two custom Model Context Protocol servers for pixel-perfect design workflows, plus extensions to several community MCP servers. TypeScript + Node, stdio transport, designed to plug into MCP clients like Claude Desktop and LM Studio.",
+
+    detailedContent: {
+      overview:
+        "MCP exposes capabilities to LLM clients as discoverable tools. These servers cover a niche the community didn't: tight feedback loops between an LLM-generated UI and a target design — measure, compare, overlay, and extract colours, all from inside the model's tool list.",
+      sections: [
+        {
+          title: "design-perfect-mcp",
+          items: [
+            "capture-artifact: screenshot an HTML artifact at a configurable viewport for diffing",
+            "compare-design: pixel-level diff between an implementation and a target design image with a configurable threshold",
+            "extract-measurements: returns computed CSS values (position, dimensions, spacing, typography, colors) for any selector",
+            "generate-overlay: alpha-blends the implementation on top of the design for visual debugging",
+            "extract-colors: samples exact color values at given coordinates on a design image",
+          ],
+        },
+        {
+          title: "adobe-xd-mcp",
+          items: [
+            "Extracts measurements directly from .xd files — no need to round-trip through PNG exports",
+            "Enhanced measurement tooling: positioning, spacing, typography, and component-level metadata",
+            "Tested against real client design files (millwood, labor) used during freelance work",
+          ],
+        },
+        {
+          title: "Extensions to Community Servers",
+          items: [
+            "Forked and extended chrome-devtools-mcp with additional CSS introspection tools",
+            "Patched browser-tools-mcp, webpage-screenshot-mcp, and an automation-mcp variant for personal workflow integration",
+          ],
+        },
+      ],
+    },
+
+    highlights: [
+      "design-perfect-mcp — 5 tools for pixel-perfect design implementation",
+      "adobe-xd-mcp — extract measurements directly from .xd files",
+      "Multiple community MCP servers forked and extended",
+    ],
+
+    technologies: ["TypeScript", "Node.js", "MCP", "Puppeteer"],
+    mainTech: "nodejs",
+
+    links: [],
+
+    tags: [
+      "mcp",
+      "ai-tooling",
+      "typescript",
+      "developer-tools",
+      "design-systems",
+    ],
+  },
+  {
+    id: "resource-orchestration",
+    title: "Resource Orchestration Simulator",
+    category: "web-app",
+    featured: true,
+    date: "2026-01-15",
+    sortOrder: -3.2,
+
+    media: {
+      type: "image",
+      src: resourceOrchestrationImage,
+      alt: "Resource Orchestration Simulator — live dashboard with nodes, tasks, and scheduling metrics",
+    },
+
+    description:
+      "Datacenter scheduling simulator with a Rust backend (~2,900 LOC) and a Vue 3 dashboard. Strategy-pattern scheduler, task state machine, heterogeneous node tracking (CPU, memory, GPU). REST API over Tokio + axum.",
+
+    detailedContent: {
+      overview:
+        "A from-scratch resource orchestrator modeling how datacenters allocate compute across heterogeneous hardware. Built to understand the design tradeoffs behind systems like Kubernetes — scheduling strategies, node failure handling, multi-resource constraints — at a level of detail you can't get from reading docs.",
+      sections: [
+        {
+          title: "Rust Backend (~2,900 LOC)",
+          items: [
+            "Async API on Tokio + axum: /api/nodes, /api/tasks, /api/schedule, /api/metrics, /api/reset",
+            "Strategy pattern over a SchedulingStrategy trait — First-Fit, Best-Fit, Load-Balancing, Bin-Packing, Priority-Based all share the same placement interface",
+            "Task state machine modelled with Rust enums (Queued → Running → Completed/Failed) — invalid states are unrepresentable",
+            "Heterogeneous resource tracking: CPU cores, memory, GPU count per node, with per-node utilization metrics",
+          ],
+        },
+        {
+          title: "Vue 3 Dashboard",
+          items: [
+            "Live metrics bar (nodes, pending, running, average utilisation, active strategy)",
+            "Node cards with real-time CPU and memory utilisation bars updated after each schedule run",
+            "Task submission form, one-click 'Schedule All', and reset — exercises the API surface end-to-end",
+          ],
+        },
+        {
+          title: "Why It Exists",
+          items: [
+            "Forcing function for going deeper in Rust beyond CRUD — borrow checker on a non-trivial async codebase, trait objects for strategy polymorphism, channels for failure events",
+            "Foundation for adding the harder bits (node failures with rescheduling, preemption, affinity rules) as separate, testable phases",
+          ],
+        },
+      ],
+    },
+
+    highlights: [
+      "Tokio + axum REST API with strategy-pattern scheduler",
+      "Task state machine modelled with Rust enums — invalid states unrepresentable",
+      "Live Vue 3 dashboard for submission, scheduling, and metrics",
+    ],
+
+    technologies: ["Rust", "Tokio", "axum", "Vue 3", "TypeScript"],
+    mainTech: "vue",
+
+    links: [],
+
+    tags: [
+      "systems",
+      "rust",
+      "scheduling",
+      "distributed",
+      "simulation",
+      "infrastructure",
     ],
   },
   {
