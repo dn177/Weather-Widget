@@ -1070,6 +1070,17 @@ background: linear-gradient(white, white) padding-box,
   margin-bottom: 0;
 }
 
+.detail-modal-section-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-top: 1.25rem;
+  border-radius: 8px;
+  background: #0f172a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
 .detail-modal-section-list li::before {
   content: "✓";
   position: absolute;
