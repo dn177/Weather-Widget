@@ -8,11 +8,10 @@ import { useTranslation } from 'react-i18next';
 import Learning from "../learning/Learning";
 import Typewriter from "../../lib/Typewriter";
 // Assets are now in public directory
-const Leetcode = `${process.env.PUBLIC_URL}/Practice/Leetcode.png`;
 
 const Portfolio = () => {
   const { t } = useTranslation();
-  const [projects, setProjects] = useState(portfolioProjects);
+  const [projects, setProjects] = useState(() => getProjectsByTechnology("all"));
   const [activeTech, setActiveTech] = useState("all");
   const [scrollBehavior, setScrollBehavior] = useState("contain");
 
@@ -51,41 +50,6 @@ const Portfolio = () => {
           activeTech={activeTech}
         />
         <Projects projects={projects} scrollBehavior={scrollBehavior} />
-      </div>
-      <h2 className="h1 mt-row">{t('portfolio.leetcode')}</h2>
-      <div className="container portfolio__container d-flex flex-column gap-4">
-        <a
-          href="https://leetcard.jacoblin.cool/cdtio?font=Lora"
-          rel="noreferrer"
-          target="_blank"
-          aria-label="Leetcode Stats Card"
-        >
-          <img
-            src="https://leetcard.jacoblin.cool/cdtio?font=Lora"
-            alt="Leetcode Stats"
-            loading="lazy"
-            width="100%"
-            height="auto"
-          />
-        </a>
-        <a
-          href="https://leetcode.com/problems/reverse-integer/"
-          className="leetcode__solution"
-          rel="noreferrer"
-          target="_blank"
-          aria-label="Leetcode Solution for Reverse Integer problem"
-        >
-          <span className="leetcode__solution-text">
-            {t('portfolio.leetcodeSolutionText')}
-          </span>
-          <img 
-            src={Leetcode} 
-            alt="Leetcode Solution for Reverse Integer problem" 
-            loading="lazy"
-            width="100%" 
-            height="auto" 
-          />
-        </a>
       </div>
       <h2 className="h1 mt-row">Input</h2>
       <div className="container portfolio__container">

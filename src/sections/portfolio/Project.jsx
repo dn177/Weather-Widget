@@ -1,8 +1,7 @@
-import { useRef, useCallback } from "react";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import Card from "../../components/Card";
-import ImageGallery from "react-image-gallery";
-import { FaGithub, FaExternalLinkAlt, FaBook } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaBook, FaChevronRight, FaLock } from "react-icons/fa";
 import { getTranslatedProject } from "./projectTranslations";
 import AccessibleModal from "../../components/AccessibleModal";
 import useModal from "../../hooks/useModal";
@@ -10,18 +9,11 @@ import "./portfolio.css";
 
 const Project = ({ project, scrollBehavior = "contain" }) => {
   const { t } = useTranslation();
-  const gallery = useRef(null);
   const imageModal = useModal();
   const detailModal = useModal();
 
   // Get translated project data
   const translatedProject = getTranslatedProject(project, t);
-
-  const handleClick = useCallback(() => {
-    if (gallery.current) {
-      gallery.current.toggleFullScreen();
-    }
-  }, []);
 
   const handleImageFullscreen = useCallback((e) => {
     e.currentTarget.requestFullscreen({ navigationUI: "show" });
@@ -95,18 +87,6 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
       }
 
       return videoElement;
-    } else if (Array.isArray(media.src)) {
-      // For image galleries (if needed in future)
-      return (
-        <ImageGallery
-          items={media.src}
-          additionalClass="galleryimg"
-          showThumbnails={false}
-          ref={gallery}
-          onClick={handleClick}
-          lazyLoad={true}
-        />
-      );
     } else {
       // Single image
       return (
@@ -142,27 +122,6 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
         </div>
       );
     }
-  };
-
-  // Render non-GitHub links
-  const renderOtherLinks = () => {
-    if (!otherLinks || otherLinks.length === 0) return null;
-
-    return (
-      <div className="portfolio__project-links">
-        {otherLinks.map((link, index) => (
-          <a
-            key={index}
-            className="portfolio__link"
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {link.label}
-          </a>
-        ))}
-      </div>
-    );
   };
 
   // Render GitHub links section
@@ -217,9 +176,82 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
       >
         <div className="portfolio__project-image">{renderMedia()}</div>
         <div className="portfolio__project-text">
-          <h4 className="portfolio__project-title">
+          <h3 className="portfolio__project-title">
             {translatedProject.title}
-          </h4>
+          </h3>
+
+          {/* Compact action row — kept directly under the title so CTAs are
+              visible without scrolling the card. */}
+          {(project.detailedContent ||
+            liveLinks.length > 0 ||
+            githubLinks.length > 0 ||
+            otherLinks.length > 0) && (
+            <div
+              className="portfolio__card-actions"
+              role="group"
+              aria-label={`${translatedProject.title} actions`}
+            >
+              {project.detailedContent && (
+                <button
+                  type="button"
+                  className="portfolio__card-action portfolio__card-action--primary"
+                  onClick={detailModal.open}
+                  aria-label={`Read detailed case study about ${translatedProject.title}`}
+                >
+                  <FaBook
+                    aria-hidden="true"
+                    className="portfolio__card-action__icon"
+                  />
+                  <span>{t("portfolio.readMore") || "Read Case Study"}</span>
+                  <FaChevronRight
+                    aria-hidden="true"
+                    className="portfolio__card-action__chevron"
+                  />
+                </button>
+              )}
+              {liveLinks.map((link, index) => (
+                <a
+                  key={`top-live-${index}`}
+                  className="portfolio__card-action portfolio__card-action--secondary"
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaExternalLinkAlt
+                    aria-hidden="true"
+                    className="portfolio__card-action__icon"
+                  />
+                  <span>{link.label || "View Live"}</span>
+                </a>
+              ))}
+              {githubLinks.map((link, index) => (
+                <a
+                  key={`top-gh-${index}`}
+                  className="portfolio__card-action portfolio__card-action--secondary"
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaGithub
+                    aria-hidden="true"
+                    className="portfolio__card-action__icon"
+                  />
+                  <span>{t("portfolio.viewCode")}</span>
+                </a>
+              ))}
+              {otherLinks.map((link, index) => (
+                <a
+                  key={`top-other-${index}`}
+                  className="portfolio__card-action portfolio__card-action--secondary"
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>{link.label}</span>
+                </a>
+              ))}
+            </div>
+          )}
 
           {/* Tech stack as oval buttons */}
           <div className="portfolio__tech-stack">
@@ -242,22 +274,6 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
                 ))}
               </ul>
             )}
-
-          {renderOtherLinks()}
-          {renderLiveLinks()}
-          {renderGitHubLinks()}
-
-          {/* Read More button for projects with detailed content */}
-          {project.detailedContent && (
-            <button
-              className="portfolio__read-more-btn"
-              onClick={detailModal.open}
-              aria-label={`Read detailed case study about ${translatedProject.title}`}
-            >
-              <FaBook className="portfolio__read-more-icon" />
-              {t("portfolio.readMore") || "Read Case Study"}
-            </button>
-          )}
         </div>
       </Card>
 
@@ -312,6 +328,44 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
           className="portfolio-detail-modal"
           ariaDescribedBy="detail-modal-content"
         >
+          {(githubLinks.length > 0 || liveLinks.length > 0) && (
+            <div
+              className="detail-modal-actions"
+              role="toolbar"
+              aria-label={`${translatedProject.title} quick actions`}
+            >
+              {liveLinks.map((link, index) => (
+                <a
+                  key={`sticky-live-${index}`}
+                  className="detail-modal-action detail-modal-action--live"
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaExternalLinkAlt
+                    aria-hidden="true"
+                    className="detail-modal-action__icon"
+                  />
+                  <span>{link.label || "View Live"}</span>
+                </a>
+              ))}
+              {githubLinks.map((link, index) => (
+                <a
+                  key={`sticky-gh-${index}`}
+                  className="detail-modal-action detail-modal-action--code"
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaGithub
+                    aria-hidden="true"
+                    className="detail-modal-action__icon"
+                  />
+                  <span>{t("portfolio.viewCode")}</span>
+                </a>
+              ))}
+            </div>
+          )}
           <div className="detail-modal-content" id="detail-modal-content">
             {/* Hero Image */}
             <div className="detail-modal-hero">
@@ -344,6 +398,17 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
                 {project.detailedContent.overview}
               </p>
             </div>
+
+            {/* Closed-source / NDA notice */}
+            {project.closedSource && (
+              <div className="detail-modal-notice" role="note">
+                <FaLock
+                  className="detail-modal-notice-icon"
+                  aria-hidden="true"
+                />
+                <span>{t("portfolio.closedSourceNotice")}</span>
+              </div>
+            )}
 
             {/* Content Sections */}
             {project.detailedContent.sections?.map((section, sectionIndex) => (

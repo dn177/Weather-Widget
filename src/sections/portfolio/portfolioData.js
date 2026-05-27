@@ -3,26 +3,27 @@
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
 const PORTFOLIO_PATH = PUBLIC_URL + "/Portfolio/";
 const POSTER_PATH = PUBLIC_URL + "/Portfolio/poster/";
+const SPACE_STUDIO_PATH = PUBLIC_URL + "/spacestudio/";
 
 // Define media asset paths
-const contaoVideo = PORTFOLIO_PATH + "Video16.mov";
-const inLearning = PORTFOLIO_PATH + "InLearning.png";
-const picturePlayground = PORTFOLIO_PATH + "PPP.png";
-const learn2Sort = PORTFOLIO_PATH + "Learn2Sort.png";
+const contaoVideo = PORTFOLIO_PATH + "Video16.mp4";
+const inLearning = PORTFOLIO_PATH + "InLearning.webp";
+const picturePlayground = PORTFOLIO_PATH + "PPP.webp";
+const learn2Sort = PORTFOLIO_PATH + "Learn2Sort.webp";
 const nextPortfolioImage = PORTFOLIO_PATH + "NextjsPortfolio.png";
-const mathtronVideo = PORTFOLIO_PATH + "Video15.mov";
+const mathtronVideo = PORTFOLIO_PATH + "Video15.mp4";
 const mathtronVueImage = PORTFOLIO_PATH + "MathtronVue.png";
-const privateBlogVideo = PORTFOLIO_PATH + "Video10.mov";
-const restFullstackVideo = PORTFOLIO_PATH + "Video14.mov";
-const ecommerceVideo = PORTFOLIO_PATH + "Video12.mov";
+const privateBlogVideo = PORTFOLIO_PATH + "Video10.mp4";
+const restFullstackVideo = PORTFOLIO_PATH + "Video14.mp4";
+const ecommerceVideo = PORTFOLIO_PATH + "Video12.mp4";
 const emmetDemoVideo = PORTFOLIO_PATH + "Video13.mp4";
-const kanbanBoardVideo = PORTFOLIO_PATH + "Video11.mov";
-const carPlatformVideo = PORTFOLIO_PATH + "Video1.mov";
-const companyWebsiteVideo = PORTFOLIO_PATH + "Video8.mov";
-const chartVideo = PORTFOLIO_PATH + "Video4.mov";
-const cdnManagerVideo = PORTFOLIO_PATH + "Video3.mov";
+const kanbanBoardVideo = PORTFOLIO_PATH + "Video11.mp4";
+const carPlatformVideo = PORTFOLIO_PATH + "Video1.mp4";
+const companyWebsiteVideo = PORTFOLIO_PATH + "Video8.mp4";
+const chartVideo = PORTFOLIO_PATH + "Video4.mp4";
+const cdnManagerVideo = PORTFOLIO_PATH + "Video3.mp4";
 const molarImage = PORTFOLIO_PATH + "Molar.png";
-const spaceStudioVideo = PORTFOLIO_PATH + "SpaceStudio.mov";
+const spaceStudioVideo = SPACE_STUDIO_PATH + "space-studio-tour.mp4";
 const markdownDownImage = PORTFOLIO_PATH + "MarkdownDown.png";
 const releaseRadarImage = PORTFOLIO_PATH + "ReleaseRadar.jpg";
 const project33Image = PORTFOLIO_PATH + "33.jpg";
@@ -46,11 +47,12 @@ const poster10 = POSTER_PATH + "poster10.png";
 const poster11 = POSTER_PATH + "poster11.png";
 const poster12 = POSTER_PATH + "poster12.png";
 const poster13 = POSTER_PATH + "poster13.png";
-const spaceStudioPoster = POSTER_PATH + "poster_spacestudio.png";
+const spaceStudioPoster = SPACE_STUDIO_PATH + "poster.jpg";
 
 // Define main technology categories
 export const techCategories = {
   all: { label: "All", color: "#6b7280" },
+  "ai-ml": { label: "AI/ML", color: "#9333ea" },
   react: { label: "React", color: "#61DAFB" },
   vue: { label: "Vue.js", color: "#4FC08D" },
   nodejs: { label: "Node.js", color: "#339933" },
@@ -68,6 +70,7 @@ export const portfolioProjects = [
     featured: true,
     date: "2026-01-01",
     sortOrder: -4,
+    closedSource: true,
 
     media: {
       type: "image",
@@ -194,6 +197,7 @@ export const portfolioProjects = [
     featured: true,
     date: "2026-04-15",
     sortOrder: -3.8,
+    closedSource: true,
 
     media: {
       type: "image",
@@ -262,6 +266,7 @@ export const portfolioProjects = [
     links: [],
 
     tags: [
+      "ai-ml",
       "rag",
       "llm",
       "ai",
@@ -279,6 +284,7 @@ export const portfolioProjects = [
     featured: true,
     date: "2026-03-20",
     sortOrder: -3.6,
+    closedSource: true,
 
     media: {
       type: "image",
@@ -339,6 +345,7 @@ export const portfolioProjects = [
     links: [],
 
     tags: [
+      "ai-ml",
       "llm",
       "ai",
       "react",
@@ -355,6 +362,7 @@ export const portfolioProjects = [
     featured: true,
     date: "2026-02-10",
     sortOrder: -3.4,
+    closedSource: true,
 
     media: {
       type: "image",
@@ -409,6 +417,7 @@ export const portfolioProjects = [
     links: [],
 
     tags: [
+      "ai-ml",
       "mcp",
       "ai-tooling",
       "typescript",
@@ -476,6 +485,7 @@ export const portfolioProjects = [
     links: [],
 
     tags: [
+      "ai-ml",
       "systems",
       "rust",
       "scheduling",
@@ -488,9 +498,9 @@ export const portfolioProjects = [
     id: "33",
     title: "projects.33.title",
     category: "web-app",
-    featured: true,
+    featured: false,
     date: "2025-12-07",
-    sortOrder: -3,
+    sortOrder: 3.5,
 
     media: {
       type: "image",
@@ -614,7 +624,7 @@ export const portfolioProjects = [
     category: "web-app",
     featured: true,
     date: "2025-06-12",
-    sortOrder: 0,
+    sortOrder: -3.3,
 
     media: {
       type: "video",
@@ -730,7 +740,7 @@ export const portfolioProjects = [
     ],
 
     technologies: ["Vue.js", "Pinia", "TypeScript", "Monaco Editor"],
-    mainTech: "Vue.js",
+    mainTech: "vue",
 
     links: [
       {
@@ -740,7 +750,7 @@ export const portfolioProjects = [
       },
     ],
 
-    tags: ["vue.js", "php"],
+    tags: ["learning-platform", "education", "code-editor"],
   },
   {
     id: "pictureplatform",
@@ -761,7 +771,7 @@ export const portfolioProjects = [
     highlights: ["Comparison of Rust, C++, Java and Scala and JS Performance"],
 
     technologies: ["React.js", "Rust", "Webassembly", "C++", "Java", "Scala"],
-    mainTech: "React",
+    mainTech: "react",
 
     links: [
       {
@@ -771,7 +781,7 @@ export const portfolioProjects = [
       },
     ],
 
-    tags: ["React.js", "Rust"],
+    tags: ["webassembly", "performance", "polyglot", "benchmarks"],
   },
 
   {
@@ -842,7 +852,7 @@ export const portfolioProjects = [
       },
     ],
 
-    tags: ["vue", "electron", "desktop", "migration", "material-design"],
+    tags: ["sorting", "algorithms", "visualization", "education", "react"],
   },
   {
     id: "nextjs-portfolio",
@@ -1256,7 +1266,7 @@ export const portfolioProjects = [
     highlights: ["Featured in iDownloadBlog article"],
 
     technologies: ["Mobile Development"],
-    mainTech: "Misc",
+    mainTech: "all",
 
     links: [
       {
@@ -1271,9 +1281,18 @@ export const portfolioProjects = [
 ];
 
 // Helper functions for filtering and sorting
+const bySortOrder = (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0);
+
 export const getProjectsByTechnology = (tech) => {
-  if (tech === "all") return portfolioProjects;
-  return portfolioProjects.filter((project) => project.mainTech === tech);
+  const filtered =
+    tech === "all"
+      ? portfolioProjects
+      : portfolioProjects.filter((project) => {
+          if (project.mainTech === tech) return true;
+          if (project.tags && project.tags.includes(tech)) return true;
+          return false;
+        });
+  return [...filtered].sort(bySortOrder);
 };
 
 export const getAllTechnologies = () => {

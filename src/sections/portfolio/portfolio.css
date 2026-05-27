@@ -879,6 +879,108 @@ background: linear-gradient(white, white) padding-box,
 }
 
 /* ========================================
+   Card top action row — compact CTAs placed
+   directly under the title so they don't get
+   missed at the bottom of the card.
+   ======================================== */
+
+.portfolio__card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin: 0 0 0.875rem;
+}
+
+.portfolio__card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.portfolio__card-action__icon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.portfolio__card-action--primary {
+  /* Visually distinct from .tech-pill (bright solid #9333ea) which sits
+     directly below: deeper gradient + button silhouette + chevron. */
+  background: linear-gradient(135deg, #581c87, #7c3aed);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 0.35rem 0.85rem;
+  box-shadow: 0 2px 6px rgba(76, 29, 149, 0.35);
+}
+
+.portfolio__card-action--primary:hover,
+.portfolio__card-action--primary:focus-visible {
+  background: linear-gradient(135deg, #4c1d95, #6d28d9);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(76, 29, 149, 0.45);
+  text-decoration: none;
+}
+
+.portfolio__card-action__chevron {
+  font-size: 0.7rem;
+  margin-left: 0.1rem;
+  opacity: 0.85;
+  transition: transform 0.18s ease;
+  flex-shrink: 0;
+}
+
+.portfolio__card-action--primary:hover .portfolio__card-action__chevron,
+.portfolio__card-action--primary:focus-visible .portfolio__card-action__chevron {
+  transform: translateX(2px);
+}
+
+.portfolio__card-action--secondary {
+  background: transparent;
+  color: #7c3aed;
+  border-color: rgba(124, 58, 237, 0.4);
+}
+
+.portfolio__card-action--secondary:hover,
+.portfolio__card-action--secondary:focus-visible {
+  background: rgba(124, 58, 237, 0.08);
+  color: #6d28d9;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.portfolio__card-action:focus-visible {
+  outline: 2px solid #9333ea;
+  outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .portfolio__card-action--secondary {
+    color: #c4b5fd;
+    border-color: rgba(196, 181, 253, 0.4);
+  }
+
+  .portfolio__card-action--secondary:hover,
+  .portfolio__card-action--secondary:focus-visible {
+    background: rgba(196, 181, 253, 0.12);
+    color: #ddd6fe;
+  }
+}
+
+/* ========================================
    Read More / Case Study Button Styles
    ======================================== */
 
@@ -1023,6 +1125,27 @@ background: linear-gradient(white, white) padding-box,
   margin: 0;
 }
 
+/* Closed-source / NDA notice */
+.detail-modal-notice {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #fbf6e9;
+  border-left: 4px solid #d9b56e;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #5c4416;
+}
+
+.detail-modal-notice-icon {
+  flex-shrink: 0;
+  margin-top: 0.2em;
+  color: #b8932e;
+}
+
 /* Section titles */
 .detail-modal-section-title {
   font-size: 1.25rem;
@@ -1101,6 +1224,77 @@ background: linear-gradient(white, white) padding-box,
   justify-content: center;
 }
 
+/* Sticky quick-action bar — sits at top of modal body so primary CTAs
+   are always one click away regardless of scroll position. */
+.detail-modal-actions {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.detail-modal-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.detail-modal-action__icon {
+  font-size: 0.95rem;
+}
+
+.detail-modal-action--live {
+  background: linear-gradient(135deg, #9333ea, #7c3aed);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.35);
+}
+
+.detail-modal-action--live:hover,
+.detail-modal-action--live:focus-visible {
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.45);
+  text-decoration: none;
+}
+
+.detail-modal-action--code {
+  background: transparent;
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.45);
+}
+
+.detail-modal-action--code:hover,
+.detail-modal-action--code:focus-visible {
+  background: rgba(124, 58, 237, 0.08);
+  color: #6d28d9;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.detail-modal-action:focus-visible {
+  outline: 2px solid #9333ea;
+  outline-offset: 2px;
+}
+
 /* Dark mode for detail modal */
 @media (prefers-color-scheme: dark) {
   .modal-dialog.portfolio-detail-modal .modal-body {
@@ -1127,6 +1321,23 @@ background: linear-gradient(white, white) padding-box,
 
   .detail-modal-links {
     border-top-color: #374151;
+  }
+
+  .detail-modal-actions {
+    background: rgba(17, 24, 39, 0.9);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .detail-modal-action--code {
+    color: #c4b5fd;
+    border-color: rgba(196, 181, 253, 0.45);
+  }
+
+  .detail-modal-action--code:hover,
+  .detail-modal-action--code:focus-visible {
+    background: rgba(196, 181, 253, 0.12);
+    color: #ddd6fe;
   }
 }
 
@@ -1173,5 +1384,15 @@ background: linear-gradient(white, white) padding-box,
   .portfolio__read-more-btn {
     padding: 0.65rem 1.25rem;
     font-size: 0.9rem;
+  }
+
+  .detail-modal-actions {
+    padding: 0.5rem 1rem;
+    gap: 0.4rem;
+  }
+
+  .detail-modal-action {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.8rem;
   }
 }
