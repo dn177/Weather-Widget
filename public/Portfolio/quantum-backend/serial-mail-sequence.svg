@@ -53,8 +53,8 @@
   <rect class="loop-box" x="395" y="310" width="500" height="180" rx="3"/>
   <text class="loop-label" x="405" y="324">loop  [for each recipient]</text>
   <path class="msg-line" d="M 610 350 H 660 V 365 H 610" marker-end="url(#arrow)"/>
-  <text class="msg-label" x="666" y="358">emailOverrides.TryGetValue(contact_id, out alt)</text>
-  <text class="msg-label" x="666" y="375">? alt : recipient.email</text>
+  <text class="msg-label" x="666" y="358">emailOverrides.GetValueOrDefault(</text>
+  <text class="msg-label" x="666" y="375">  contact_id) ?? recipient.email</text>
   <rect class="note-box" x="540" y="400" width="170" height="40" rx="4"/>
   <text class="note-text" x="548" y="416">SMTP send</text>
   <text class="note-text" x="548" y="430">via configured relay</text>

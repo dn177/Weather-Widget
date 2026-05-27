@@ -23,7 +23,7 @@ function Pixelperfect() {
     <section
       id="pixelperfect"
       style={{
-        background: `url(${process.env.PUBLIC_URL}/Vitruv.jpg) no-repeat 10% 10% / cover`,
+        background: `url(${process.env.PUBLIC_URL}/Vitruv.webp) no-repeat 10% 10% / cover`,
       }}
     >
       <div className="container-2 mx-auto">
