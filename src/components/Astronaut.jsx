@@ -20,13 +20,32 @@ const SpaceScene = () => {
   const spaceshipLightsRef = useRef([]);
   const asteroidFieldRef = useRef(null);
   const environmentMapRef = useRef(null);
+  const animationFrameRef = useRef(null);
+  const cameraFrameRef = useRef(null);
+  const resizeHandlerRef = useRef(null);
+  const gsapCtxRef = useRef(null);
 
   useEffect(() => {
-    // Initialize scene
-    initScene();
+    // Initialize scene inside a gsap context so all timelines get killed on unmount
+    gsapCtxRef.current = gsap.context(() => {
+      initScene();
+    });
 
     // Clean up on unmount
     return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      if (cameraFrameRef.current) {
+        cancelAnimationFrame(cameraFrameRef.current);
+      }
+      if (resizeHandlerRef.current) {
+        window.removeEventListener("resize", resizeHandlerRef.current);
+      }
+      if (gsapCtxRef.current) {
+        gsapCtxRef.current.revert();
+      }
+
       if (rendererRef.current) {
         const mount = mountRef.current;
         if (mount) {
@@ -250,11 +269,12 @@ const SpaceScene = () => {
         fxaaPass.uniforms['resolution'].value.set(1 / window.innerWidth, 1 / window.innerHeight);
       }
     };
+    resizeHandlerRef.current = handleResize;
     window.addEventListener("resize", handleResize);
 
     // Animation loop
     const animate = () => {
-      requestAnimationFrame(animate);
+      animationFrameRef.current = requestAnimationFrame(animate);
       const delta = clock.getDelta();
 
       // Rotate stars
@@ -345,7 +365,7 @@ const SpaceScene = () => {
       }
 
       camera.lookAt(centerPoint);
-      requestAnimationFrame(updateCameraTarget);
+      cameraFrameRef.current = requestAnimationFrame(updateCameraTarget);
     }
 
     updateCameraTarget();

@@ -9,6 +9,9 @@ const SolarSystem = () => {
   const rendererRef = useRef(null);
   const planetsRef = useRef({});
   const orbitGroupsRef = useRef({});
+  const animationFrameRef = useRef(null);
+  const resizeHandlerRef = useRef(null);
+  const gsapCtxRef = useRef(null);
 
   // Planet configurations based on the Solar Exploration project
   const planetConfigs = {
@@ -118,11 +121,22 @@ const SolarSystem = () => {
     }  };
 
   useEffect(() => {
-    // Initialize scene
-    initScene();
+    // Initialize scene inside a gsap context so all timelines get killed on unmount
+    gsapCtxRef.current = gsap.context(() => {
+      initScene();
+    });
 
     // Clean up on unmount
     return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      if (resizeHandlerRef.current) {
+        window.removeEventListener("resize", resizeHandlerRef.current);
+      }
+      if (gsapCtxRef.current) {
+        gsapCtxRef.current.revert();
+      }
       if (rendererRef.current) {
         const mount = mountRef.current;
         if (mount) {
@@ -196,11 +210,12 @@ const SolarSystem = () => {
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
+    resizeHandlerRef.current = handleResize;
     window.addEventListener("resize", handleResize);
 
     // Animation loop
     const animate = () => {
-      requestAnimationFrame(animate);
+      animationFrameRef.current = requestAnimationFrame(animate);
       const delta = clock.getDelta();
 
       // Rotate star field slowly

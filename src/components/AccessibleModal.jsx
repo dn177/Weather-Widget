@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./accessibleModal.css";
 
@@ -32,13 +32,13 @@ const AccessibleModal = ({
   const previouslyFocusedElement = useRef(null);
 
   // Handle closing animation
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsClosing(true);
     setTimeout(() => {
       onClose();
       setIsClosing(false);
     }, 200); // Match CSS transition duration
-  };
+  }, [onClose]);
 
   useEffect(() => {
     if (!isOpen) return;

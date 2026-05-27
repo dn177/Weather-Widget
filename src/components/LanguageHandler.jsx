@@ -7,12 +7,15 @@ const LanguageHandler = () => {
   const { i18n } = useTranslation();
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     // Check for language parameter in URL
     const params = new URLSearchParams(location.search);
     const urlLang = params.get('lang');
-    
+    const supportedLangs = ['en', 'de', 'pl', 'es'];
+
     // If there's a valid language in URL, use it
-    if (urlLang && ['en', 'de'].includes(urlLang)) {
+    if (urlLang && supportedLangs.includes(urlLang)) {
       if (i18n.language !== urlLang) {
         i18n.changeLanguage(urlLang);
       }
