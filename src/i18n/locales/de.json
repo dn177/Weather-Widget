@@ -6,10 +6,11 @@
     "contact": "Kontakt"
   },
   "header": {
-    "title": "私の名前は Daniel M です。",
+    "name": "Daniel Marass",
+    "role": "Fullstack-Entwickler für On-Premise-KI-Systeme",
     "buttons": {
-      "letsTalk": "Lass uns reden",
-      "myWork": "Meine Arbeiten"
+      "letsTalk": "Kontakt aufnehmen",
+      "myWork": "KI-Projekte ansehen"
     }
   },
   "portfolio": {
@@ -19,6 +20,7 @@
     "leetcodeSolutionText": "Erste Lösung für Integer-Umkehrung nach 5 Minuten. Weitere Optimierung möglich.",
     "categories": {
       "all": "Alle",
+      "ai-ml": "KI/ML",
       "react": "React",
       "vue": "Vue.js",
       "nodejs": "Node.js",
@@ -30,7 +32,8 @@
     "loadMoreProjects": "Mehr Projekte laden",
     "readMore": "Fallstudie lesen",
     "overview": "Überblick",
-    "highlights": "Highlights"
+    "highlights": "Highlights",
+    "closedSourceNotice": "Geschlossener Quellcode — Code unter NDA. Gerne erläutere ich die Implementierung in einem Interview."
   },
   "contact": {
     "title": "Kontaktiere mich",
@@ -49,7 +52,7 @@
   },
   "badges": {
     "title": "Abzeichen",
-    "subtitle": "Es ist mir egal, dir wahrscheinlich auch.",
+    "subtitle": "Souvenirs von früheren Stationen auf dem Weg.",
     "typewriter": "git reset --hard blablabla"
   },
   "hustle": {

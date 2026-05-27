@@ -6,10 +6,11 @@
     "contact": "contact"
   },
   "header": {
-    "title": "私の名前は Daniel M です。",
+    "name": "Daniel Marass",
+    "role": "Fullstack engineer building on-prem AI systems",
     "buttons": {
-      "letsTalk": "Let's Talk",
-      "myWork": "My Work"
+      "letsTalk": "Get in touch",
+      "myWork": "See AI projects"
     }
   },
   "portfolio": {
@@ -19,6 +20,7 @@
     "leetcodeSolutionText": "Initial solution for integer reversal after 5 minutes. Further optimization possible.",
     "categories": {
       "all": "All",
+      "ai-ml": "AI/ML",
       "react": "React",
       "vue": "Vue.js",
       "nodejs": "Node.js",
@@ -30,7 +32,8 @@
     "loadMoreProjects": "Load More Projects",
     "readMore": "Read Case Study",
     "overview": "Overview",
-    "highlights": "Key Features"
+    "highlights": "Key Features",
+    "closedSourceNotice": "Closed source — code under NDA. Happy to walk through the implementation in an interview."
   },
   "contact": {
     "title": "Get In Touch",
@@ -49,7 +52,7 @@
   },
   "badges": {
     "title": "Badges",
-    "subtitle": "I don't care, you probably also don't.",
+    "subtitle": "Souvenirs from earlier stops on the road.",
     "typewriter": "git reset --hard blablabla"
   },
   "hustle": {

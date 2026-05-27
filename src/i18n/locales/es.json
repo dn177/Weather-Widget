@@ -6,10 +6,11 @@
     "contact": "contacto"
   },
   "header": {
-    "title": "私の名前は Daniel M です。",
+    "name": "Daniel Marass",
+    "role": "Ingeniero Fullstack creando sistemas de IA on-premise",
     "buttons": {
-      "letsTalk": "Hablemos",
-      "myWork": "Mi Trabajo"
+      "letsTalk": "Contactar",
+      "myWork": "Ver proyectos de IA"
     }
   },
   "portfolio": {
@@ -19,6 +20,7 @@
     "leetcodeSolutionText": "Solución inicial para inversión de enteros después de 5 minutos. Posible optimización adicional.",
     "categories": {
       "all": "Todos",
+      "ai-ml": "IA/ML",
       "react": "React",
       "vue": "Vue.js",
       "nodejs": "Node.js",
@@ -27,7 +29,8 @@
       "nextjs": "Next.js"
     },
     "viewCode": "Ver Código",
-    "loadMoreProjects": "Cargar Más Proyectos"
+    "loadMoreProjects": "Cargar Más Proyectos",
+    "closedSourceNotice": "Código cerrado — bajo NDA. Encantado de explicar la implementación en una entrevista."
   },
   "contact": {
     "title": "Contáctame",
@@ -46,7 +49,7 @@
   },
   "badges": {
     "title": "Insignias",
-    "subtitle": "No me importa, probablemente a ti tampoco.",
+    "subtitle": "Recuerdos de paradas anteriores en el camino.",
     "typewriter": "git reset --hard blablabla"
   },
   "hustle": {
