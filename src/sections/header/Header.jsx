@@ -10,25 +10,10 @@ const Header = () => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  // Preload critical background image
   useEffect(() => {
-    const src = `${process.env.PUBLIC_URL}/1.jpg`;
     const img = new Image();
-    img.src = src;
+    img.src = `${process.env.PUBLIC_URL}/1-desktop.webp`;
     img.onload = () => setImageLoaded(true);
-
-    const link = document.createElement("link");
-    link.rel = "preload";
-    link.as = "image";
-    link.href = src;
-    link.fetchpriority = "high";
-    document.head.appendChild(link);
-
-    return () => {
-      if (document.head.contains(link)) {
-        document.head.removeChild(link);
-      }
-    };
   }, []);
 
   useEffect(() => {
@@ -60,7 +45,7 @@ const Header = () => {
       className={imageLoaded ? "image-loaded" : ""}
       style={{
         backgroundImage: imageLoaded
-          ? `url(${process.env.PUBLIC_URL}/1.jpg)`
+          ? `url(${process.env.PUBLIC_URL}/1-desktop.webp)`
           : "none",
         backgroundColor: imageLoaded ? "transparent" : "#7b219f",
       }}
@@ -83,10 +68,11 @@ const Header = () => {
       </svg>
       {/* ref={intersectionRef} */}
       <div className="container header__container">
-        <h1 className="h1" data-aos="fade-up" data-aos-delay="100">
-          {t('header.title')}
+        <h1 className="h1">
+          <span className="header__name">{t('header.name')}</span>
+          <span className="header__role">{t('header.role')}</span>
         </h1>
-        <div className="header__cta" data-aos="fade-up" data-aos-delay="200">
+        <div className="header__cta">
           <a href="#contact" className="btn primary">
             {t('header.buttons.letsTalk')}
           </a>
