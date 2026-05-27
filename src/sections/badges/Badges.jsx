@@ -30,10 +30,10 @@ function Badges() {
             className="typewriter"
           />
         </a>
-        <h5 className="text-center h1 mb-headline mt-4">
+        <h2 className="text-center h1 mb-headline mt-4">
           {t('badges.title')}
-          <p className="fs-4 mt-4">{t('badges.subtitle')}</p>
-        </h5>
+        </h2>
+        <p className="text-center fs-4 mt-4">{t('badges.subtitle')}</p>
         <div className="img-wrapper d-flex justify-content-between mx-auto">
           <img
             loading="lazy"

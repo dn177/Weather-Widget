@@ -33,7 +33,7 @@ function Sustainability() {
     <section id="sustainability" style={{ 
       backgroundImage: `url(${process.env.PUBLIC_URL}/Nature.jpg)` 
     }}>
-      <h1 className="text-center text-white h1">{t('sustainability.title')}</h1>
+      <h2 className="text-center text-white h1">{t('sustainability.title')}</h2>
       <p className="fs-4 mt-4">{t('sustainability.subtitle')}</p>
       <div
         className="sustainability__principles w-100 w-md-75 mx-2 mx-md-auto"
