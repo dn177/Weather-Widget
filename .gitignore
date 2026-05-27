@@ -37,3 +37,6 @@ package_backup_*.json
 /QuantumPerformance.jpg
 /Screenshot*.png
 /mobile-*.png
+
+# Local-only archive of original/uncompressed media
+/_archive/
