@@ -48,6 +48,18 @@ const aiSources = [
     label: "3Blue1Brown",
     href: "https://www.youtube.com/c/3blue1brown",
   },
+  {
+    id: "karpathy",
+    number: "04",
+    label: "Andrej Karpathy",
+    href: "https://www.youtube.com/andrejkarpathy",
+  },
+  {
+    id: "arxiv-cscl",
+    number: "05",
+    label: "arXiv · cs.CL",
+    href: "https://arxiv.org/list/cs.CL/recent",
+  },
 ];
 
 function Learning() {
@@ -222,6 +234,22 @@ function Learning() {
           target="_blank"
         >
           <img src={Site1} alt="Medium" loading="lazy" />
+        </a>
+      </div>
+      <div className="learning_sites mt-row">
+        <a
+          href="https://leetcard.jacoblin.cool/cdtio?font=Lora"
+          rel="noreferrer"
+          target="_blank"
+          aria-label="LeetCode stats card"
+        >
+          <img
+            src="https://leetcard.jacoblin.cool/cdtio?font=Lora"
+            alt="LeetCode stats"
+            loading="lazy"
+            width="100%"
+            height="auto"
+          />
         </a>
       </div>
     </div>

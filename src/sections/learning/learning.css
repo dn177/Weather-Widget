@@ -3,6 +3,17 @@
   justify-content: space-between;
   min-height: 300px;
 }
+
+/* Medium banner — shrink the 4489x1114 logo so it stops reading as a sponsor strip */
+.learning_sites {
+  text-align: center;
+}
+
+.learning_sites img[alt="Medium"] {
+  width: clamp(140px, 18vw, 240px);
+  height: auto;
+  margin: 0 auto;
+}
 .learning__books img {
   object-fit: contain;
   /* height: 300px; */
