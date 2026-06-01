@@ -10,13 +10,13 @@
     "role": "Fullstack engineer building on-prem AI systems",
     "buttons": {
       "letsTalk": "Get in touch",
-      "myWork": "See AI projects"
+      "myWork": "View Projects"
     }
   },
   "portfolio": {
     "title": "Projects",
     "leetcode": "Leetcode",
-    "typewriter": "curl -sv https://www.cdtio.com/react/ --stderr - | grep Projects",
+    "typewriter": "curl -sv https://www.cdtio33.com/ --stderr - | grep Projects",
     "leetcodeSolutionText": "Initial solution for integer reversal after 5 minutes. Further optimization possible.",
     "categories": {
       "all": "All",

@@ -35,7 +35,7 @@ const Navbar = () => {
     >
       <a
         className="navbar-brand"
-        href="https://www.cdtio.com/react/"
+        href="https://www.cdtio33.com/"
         onClick={handleLinkClick}
       >
         {t("navbar.brand")}

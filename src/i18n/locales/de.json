@@ -10,13 +10,13 @@
     "role": "Fullstack-Entwickler für On-Premise-KI-Systeme",
     "buttons": {
       "letsTalk": "Kontakt aufnehmen",
-      "myWork": "KI-Projekte ansehen"
+      "myWork": "Projekte ansehen"
     }
   },
   "portfolio": {
     "title": "Projekte",
     "leetcode": "Leetcode",
-    "typewriter": "curl -sv https://www.cdtio.com/react/ --stderr - | grep Projekte",
+    "typewriter": "curl -sv https://www.cdtio33.com/ --stderr - | grep Projekte",
     "leetcodeSolutionText": "Erste Lösung für Integer-Umkehrung nach 5 Minuten. Weitere Optimierung möglich.",
     "categories": {
       "all": "Alle",

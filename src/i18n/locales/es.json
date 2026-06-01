@@ -10,13 +10,13 @@
     "role": "Ingeniero Fullstack creando sistemas de IA on-premise",
     "buttons": {
       "letsTalk": "Contactar",
-      "myWork": "Ver proyectos de IA"
+      "myWork": "Ver proyectos"
     }
   },
   "portfolio": {
     "title": "Proyectos",
     "leetcode": "Leetcode",
-    "typewriter": "curl -sv https://www.cdtio.com/react/ --stderr - | grep Proyectos",
+    "typewriter": "curl -sv https://www.cdtio33.com/ --stderr - | grep Proyectos",
     "leetcodeSolutionText": "Solución inicial para inversión de enteros después de 5 minutos. Posible optimización adicional.",
     "categories": {
       "all": "Todos",

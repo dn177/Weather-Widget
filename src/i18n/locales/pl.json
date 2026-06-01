@@ -10,13 +10,13 @@
     "role": "Fullstack inżynier budujący lokalne systemy AI",
     "buttons": {
       "letsTalk": "Skontaktuj się",
-      "myWork": "Zobacz projekty AI"
+      "myWork": "Zobacz projekty"
     }
   },
   "portfolio": {
     "title": "Projekty",
     "leetcode": "Leetcode",
-    "typewriter": "curl -sv https://www.cdtio.com/react/ --stderr - | grep Projekty",
+    "typewriter": "curl -sv https://www.cdtio33.com/ --stderr - | grep Projekty",
     "leetcodeSolutionText": "Początkowe rozwiązanie odwracania liczby całkowitej po 5 minutach. Możliwa dalsza optymalizacja.",
     "categories": {
       "all": "Wszystkie",
