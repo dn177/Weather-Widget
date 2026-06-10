@@ -1,169 +1,150 @@
-import { useState, useEffect, useRef } from "react";
-import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "./Weather.css";
-import axios from "axios";
+
+const FORECAST_URL = "https://api.open-meteo.com/v1/forecast";
+// Keyless geocoding (replaces the former api-ninjas endpoint, which required
+// a client-side API key — see CODE-REVIEW.md §2).
+const GEOCODING_URL = "https://geocoding-api.open-meteo.com/v1/search";
+
+// Default view on first load: Berlin (same coordinates the widget always used).
+const DEFAULT_COORDS = { latitude: 52.52, longitude: 13.41 };
+
+const DEBOUNCE_MS = 500;
+const VISIBLE_DAYS = 5;
+
+const buildForecastUrl = ({ latitude, longitude }) =>
+  `${FORECAST_URL}?latitude=${latitude}&longitude=${longitude}` +
+  "&daily=temperature_2m_max,temperature_2m_min,rain_sum&timezone=Europe%2FBerlin";
 
 function WeatherGrid() {
   const { t } = useTranslation();
-  const [weather, setWeather] = useState({});
-  const [city, setCity] = useState("Munich");
-  const [country, setCountry] = useState("Germany");
-  const [errormsg, setErrormsg] = useState(t('weather.errors.noData'));
-  const isFirst = useRef(true);
-  const url =
-    "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max,temperature_2m_min,rain_sum&timezone=Europe%2FBerlin";
-  const NINJAS_API_KEY = "ZO9arBg2KlmXrGAGiWT1/A==Jis6QiHm09iT7ySH";
-  const days = [
-    t('weather.weekdays.sunday'),
-    t('weather.weekdays.monday'),
-    t('weather.weekdays.tuesday'),
-    t('weather.weekdays.wednesday'),
-    t('weather.weekdays.thursday'),
-    t('weather.weekdays.friday'),
-    t('weather.weekdays.saturday'),
-  ];
-  const production = false;
+  const [weather, setWeather] = useState(null);
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  // The error is stored as a translation KEY and translated at render time,
+  // so the message follows live language switches instead of freezing in
+  // whatever language was active when the fetch failed.
+  const [errorKey, setErrorKey] = useState("weather.errors.noData");
 
-  //check if is first is necessary
+  // Initial load: default coordinates, no geocoding round-trip needed.
   useEffect(() => {
-    if (!isFirst.current) {
-      debounce(fetchCity(), 1000);
-    }
-  }, [city, country]);
+    let cancelled = false;
 
-  useEffect(() => {
-    fetchData();
-    isFirst.current = false;
+    fetch(buildForecastUrl(DEFAULT_COORDS))
+      .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+      .then((data) => {
+        if (!cancelled) setWeather(data);
+      })
+      .catch(() => {
+        if (!cancelled) setErrorKey("weather.errors.fetchDefault");
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  const debounce = (func, delay) => {
-    let debounceTimer;
-    return function () {
-      const context = this;
-      const args = arguments;
-      clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(() => func.apply(context, args), delay);
+  // City/country search. The debounce lives in the effect: the timer is
+  // cleared whenever the inputs change again (or on unmount), so only the
+  // last value within DEBOUNCE_MS triggers a request.
+  useEffect(() => {
+    const query = city.trim();
+    if (!query) return undefined;
+
+    let cancelled = false;
+    const timer = setTimeout(async () => {
+      try {
+        const geoRes = await fetch(
+          `${GEOCODING_URL}?name=${encodeURIComponent(query)}&count=5&language=en&format=json`,
+        );
+        if (!geoRes.ok) throw new Error("geocoding request failed");
+        const geo = await geoRes.json();
+
+        const wanted = country.trim().toLowerCase();
+        const match = (geo.results || []).find(
+          (r) =>
+            !wanted ||
+            r.country?.toLowerCase().includes(wanted) ||
+            r.country_code?.toLowerCase() === wanted,
+        );
+        if (!match) throw new Error("city not found");
+
+        const forecastRes = await fetch(buildForecastUrl(match));
+        if (!forecastRes.ok) throw new Error("forecast request failed");
+        const forecast = await forecastRes.json();
+
+        if (!cancelled) setWeather(forecast);
+      } catch {
+        // Keep the last successful forecast on screen; the message only
+        // shows when there is no data at all (same behaviour as before).
+        if (!cancelled) setErrorKey("weather.errors.cityNotFound");
+      }
+    }, DEBOUNCE_MS);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
     };
-  };
+  }, [city, country]);
 
-  //fetch data from default url specified in url variable
-  async function fetchData() {
-    await axios
-      .get(url)
-      .then((res) => {
-        setWeather(res?.data);
-      })
-      .catch((error) => {
-        setErrormsg(t('weather.errors.fetchDefault'));
-      });
-  }
+  const days = [
+    t("weather.weekdays.sunday"),
+    t("weather.weekdays.monday"),
+    t("weather.weekdays.tuesday"),
+    t("weather.weekdays.wednesday"),
+    t("weather.weekdays.thursday"),
+    t("weather.weekdays.friday"),
+    t("weather.weekdays.saturday"),
+  ];
 
-  // fetches weather data based on latitude and longitude
-  async function fetchCoordData(lat, long) {
-    await axios
-      .get(
-        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=temperature_2m_max,temperature_2m_min,rain_sum&timezone=Europe%2FBerlin`,
-        {}
-      )
-      .then((res) => {
-        setWeather(res?.data);
-      })
-      .catch((err) => {
-        setErrormsg(t('weather.errors.fetchCoords'));
-      });
-  }
-
-  //fetches city coordinates based on city entered in input
-  async function fetchCity() {
-    await axios
-      .get(
-        `https://api.api-ninjas.com/v1/geocoding?city=${
-          Object.keys(city).length > 0 ? city : "Munich"
-        }&country=${Object.keys(country).length > 0 ? country : "Germany"}`,
-        {
-          headers: {
-            "X-API-KEY": NINJAS_API_KEY,
-          },
-        }
-      )
-      .then((res) => {
-        fetchCoordData(res.data[0].latitude, res.data[0].longitude);
-        // return res;
-      })
-      .catch((error) => {
-        setErrormsg(t('weather.errors.cityNotFound'));
-      });
-  }
-
-  //handles change of the city input
-  function handleCityChange(event) {
-    event.preventDefault();
-    setCity(event.target.value);
-  }
-
-  //debounces city input change handler to avoid unnecessary API requests
-  const debouncedHandleCityChange = debounce(handleCityChange, 500);
-
-  //handles location (country) input change
-  function handleLocationChange(event) {
-    event.preventDefault();
-    setCountry(event.target.value);
-  }
-
-  //debounces city input change handler to avoid unnecessary API requests
-  const debouncedHandleLocationChange = debounce(handleLocationChange, 500);
+  const hasForecast = Boolean(weather?.daily?.time?.length);
 
   return (
     <div className="weather-widget">
-      <h2 className="weather-widget__headline">
-        {t('weather.headline')}
-      </h2>
+      <h2 className="weather-widget__headline">{t("weather.headline")}</h2>
       <div className="input-wrapper">
         <input
           type="text"
           name="city"
           id="city"
-          placeholder={t('weather.placeholders.city')}
-          onChange={debouncedHandleCityChange}
+          placeholder={t("weather.placeholders.city")}
+          onChange={(e) => setCity(e.target.value)}
         />
         <input
           type="text"
           name="country"
           id="country"
-          placeholder={t('weather.placeholders.country')}
-          onChange={debouncedHandleLocationChange}
+          placeholder={t("weather.placeholders.country")}
+          onChange={(e) => setCountry(e.target.value)}
         />
       </div>
-      {Object.keys(weather).length > 0 ? (
+      {hasForecast ? (
         <div className="weathergrid mx-auto">
-          {weather.daily.rain_sum
-            .map((wdata, index) => {
-              return (
-                <div className="weathergrid__el" key={index}>
-                  <p className="weekday">
-                    {index === 0
-                      ? t('weather.today')
-                      : days[new Date(weather.daily.time[index]).getDay()]}
-                  </p>
-                  <div className="temp-wrapper">
-                    <span className="temp">
-                      {weather.daily.temperature_2m_max[index]}&deg;
-                    </span>
-                    <span className="temp__type">{t('weather.max')}</span>
-                  </div>
-                  <div className="temp-wrapper">
-                    <span className="temp">
-                      {weather.daily.temperature_2m_min[index]}&deg;
-                    </span>
-                    <span className="temp__type">{t('weather.min')}</span>
-                  </div>
-                </div>
-              );
-            })
-            .slice(0, 5)}
+          {weather.daily.time.slice(0, VISIBLE_DAYS).map((date, index) => (
+            <div className="weathergrid__el" key={date}>
+              <p className="weekday">
+                {index === 0
+                  ? t("weather.today")
+                  : days[new Date(date).getDay()]}
+              </p>
+              <div className="temp-wrapper">
+                <span className="temp">
+                  {weather.daily.temperature_2m_max[index]}&deg;
+                </span>
+                <span className="temp__type">{t("weather.max")}</span>
+              </div>
+              <div className="temp-wrapper">
+                <span className="temp">
+                  {weather.daily.temperature_2m_min[index]}&deg;
+                </span>
+                <span className="temp__type">{t("weather.min")}</span>
+              </div>
+            </div>
+          ))}
         </div>
       ) : (
-        <p>{errormsg}</p>
+        <p>{t(errorKey)}</p>
       )}
       <button className="github-btn">
         <a
@@ -171,7 +152,7 @@ function WeatherGrid() {
           rel="noreferrer"
           href="https://github.com/dn177/Weather-Widget"
         >
-          {t('weather.githubButton')}
+          {t("weather.githubButton")}
         </a>
       </button>
     </div>
