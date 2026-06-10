@@ -14,19 +14,17 @@ function Sustainability() {
       },
       { rootMargin: "-200px 0px" }
     );
-    console.log(isIntersectingSus);
     observer.observe(intersectionSusRef.current);
     return () => observer.disconnect();
   }, []);
 
+  // NOTE: cross-component coupling — the .crown element is rendered by
+  // Header, and this section animates it while it scrolls into view. Kept
+  // for now (null-safe); a shared state/event would be the clean fix.
   useEffect(() => {
-    if (isIntersectingSus) {
-      // const crown = crownRef.current;
-      // crown.classlist.add("intersect");
-      document.querySelector(".crown").classList.add("intersect");
-    } else {
-      document.querySelector(".crown").classList.remove("intersect");
-    }
+    const crown = document.querySelector(".crown");
+    if (!crown) return;
+    crown.classList.toggle("intersect", isIntersectingSus);
   }, [isIntersectingSus]);
 
   return (

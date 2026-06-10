@@ -1,3 +1,6 @@
+/* eslint-disable no-script-url -- the core rule false-positives on
+   alt="JavaScript: The Definitive Guide" (a book title, not a URL);
+   this file contains no actual script URLs. */
 import "./learning.css";
 import { useTranslation } from 'react-i18next';
 import { Swiper, SwiperSlide } from "swiper/react";

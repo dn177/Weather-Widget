@@ -2,7 +2,7 @@ import "./portfolio.css";
 import Projects from "./Projects";
 import ProjectsCategories from "./ProjectsCategories";
 import ScrollBehaviorToggle from "./ScrollBehaviorToggle";
-import { portfolioProjects, techCategories, getProjectsByTechnology } from "./portfolioData";
+import { techCategories, getProjectsByTechnology } from "./portfolioData";
 import React, { useState, useCallback } from "react";
 import { useTranslation } from 'react-i18next';
 import Learning from "../learning/Learning";

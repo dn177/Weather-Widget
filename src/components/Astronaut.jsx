@@ -26,6 +26,10 @@ const SpaceScene = () => {
   const gsapCtxRef = useRef(null);
 
   useEffect(() => {
+    // Capture the mount node now — by cleanup time the ref may already be
+    // detached (react-hooks/exhaustive-deps guidance).
+    const mountEl = mountRef.current;
+
     // Initialize scene inside a gsap context so all timelines get killed on unmount
     gsapCtxRef.current = gsap.context(() => {
       initScene();
@@ -47,9 +51,8 @@ const SpaceScene = () => {
       }
 
       if (rendererRef.current) {
-        const mount = mountRef.current;
-        if (mount) {
-          mount.removeChild(rendererRef.current.domElement);
+        if (mountEl) {
+          mountEl.removeChild(rendererRef.current.domElement);
         }
         rendererRef.current.dispose();
       }
@@ -82,6 +85,9 @@ const SpaceScene = () => {
         environmentMapRef.current.dispose();
       }
     };
+    // Mount-once scene setup: initScene is stable for the component's life
+    // and must not re-run on re-render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Helper function to dispose materials properly
@@ -487,7 +493,6 @@ const SpaceScene = () => {
     scene.add(brightStars);
 
     // Create glowing star effects - keep them distant
-    const glowingStars = [];
     for (let i = 0; i < 50; i++) {
       const starGeo = new THREE.SphereGeometry(0.3, 8, 8);
       const starMat = new THREE.MeshBasicMaterial({
