@@ -28,6 +28,7 @@ yarn-error.log*
 /.playwright-mcp
 /.vscode
 /.idea
+/.review-tmp
 
 # Local backups
 *.bak
