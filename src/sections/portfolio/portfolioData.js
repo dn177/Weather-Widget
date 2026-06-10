@@ -1,6 +1,6 @@
 // portfolioData.js - Structured approach with clear metadata
 // Assets are now in public directory - use direct paths with PUBLIC_URL
-const PUBLIC_URL = process.env.PUBLIC_URL || "";
+const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
 const PORTFOLIO_PATH = PUBLIC_URL + "/Portfolio/";
 const POSTER_PATH = PUBLIC_URL + "/Portfolio/poster/";
 const SPACE_STUDIO_PATH = PUBLIC_URL + "/spacestudio/";

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import "./hustle.css";
 
 // Assets are now in public directory
-const PUBLIC_URL = process.env.PUBLIC_URL || '';
+const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
 const HUSTLE_PATH = PUBLIC_URL + '/Hustle/';
 
 function Hustle() {

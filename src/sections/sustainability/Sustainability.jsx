@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from 'react-i18next';
 import "./sustainability.css";
 
+const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 function Sustainability() {
   const { t } = useTranslation();
   const intersectionSusRef = useRef(null);
@@ -29,7 +31,7 @@ function Sustainability() {
 
   return (
     <section id="sustainability" style={{ 
-      backgroundImage: `url(${process.env.PUBLIC_URL}/Nature.jpg)` 
+      backgroundImage: `url(${PUBLIC_URL}/Nature.jpg)`
     }}>
       <h2 className="text-center text-white h1">{t('sustainability.title')}</h2>
       <p className="fs-4 mt-4">{t('sustainability.subtitle')}</p>

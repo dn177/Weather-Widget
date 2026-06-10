@@ -4,7 +4,7 @@ import AccessibleModal from "../../components/AccessibleModal";
 import useModal from "../../hooks/useModal";
 
 // Assets are now in public directory
-const PUBLIC_URL = process.env.PUBLIC_URL || "";
+const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
 const PIXELPERFECT_PATH = PUBLIC_URL + "/Pixelperfect/";
 const Design = PIXELPERFECT_PATH + "Design.png";
 const Realized = PIXELPERFECT_PATH + "Website.jpeg";
@@ -23,7 +23,7 @@ function Pixelperfect() {
     <section
       id="pixelperfect"
       style={{
-        background: `url(${process.env.PUBLIC_URL}/Vitruv.webp) no-repeat 10% 10% / cover`,
+        background: `url(${PUBLIC_URL}/Vitruv.webp) no-repeat 10% 10% / cover`,
       }}
     >
       <div className="container-2 mx-auto">

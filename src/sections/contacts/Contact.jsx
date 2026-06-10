@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import "./contact.css";
 import contacts from "./data";
 
+const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 // Assets are now in public directory
 const Contact = () => {
   const { t } = useTranslation();
@@ -12,10 +14,10 @@ const Contact = () => {
       {/* <img src={Zacuelu} alt="Zacuelu" loading="lazy" /> */}
       <img
         className="bg-img"
-        src={`${process.env.PUBLIC_URL}/Zacuelu_800w.jpg`}
-        srcSet={`${process.env.PUBLIC_URL}/Zacuelu_400w.jpg 400w, 
-             ${process.env.PUBLIC_URL}/Zacuelu_800w.jpg 800w, 
-             ${process.env.PUBLIC_URL}/Zacuelu_1200w.jpg 1200w`}
+        src={`${PUBLIC_URL}/Zacuelu_800w.jpg`}
+        srcSet={`${PUBLIC_URL}/Zacuelu_400w.jpg 400w, 
+             ${PUBLIC_URL}/Zacuelu_800w.jpg 800w, 
+             ${PUBLIC_URL}/Zacuelu_1200w.jpg 1200w`}
         sizes="(max-width: 600px) 400px, 
             (max-width: 1200px) 800px, 
             1200px"

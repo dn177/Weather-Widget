@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import data from "./data";
 import "./header.css";
 
+const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 const Header = () => {
   const { t } = useTranslation();
   const crownRef = useRef(null);
@@ -12,7 +14,7 @@ const Header = () => {
 
   useEffect(() => {
     const img = new Image();
-    img.src = `${process.env.PUBLIC_URL}/1-desktop.webp`;
+    img.src = `${PUBLIC_URL}/1-desktop.webp`;
     img.onload = () => setImageLoaded(true);
   }, []);
 
@@ -45,7 +47,7 @@ const Header = () => {
       className={imageLoaded ? "image-loaded" : ""}
       style={{
         backgroundImage: imageLoaded
-          ? `url(${process.env.PUBLIC_URL}/1-desktop.webp)`
+          ? `url(${PUBLIC_URL}/1-desktop.webp)`
           : "none",
         backgroundColor: imageLoaded ? "transparent" : "#7b219f",
       }}

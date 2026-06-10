@@ -11,7 +11,7 @@ import "swiper/css/effect-coverflow";
 import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 
 // Assets are now in public directory
-const PUBLIC_URL = process.env.PUBLIC_URL || '';
+const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
 const LEARNING_PATH = PUBLIC_URL + '/Learning/';
 const Book1 = LEARNING_PATH + "JSDefGuide.jpeg";
 const Book2 = LEARNING_PATH + "EloquentJs.jpeg";

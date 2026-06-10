@@ -4,7 +4,7 @@ import "./badges.css";
 import Typewriter from "../../lib/Typewriter";
 
 // Assets are now in public directory
-const PUBLIC_URL = process.env.PUBLIC_URL || '';
+const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
 const BADGES_PATH = PUBLIC_URL + '/Badges/';
 const JBadge = BADGES_PATH + "JBadge.png";
 const FBadge = BADGES_PATH + "FrontendBadge.png";
