@@ -1,26 +1,24 @@
-// Custom language detector for URL parameters
+import { normalizeLanguage } from "./languages";
+
+// Custom i18next detector: reads ?lang= from the URL and keeps the param in
+// sync when the language changes. It is first in the detection order, so an
+// explicit URL always beats the localStorage cache — and region codes like
+// "en-GB" normalize to their base language instead of being dropped.
 const urlLanguageDetector = {
-  name: 'urlLanguageDetector',
+  name: "urlLanguageDetector",
+
   lookup() {
-    // Get language from URL parameter
     const params = new URLSearchParams(window.location.search);
-    const lang = params.get('lang');
-    
-    // Return the language if it's valid (en or de)
-    if (lang && ['en', 'de'].includes(lang)) {
-      return lang;
-    }
-    
-    return null;
+    return normalizeLanguage(params.get("lang")) || undefined;
   },
+
   cacheUserLanguage(lng) {
-    // Update URL with the selected language
     const url = new URL(window.location);
-    url.searchParams.set('lang', lng);
-    
-    // Update URL without reloading the page
-    window.history.replaceState({}, '', url);
-  }
+    if (url.searchParams.get("lang") === lng) return;
+    url.searchParams.set("lang", lng);
+    // replaceState: language switches shouldn't pile up history entries.
+    window.history.replaceState({}, "", url);
+  },
 };
 
 export default urlLanguageDetector;
