@@ -137,55 +137,6 @@
     "tryAgain": "Try Again"
   },
   "projects": {
-    "quantum-performance": {
-      "title": "Enterprise CRM Performance Optimization & Vue 3 Migration",
-      "description": "Migrated a multi-tenant CRM application from Vue 2 to Vue 3 with exceptional performance results.",
-      "highlights": {
-        "0": "16ms average INP (vs 200ms \"good\" threshold)",
-        "1": "Vue 2 → Vue 3 complete migration",
-        "2": "7,000+ item virtual scrolling implementation"
-      }
-    },
-    "33": {
-      "title": "33 - The Master Number",
-      "description": "An interactive 3D experience exploring the significance of the number 33. Built with React Three Fiber and GSAP animations.",
-      "highlights": {
-        "0": "Immersive 3D visualization with Three.js",
-        "1": "Smooth animations powered by GSAP",
-        "2": "Interactive exploration of numerology and symbolism"
-      },
-      "links": {
-        "0": "Explore 33"
-      }
-    },
-    "release-radar": {
-      "title": "Release Reader",
-      "description": "A tool to find relevant changes in GitHub release notes. Filter releases by version range, keywords, and display options.",
-      "highlights": {
-        "0": "Version range filtering to focus on specific releases",
-        "1": "Keyword-based filtering for breaking changes, deprecations, and more",
-        "2": "Customizable display options with context lines"
-      },
-      "links": {
-        "0": "Open Release Reader"
-      }
-    },
-    "markdown-downloader": {
-      "title": "Markdown Downloader - Raycast Extension",
-      "description": "A powerful Raycast extension that converts webpages to clean markdown files with advanced content extraction, image downloading, and customizable output options. Built for efficient knowledge management and content archiving.",
-      "highlights": {
-        "0": "Intelligent content extraction with regex-based HTML parsing",
-        "1": "Local image downloading with automatic path conversion",
-        "2": "Medium-specific content cleanup and optimization",
-        "3": "Affiliate link cleaning for cleaner markdown output",
-        "4": "Native macOS folder picker with recent folders dropdown",
-        "5": "Customizable output settings and auto-filename generation",
-        "6": "Support for metadata headers and title insertion"
-      },
-      "links": {
-        "0": "View on GitHub"
-      }
-    },
     "space-studio": {
       "title": "Space Studio - Interactive Rocket Science Education",
       "description": "An interactive web application for teaching rocket science and engineering concepts through engaging 3D simulations, hands-on learning experiences, and progressive lessons from basic rocketry to advanced orbital mechanics.",
