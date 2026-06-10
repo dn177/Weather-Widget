@@ -93,7 +93,7 @@ The entry covers the core loop, state bridge, on-device/utilityProcess story, ve
 
 1. **i18n override bug:** ✅ *fixed 2026-06-10* — root cause was `urlLanguageDetector`'s whitelist frozen at `['en','de']`; now normalizes region codes against a shared `SUPPORTED_LANGUAGES` (see CODE-REVIEW.md roadmap #3).
 2. **`<html lang>` stays "en":** ✅ *fixed 2026-06-10* — synced via `languageChanged` listener in `i18n.js`.
-3. **Mixed-language cards:** Belay and all newer AI projects are hardcoded English while UI chrome + CRM project translate (DE shows "Fallstudie lesen" next to "Try the live demo"). Either run them through `projectTranslations.js` like quantum-performance, or deliberately keep all project content English in every locale — current half-half looks unpolished, especially for DE recruiters.
+3. **Mixed-language cards:** ✅ *fixed 2026-06-10* — the six new AI projects (the actual gap; legacy cards were already covered in the locale files) are now translated into DE/PL/ES. Card layer fully localized; case-study modal bodies remain English by design.
 4. **`/resources`:** React "unique key prop" warning (`Resources` render, the `<details>` list); page contains a single accordion entry, isn't linked from the nav, and renders an English-only title in DE. Grow it, or remove/noindex.
 5. Build warnings: unused `SolarSystem`/`Footer` in `Home.jsx`; deprecated `color-adjust` (Bootstrap), `end` value in `Weather.css`; outdated browserslist DB.
 6. CRA (`react-scripts 5`) is EOL-adjacent and slow; Vite migration is the obvious infra refresh whenever you touch this next (you already use Vite everywhere else — it's also consistency of story).
