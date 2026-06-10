@@ -9,8 +9,11 @@ const ProjectsCategories = ({ categories, techCategories, onFilterProjects, acti
     onFilterProjects(tech);
   }, [onFilterProjects]);
 
+  // Deliberately NOT the ARIA tabs pattern: these buttons filter a grid
+  // rather than switching panels, so they are toggle buttons in a group
+  // (aria-pressed) — simpler and honest to assistive tech.
   return (
-    <div className="portfolio__categories" role="tablist" aria-label="Technology filters">
+    <div className="portfolio__categories" role="group" aria-label="Technology filters">
       {categories.map((tech) => {
         const techInfo = techCategories[tech];
         return (
@@ -22,8 +25,7 @@ const ProjectsCategories = ({ categories, techCategories, onFilterProjects, acti
             className={`btn tech__btn ${
               activeTech === tech ? "active" : ""
             }`}
-            aria-selected={activeTech === tech}
-            role="tab"
+            isActive={activeTech === tech}
           />
         );
       })}

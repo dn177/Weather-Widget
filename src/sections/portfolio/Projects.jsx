@@ -59,7 +59,7 @@ const Projects = ({ projects, scrollBehavior = "contain" }) => {
 
   return (
     <>
-      <div className={gridClassName} role="tabpanel">
+      <div className={gridClassName}>
         {positions.map((position) => renderItem(position))}
       </div>
 
