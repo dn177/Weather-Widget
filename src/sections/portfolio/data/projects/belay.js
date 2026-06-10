@@ -55,7 +55,9 @@ const project = {
         ],
         "video": "/Portfolio/belay/belay-research-papers.mp4",
         "videoPoster": "/Portfolio/belay/belay-research-papers-poster.jpg",
-        "videoAlt": "Live recording: boxing a formula in a research paper, asking for a step-by-step breakdown, the request streaming off a self-hosted vLLM endpoint on a DGX Spark (speculative-decoding logs in the terminal), and the KaTeX-typeset explanation landing in chat with the paper still open."
+        "videoAlt": "Live recording: boxing a formula in a research paper, asking for a step-by-step breakdown, the request streaming off a self-hosted vLLM endpoint on a DGX Spark (speculative-decoding logs in the terminal), and the KaTeX-typeset explanation landing in chat with the paper still open.",
+        "image": "/Portfolio/belay/belay-coma-assignment.webp",
+        "imageAlt": "It reads my own coursework too: an assignment from my university mathematics studies (Computerorientierte Mathematik — summation and binomial coefficients, typeset from my original solutions) open in Belay's PDF reader, a region boxed over the formulas and the visual Q&A composer asking for a step-by-step proof of the hockey-stick identity. The same loop I use for ML papers, pointed at the math that started it."
       },
       {
         "title": "Pin the Answer to the Spot — a Persistent Annotation Layer",
