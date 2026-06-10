@@ -101,6 +101,7 @@ function Pixelperfect() {
             />
           </div>
         </div>
+        <p className="pixelperfect__nda-note">{t("pixelperfect.ndaNote")}</p>
       </div>
 
       {/* Design Modal */}

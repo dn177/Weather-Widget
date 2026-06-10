@@ -293,3 +293,21 @@ header.image-loaded {
     display: none;
   } */
 }
+
+/* Mobile scrim: text contrast independent of the photo (UX-REVIEW #2) */
+@media (max-width: 600px) {
+  #header {
+    position: relative;
+  }
+  #header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 35%, rgba(20, 4, 38, 0.55) 72%);
+    pointer-events: none;
+  }
+  #header .header__container {
+    position: relative;
+    z-index: 1;
+  }
+}

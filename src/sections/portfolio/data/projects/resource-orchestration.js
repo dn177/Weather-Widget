@@ -60,7 +60,6 @@ const project = {
   "mainTech": "vue",
   "links": [],
   "tags": [
-    "ai-ml",
     "systems",
     "rust",
     "scheduling",

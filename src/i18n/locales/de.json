@@ -33,7 +33,9 @@
     "readMore": "Fallstudie lesen",
     "overview": "Überblick",
     "highlights": "Highlights",
-    "closedSourceNotice": "Geschlossener Quellcode — Code unter NDA. Gerne erläutere ich die Implementierung in einem Interview."
+    "closedSourceNotice": "Geschlossener Quellcode — Code unter NDA. Gerne erläutere ich die Implementierung in einem Interview.",
+    "showEarlier": "Frühere Arbeiten",
+    "hideEarlier": "Frühere Arbeiten ausblenden"
   },
   "contact": {
     "title": "Kontaktiere mich",
@@ -48,7 +50,8 @@
     "designModalTitle": "Design-Mockup",
     "realizedModalTitle": "Umgesetzte Website",
     "designModalAlt": "Design-Mockup in voller Größe mit dem ursprünglichen Designkonzept",
-    "realizedModalAlt": "Screenshot der umgesetzten Website-Implementierung in voller Größe"
+    "realizedModalAlt": "Screenshot der umgesetzten Website-Implementierung in voller Größe",
+    "ndaNote": "Kundenprojekte — bewusst unkenntlich gemacht (NDA)"
   },
   "badges": {
     "title": "Abzeichen",

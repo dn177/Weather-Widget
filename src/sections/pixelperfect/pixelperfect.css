@@ -114,3 +114,19 @@ img[alt="Design"] {
     width: 90%;
   }
 }
+
+/* Heading legibility on the parchment background (UX-REVIEW #10) */
+#pixelperfect h2 {
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.65),
+    0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+/* NDA note under the design/implementation comparison */
+.pixelperfect__nda-note {
+  margin-top: 1rem;
+  text-align: center;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}

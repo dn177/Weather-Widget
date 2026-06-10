@@ -33,7 +33,9 @@
     "readMore": "Read Case Study",
     "overview": "Overview",
     "highlights": "Key Features",
-    "closedSourceNotice": "Closed source — code under NDA. Happy to walk through the implementation in an interview."
+    "closedSourceNotice": "Closed source — code under NDA. Happy to walk through the implementation in an interview.",
+    "showEarlier": "Earlier work",
+    "hideEarlier": "Hide earlier work"
   },
   "contact": {
     "title": "Get In Touch",
@@ -48,7 +50,8 @@
     "designModalTitle": "Design Mockup",
     "realizedModalTitle": "Realized Website",
     "designModalAlt": "Full size design mockup showing the original design concept",
-    "realizedModalAlt": "Full size screenshot of the realized website implementation"
+    "realizedModalAlt": "Full size screenshot of the realized website implementation",
+    "ndaNote": "Client work — intentionally blurred (NDA)"
   },
   "badges": {
     "title": "Badges",

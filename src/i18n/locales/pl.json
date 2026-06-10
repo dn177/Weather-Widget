@@ -30,7 +30,9 @@
     },
     "viewCode": "Zobacz Kod",
     "loadMoreProjects": "Załaduj Więcej Projektów",
-    "closedSourceNotice": "Kod zamknięty — objęty NDA. Chętnie omówię implementację podczas rozmowy."
+    "closedSourceNotice": "Kod zamknięty — objęty NDA. Chętnie omówię implementację podczas rozmowy.",
+    "showEarlier": "Wcześniejsze prace",
+    "hideEarlier": "Ukryj wcześniejsze prace"
   },
   "contact": {
     "title": "Skontaktuj się",
@@ -45,7 +47,8 @@
     "designModalTitle": "Makieta Projektu",
     "realizedModalTitle": "Zrealizowana Strona",
     "designModalAlt": "Makieta projektu w pełnym rozmiarze pokazująca oryginalną koncepcję",
-    "realizedModalAlt": "Zrzut ekranu zrealizowanej strony internetowej w pełnym rozmiarze"
+    "realizedModalAlt": "Zrzut ekranu zrealizowanej strony internetowej w pełnym rozmiarze",
+    "ndaNote": "Prace dla klientów — celowo rozmyte (NDA)"
   },
   "badges": {
     "title": "Odznaki",

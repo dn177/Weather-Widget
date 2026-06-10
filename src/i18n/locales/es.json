@@ -30,7 +30,9 @@
     },
     "viewCode": "Ver Código",
     "loadMoreProjects": "Cargar Más Proyectos",
-    "closedSourceNotice": "Código cerrado — bajo NDA. Encantado de explicar la implementación en una entrevista."
+    "closedSourceNotice": "Código cerrado — bajo NDA. Encantado de explicar la implementación en una entrevista.",
+    "showEarlier": "Trabajos anteriores",
+    "hideEarlier": "Ocultar trabajos anteriores"
   },
   "contact": {
     "title": "Contáctame",
@@ -45,7 +47,8 @@
     "designModalTitle": "Maqueta de Diseño",
     "realizedModalTitle": "Sitio Web Realizado",
     "designModalAlt": "Maqueta de diseño en tamaño completo mostrando el concepto original",
-    "realizedModalAlt": "Captura de pantalla del sitio web implementado en tamaño completo"
+    "realizedModalAlt": "Captura de pantalla del sitio web implementado en tamaño completo",
+    "ndaNote": "Trabajo para clientes — difuminado a propósito (NDA)"
   },
   "badges": {
     "title": "Insignias",

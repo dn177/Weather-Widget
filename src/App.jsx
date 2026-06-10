@@ -6,7 +6,6 @@ import PageLoader from "./ui/PageLoader";
 
 // Lazy load components for better performance
 const Home = lazy(() => import("./ui/Home"));
-const Resources = lazy(() => import("./ui/Resources"));
 
 const router = createBrowserRouter([
   {
@@ -25,14 +24,6 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <Home />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/resources",
-        element: (
-          <Suspense fallback={<PageLoader label="Loading resources" />}>
-            <Resources />
           </Suspense>
         ),
       },
