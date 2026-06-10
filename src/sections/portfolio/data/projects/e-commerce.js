@@ -13,7 +13,7 @@ const project = {
   "media": {
     "type": "video",
     "src": "/Portfolio/Video12.mp4",
-    "poster": "/Portfolio/poster/poster9.png",
+    "poster": "/Portfolio/poster/poster9.jpg",
     "alt": "E-commerce platform demonstration"
   },
   "description": "Modern e-commerce platform with secure authentication and REST API.",

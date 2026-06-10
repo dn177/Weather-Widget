@@ -6,9 +6,9 @@ import Typewriter from "../../lib/Typewriter";
 // Assets are now in public directory
 const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
 const BADGES_PATH = PUBLIC_URL + '/Badges/';
-const JBadge = BADGES_PATH + "JBadge.png";
-const FBadge = BADGES_PATH + "FrontendBadge.png";
-const CBadge = BADGES_PATH + "CSSBadge.png";
+const JBadge = BADGES_PATH + "JBadge.webp";
+const FBadge = BADGES_PATH + "FrontendBadge.webp";
+const CBadge = BADGES_PATH + "CSSBadge.webp";
 
 function Badges() {
   const { t } = useTranslation();

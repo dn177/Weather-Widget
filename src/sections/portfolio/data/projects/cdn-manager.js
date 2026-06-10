@@ -13,7 +13,7 @@ const project = {
   "media": {
     "type": "video",
     "src": "/Portfolio/Video3.mp4",
-    "poster": "/Portfolio/poster/poster2.png",
+    "poster": "/Portfolio/poster/poster2.jpg",
     "alt": "cdnManager demonstration"
   },
   "description": "Private project that manages and stores CDNs.",

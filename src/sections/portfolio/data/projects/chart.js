@@ -13,7 +13,7 @@ const project = {
   "media": {
     "type": "video",
     "src": "/Portfolio/Video4.mp4",
-    "poster": "/Portfolio/poster/poster3.png",
+    "poster": "/Portfolio/poster/poster3.jpg",
     "alt": "Chart component demonstration"
   },
   "description": "Interactive chart with options to redraw with different time units.",

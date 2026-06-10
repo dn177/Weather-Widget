@@ -6,7 +6,7 @@ import useModal from "../../hooks/useModal";
 // Assets are now in public directory
 const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
 const PIXELPERFECT_PATH = PUBLIC_URL + "/Pixelperfect/";
-const Design = PIXELPERFECT_PATH + "Design.png";
+const Design = PIXELPERFECT_PATH + "Design.webp";
 const Realized = PIXELPERFECT_PATH + "Website.jpeg";
 // const Figma = PIXELPERFECT_PATH + "Figma.png";
 const AdobeXD = PIXELPERFECT_PATH + "XD.png";

@@ -13,7 +13,7 @@ const project = {
   "media": {
     "type": "video",
     "src": "/Portfolio/Video1.mp4",
-    "poster": "/Portfolio/poster/poster6.png",
+    "poster": "/Portfolio/poster/poster6.jpg",
     "alt": "Car selling platform demonstration"
   },
   "description": "Initial prototype for a car selling platform with advanced filtering.",

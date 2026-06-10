@@ -26,10 +26,10 @@ function Hustle() {
             <img
               loading="lazy"
               className="mh-100vh flip-frontside"
-              src={HUSTLE_PATH + "Hustle800w.png"}
+              src={HUSTLE_PATH + "Hustle800w.webp"}
               srcSet={`${HUSTLE_PATH}Hustle400w.png 400w, 
-             ${HUSTLE_PATH}Hustle800w.png 800w, 
-             ${HUSTLE_PATH}Hustle1200w.png 1200w`}
+             ${HUSTLE_PATH}Hustle800w.webp 800w, 
+             ${HUSTLE_PATH}Hustle1200w.webp 1200w`}
               sizes="(max-width: 400px) 400px, 
             (max-width: 800px) 800px, 
             1200px"

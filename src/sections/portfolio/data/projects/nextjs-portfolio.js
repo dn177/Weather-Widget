@@ -12,7 +12,7 @@ const project = {
   "sortOrder": 6,
   "media": {
     "type": "image",
-    "src": "/Portfolio/NextjsPortfolio.png",
+    "src": "/Portfolio/NextjsPortfolio.webp",
     "alt": "Next.js portfolio website screenshot"
   },
   "description": "Alternative portfolio built with Next.js, featuring static export optimizations.",

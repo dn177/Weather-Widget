@@ -13,7 +13,7 @@ const project = {
   "media": {
     "type": "video",
     "src": "/Portfolio/Video10.mp4",
-    "poster": "/Portfolio/poster/poster12.png",
+    "poster": "/Portfolio/poster/poster12.jpg",
     "alt": "Private blog demonstration"
   },
   "description": "Selfmade Blog with authentication and rich text editing capabilities.",

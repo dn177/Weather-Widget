@@ -13,7 +13,7 @@ const project = {
   "media": {
     "type": "video",
     "src": "/Portfolio/Video13.mp4",
-    "poster": "/Portfolio/poster/poster8.png",
+    "poster": "/Portfolio/poster/poster8.jpg",
     "alt": "Emmet live coding demonstration"
   },
   "description": "Live coding demonstration showing proficiency with Emmet and CSS shortcuts.",

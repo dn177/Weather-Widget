@@ -13,7 +13,7 @@ const project = {
   "media": {
     "type": "video",
     "src": "/Portfolio/Video16.mp4",
-    "poster": "/Portfolio/poster/poster13.png",
+    "poster": "/Portfolio/poster/poster13.jpg",
     "alt": "Contao CMS website demonstration"
   },
   "description": "Contao CMS with special contact form implementation using grid-template-areas.",

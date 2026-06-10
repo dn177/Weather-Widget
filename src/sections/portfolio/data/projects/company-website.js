@@ -13,7 +13,7 @@ const project = {
   "media": {
     "type": "video",
     "src": "/Portfolio/Video8.mp4",
-    "poster": "/Portfolio/poster/poster5.png",
+    "poster": "/Portfolio/poster/poster5.jpg",
     "alt": "Company website demonstration"
   },
   "description": "Multi-site company web presence with contact form functionality.",

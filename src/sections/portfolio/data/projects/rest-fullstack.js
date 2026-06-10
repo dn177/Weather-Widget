@@ -13,7 +13,7 @@ const project = {
   "media": {
     "type": "video",
     "src": "/Portfolio/Video14.mp4",
-    "poster": "/Portfolio/poster/poster10.png",
+    "poster": "/Portfolio/poster/poster10.jpg",
     "alt": "REST API fullstack demonstration"
   },
   "description": "Full-stack application demonstrating clean REST API architecture.",

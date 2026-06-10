@@ -13,7 +13,7 @@ const project = {
   "media": {
     "type": "video",
     "src": "/Portfolio/Video11.mp4",
-    "poster": "/Portfolio/poster/poster7.png",
+    "poster": "/Portfolio/poster/poster7.jpg",
     "alt": "Kanban board demonstration"
   },
   "description": "Kanban Board implementation with drag-and-drop functionality.",

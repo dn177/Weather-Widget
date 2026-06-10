@@ -13,7 +13,7 @@ const project = {
   "media": {
     "type": "video",
     "src": "/Portfolio/Video15.mp4",
-    "poster": "/Portfolio/poster/poster11.png",
+    "poster": "/Portfolio/poster/poster11.jpg",
     "alt": "Mathtron LaTeX editor demonstration"
   },
   "description": "Spontaneously made LaTeX editor aiming to give a good experience for taking math notes and doing math exercises on the Desktop.",
