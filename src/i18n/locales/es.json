@@ -93,7 +93,8 @@
     "climateCommitments": {
       "title": "Compromisos Climáticos:",
       "description": "Definiendo el mecanismo exacto de reducción de carbono."
-    }
+    },
+    "onPremNote": "Aquí no es algo abstracto: mi stack de IA corre on-premise en mi propio hardware — modelos on-device eficientes en lugar de inferencia continua en la nube, y frugalidad de datos como decisión de arquitectura."
   },
   "footer": {
     "home": "Inicio",

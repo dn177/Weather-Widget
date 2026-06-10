@@ -56,6 +56,13 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
   // Determine if this is an image project (all image projects get modal on click)
   const isImageProject = translatedProject.media.type === "image";
 
+  // Cards stay scannable: at most two actions on the card face — every link
+  // remains available inside the case-study modal (UX-REVIEW #8).
+  const cardLinks = [...liveLinks, ...githubLinks, ...otherLinks].slice(
+    0,
+    project.detailedContent ? 1 : 2,
+  );
+
   // Handle image click for image projects
   const handleImageClick = useCallback(
     (e) => {
@@ -232,45 +239,30 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
                   />
                 </button>
               )}
-              {liveLinks.map((link, index) => (
+              {cardLinks.map((link, index) => (
                 <a
-                  key={`top-live-${index}`}
+                  key={`top-link-${index}`}
                   className="portfolio__card-action portfolio__card-action--secondary"
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <FaExternalLinkAlt
-                    aria-hidden="true"
-                    className="portfolio__card-action__icon"
-                  />
-                  <span>{link.label || "View Live"}</span>
-                </a>
-              ))}
-              {githubLinks.map((link, index) => (
-                <a
-                  key={`top-gh-${index}`}
-                  className="portfolio__card-action portfolio__card-action--secondary"
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaGithub
-                    aria-hidden="true"
-                    className="portfolio__card-action__icon"
-                  />
-                  <span>{t("portfolio.viewCode")}</span>
-                </a>
-              ))}
-              {otherLinks.map((link, index) => (
-                <a
-                  key={`top-other-${index}`}
-                  className="portfolio__card-action portfolio__card-action--secondary"
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>{link.label}</span>
+                  {link.type === "github" ? (
+                    <FaGithub
+                      aria-hidden="true"
+                      className="portfolio__card-action__icon"
+                    />
+                  ) : link.type === "live" ? (
+                    <FaExternalLinkAlt
+                      aria-hidden="true"
+                      className="portfolio__card-action__icon"
+                    />
+                  ) : null}
+                  <span>
+                    {link.type === "github"
+                      ? t("portfolio.viewCode")
+                      : link.label || "View Live"}
+                  </span>
                 </a>
               ))}
             </div>
@@ -433,10 +425,46 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
               </div>
             )}
 
+            {/* Mini-TOC for long case studies (UX-REVIEW #7) */}
+            {project.detailedContent.sections?.length >= 4 && (
+              <nav className="detail-modal-toc" aria-label="Case study sections">
+                {project.detailedContent.sections.map((section, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    className="detail-modal-toc__chip"
+                    onClick={(e) => {
+                      // Scroll the modal body directly — scrollIntoView is
+                      // unreliable inside this nested scroll container.
+                      const target = document.getElementById(
+                        `cs-${project.id}-${i}`,
+                      );
+                      const scroller = e.currentTarget.closest(".modal-body");
+                      if (!target || !scroller) return;
+                      scroller.scrollTo({
+                        top:
+                          scroller.scrollTop +
+                          target.getBoundingClientRect().top -
+                          scroller.getBoundingClientRect().top -
+                          12,
+                        behavior: "smooth",
+                      });
+                    }}
+                  >
+                    <span aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {section.title.split(" — ")[0]}
+                  </button>
+                ))}
+              </nav>
+            )}
+
             {/* Content Sections */}
             {project.detailedContent.sections?.map((section, sectionIndex) => (
               <div
                 key={sectionIndex}
+                id={`cs-${project.id}-${sectionIndex}`}
                 className="detail-modal-section"
                 style={{ "--cs-i": sectionIndex }}
               >

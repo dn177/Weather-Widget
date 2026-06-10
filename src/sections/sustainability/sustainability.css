@@ -18,3 +18,21 @@
 #sustainability p:nth-of-type(2) {
   font-size: 1.4rem;
 }
+
+/* Readability panel over the photo (UX-REVIEW #6) */
+#sustainability h2 {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+}
+#sustainability .fs-4 {
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+}
+.sustainability__principles {
+  background: rgba(12, 4, 20, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 14px;
+  padding: 2rem clamp(1rem, 4vw, 2.5rem);
+}
+.sustainability__onprem {
+  color: rgba(255, 255, 255, 0.92);
+}

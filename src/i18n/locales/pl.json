@@ -93,7 +93,8 @@
     "climateCommitments": {
       "title": "Zobowiązania klimatyczne:",
       "description": "Definiowanie dokładnego mechanizmu redukcji emisji dwutlenku węgla."
-    }
+    },
+    "onPremNote": "To nie jest tu abstrakcja: mój stack AI działa on-premise na własnym sprzęcie — wydajne modele on-device zamiast ciągłej inferencji w chmurze, a oszczędność danych to decyzja architektoniczna."
   },
   "footer": {
     "home": "Strona główna",

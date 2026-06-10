@@ -39,8 +39,11 @@ function Sustainability() {
         className="sustainability__principles w-100 w-md-75 mx-2 mx-md-auto"
         ref={intersectionSusRef}
       >
-        <p className="h4 mb-5 lh-lg">
+        <p className="h4 mb-4 lh-lg">
           {t('sustainability.mainText')}
+        </p>
+        <p className="h6 mb-5 lh-lg fst-italic sustainability__onprem">
+          {t('sustainability.onPremNote')}
         </p>
         <div className="sustainability__principles-entry mb-4">
           <p className="h2">{t('sustainability.carbonEfficiency.title')}</p>

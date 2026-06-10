@@ -96,7 +96,8 @@
     "climateCommitments": {
       "title": "Klimaverpflichtungen:",
       "description": "Definition des genauen Mechanismus zur Kohlenstoffreduzierung."
-    }
+    },
+    "onPremNote": "Das ist hier nicht abstrakt: Mein AI-Stack läuft on-premise auf eigener Hardware — effiziente On-Device-Modelle statt dauerlaufender Cloud-Inferenz, Datensparsamkeit als Architekturentscheidung."
   },
   "footer": {
     "home": "Startseite",

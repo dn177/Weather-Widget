@@ -96,7 +96,8 @@
     "climateCommitments": {
       "title": "Climate Commitments:",
       "description": "Defining the exact mechanism of carbon reduction."
-    }
+    },
+    "onPremNote": "This is not abstract here: my AI stack runs on-premise on my own hardware — efficient on-device models instead of always-on cloud inference, and data frugality as an architecture decision."
   },
   "footer": {
     "home": "Home",
