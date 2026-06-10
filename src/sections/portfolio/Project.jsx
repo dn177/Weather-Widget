@@ -7,6 +7,29 @@ import AccessibleModal from "../../components/AccessibleModal";
 import useModal from "../../hooks/useModal";
 import "./portfolio.css";
 
+// Performance metrics — number+unit tokens, ranges, and large counts — are
+// wrapped in <span class="cs-metric"> so the data points pop and a content-heavy
+// case study stays scannable. Conservative on purpose: matches measurement units
+// (ms, s, fps, %, KB/MB/px) and comma-grouped counts, so tech names like "Vue 3"
+// or "BGE-M3" are never falsely highlighted.
+const METRIC_RE =
+  /(~?\d[\d.,]*\s*(?:–|—|-|→|to)\s*~?\d[\d.,]*\s*(?:ms|seconds?|fps|s|%)|~?\d[\d.,]*\s*(?:ms|seconds?|fps|%|KB|MB|GB|px)|\d{1,3}(?:,\d{3})+)/gi;
+
+const emphasizeMetrics = (text) => {
+  if (typeof text !== "string") return text;
+  const segments = text.split(METRIC_RE);
+  if (segments.length <= 1) return text;
+  return segments.map((seg, i) =>
+    i % 2 === 1 && seg ? (
+      <span key={i} className="cs-metric">
+        {seg}
+      </span>
+    ) : (
+      seg
+    ),
+  );
+};
+
 const Project = ({ project, scrollBehavior = "contain" }) => {
   const { t } = useTranslation();
   const imageModal = useModal();
@@ -395,7 +418,7 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
                 {t("portfolio.overview") || "Overview"}
               </h3>
               <p className="detail-modal-overview-text">
-                {project.detailedContent.overview}
+                {emphasizeMetrics(project.detailedContent.overview)}
               </p>
             </div>
 
@@ -412,20 +435,53 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
 
             {/* Content Sections */}
             {project.detailedContent.sections?.map((section, sectionIndex) => (
-              <div key={sectionIndex} className="detail-modal-section">
+              <div
+                key={sectionIndex}
+                className="detail-modal-section"
+                style={{ "--cs-i": sectionIndex }}
+              >
                 <h3 className="detail-modal-section-title">{section.title}</h3>
                 <ul className="detail-modal-section-list">
                   {section.items.map((item, itemIndex) => (
-                    <li key={itemIndex}>{item}</li>
+                    <li key={itemIndex}>{emphasizeMetrics(item)}</li>
                   ))}
                 </ul>
+                {section.video && (
+                  <figure className="detail-modal-figure">
+                    <video
+                      className="detail-modal-section-image"
+                      controls
+                      muted
+                      playsInline
+                      loop
+                      preload="none"
+                      poster={section.videoPoster}
+                      aria-label={section.videoAlt || section.title}
+                    >
+                      <source src={section.video} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    {section.videoAlt && (
+                      <figcaption className="detail-modal-figcaption">
+                        {section.videoAlt}
+                      </figcaption>
+                    )}
+                  </figure>
+                )}
                 {section.image && (
-                  <img
-                    src={section.image}
-                    alt={section.imageAlt || section.title}
-                    className="detail-modal-section-image"
-                    loading="lazy"
-                  />
+                  <figure className="detail-modal-figure">
+                    <img
+                      src={section.image}
+                      alt={section.imageAlt || section.title}
+                      className="detail-modal-section-image"
+                      loading="lazy"
+                    />
+                    {section.imageAlt && (
+                      <figcaption className="detail-modal-figcaption">
+                        {section.imageAlt}
+                      </figcaption>
+                    )}
+                  </figure>
                 )}
               </div>
             ))}
