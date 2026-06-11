@@ -26,10 +26,12 @@
 #sustainability .fs-4 {
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
 }
+/* Veil kept deliberately light: the nature photo and the all-seeing eye
+   (Header's .crown, which animates in with this section) are part of the
+   composition — readability comes from the heading shadows, not darkness.
+   (Design call by Daniel, 2026-06-10.) */
 .sustainability__principles {
-  background: rgba(12, 4, 20, 0.55);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(12, 4, 20, 0.25);
   border-radius: 14px;
   padding: 2rem clamp(1rem, 4vw, 2.5rem);
 }
