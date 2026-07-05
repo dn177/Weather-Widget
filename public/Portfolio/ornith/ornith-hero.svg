@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1120"/>
+      <stop offset="1" stop-color="#1e1035"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="440" rx="14" fill="url(#bg)"/>
+  <rect x="0" y="0" width="6" height="440" fill="#a855f7"/>
+
+  <text x="44" y="66" fill="#c084fc" font-size="13" font-weight="700" letter-spacing="2.5">SELF-HOSTED LLM · INFERENCE OPTIMIZATION</text>
+  <text x="42" y="112" fill="#f8fafc" font-size="34" font-weight="800">Optimizing a 397B LLM</text>
+  <text x="42" y="150" fill="#f8fafc" font-size="34" font-weight="800">on a DGX Spark</text>
+  <text x="44" y="182" fill="#94a3b8" font-size="15">Ornith-397B-A17B MoE · 2-bit IQ2_KS (~91 GiB) · GB10 · 128 GB unified</text>
+
+  <!-- headline stat -->
+  <text x="44" y="300" fill="#a855f7" font-size="86" font-weight="800">+31%</text>
+  <text x="250" y="272" fill="#e2e8f0" font-size="20" font-weight="600">coding decode throughput</text>
+  <text x="250" y="300" fill="#cbd5e1" font-size="18">18.5 → 24.3 tok/s &#160;·&#160; +79% vs prior prod</text>
+
+  <!-- sparkline of the measured n_max curve -->
+  <polyline points="430,300.5 467,276.4 504,250 541,250.3 579,272.3 616,307.4 653,339.9 690,360"
+            fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-linejoin="round" opacity="0.9"/>
+  <circle cx="504" cy="250" r="4.5" fill="#c084fc"/>
+
+  <text x="44" y="392" fill="#64748b" font-size="13.5">roofline-driven · speculative-decode tuning · measured, not guessed</text>
+</svg>
