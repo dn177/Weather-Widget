@@ -454,7 +454,7 @@ const Project = ({ project, scrollBehavior = "contain" }) => {
                     <span aria-hidden="true">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    {section.title.split(" — ")[0]}
+                    {section.title.split(": ")[0]}
                   </button>
                 ))}
               </nav>

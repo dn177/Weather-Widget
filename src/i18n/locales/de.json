@@ -16,7 +16,7 @@
   "portfolio": {
     "title": "Projekte",
     "leetcode": "Leetcode",
-    "typewriter": "curl -sv https://www.cdtio33.com/ --stderr - | grep Projekte",
+    "typewriter": "curl -sv https://www.cdtio.com/ --stderr - | grep Projekte",
     "leetcodeSolutionText": "Erste Lösung für Integer-Umkehrung nach 5 Minuten. Weitere Optimierung möglich.",
     "categories": {
       "all": "Alle",
@@ -33,7 +33,7 @@
     "readMore": "Fallstudie lesen",
     "overview": "Überblick",
     "highlights": "Highlights",
-    "closedSourceNotice": "Geschlossener Quellcode — Code unter NDA. Gerne erläutere ich die Implementierung in einem Interview.",
+    "closedSourceNotice": "Geschlossener Quellcode. Der Code steht unter NDA. Gerne erläutere ich die Implementierung in einem Interview.",
     "showEarlier": "Frühere Arbeiten",
     "hideEarlier": "Frühere Arbeiten ausblenden"
   },
@@ -51,7 +51,7 @@
     "realizedModalTitle": "Umgesetzte Website",
     "designModalAlt": "Design-Mockup in voller Größe mit dem ursprünglichen Designkonzept",
     "realizedModalAlt": "Screenshot der umgesetzten Website-Implementierung in voller Größe",
-    "ndaNote": "Kundenprojekte — bewusst unkenntlich gemacht (NDA)"
+    "ndaNote": "Kundenprojekte, bewusst unkenntlich gemacht (NDA)"
   },
   "badges": {
     "title": "Abzeichen",
@@ -97,7 +97,7 @@
       "title": "Klimaverpflichtungen:",
       "description": "Definition des genauen Mechanismus zur Kohlenstoffreduzierung."
     },
-    "onPremNote": "Das ist hier nicht abstrakt: Mein AI-Stack läuft on-premise auf eigener Hardware — effiziente On-Device-Modelle statt dauerlaufender Cloud-Inferenz, Datensparsamkeit als Architekturentscheidung."
+    "onPremNote": "Das ist hier nicht abstrakt: Mein AI-Stack läuft on-premise auf eigener Hardware, mit effizienten On-Device-Modellen statt dauerlaufender Cloud-Inferenz und Datensparsamkeit als Architekturentscheidung."
   },
   "footer": {
     "home": "Startseite",
@@ -393,15 +393,15 @@
       }
     },
     "belay": {
-      "title": "Belay — Ein KI-Tutor, der deinen Live-State liest",
-      "description": "Ein interaktiver KI-Tutor, der dir einen lebendigen, gesandboxten Übungsraum baut, deinen echten Fortschritt über eine strukturierte State-Bridge von innen abliest und dir abgestufte Hilfe gibt, die ausblendet, je besser du wirst. Kein Chatbot, der HTML schreibt — er verortet dich in der Aufgabe anhand des Live-States, bevor er ein Wort sagt. Ein einziger Vue-3-+-TypeScript-Renderer erscheint als Electron-Desktop-App und als Web-Build ohne Installation, läuft gehostet oder vollständig on-device (transformers.js + ONNX Runtime) und öffnet sich auf einen Katalog von 80 Templates in acht Domänen. Auch deine Paper liest er — ziehe einen Rahmen um eine Formel im PDF und pinne die gesetzte Antwort an genau diese Stelle — und ein begrenzter In-App-Browser stellt das echte Tool (ComfyUI, ein Fine-Tuning-Studio auf deiner eigenen Maschine) neben den Tutor.",
+      "title": "Belay: Ein KI-Tutor, der deinen Live-State liest",
+      "description": "Ein interaktiver KI-Tutor, der dir einen lebendigen, gesandboxten Übungsraum baut, deinen echten Fortschritt über eine strukturierte State-Bridge von innen abliest und dir abgestufte Hilfe gibt, die ausblendet, je besser du wirst. Kein Chatbot, der HTML schreibt. Er verortet dich in der Aufgabe anhand des Live-States, bevor er ein Wort sagt. Ein einziger Vue-3-+-TypeScript-Renderer erscheint als Electron-Desktop-App und als Web-Build ohne Installation, läuft gehostet oder vollständig on-device (transformers.js + ONNX Runtime) und öffnet sich auf einen Katalog von 80 Templates in acht Domänen. Auch deine Paper liest er (ziehe einen Rahmen um eine Formel im PDF und pinne die gesetzte Antwort an genau diese Stelle), und ein begrenzter In-App-Browser stellt das echte Tool (ComfyUI, ein Fine-Tuning-Studio auf deiner eigenen Maschine) neben den Tutor.",
       "highlights": {
-        "0": "Liest strukturierten Live-State über eine gesandboxte postMessage-Bridge — schlussfolgert über Fakten, nicht Pixel",
+        "0": "Liest strukturierten Live-State über eine gesandboxte postMessage-Bridge; schlussfolgert über Fakten, nicht Pixel",
         "1": "Abgestufte Hilfe (Hinweis → Ein Schritt → Lösung), verortet im Live-State, mit Unterstützung, die mit deinem Fortschritt ausblendet",
         "2": "Verify-→-Self-Repair-Pipeline: ein kaputter erster Entwurf bekommt seinen eigenen Fehler zurückgespielt und wird regeneriert, bis er besteht",
-        "3": "Läuft gehostet oder vollständig on-device (transformers.js + ONNX Runtime), mit nativer Inferenz isoliert im eigenen Prozess — ein Modell-Crash reißt die App nicht mit",
-        "4": "Host-gerenderter PDF-Reader mit visuellem Q&A pro Region — gesetzte Antworten an die exakte Stelle pinnen, exportieren und re-importieren",
-        "5": "Begrenzter In-App-Browser für deine lokalen KI-Tools — ein selbst gebauter Filter-Proxy schließt DNS-Rebinding, und nicht vertrauenswürdiger Seitentext gelangt nie in persistierten Kontext"
+        "3": "Läuft gehostet oder vollständig on-device (transformers.js + ONNX Runtime), mit nativer Inferenz isoliert im eigenen Prozess. Ein Modell-Crash reißt die App nicht mit",
+        "4": "Host-gerenderter PDF-Reader mit visuellem Q&A pro Region: gesetzte Antworten an die exakte Stelle pinnen, exportieren und re-importieren",
+        "5": "Begrenzter In-App-Browser für deine lokalen KI-Tools. Ein selbst gebauter Filter-Proxy schließt DNS-Rebinding, und nicht vertrauenswürdiger Seitentext gelangt nie in persistierten Kontext"
       },
       "links": {
         "0": "Live-Demo ausprobieren",
@@ -409,38 +409,38 @@
       }
     },
     "selfhelp-rag": {
-      "title": "SelfHelpRAG — On-Premise-RAG mit hybridem Retrieval",
-      "description": "Ein Retrieval-augmentiertes Q&A-System für die Wissensbasis eines Enterprise-ERP. Deutschsprachig, läuft vollständig on-premise gegen ein selbst gehostetes LLM — von Tag eins für DSGVO-sensible Daten konzipiert.",
+      "title": "SelfHelpRAG: On-Premise-RAG mit hybridem Retrieval",
+      "description": "Ein Retrieval-augmentiertes Q&A-System für die Wissensbasis eines Enterprise-ERP. Deutschsprachig, läuft vollständig on-premise gegen ein selbst gehostetes LLM. Von Tag eins für DSGVO-sensible Daten konzipiert.",
       "highlights": {
-        "0": "Hybrides Retrieval — dense (Qdrant) + sparse (BM25) mit Reranking",
+        "0": "Hybrides Retrieval: dense (Qdrant) + sparse (BM25) mit Reranking",
         "1": "Eval-Harness mit gelabeltem Fragenkatalog, bewertet Retrieval + Zitation",
         "2": "Injection-bewusster System-Prompt mit explizitem Verweigerungssatz"
       }
     },
     "nutrition-rag-autonomous": {
-      "title": "Autonome Ernährungs-Wissensbasis — selbstaktualisierendes RAG",
-      "description": "Eine selbstaktualisierende persönliche Ernährungs-Wissensbasis. Ein nächtlicher Daemon durchläuft den Obsidian-Vault, holt neue biomedizinische Literatur von Europe PMC für jedes Lebensmittel/Supplement/jede Substanz im Stack, fasst jedes Abstract über ein lokales Qwen3.6-35B auf vLLM zusammen, schreibt strukturierte Markdown-Notizen, committet und pusht in ein privates Forgejo-Repo — und eine Forgejo Action difft den Push und reindiziert nur die geänderten Dateien in OpenWebUIs BGE-M3-Hybrid-RAG. End-to-end on-premise; keine Dritt-API außer PubMed.",
+      "title": "Autonome Ernährungs-Wissensbasis: selbstaktualisierendes RAG",
+      "description": "Eine selbstaktualisierende persönliche Ernährungs-Wissensbasis. Ein nächtlicher Daemon durchläuft den Obsidian-Vault, holt neue biomedizinische Literatur von Europe PMC für jedes Lebensmittel/Supplement/jede Substanz im Stack, fasst jedes Abstract über ein lokales Qwen3.6-35B auf vLLM zusammen, schreibt strukturierte Markdown-Notizen, committet und pusht in ein privates Forgejo-Repo, und eine Forgejo Action difft den Push und reindiziert nur die geänderten Dateien in OpenWebUIs BGE-M3-Hybrid-RAG. End-to-end on-premise; keine Dritt-API außer PubMed.",
       "highlights": {
-        "0": "Tägliche autonome Research-Ingestion — 113 Themen → Europe PMC → lokales Qwen3.6 → 165 Paper/Lauf",
+        "0": "Tägliche autonome Research-Ingestion: 113 Themen → Europe PMC → lokales Qwen3.6 → 165 Paper/Lauf",
         "1": "Git-getriebener CI-Reindex: Push → Diff → OpenWebUI-KB in ~30 Sekunden aktualisiert",
         "2": "Hybrides Retrieval (BGE-M3 + BM25 + BGE-Reranker) empirisch getunt; 3 / 8 → 6 / 8 Queries über Schwellwert"
       }
     },
     "aichat": {
-      "title": "AIChat — On-Premise-LLM-Chat-Frontend",
+      "title": "AIChat: On-Premise-LLM-Chat-Frontend",
       "description": "Ein selbst gehostetes Chat-Frontend für LM-Studio-Endpoints mit erstklassigem MCP-Tool-Calling. Streaming-SSE mit sauberer State-Trennung zwischen Vor-Tool-Erzählung und finaler Antwort. Läuft über Tailscale auf einem privaten DGX Spark.",
       "highlights": {
         "0": "Streaming-SSE-State-Machine, die Erzählung / Tool-Calls / finale Antwort trennt",
         "1": "Erstklassige MCP-Integration mit Plugin- + ephemeral_mcp-Support",
-        "2": "Läuft über Tailscale auf einem selbst gehosteten DGX Spark — keine Cloud-Abhängigkeit"
+        "2": "Läuft über Tailscale auf einem selbst gehosteten DGX Spark. Keine Cloud-Abhängigkeit"
       }
     },
     "mcp-servers": {
       "title": "MCP-Server-Entwicklung",
       "description": "Zwei eigene Model-Context-Protocol-Server für pixelgenaue Design-Workflows, plus Erweiterungen mehrerer Community-MCP-Server. TypeScript + Node, stdio-Transport, gebaut zum Andocken an MCP-Clients wie Claude Desktop und LM Studio.",
       "highlights": {
-        "0": "design-perfect-mcp — 5 Tools für pixelgenaue Design-Umsetzung",
-        "1": "adobe-xd-mcp — Maße direkt aus .xd-Dateien extrahieren",
+        "0": "design-perfect-mcp: 5 Tools für pixelgenaue Design-Umsetzung",
+        "1": "adobe-xd-mcp: Maße direkt aus .xd-Dateien extrahieren",
         "2": "Mehrere Community-MCP-Server geforkt und erweitert"
       }
     },
@@ -449,7 +449,7 @@
       "description": "Datacenter-Scheduling-Simulator mit Rust-Backend (~2.900 LOC) und Vue-3-Dashboard. Strategy-Pattern-Scheduler, Task-State-Machine, heterogenes Node-Tracking (CPU, Speicher, GPU). REST-API über Tokio + axum.",
       "highlights": {
         "0": "Tokio-+-axum-REST-API mit Strategy-Pattern-Scheduler",
-        "1": "Task-State-Machine mit Rust-Enums modelliert — ungültige Zustände sind nicht darstellbar",
+        "1": "Task-State-Machine mit Rust-Enums modelliert; ungültige Zustände sind nicht darstellbar",
         "2": "Live-Vue-3-Dashboard für Submission, Scheduling und Metriken"
       }
     }

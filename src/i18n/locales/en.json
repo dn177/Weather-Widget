@@ -16,7 +16,7 @@
   "portfolio": {
     "title": "Projects",
     "leetcode": "Leetcode",
-    "typewriter": "curl -sv https://www.cdtio33.com/ --stderr - | grep Projects",
+    "typewriter": "curl -sv https://www.cdtio.com/ --stderr - | grep Projects",
     "leetcodeSolutionText": "Initial solution for integer reversal after 5 minutes. Further optimization possible.",
     "categories": {
       "all": "All",
@@ -33,7 +33,7 @@
     "readMore": "Read Case Study",
     "overview": "Overview",
     "highlights": "Key Features",
-    "closedSourceNotice": "Closed source — code under NDA. Happy to walk through the implementation in an interview.",
+    "closedSourceNotice": "Closed source. The code is under NDA, but I'm happy to walk through the implementation in an interview.",
     "showEarlier": "Earlier work",
     "hideEarlier": "Hide earlier work"
   },
@@ -51,7 +51,7 @@
     "realizedModalTitle": "Realized Website",
     "designModalAlt": "Full size design mockup showing the original design concept",
     "realizedModalAlt": "Full size screenshot of the realized website implementation",
-    "ndaNote": "Client work — intentionally blurred (NDA)"
+    "ndaNote": "Client work, intentionally blurred (NDA)"
   },
   "badges": {
     "title": "Badges",
@@ -97,7 +97,7 @@
       "title": "Climate Commitments:",
       "description": "Defining the exact mechanism of carbon reduction."
     },
-    "onPremNote": "This is not abstract here: my AI stack runs on-premise on my own hardware — efficient on-device models instead of always-on cloud inference, and data frugality as an architecture decision."
+    "onPremNote": "This is not abstract here: my AI stack runs on-premise on my own hardware, with efficient on-device models instead of always-on cloud inference, and data frugality as an architecture decision."
   },
   "footer": {
     "home": "Home",

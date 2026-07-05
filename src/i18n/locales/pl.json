@@ -16,7 +16,7 @@
   "portfolio": {
     "title": "Projekty",
     "leetcode": "Leetcode",
-    "typewriter": "curl -sv https://www.cdtio33.com/ --stderr - | grep Projekty",
+    "typewriter": "curl -sv https://www.cdtio.com/ --stderr - | grep Projekty",
     "leetcodeSolutionText": "Początkowe rozwiązanie odwracania liczby całkowitej po 5 minutach. Możliwa dalsza optymalizacja.",
     "categories": {
       "all": "Wszystkie",
@@ -30,7 +30,7 @@
     },
     "viewCode": "Zobacz Kod",
     "loadMoreProjects": "Załaduj Więcej Projektów",
-    "closedSourceNotice": "Kod zamknięty — objęty NDA. Chętnie omówię implementację podczas rozmowy.",
+    "closedSourceNotice": "Kod zamknięty, objęty NDA. Chętnie omówię implementację podczas rozmowy.",
     "showEarlier": "Wcześniejsze prace",
     "hideEarlier": "Ukryj wcześniejsze prace"
   },
@@ -48,7 +48,7 @@
     "realizedModalTitle": "Zrealizowana Strona",
     "designModalAlt": "Makieta projektu w pełnym rozmiarze pokazująca oryginalną koncepcję",
     "realizedModalAlt": "Zrzut ekranu zrealizowanej strony internetowej w pełnym rozmiarze",
-    "ndaNote": "Prace dla klientów — celowo rozmyte (NDA)"
+    "ndaNote": "Prace dla klientów, celowo rozmyte (NDA)"
   },
   "badges": {
     "title": "Odznaki",
@@ -94,7 +94,7 @@
       "title": "Zobowiązania klimatyczne:",
       "description": "Definiowanie dokładnego mechanizmu redukcji emisji dwutlenku węgla."
     },
-    "onPremNote": "To nie jest tu abstrakcja: mój stack AI działa on-premise na własnym sprzęcie — wydajne modele on-device zamiast ciągłej inferencji w chmurze, a oszczędność danych to decyzja architektoniczna."
+    "onPremNote": "To nie jest tu abstrakcja: mój stack AI działa on-premise na własnym sprzęcie. Wydajne modele on-device zamiast ciągłej inferencji w chmurze, a oszczędność danych to decyzja architektoniczna."
   },
   "footer": {
     "home": "Strona główna",
@@ -390,15 +390,15 @@
       }
     },
     "belay": {
-      "title": "Belay — tutor AI, który czyta twój live state",
-      "description": "Interaktywny tutor AI, który buduje ci żywą, odizolowaną (sandbox) przestrzeń ćwiczeń, odczytuje twój rzeczywisty postęp od środka przez ustrukturyzowany state bridge i podaje stopniowaną pomoc, która wygasa w miarę twoich postępów. To nie chatbot piszący HTML — lokalizuje cię w zadaniu na podstawie live state, zanim powie słowo. Jeden renderer Vue 3 + TypeScript działa jako aplikacja desktopowa Electron i web build bez instalacji, hostowany lub w pełni on-device (transformers.js + ONNX Runtime), i otwiera się na katalog 80 szablonów w ośmiu domenach. Czyta też twoje papery — zaznacz wzór w PDF i przypnij złożoną typograficznie odpowiedź dokładnie w tym miejscu — a ograniczona wbudowana przeglądarka stawia prawdziwe narzędzie (ComfyUI, studio fine-tuningu na twojej maszynie) obok tutora.",
+      "title": "Belay: tutor AI, który czyta twój live state",
+      "description": "Interaktywny tutor AI, który buduje ci żywą, odizolowaną (sandbox) przestrzeń ćwiczeń, odczytuje twój rzeczywisty postęp od środka przez ustrukturyzowany state bridge i podaje stopniowaną pomoc, która wygasa w miarę twoich postępów. To nie chatbot piszący HTML. Lokalizuje cię w zadaniu na podstawie live state, zanim powie słowo. Jeden renderer Vue 3 + TypeScript działa jako aplikacja desktopowa Electron i web build bez instalacji, hostowany lub w pełni on-device (transformers.js + ONNX Runtime), i otwiera się na katalog 80 szablonów w ośmiu domenach. Czyta też twoje papery (zaznacz wzór w PDF i przypnij złożoną typograficznie odpowiedź dokładnie w tym miejscu), a ograniczona wbudowana przeglądarka stawia prawdziwe narzędzie (ComfyUI, studio fine-tuningu na twojej maszynie) obok tutora.",
       "highlights": {
-        "0": "Czyta ustrukturyzowany live state przez odizolowany postMessage bridge — wnioskuje z faktów, nie pikseli",
+        "0": "Czyta ustrukturyzowany live state przez odizolowany postMessage bridge: wnioskuje z faktów, nie pikseli",
         "1": "Stopniowana pomoc (podpowiedź → jeden krok → rozwiązanie) lokalizowana z live state, ze wsparciem wygasającym w miarę postępów",
         "2": "Pipeline verify → self-repair: zepsuty pierwszy szkic dostaje z powrotem własny błąd i jest regenerowany, aż przejdzie",
-        "3": "Działa hostowany lub w pełni on-device (transformers.js + ONNX Runtime), z natywną inferencją odizolowaną we własnym procesie — crash modelu nie zabiera aplikacji",
-        "4": "Renderowany przez hosta czytnik PDF z wizualnym Q&A dla regionu — przypinaj złożone odpowiedzi w dokładnym miejscu, eksportuj i importuj ponownie",
-        "5": "Ograniczona wbudowana przeglądarka dla lokalnych narzędzi AI — własny filtrujący proxy zamyka DNS rebinding, a niezaufany tekst strony nigdy nie trafia do utrwalanego kontekstu"
+        "3": "Działa hostowany lub w pełni on-device (transformers.js + ONNX Runtime), z natywną inferencją odizolowaną we własnym procesie. Crash modelu nie zabiera aplikacji",
+        "4": "Renderowany przez hosta czytnik PDF z wizualnym Q&A dla regionu: przypinaj złożone odpowiedzi w dokładnym miejscu, eksportuj i importuj ponownie",
+        "5": "Ograniczona wbudowana przeglądarka dla lokalnych narzędzi AI. Własny filtrujący proxy zamyka DNS rebinding, a niezaufany tekst strony nigdy nie trafia do utrwalanego kontekstu"
       },
       "links": {
         "0": "Wypróbuj demo na żywo",
@@ -406,38 +406,38 @@
       }
     },
     "selfhelp-rag": {
-      "title": "SelfHelpRAG — RAG on-premise z hybrydowym retrievalem",
-      "description": "System Q&A typu retrieval-augmented dla bazy wiedzy korporacyjnego ERP. Niemieckojęzyczny, działa w całości on-premise na własnym LLM — od pierwszego dnia projektowany pod dane wrażliwe wg RODO.",
+      "title": "SelfHelpRAG: RAG on-premise z hybrydowym retrievalem",
+      "description": "System Q&A typu retrieval-augmented dla bazy wiedzy korporacyjnego ERP. Niemieckojęzyczny, działa w całości on-premise na własnym LLM. Od pierwszego dnia projektowany pod dane wrażliwe wg RODO.",
       "highlights": {
-        "0": "Hybrydowy retrieval — dense (Qdrant) + sparse (BM25) z rerankingiem",
+        "0": "Hybrydowy retrieval: dense (Qdrant) + sparse (BM25) z rerankingiem",
         "1": "Harness ewaluacyjny z oznakowanym zestawem pytań, ocenia retrieval + cytowania",
         "2": "System prompt odporny na injection, z jawnym zdaniem odmowy"
       }
     },
     "nutrition-rag-autonomous": {
-      "title": "Autonomiczna baza wiedzy o żywieniu — samoaktualizujący się RAG",
-      "description": "Samoaktualizująca się osobista baza wiedzy o żywieniu. Nocny daemon przechodzi vault Obsidiana, pobiera nową literaturę biomedyczną z Europe PMC dla każdego produktu/suplementu/związku w stacku, streszcza każdy abstrakt lokalnym Qwen3.6-35B na vLLM, zapisuje ustrukturyzowane notatki Markdown, commituje i pushuje do prywatnego repo Forgejo — a Forgejo Action diffuje push i reindeksuje tylko zmienione pliki do hybrydowego RAG BGE-M3 w OpenWebUI. End-to-end on-premise; żadnego zewnętrznego API poza PubMed.",
+      "title": "Autonomiczna baza wiedzy o żywieniu: samoaktualizujący się RAG",
+      "description": "Samoaktualizująca się osobista baza wiedzy o żywieniu. Nocny daemon przechodzi vault Obsidiana, pobiera nową literaturę biomedyczną z Europe PMC dla każdego produktu/suplementu/związku w stacku, streszcza każdy abstrakt lokalnym Qwen3.6-35B na vLLM, zapisuje ustrukturyzowane notatki Markdown, commituje i pushuje do prywatnego repo Forgejo, a Forgejo Action diffuje push i reindeksuje tylko zmienione pliki do hybrydowego RAG BGE-M3 w OpenWebUI. End-to-end on-premise; żadnego zewnętrznego API poza PubMed.",
       "highlights": {
-        "0": "Codzienna autonomiczna ingestia badań — 113 tematów → Europe PMC → lokalny Qwen3.6 → 165 paperów/przebieg",
+        "0": "Codzienna autonomiczna ingestia badań: 113 tematów → Europe PMC → lokalny Qwen3.6 → 165 paperów/przebieg",
         "1": "Reindeks CI sterowany gitem: push → diff → baza w OpenWebUI zaktualizowana w ~30 sekund",
         "2": "Hybrydowy retrieval (BGE-M3 + BM25 + BGE-reranker) strojony empirycznie; 3 / 8 → 6 / 8 zapytań powyżej progu"
       }
     },
     "aichat": {
-      "title": "AIChat — frontend czatu LLM on-premise",
+      "title": "AIChat: frontend czatu LLM on-premise",
       "description": "Samodzielnie hostowany frontend czatu dla endpointów LM Studio z pełnoprawnym MCP tool-callingiem. Streaming SSE z czystym rozdziałem stanu między narracją przed wywołaniem narzędzia a finalną odpowiedzią. Działa przez Tailscale na prywatnym DGX Spark.",
       "highlights": {
         "0": "State machine dla streamingu SSE rozdzielająca narrację / wywołania narzędzi / finalną odpowiedź",
         "1": "Pełnoprawna integracja MCP z obsługą pluginów + ephemeral_mcp",
-        "2": "Działa przez Tailscale na własnym DGX Spark — zero zależności od chmury"
+        "2": "Działa przez Tailscale na własnym DGX Spark. Zero zależności od chmury"
       }
     },
     "mcp-servers": {
       "title": "Rozwój serwerów MCP",
       "description": "Dwa własne serwery Model Context Protocol do pixel-perfect workflow designu, plus rozszerzenia kilku społecznościowych serwerów MCP. TypeScript + Node, transport stdio, zaprojektowane pod klienty MCP jak Claude Desktop i LM Studio.",
       "highlights": {
-        "0": "design-perfect-mcp — 5 narzędzi do pixel-perfect implementacji designu",
-        "1": "adobe-xd-mcp — wyciąganie wymiarów bezpośrednio z plików .xd",
+        "0": "design-perfect-mcp: 5 narzędzi do pixel-perfect implementacji designu",
+        "1": "adobe-xd-mcp: wyciąganie wymiarów bezpośrednio z plików .xd",
         "2": "Kilka społecznościowych serwerów MCP zforkowanych i rozszerzonych"
       }
     },
@@ -446,7 +446,7 @@
       "description": "Symulator schedulingu datacenter z backendem w Rust (~2 900 LOC) i dashboardem Vue 3. Scheduler we wzorcu strategii, task state machine, śledzenie heterogenicznych node'ów (CPU, pamięć, GPU). REST API na Tokio + axum.",
       "highlights": {
         "0": "REST API na Tokio + axum ze schedulerem we wzorcu strategii",
-        "1": "Task state machine zamodelowana enumami Rusta — stany niedozwolone są niereprezentowalne",
+        "1": "Task state machine zamodelowana enumami Rusta. Stany niedozwolone są niereprezentowalne",
         "2": "Dashboard Vue 3 na żywo: zgłaszanie zadań, scheduling i metryki"
       }
     }

@@ -29,7 +29,28 @@ import p_chart from "./chart.js";
 import p_cdn_manager from "./cdn-manager.js";
 import p_molar from "./molar.js";
 
-export const portfolioProjects = [
+// Each per-project file references its public assets by root-absolute path
+// (e.g. "/Portfolio/belay/belay-hero.webp"). The site deploys under a subpath
+// (Vite base "/react/"), so those paths must be prefixed with the base or they
+// 404 against the bare domain root. Unlike the section components, this data is
+// plain strings that never pass through import.meta.env.BASE_URL — so we apply
+// it here, once, at the single point every project funnels through. External
+// URLs (http…) and anything not starting with "/" are left untouched.
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+const withBase = (value) => {
+  if (typeof value === "string") {
+    return value.startsWith("/") ? BASE + value : value;
+  }
+  if (Array.isArray(value)) return value.map(withBase);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, v]) => [key, withBase(v)])
+    );
+  }
+  return value;
+};
+
+const rawProjects = [
   p_belay,
   p_quantum_performance,
   p_selfhelp_rag,
@@ -59,3 +80,5 @@ export const portfolioProjects = [
   p_cdn_manager,
   p_molar,
 ];
+
+export const portfolioProjects = rawProjects.map(withBase);
