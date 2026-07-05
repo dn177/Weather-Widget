@@ -89,7 +89,7 @@ const Header = () => {
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Link to ${item.link.split("//")[1].split("/")[0]}`}
+              aria-label={item.label}
             >
               {item.icon}
             </a>

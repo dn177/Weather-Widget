@@ -202,6 +202,13 @@ header.image-loaded {
   border-radius: var(--border-radius-3);
 }
 
+.header__social-icon {
+  display: block;
+  width: 0.85em;
+  height: 0.85em;
+  object-fit: contain;
+}
+
 .header__socials a:hover {
   background: var(--color-primary);
   color: var(--color-white);
