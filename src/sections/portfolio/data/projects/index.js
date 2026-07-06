@@ -1,6 +1,7 @@
 // Assembled in display-independent source order; the grid sorts by
 // sortOrder (see ../../portfolioData.js helpers).
 import p_ornith_optimization from "./ornith-optimization.js";
+import p_dflash_retrain from "./dflash-retrain.js";
 import p_belay from "./belay.js";
 import p_quantum_performance from "./quantum-performance.js";
 import p_selfhelp_rag from "./selfhelp-rag.js";
@@ -53,6 +54,7 @@ const withBase = (value) => {
 
 const rawProjects = [
   p_ornith_optimization,
+  p_dflash_retrain,
   p_belay,
   p_quantum_performance,
   p_selfhelp_rag,
