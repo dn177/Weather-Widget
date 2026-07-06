@@ -7,8 +7,11 @@ const project = {
   "title": "Retraining a 397B LLM's Speculative Drafter on a DGX Spark",
   "category": "ml-systems",
   "featured": true,
+  "flagship": true,
   "date": "2026-07-06",
   "sortOrder": -5.5,
+  "summary": "Self-distillation retrain of the speculative-decoding drafter for a self-hosted 397B LLM, captured, trained, gated, and shipped back to production in a day on one DGX Spark: 25.77 tok/s, +6.0% over the tuned baseline.",
+  "stat": { "value": "+6.0%", "label": "decode tok/s after a 12-minute retrain" },
   "media": {
     "type": "image",
     "src": "/Portfolio/dflash-retrain/dflash-hero.svg",
@@ -77,12 +80,12 @@ const project = {
   ],
   "technologies": [
     "PyTorch",
-    "Self-distillation",
-    "DFlash speculative decoding",
     "ik_llama.cpp",
     "CUDA / C++",
-    "Mixed-precision training (fp32/bf16)",
     "GGUF / custom quantization",
+    "Self-distillation",
+    "DFlash speculative decoding",
+    "Mixed-precision training (fp32/bf16)",
     "Multi-agent code review",
     "DGX Spark (GB10)"
   ],

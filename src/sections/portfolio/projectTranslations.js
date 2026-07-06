@@ -1,3 +1,5 @@
+import { firstSentence } from "./portfolioData";
+
 // Helper function to get translated project data
 // Passes the literal field value as defaultValue, so projects with i18n keys
 // resolve via translations while projects with literal strings keep their string.
@@ -15,5 +17,14 @@ export const getTranslatedProject = (project, t) => {
       ...link,
       label: t(`${projectKey}.links.${index}`, { defaultValue: link.label }),
     })),
+    summary: t(`${projectKey}.summary`, {
+      defaultValue: project.summary || firstSentence(project.description),
+    }),
+    ...(project.stat && {
+      stat: {
+        value: project.stat.value,
+        label: t(`${projectKey}.statLabel`, { defaultValue: project.stat.label }),
+      },
+    }),
   };
 };

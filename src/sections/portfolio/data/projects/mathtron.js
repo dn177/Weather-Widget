@@ -17,6 +17,7 @@ const project = {
     "alt": "Mathtron LaTeX editor demonstration"
   },
   "description": "Spontaneously made LaTeX editor aiming to give a good experience for taking math notes and doing math exercises on the Desktop.",
+  "summary": "LaTeX editor for taking math notes and doing math exercises on the desktop.",
   "highlights": [
     "Real-time LaTeX rendering",
     "Intuitive math-focused UI",

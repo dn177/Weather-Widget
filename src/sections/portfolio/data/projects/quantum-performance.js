@@ -8,9 +8,12 @@ const project = {
   "title": "Enterprise CRM Performance Optimization & Vue 3 Migration",
   "category": "web-app",
   "featured": true,
+  "flagship": true,
   "date": "2026-01-01",
   "sortOrder": -4,
   "closedSource": true,
+  "summary": "Migrated a multi-tenant enterprise CRM from Vue 2 to Vue 3, then cut Interaction to Next Paint from up to ~2.3 s to a 16 ms average by profiling Vue reactivity and main-thread JavaScript.",
+  "stat": { "value": "16 ms", "label": "average INP, down from up to ~2.3 s" },
   "media": {
     "type": "image",
     "src": "/Portfolio/QuantumPerformance.jpg",

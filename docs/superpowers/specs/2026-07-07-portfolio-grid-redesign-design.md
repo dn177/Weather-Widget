@@ -28,11 +28,11 @@ Tier assignment from data: `getTier(p) = p.flagship ? 1 : p.featured ? 2 : 3`.
 - **Tier 2, index cards (~10):** remaining `featured: true` projects.
 - **Tier 3, archive ledger (16):** everything else, under an "Earlier work" group heading.
 
-Ordering is flagships-first at all widths, done in the array, never with CSS `order`. The judged-risky breakpoint-dependent DOM interleave (matchMedia hook) is deliberately dropped; DOM order = visual order = tab order everywhere.
+Ordering is a **static interleave** (flagship, index card, flagship, index card, ..., then remaining index cards), done in the array, never with CSS `order` or dense flow, and identical at every width; DOM order = visual order = tab order everywhere. The judged-risky breakpoint-dependent DOM interleave (matchMedia hook) stays dropped. The interleave exists because a span-2 flagship plus the index card after it tiles a 3-column row exactly; plain flagships-first left the third column empty beside every flagship (observed in the live build).
 
 ### Tier 1: flagship card anatomy
 
-Wide horizontal card spanning 2 of 3 grid columns at >=1024px (2 of 2 at 700-1023px, full-width stacked below 700px).
+Wide horizontal card spanning 2 of 3 grid columns at >=1024px with the 40% media pane beside the text. Below 1024px the flagship is a single-column card with the media stacked as a 16:9 band (same as mobile), so 2-column tablet rows tile without voids; the gold top rule and the taller anatomy keep it visually distinct from index cards there.
 
 | Slot | Content | Treatment |
 | --- | --- | --- |

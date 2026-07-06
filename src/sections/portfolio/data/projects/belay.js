@@ -8,8 +8,11 @@ const project = {
   "title": "Belay: An AI Tutor That Reads Your Live State",
   "category": "web-app",
   "featured": true,
+  "flagship": true,
   "date": "2026-06-10",
   "sortOrder": -5,
+  "summary": "An AI tutor that builds a live, sandboxed practice space, reads your real progress over a structured state bridge, and gives graded help that fades as you improve. Ships as an Electron app and a zero-install web build.",
+  "stat": { "value": "80", "label": "practice templates across eight domains" },
   "media": {
     "type": "image",
     "src": "/Portfolio/belay/belay-hero.webp",

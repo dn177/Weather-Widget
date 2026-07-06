@@ -32,7 +32,28 @@
     "loadMoreProjects": "Cargar Más Proyectos",
     "closedSourceNotice": "Código cerrado, bajo NDA. Encantado de explicar la implementación en una entrevista.",
     "showEarlier": "Trabajos anteriores",
-    "hideEarlier": "Ocultar trabajos anteriores"
+    "hideEarlier": "Ocultar trabajos anteriores",
+    "projectCategories": {
+      "web-app": "Aplicación web",
+      "website": "Sitio web",
+      "desktop-app": "Aplicación de escritorio",
+      "mobile-app": "Aplicación móvil",
+      "ml-systems": "Sistemas de ML",
+      "component": "Componente",
+      "demo": "Demo",
+      "portfolio": "Portafolio"
+    },
+    "details": "Detalles",
+    "closedSource": "Código cerrado",
+    "earlierWork": "Trabajos anteriores",
+    "entries_one": "{{count}} entrada",
+    "entries_other": "{{count}} entradas",
+    "showAsCards": "Mostrar como tarjetas",
+    "showAsList": "Mostrar como lista",
+    "viewLive": "Ver en vivo",
+    "readMore": "Leer el caso de estudio",
+    "overview": "Resumen",
+    "highlights": "Puntos clave"
   },
   "contact": {
     "title": "Contáctame",

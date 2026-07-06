@@ -7,8 +7,11 @@ const project = {
   "title": "Optimizing a 397B LLM on a DGX Spark (GB10)",
   "category": "ml-systems",
   "featured": true,
+  "flagship": true,
   "date": "2026-07-05",
   "sortOrder": -6,
+  "summary": "Two measurement-driven experiments on a self-hosted 397B LLM (2-bit MoE) on one DGX Spark: speculative-decoding tuning lifted coding decode throughput by 31%, and a pre-registered steering study returned a clean null.",
+  "stat": { "value": "+31%", "label": "coding decode throughput" },
   "media": {
     "type": "image",
     "src": "/Portfolio/ornith/ornith-hero.svg",
