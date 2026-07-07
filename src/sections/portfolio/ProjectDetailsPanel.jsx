@@ -7,7 +7,7 @@ import emphasizeMetrics from "./emphasizeMetrics";
 // so it survives the archive rows-to-cards view switch); media mounts only
 // after the panel has been opened once (`hasOpened`), so collapsed rows fetch
 // nothing. `showMedia`/`showCategory` let the host card suppress what its
-// face already displays (a companion card's plate is this same image, and
+// face already displays (a plate card's face is this same image, and
 // every index card's kicker already names the category).
 const ProjectDetailsPanel = ({
   project,

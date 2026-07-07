@@ -22,7 +22,7 @@ const Project = ({
   panelId,
   ordinal,
   archiveView = "list",
-  companion = false,
+  plate = false,
   mediaSide = "left",
 }) => {
   const { t } = useTranslation();
@@ -104,7 +104,7 @@ const Project = ({
       {tier === 1 ? (
         <FlagshipCard {...cardProps} mediaSide={mediaSide} />
       ) : tier === 2 || archiveView === "cards" ? (
-        <IndexCard {...cardProps} companion={companion} />
+        <IndexCard {...cardProps} plate={plate} />
       ) : (
         <ArchiveRow {...cardProps} ordinal={ordinal} />
       )}

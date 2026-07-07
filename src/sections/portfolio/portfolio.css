@@ -856,8 +856,7 @@ h4 {
   gap: 1.25rem;
   /* start, not stretch: when a Details panel expands inside one card, its
      row-mates must keep their natural height instead of inflating into
-     half-empty columns. Companion cards opt back into stretch below so
-     they still match their flagship's height while collapsed. */
+     half-empty columns. */
   align-items: start;
 }
 
@@ -868,19 +867,17 @@ h4 {
   }
 }
 
-/* Flagships widen only at 3 columns: the featured order interleaves
-   flagship, index card, flagship, ... so each span-2 flagship plus the
-   index card after it tiles a full 3-column row. At 2 columns flagships
-   stay single-column (stacked media) so rows tile without voids. */
 @media (min-width: 1024px) {
   .pf-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
+}
 
-  .pf-grid .pf-flagship {
-    grid-column: span 2;
-  }
+/* Strict hierarchy: every flagship is a full-width article row above the
+   medium plate-card grid (a no-op in the 1-column layout). */
+.pf-grid .pf-flagship {
+  grid-column: 1 / -1;
 }
 
 /* ---- Card base ---- */
@@ -1075,10 +1072,9 @@ h4 {
   min-width: 0;
 }
 
-@media (min-width: 1024px) {
-  /* The figure floats to the card's outer edge (left card: left; right
-     card: right), keeping the media-outward zig-zag of the grid. Only at
-     span-2 width: below 1024px there is no room to wrap text. */
+@media (min-width: 700px) {
+  /* Full-width article rows have room to wrap from 700px up. The float
+     side alternates per flagship down the page (zig-zag). */
   .pf-flagship__media {
     float: left;
     width: 46%;
@@ -1202,21 +1198,7 @@ h4 {
   object-fit: cover;
 }
 
-/* Companion variant: the card shares a row with a tall flagship, so the
-   stamp grows into a full-bleed media plate and the equal-height slack
-   becomes imagery instead of whitespace. Companions are the one card type
-   that stretches to row height; everything else keeps natural height so an
-   expanded neighbor cannot inflate it. */
-.pf-card.pf-index--plate {
-  align-self: stretch;
-}
-
-/* Companions have flagship-height to spend: let the summary run its full
-   length instead of clamping at two lines. */
-.pf-index--plate .pf-index__summary {
-  -webkit-line-clamp: 4;
-}
-
+/* Medium tier: every plate card leads with a full-bleed media plate. */
 .pf-index__plate {
   margin: -1.2rem -1.25rem 0.35rem;
   aspect-ratio: 16 / 10;
@@ -1234,6 +1216,7 @@ h4 {
 
 .pf-index__plate img {
   width: 100%;
+  max-width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;

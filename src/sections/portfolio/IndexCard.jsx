@@ -5,9 +5,9 @@ import ProjectDetailsPanel from "./ProjectDetailsPanel";
 // Tier 2: uniform vertical index card. Every index card carries a "Details"
 // disclosure that expands the shared ProjectDetailsPanel inline; disclosure
 // state lives in Projects.jsx (keyed by project id) so it survives the
-// archive rows-to-cards view switch. A "companion" card shares its row with
-// a tall flagship, so it trades the 54px stamp for a full media plate: the
-// equal-height slack becomes evidence instead of whitespace.
+// archive rows-to-cards view switch. `plate` renders a full-width media
+// plate on top (the medium tier); without it the card is the compact stamp
+// variant used by the archive's cards view.
 const IndexCard = ({
   project,
   translatedProject,
@@ -17,7 +17,7 @@ const IndexCard = ({
   hasOpened,
   onToggle,
   panelId,
-  companion = false,
+  plate = false,
   ordinal,
 }) => {
   const { t } = useTranslation();
@@ -35,9 +35,9 @@ const IndexCard = ({
 
   return (
     <article
-      className={`pf-card pf-index${companion ? " pf-index--plate" : ""}`}
+      className={`pf-card pf-index${plate ? " pf-index--plate" : ""}`}
     >
-      {companion && (
+      {plate && (
         <div
           className={`pf-index__plate${
             isSvg ? " pf-index__plate--contain" : ""
@@ -50,7 +50,7 @@ const IndexCard = ({
         <span className="pf-kicker pf-kicker--meta">
           {categoryLabel} · {year}
         </span>
-        {!companion && (
+        {!plate && (
           <img
             className="pf-index__stamp"
             src={stampSrc}
@@ -132,7 +132,7 @@ const IndexCard = ({
         panelId={panelId}
         expanded={expanded}
         hasOpened={hasOpened}
-        showMedia={!companion}
+        showMedia={!plate}
         showCategory={false}
       />
     </article>

@@ -58,14 +58,20 @@ describe("portfolioData integrity", () => {
       .map((p) => p.id)
       .sort();
     expect(flagshipIds).toEqual(
-      ["belay", "dflash-retrain", "ornith-optimization", "quantum-performance"].sort()
+      [
+        "belay",
+        "dflash-retrain",
+        "nutrition-rag-autonomous",
+        "ornith-optimization",
+        "quantum-performance",
+      ].sort()
     );
   });
 
-  it("keeps the flagship count between 2 and 4", () => {
+  it("keeps the flagship count between 2 and 6", () => {
     const flagships = portfolioProjects.filter((p) => p.flagship);
     expect(flagships.length).toBeGreaterThanOrEqual(2);
-    expect(flagships.length).toBeLessThanOrEqual(4);
+    expect(flagships.length).toBeLessThanOrEqual(6);
   });
 
   it("gives every flagship a summary (<= 220 chars) and a stat", () => {

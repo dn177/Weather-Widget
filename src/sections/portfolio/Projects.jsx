@@ -17,32 +17,12 @@ const WeatherAppendix = () => {
   );
 };
 
-// Static interleave with an alternating rhythm: each flagship pairs with one
-// index card ("companion") to tile a 3-column row, and every other pair is
-// flipped so flagships zig-zag down the page. Shared by the render order and
-// the catalog numbering so the unfiltered view reads sequentially.
-const interleaveFeatured = (flagships, indexCards) => {
-  const order = [];
-  const companionIds = new Set();
-  const mediaRightIds = new Set();
-  for (let i = 0; i < Math.max(flagships.length, indexCards.length); i++) {
-    const pair = [];
-    if (flagships[i]) pair.push(flagships[i]);
-    if (indexCards[i]) pair.push(indexCards[i]);
-    if (flagships[i] && indexCards[i]) {
-      companionIds.add(indexCards[i].id);
-      if (i % 2 === 1) {
-        pair.reverse();
-        mediaRightIds.add(flagships[i].id);
-      }
-    }
-    order.push(...pair);
-  }
-  return { order, companionIds, mediaRightIds };
-};
-
-// Three tiers; disclosure state lives here, keyed by project id, so the
-// archive rows-to-cards view toggle preserves open panels across the
+// Three tiers in strict importance order (user decision, design round 5):
+// every flagship renders as a full-width article card first, then the
+// medium projects as plate cards in the column grid, then the archive
+// ledger. Flagship poster figures alternate sides down the page.
+// Disclosure state lives here, keyed by project id, so the archive
+// rows-to-cards view toggle preserves open panels across the
 // unmount/remount. `hasOpened` tracks which panels have mounted their media
 // at least once.
 const Projects = ({ projects, activeTech = "all" }) => {
@@ -65,18 +45,16 @@ const Projects = ({ projects, activeTech = "all" }) => {
   }, []);
 
   // Stable catalog ordinals (01-30), computed once from the full unfiltered
-  // DISPLAY order (interleaved featured tiers, then the archive), so the
-  // default view numbers sequentially down the page and the numbers guide
-  // the eye. Filtered views show non-contiguous numbers like a real catalog.
+  // DISPLAY order (flagships, then medium projects, then the archive), so
+  // the default view numbers sequentially down the page. Filtered views
+  // show non-contiguous numbers like a real catalog.
   const ordinals = useMemo(() => {
     const all = [...portfolioProjects].sort(
       (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0),
     );
     const fullOrder = [
-      ...interleaveFeatured(
-        all.filter((p) => getTier(p) === 1),
-        all.filter((p) => getTier(p) === 2),
-      ).order,
+      ...all.filter((p) => getTier(p) === 1),
+      ...all.filter((p) => getTier(p) === 2),
       ...all.filter((p) => getTier(p) === 3),
     ];
     const map = new Map();
@@ -88,13 +66,14 @@ const Projects = ({ projects, activeTech = "all" }) => {
   const indexCards = projects.filter((p) => getTier(p) === 2);
   const archive = projects.filter((p) => getTier(p) === 3);
 
-  // Render order: the same interleave over the (possibly filtered) list.
-  // The array is identical at every width (DOM = visual = tab order); the
-  // flagship left/right flip is CSS-only at >=1024px, and below that
-  // flagships drop to one column with stacked media so 2-column rows tile
-  // cleanly as well.
-  const { order: featuredOrder, companionIds, mediaRightIds } =
-    interleaveFeatured(flagships, indexCards);
+  // Strict importance order: flagships first (each spans the full grid
+  // width), then the medium plate cards. Poster figures alternate sides by
+  // flagship position; the alternation is CSS-only, so DOM = visual = tab
+  // order at every width.
+  const featuredOrder = [...flagships, ...indexCards];
+  const mediaRightIds = new Set(
+    flagships.filter((_, i) => i % 2 === 1).map((p) => p.id),
+  );
 
   const projectProps = (project) => ({
     project,
@@ -113,7 +92,7 @@ const Projects = ({ projects, activeTech = "all" }) => {
             <Project
               key={project.id}
               {...projectProps(project)}
-              companion={companionIds.has(project.id)}
+              plate
               mediaSide={mediaRightIds.has(project.id) ? "right" : "left"}
             />
           ))}

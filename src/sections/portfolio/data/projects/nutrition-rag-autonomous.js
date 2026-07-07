@@ -8,6 +8,7 @@ const project = {
   "title": "Autonomous Nutrition Knowledge Base: Self-Updating RAG",
   "category": "web-app",
   "featured": true,
+  "flagship": true,
   "date": "2026-05-27",
   "sortOrder": -3.9,
   "closedSource": true,
