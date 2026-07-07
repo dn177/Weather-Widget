@@ -152,14 +152,16 @@ function WeatherGrid() {
       ) : (
         <p>{t(errorKey)}</p>
       )}
-      <a
-        className="github-btn"
-        target="_blank"
-        rel="noreferrer"
-        href="https://github.com/dn177/Weather-Widget"
-      >
-        {t("weather.githubButton")}
-      </a>
+      <div className="weather-widget__footer">
+        <a
+          className="github-btn"
+          target="_blank"
+          rel="noreferrer"
+          href="https://github.com/dn177/Weather-Widget"
+        >
+          {t("weather.githubButton")}
+        </a>
+      </div>
     </div>
   );
 }
