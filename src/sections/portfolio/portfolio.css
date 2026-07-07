@@ -283,7 +283,7 @@ h4 {
 }
 
 .modal-dialog.portfolio-detail-modal .modal-header::before {
-  content: "§ Case study";
+  content: "§ " attr(data-kicker);
   position: absolute;
   top: 0.95rem;
   left: 2.3rem;
@@ -455,6 +455,15 @@ h4 {
 .detail-modal-notice-icon {
   flex-shrink: 0;
   color: var(--cs-gold);
+}
+
+/* English-case-study notice: subtle language hint for non-English readers */
+.detail-modal-lang-note {
+  margin: 0 0 1.1rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--cs-gold-soft);
+  opacity: 0.85;
 }
 
 /* Section titles — Fraunces display with a mono numeric index */

@@ -25,7 +25,7 @@ const Project = ({
   plate = false,
   mediaSide = "left",
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const detailModal = useModal();
 
   // Get translated project data
@@ -118,6 +118,7 @@ const Project = ({
           title={translatedProject.title}
           className="portfolio-detail-modal"
           ariaDescribedBy="detail-modal-content"
+          headerKicker={t("portfolio.caseStudyKicker")}
         >
           {(githubLinks.length > 0 || liveLinks.length > 0) && (
             <div
@@ -179,6 +180,13 @@ const Project = ({
                 </span>
               ))}
             </div>
+
+            {/* English case-study notice */}
+            {i18n.resolvedLanguage !== "en" && (
+              <p className="detail-modal-lang-note">
+                {t("portfolio.caseStudyEnglishNote")}
+              </p>
+            )}
 
             {/* Overview Section */}
             <div className="detail-modal-overview">

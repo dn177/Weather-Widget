@@ -16,6 +16,7 @@
   "portfolio": {
     "title": "Projekte",
     "caseStudyKicker": "Fallstudie",
+    "caseStudyEnglishNote": "Fallstudie auf Englisch verfügbar.",
     "inputTitle": "Input",
     "leetcode": "Leetcode",
     "typewriter": "curl -sv https://www.cdtio.com/ --stderr - | grep Projekte",

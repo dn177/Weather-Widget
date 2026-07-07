@@ -17,6 +17,7 @@ const ENGLISH_BY_DESIGN = [];
 // every locale must carry every one of them.
 const REQUIRED_UI_KEYS = [
   "portfolio.caseStudyKicker",
+  "portfolio.caseStudyEnglishNote",
   "portfolio.inputTitle",
   "learning.featured",
   "learning.aiSourcesTitle",

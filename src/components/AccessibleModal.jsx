@@ -26,6 +26,7 @@ const AccessibleModal = ({
   showCloseButton = true,
   ariaDescribedBy,
   initialFocusRef,
+  headerKicker,
 }) => {
   const { t } = useTranslation();
   const [isClosing, setIsClosing] = useState(false);
@@ -125,7 +126,7 @@ const AccessibleModal = ({
         onMouseDown={(e) => e.stopPropagation()}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="modal-header">
+        <div className="modal-header" data-kicker={headerKicker || undefined}>
           <h2 id="modal-title" className="modal-title">
             {title}
           </h2>
