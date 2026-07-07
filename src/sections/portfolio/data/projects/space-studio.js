@@ -17,6 +17,8 @@ const project = {
     "alt": "Space Studio interactive rocket science education platform"
   },
   "description": "An interactive web application for teaching rocket science and engineering concepts through engaging 3D simulations, hands-on learning experiences, and progressive lessons from basic rocketry to advanced orbital mechanics.",
+  "summary": "An interactive web app teaching rocket science through 3D simulations and progressive lessons.",
+  "stat": { "value": "10-50x", "label": "physics speedup via WebAssembly" },
   "highlights": [
     "60+ interactive 3D simulations including rocket launches, orbital mechanics, and black hole physics",
     "WebAssembly-powered physics calculations achieving 10-50x performance improvements",

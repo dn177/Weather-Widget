@@ -35,7 +35,25 @@
     "highlights": "Key Features",
     "closedSourceNotice": "Closed source. The code is under NDA, but I'm happy to walk through the implementation in an interview.",
     "showEarlier": "Earlier work",
-    "hideEarlier": "Hide earlier work"
+    "hideEarlier": "Hide earlier work",
+    "projectCategories": {
+      "web-app": "Web app",
+      "website": "Website",
+      "desktop-app": "Desktop app",
+      "mobile-app": "Mobile app",
+      "ml-systems": "ML systems",
+      "component": "Component",
+      "demo": "Demo",
+      "portfolio": "Portfolio"
+    },
+    "details": "Details",
+    "closedSource": "Closed source",
+    "earlierWork": "Earlier work",
+    "entries_one": "{{count}} entry",
+    "entries_other": "{{count}} entries",
+    "showAsCards": "Show as cards",
+    "showAsList": "Show as list",
+    "viewLive": "View live"
   },
   "contact": {
     "title": "Get In Touch",

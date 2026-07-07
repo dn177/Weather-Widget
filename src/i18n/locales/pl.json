@@ -32,7 +32,30 @@
     "loadMoreProjects": "Załaduj Więcej Projektów",
     "closedSourceNotice": "Kod zamknięty, objęty NDA. Chętnie omówię implementację podczas rozmowy.",
     "showEarlier": "Wcześniejsze prace",
-    "hideEarlier": "Ukryj wcześniejsze prace"
+    "hideEarlier": "Ukryj wcześniejsze prace",
+    "projectCategories": {
+      "web-app": "Aplikacja webowa",
+      "website": "Strona internetowa",
+      "desktop-app": "Aplikacja desktopowa",
+      "mobile-app": "Aplikacja mobilna",
+      "ml-systems": "Systemy ML",
+      "component": "Komponent",
+      "demo": "Demo",
+      "portfolio": "Portfolio"
+    },
+    "details": "Szczegóły",
+    "closedSource": "Kod zamknięty",
+    "earlierWork": "Wcześniejsze prace",
+    "entries_one": "{{count}} pozycja",
+    "entries_few": "{{count}} pozycje",
+    "entries_many": "{{count}} pozycji",
+    "entries_other": "{{count}} pozycji",
+    "showAsCards": "Pokaż jako karty",
+    "showAsList": "Pokaż jako listę",
+    "viewLive": "Zobacz na żywo",
+    "readMore": "Przeczytaj studium przypadku",
+    "overview": "Przegląd",
+    "highlights": "Najważniejsze punkty"
   },
   "contact": {
     "title": "Skontaktuj się",

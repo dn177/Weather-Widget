@@ -17,6 +17,8 @@ const project = {
     "alt": "MCP server development: design-perfect-mcp and adobe-xd-mcp custom tools"
   },
   "description": "Two custom Model Context Protocol servers for pixel-perfect design workflows, plus extensions to several community MCP servers. TypeScript + Node, stdio transport, designed to plug into MCP clients like Claude Desktop and LM Studio.",
+  "summary": "Two custom MCP servers for pixel-perfect design workflows, plus extensions to community MCP servers.",
+  "stat": { "value": "5", "label": "MCP tools for design workflows" },
   "detailedContent": {
     "overview": "MCP exposes capabilities to LLM clients as discoverable tools. These servers cover a niche the community didn't: tight feedback loops between an LLM-generated UI and a target design, letting you measure, compare, overlay, and extract colours, all from inside the model's tool list.",
     "sections": [

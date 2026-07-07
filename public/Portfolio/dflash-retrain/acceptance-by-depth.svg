@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+  <rect width="720" height="440" rx="14" fill="#0f172a"/>
+  <text x="40" y="40" fill="#e2e8f0" font-size="20" font-weight="700">Retraining flattened the acceptance curve</text>
+  <text x="40" y="62" fill="#94a3b8" font-size="13">Block acceptance vs n_max ceiling &#183; Ornith-397B DFlash &#183; 8 held-out coding prompts &#183; greedy</text>
+
+  <!-- gridlines -->
+  <g stroke="#1e293b" stroke-width="1">
+    <line x1="80" y1="100" x2="690" y2="100"/>
+    <line x1="80" y1="152" x2="690" y2="152"/>
+    <line x1="80" y1="204" x2="690" y2="204"/>
+    <line x1="80" y1="256" x2="690" y2="256"/>
+    <line x1="80" y1="308" x2="690" y2="308"/>
+  </g>
+  <g fill="#64748b" font-size="12" text-anchor="end">
+    <text x="70" y="104">0.90</text>
+    <text x="70" y="156">0.80</text>
+    <text x="70" y="208">0.70</text>
+    <text x="70" y="260">0.60</text>
+    <text x="70" y="312">0.50</text>
+    <text x="70" y="364">0.40</text>
+  </g>
+  <text x="30" y="230" fill="#94a3b8" font-size="13" transform="rotate(-90 30 230)" text-anchor="middle">block acceptance</text>
+
+  <!-- axes -->
+  <line x1="80" y1="90" x2="80" y2="360" stroke="#334155" stroke-width="1.5"/>
+  <line x1="80" y1="360" x2="690" y2="360" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- legend (top-right, clear of data) -->
+  <line x1="556" y1="114" x2="586" y2="114" stroke="#a855f7" stroke-width="3"/>
+  <text x="592" y="118" fill="#cbd5e1" font-size="12">retrained (m1)</text>
+  <line x1="556" y1="132" x2="586" y2="132" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="592" y="136" fill="#cbd5e1" font-size="12">shipped</text>
+
+  <!-- shipped drafter: measured n_max=2 point + schematic cliff -->
+  <polyline points="150,168 232,250 300,345" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 4" opacity="0.85"/>
+  <circle cx="150" cy="168" r="5" fill="#f59e0b"/>
+  <text x="132" y="172" fill="#f59e0b" font-size="12" text-anchor="end">0.77</text>
+  <text x="250" y="332" fill="#f59e0b" font-size="12">shipped: collapses past n_max 2</text>
+
+  <!-- retrained drafter -->
+  <polyline points="150,152 280,204 410,235 540,277 670,308" fill="none" stroke="#a855f7" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <g fill="#c084fc">
+    <circle cx="150" cy="152" r="4.5"/><circle cx="410" cy="235" r="4.5"/>
+    <circle cx="540" cy="277" r="4.5"/><circle cx="670" cy="308" r="4.5"/>
+  </g>
+  <g fill="#cbd5e1" font-size="12" text-anchor="middle">
+    <text x="150" y="140">0.80</text>
+    <text x="410" y="225">0.64</text>
+    <text x="540" y="267">0.56</text>
+    <text x="672" y="298">0.50</text>
+  </g>
+
+  <!-- ship point ring at n_max=3 + callout -->
+  <line x1="300" y1="180" x2="284" y2="200" stroke="#7c3aed" stroke-width="1.5"/>
+  <rect x="300" y="150" width="284" height="30" rx="7" fill="#7c3aed"/>
+  <text x="312" y="170" fill="#faf5ff" font-size="13" font-weight="700">q4 ship &#183; n_max=3 &#183; 25.77 tok/s (+6.0%)</text>
+  <circle cx="280" cy="204" r="7" fill="#a855f7" stroke="#e9d5ff" stroke-width="2"/>
+  <text x="280" y="224" fill="#e9d5ff" font-size="12" font-weight="700" text-anchor="middle">0.70</text>
+
+  <!-- x ticks -->
+  <g fill="#64748b" font-size="12" text-anchor="middle">
+    <text x="150" y="380">2</text><text x="280" y="380">3</text><text x="410" y="380">4</text>
+    <text x="540" y="380">5</text><text x="670" y="380">6</text>
+  </g>
+  <text x="385" y="404" fill="#94a3b8" font-size="13" text-anchor="middle">n_max ceiling (draft positions per step)</text>
+
+  <text x="40" y="426" fill="#64748b" font-size="13">The retrained tail clears its verify cost, so the optimum n_max moves out.</text>
+</svg>

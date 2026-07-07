@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" font-family="ui-monospace,'SF Mono','Cascadia Code',Menlo,Consolas,monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12021f"/>
+      <stop offset="1" stop-color="#2a0648"/>
+    </linearGradient>
+    <linearGradient id="rail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dcbf88"/>
+      <stop offset="1" stop-color="#b08c4e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#cba4ff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#cba4ff" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="plate"><rect width="720" height="440" rx="14"/></clipPath>
+  </defs>
+
+  <rect width="720" height="440" rx="14" fill="url(#bg)"/>
+  <rect x="0" y="0" width="6" height="440" fill="url(#rail)" clip-path="url(#plate)"/>
+
+  <!-- soft glow anchoring the headline stat -->
+  <ellipse cx="150" cy="296" rx="180" ry="120" fill="url(#glow)"/>
+
+  <!-- header -->
+  <text x="44" y="60" fill="#c8ac72" font-size="12.5" font-weight="700" letter-spacing="2.4">SELF-HOSTED LLM · SPECULATIVE DECODING</text>
+  <text x="42" y="106" fill="#fdf6ea" font-size="34" font-weight="700" font-family="Georgia,'Times New Roman',ui-serif,serif">Retraining the Drafter</text>
+  <text x="42" y="144" fill="#fdf6ea" font-size="34" font-weight="700" font-family="Georgia,'Times New Roman',ui-serif,serif">of a 397B LLM</text>
+  <text x="44" y="174" fill="#a493a2" font-size="14" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Ornith-397B-A17B · self-distilled, gated &amp; shipped in a day · DGX Spark GB10</text>
+
+  <!-- divider: faint full rule with a bright gold lead-in -->
+  <rect x="44" y="196" width="632" height="1" fill="#c9a96e" opacity="0.18"/>
+  <rect x="44" y="195" width="32" height="2" fill="#c9a96e" opacity="0.9"/>
+
+  <!-- LEFT: headline readout, stacked so nothing collides -->
+  <text x="45" y="232" fill="#c8ac72" font-size="11.5" font-weight="700" letter-spacing="2">CODING DECODE THROUGHPUT</text>
+  <text x="41" y="312" fill="#cba4ff" font-size="70" font-weight="800" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">+6.0%</text>
+  <text x="45" y="344" fill="#f4ead9" font-size="17" font-weight="600">24.3 &#8594; 25.77 tok/s</text>
+  <text x="45" y="368" fill="#b9a7b7" font-size="13">in production, over the tuned baseline</text>
+
+  <!-- RIGHT: framed measurement panel -->
+  <rect x="398" y="214" width="282" height="176" rx="10" fill="#1b0733" stroke="#c9a96e" stroke-opacity="0.16"/>
+  <text x="414" y="237" fill="#c8ac72" font-size="10.5" font-weight="700" letter-spacing="1.2">ACCEPTANCE &#215; DRAFT DEPTH</text>
+
+  <!-- gridlines + baseline -->
+  <line x1="414" y1="292" x2="662" y2="292" stroke="#ffffff" stroke-opacity="0.05"/>
+  <line x1="414" y1="330" x2="662" y2="330" stroke="#ffffff" stroke-opacity="0.05"/>
+  <line x1="414" y1="366" x2="662" y2="366" stroke="#9a86a6" stroke-opacity="0.3"/>
+
+  <!-- the win is the tail: shaded gap between retrained and shipped acceptance -->
+  <path d="M414,266.6 449,268.8 485,272 520,276.4 555,281.8 591,288.2 626,294.7 662,301.2 L662,333.6 626,326 591,317.4 555,306.6 520,294.7 485,282.8 449,273.1 414,266.6 Z" fill="#cba4ff" opacity="0.13"/>
+
+  <!-- shipped drafter: acceptance decays fast with depth -->
+  <polyline points="414,266.6 449,273.1 485,282.8 520,294.7 555,306.6 591,317.4 626,326 662,333.6" fill="none" stroke="#9a86a6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- retrained drafter: acceptance holds deeper -->
+  <polyline points="414,266.6 449,268.8 485,272 520,276.4 555,281.8 591,288.2 626,294.7 662,301.2" fill="none" stroke="#cba4ff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="520" cy="276.4" r="9" fill="#cba4ff" opacity="0.22"/>
+  <circle cx="520" cy="276.4" r="4.5" fill="#efe6ff" stroke="#cba4ff" stroke-width="1.5"/>
+
+  <!-- legend -->
+  <line x1="414" y1="353" x2="428" y2="353" stroke="#cba4ff" stroke-width="3" stroke-linecap="round"/>
+  <text x="433" y="356.5" fill="#c3b0c1" font-size="9">retrained</text>
+  <line x1="503" y1="353" x2="517" y2="353" stroke="#9a86a6" stroke-width="3" stroke-linecap="round"/>
+  <text x="522" y="356.5" fill="#8d7f88" font-size="9">shipped</text>
+
+  <!-- axis ticks: optimum n_max highlighted -->
+  <text x="414" y="382" fill="#8d7f88" font-size="9">1</text>
+  <text x="520" y="382" fill="#f4ead9" font-size="9.5" font-weight="700" text-anchor="middle">4</text>
+  <text x="662" y="382" fill="#8d7f88" font-size="9" text-anchor="end">8</text>
+
+  <!-- footer -->
+  <text x="44" y="420" fill="#8d7f88" font-size="12.5" letter-spacing="0.3">captured from prod · adversarial-reviewed trainer · judged on the online bench</text>
+</svg>

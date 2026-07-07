@@ -50,6 +50,63 @@ describe("portfolioData integrity", () => {
     expect(violations).toEqual([]);
   });
 
+  // Grid redesign contract: tier 1 is a small, deliberate set of flagship
+  // case studies, and every flagship carries the fields its wide card needs.
+  it("marks exactly the intended flagship projects", () => {
+    const flagshipIds = portfolioProjects
+      .filter((p) => p.flagship)
+      .map((p) => p.id)
+      .sort();
+    expect(flagshipIds).toEqual(
+      ["belay", "dflash-retrain", "ornith-optimization", "quantum-performance"].sort()
+    );
+  });
+
+  it("keeps the flagship count between 2 and 4", () => {
+    const flagships = portfolioProjects.filter((p) => p.flagship);
+    expect(flagships.length).toBeGreaterThanOrEqual(2);
+    expect(flagships.length).toBeLessThanOrEqual(4);
+  });
+
+  it("gives every flagship a summary (<= 220 chars) and a stat", () => {
+    const violations = [];
+    for (const project of portfolioProjects.filter((p) => p.flagship)) {
+      if (typeof project.summary !== "string" || !project.summary.trim())
+        violations.push(`${project.id}: missing summary`);
+      else if (project.summary.length > 220)
+        violations.push(
+          `${project.id}: summary is ${project.summary.length} chars (max 220)`
+        );
+      if (
+        typeof project.stat?.value !== "string" ||
+        typeof project.stat?.label !== "string"
+      )
+        violations.push(`${project.id}: missing stat {value, label}`);
+    }
+    expect(violations).toEqual([]);
+  });
+
+  it("keeps non-flagship summaries at one-liner length (<= 110 chars)", () => {
+    const violations = portfolioProjects
+      .filter((p) => !p.flagship && typeof p.summary === "string")
+      .filter((p) => p.summary.length > 110)
+      .map((p) => `${p.id}: summary is ${p.summary.length} chars (max 110)`);
+    expect(violations).toEqual([]);
+  });
+
+  it("gives every stat a non-empty string value and label", () => {
+    const violations = [];
+    for (const project of portfolioProjects) {
+      if (project.stat === undefined) continue;
+      const { value, label } = project.stat ?? {};
+      if (typeof value !== "string" || !value.trim())
+        violations.push(`${project.id}: stat.value is not a non-empty string`);
+      if (typeof label !== "string" || !label.trim())
+        violations.push(`${project.id}: stat.label is not a non-empty string`);
+    }
+    expect(violations).toEqual([]);
+  });
+
   // The classic broken-thumbnail-after-rename bug, caught at test time:
   // every referenced media path must resolve to a real file in public/.
   it("references only media files that exist in public/", () => {

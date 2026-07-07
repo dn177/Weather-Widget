@@ -1,24 +1,21 @@
 #portfolio {
-  background-color: var(--color-light);
-  /* background-color: var(--color-main); */
-}
+  /* Warm paper stage: the cards are warm ivory, so the section ground is
+     the deeper paper tone from the same family. The old --color-light is a
+     cool gray-lavender that made warm cards read as a mismatch. */
+  background-color: var(--ivory-deep);
 
-.portfolio__project--featured {
-  border: 2px solid transparent;
-  background:
-    linear-gradient(white, white) padding-box,
-    linear-gradient(45deg, #7c3aed, #a855f7) border-box;
-  animation: featured-glow 3s ease-in-out infinite;
-}
-
-@keyframes featured-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
-  }
+  /* Grid-scoped tokens (Front Page & Ledger). Every .pf-* rule consumes
+     these; a dark-mode pass for the grid is a one-block follow-up here. */
+  --pf-surface: var(--ivory);
+  --pf-ink: var(--ink);
+  --pf-body: var(--ink-soft);
+  --pf-kicker: var(--purple-700);
+  --pf-accent: var(--purple-600);
+  --pf-gold: var(--gold-500);
+  --pf-deep: var(--purple-950);
+  /* rgba fallback first, color-mix where supported */
+  --pf-line: rgba(201, 169, 110, 0.35);
+  --pf-line: color-mix(in srgb, var(--gold-500) 35%, transparent);
 }
 
 #portfolio > h2 {
@@ -40,33 +37,6 @@
   flex-wrap: wrap;
 }
 
-video {
-  object-fit: contain !important;
-}
-
-.portfolio__projects .weather-widget {
-  grid-column: 1 / -1 !important; /* Span all columns */
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  justify-self: stretch;
-}
-
-/* Weather widget in few projects scenario */
-.portfolio__projects--few .weather-widget {
-  grid-column: auto; /* Normal grid behavior when few projects */
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.fullscreen .image-gallery-slide img {
-  height: 100vh;
-}
-
-.fullscreen {
-  height: 100vh;
-}
-
 h4 {
   font-size: 1.1rem;
 }
@@ -80,194 +50,6 @@ h4 {
   transform: translateY(0);
 }
 
-.portfolio__projects {
-  margin-top: 3rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: min-content;
-  gap: 3rem;
-  align-items: start;
-}
-
-/* 4 columns on wide monitors */
-@media screen and (min-width: 1400px) {
-  .portfolio__projects {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Container constraint for better layout on large screens */
-.portfolio__container .portfolio__projects {
-  /* Removed max-width constraint to allow full width for 3+ projects */
-  margin-left: auto;
-  margin-right: auto;
-}
-/* Special layout for when there are very few projects (1-2) */
-.portfolio__projects--few {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
-  max-width: 900px;
-  justify-content: center;
-}
-
-/* Single project centering */
-.portfolio__projects--few .card.portfolio__project:only-child {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.portfolio__projects .card {
-  height: 100%;
-  max-height: 450px;
-  overflow-y: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.portfolio__projects .card:hover {
-  overflow-y: auto;
-  overscroll-behavior: var(--overscroll-behavior, contain);
-}
-
-/* Custom scrollbar for individual project cards */
-.portfolio__projects .card::-webkit-scrollbar {
-  width: 6px;
-}
-
-.portfolio__projects .card::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.portfolio__projects .card::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: 10px;
-}
-
-.portfolio__projects .card::-webkit-scrollbar-thumb:hover {
-  background: #7c3aed;
-}
-
-.portfolio__project p {
-  margin-top: 0.5rem;
-}
-
-.card.portfolio__project {
-  display: flex;
-  flex-direction: column;
-}
-
-.portfolio__project-title {
-  font-size: 1.5rem;
-  margin-top: 2rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.portfolio__project-desc {
-  white-space: pre-wrap;
-}
-
-.portfolio__project-desc > p {
-  margin-bottom: 0.5rem !important;
-}
-
-.portfolio__link {
-  color: black;
-  text-decoration: none;
-  font-style: italic;
-}
-
-/* .portfolio__categories {
-  overflow: hidden;
-} */
-
-.card.portfolio__project:not(:hover) {
-  animation: animateProject 800ms ease-in forwards;
-}
-
-.leetcode__solution {
-  position: relative;
-}
-
-.leetcode__solution-text {
-  position: absolute;
-  font-size: 20px;
-  color: white;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 0.5rem;
-  border-radius: 4px;
-  z-index: 1;
-}
-
-/* .portfolio__project-title:hover {
-  display: none;
-}
-
-.portfolio__project-desc:hover {
-  display: none;
-} */
-
-@keyframes animateProject {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.portfolio__project-image {
-  width: 100%;
-  height: fit-content;
-  min-height: 7rem;
-  border-radius: var(--border-radius-2);
-  margin-bottom: 1.5rem;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.portfolio__project-text {
-  flex: 1 1 0%;
-  overflow: visible;
-}
-
-.portfolio__project-cta {
-  display: flex;
-  gap: 1rem;
-}
-
-.portfolio__project:hover .btn.sm {
-  border-color: var(--color-white);
-}
-
-.portfolio__project:hover .btn.sm.primary {
-  background: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-}
-
-/* MEDIA QUERIES (tablets) */
-@media screen and (max-width: 1024px) {
-  .portfolio__projects {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  /* Ensure proper centering on tablets for few projects */
-  .portfolio__projects--few {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 380px));
-    max-width: 800px;
-    justify-content: center;
-  }
-
-  .card.portfoliovideo:hover {
-    position: initial;
-    transform: none;
-  }
-}
-
 /* MEDIA QUERIES (phones) */
 @media screen and (max-width: 600px) {
   .portfolio__categories {
@@ -277,94 +59,6 @@ h4 {
   .btn.cat__btn {
     padding: 0.7rem 0.8rem;
   }
-
-  .portfolio__projects {
-    /* Single column on mobile */
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    max-width: 100%;
-  }
-
-  /* On mobile, few projects look the same as many */
-  .portfolio__projects--few {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-  }
-
-  .portfolio__projects--few .card.portfolio__project:only-child {
-    max-width: 100%;
-  }
-
-  /* Thinner scrollbar on mobile */
-  .portfolio__projects .card::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  .weather-widget {
-    grid-column: 1;
-    max-width: 100%;
-  }
-
-  .portfolio__projects--few .weather-widget {
-    margin: 0;
-  }
-
-  .card.portfoliovideo:hover {
-    position: initial;
-    transform: none;
-  }
-
-  .card.portfoliovideo:hover .portfolio__project-title {
-    display: initial;
-  }
-
-  .card.portfoliovideo:hover .portfolio__project-desc {
-    display: initial;
-  }
-
-  .leetcode__solution::after {
-    font-size: 12px;
-  }
-}
-
-/* Load More Button */
-.portfolio__load-more {
-  margin-top: 3rem;
-  text-align: center;
-}
-
-.portfolio__load-more .btn {
-  padding: 0.75rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-
-.portfolio__load-more .portfolio__load-more-btn {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  background-color: transparent;
-}
-
-.portfolio__load-more .portfolio__load-more-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(123, 33, 159, 0.2);
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border-color: var(--color-primary);
-}
-
-.portfolio__load-more .portfolio__load-more-btn:focus {
-  box-shadow: 0 0 0 0.25rem rgba(123, 33, 159, 0.25);
-  border-color: var(--color-primary);
-}
-
-.portfolio__load-more .portfolio__load-more-btn:active {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-white);
 }
 
 /* Tech filter buttons — editorial mono with gold underline on active */
@@ -377,8 +71,9 @@ h4 {
   padding: 0.7rem 1.4rem;
   border: none;
   background: transparent;
+  /* Contrast fix (audited failure): full opacity, soft ink color */
   color: var(--ink-soft, #3a2748);
-  opacity: 0.6;
+  opacity: 1;
   cursor: pointer;
   position: relative;
   transition:
@@ -436,124 +131,12 @@ h4 {
   height: 2px;
 }
 
-/* Tech stack pills in project cards */
-.portfolio__tech-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  justify-content: center;
-}
-
-.tech-pill {
-  display: inline-block;
-  background-color: #f3f4f6;
-  color: #374151;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  border: 1px solid #e5e7eb;
-}
-
-.tech-pill:hover {
-  background-color: #e5e7eb;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Project highlights */
-.portfolio__highlights {
-  list-style: none;
-  padding-left: 0;
-  margin: 1rem 0;
-}
-
-.portfolio__highlights li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-  color: #6b7280;
-}
-
-.portfolio__highlights li:before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: var(--color-primary);
-  font-weight: bold;
-}
-
-/* Project links */
-.portfolio__project-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
-  justify-content: center;
-}
-
-.portfolio__project-links .portfolio__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  color: var(--color-primary);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  border-bottom: 2px solid transparent;
-}
-
-.portfolio__project-links .portfolio__link:hover {
-  border-bottom-color: var(--color-primary);
-  transform: translateY(-1px);
-}
-
-/* Remove old HTML from description */
-.portfolio__project-desc {
-  white-space: normal;
-  line-height: 1.6;
-  color: #4b5563;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
 /* Responsive adjustments */
 @media screen and (max-width: 600px) {
   .btn.tech__btn {
     padding: 0.6rem 1.25rem;
     font-size: 0.9rem;
   }
-
-  .tech-pill {
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
-  }
-
-  .portfolio__tech-stack {
-    gap: 0.3rem;
-  }
-}
-
-/* Updated purple tech pills */
-.tech-pill {
-  display: inline-block;
-  background-color: #9333ea !important;
-  color: white !important;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  border: 1px solid #7c3aed !important;
-}
-
-.tech-pill:hover {
-  background-color: #7c3aed !important;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(147, 51, 234, 0.3);
 }
 
 /* GitHub link section */
@@ -657,369 +240,6 @@ h4 {
 .portfolio__live-icon {
   font-size: 1rem !important;
   color: currentColor !important;
-}
-
-/* Simple featured project highlighting */
-.portfolio__project--featured {
-  border: 3px solid var(--color-primary) !important;
-}
-
-/* Featured project highlighting with gradient border */
-.portfolio__project.portfolio__project--featured {
-  position: relative;
-  border: 3px solid transparent !important;
-  background:
-    linear-gradient(white, white) padding-box,
-    linear-gradient(135deg, #9333ea, #a855f7, #9333ea) border-box;
-  box-shadow: 0 4px 20px rgba(147, 51, 234, 0.2);
-  transform: scale(1.01);
-  transition: all 0.3s ease;
-}
-
-/* Hover effect for featured projects */
-.portfolio__project.portfolio__project--featured:hover {
-  box-shadow: 0 8px 30px rgba(147, 51, 234, 0.3);
-  transform: scale(1.02);
-}
-
-/* Alternative gradient options (commented out) */
-/* 
-Option 2 - Diagonal gradient:
-background: linear-gradient(white, white) padding-box,
-            linear-gradient(45deg, #9333ea, #c084fc, #9333ea) border-box;
-
-Option 3 - Three color gradient:
-background: linear-gradient(white, white) padding-box,
-            linear-gradient(120deg, #7c3aed, #a855f7, #c084fc) border-box;
-*/
-
-/* ========================================
-   Image-Only Project Styles
-   ======================================== */
-
-/* Clickable image indicator for image-only projects */
-.portfolio__clickable-image {
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.portfolio__clickable-image::after {
-  content: "🔍";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  font-size: 3rem;
-  background: rgba(123, 33, 159, 0.9);
-  color: white;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.portfolio__clickable-image:hover::after {
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.portfolio__clickable-image img {
-  transition:
-    transform 0.3s ease,
-    filter 0.3s ease;
-}
-
-.portfolio__clickable-image:hover img {
-  transform: scale(1.05);
-  filter: brightness(0.9);
-}
-
-/* Focus styles for keyboard navigation */
-.portfolio__clickable-image:focus-visible {
-  outline: 3px solid #9333ea;
-  outline-offset: 2px;
-}
-
-/* ========================================
-   Portfolio Modal Styles
-   ======================================== */
-
-/* Modal content layout for portfolio projects */
-.portfolio-image-modal .modal-body {
-  padding: 2rem;
-  background: #f9fafb;
-}
-
-.portfolio-image-modal .modal-image {
-  width: 100%;
-  height: auto;
-  max-height: 60vh;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-}
-
-.modal-project-info {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.modal-description {
-  font-size: 1.125rem;
-  line-height: 1.75;
-  color: #374151;
-  margin-bottom: 2rem;
-}
-
-.modal-highlights {
-  margin-bottom: 2rem;
-}
-
-.modal-highlights h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #111827;
-  margin-bottom: 1rem;
-}
-
-.modal-highlights ul {
-  list-style: none;
-  padding: 0;
-}
-
-.modal-highlights li {
-  position: relative;
-  padding-left: 1.75rem;
-  margin-bottom: 0.75rem;
-  color: #4b5563;
-  line-height: 1.6;
-}
-
-.modal-highlights li::before {
-  content: "✨";
-  position: absolute;
-  left: 0;
-  color: #9333ea;
-}
-
-.modal-links {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid #e5e7eb;
-}
-
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  .portfolio-image-modal .modal-body {
-    background: #1f2937;
-  }
-
-  .modal-description {
-    color: #e5e7eb;
-  }
-
-  .modal-highlights h3 {
-    color: #f3f4f6;
-  }
-
-  .modal-highlights li {
-    color: #d1d5db;
-  }
-
-  .modal-links {
-    border-top-color: #374151;
-  }
-}
-
-/* Mobile adjustments */
-@media (max-width: 600px) {
-  .portfolio__clickable-image::after {
-    width: 60px;
-    height: 60px;
-    font-size: 2rem;
-  }
-
-  .portfolio-image-modal .modal-body {
-    padding: 1rem;
-  }
-
-  .modal-project-info {
-    padding: 0;
-  }
-
-  .modal-description {
-    font-size: 1rem;
-  }
-}
-
-/* Video styles for clickable projects */
-.portfolio__clickable-image video {
-  transition:
-    transform 0.3s ease,
-    filter 0.3s ease;
-  width: 100%;
-  height: auto;
-}
-
-.portfolio__clickable-image:hover video {
-  transform: scale(1.05);
-  filter: brightness(0.9);
-}
-
-/* Adjust spacing between image and title */
-.portfolio__project-title {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-}
-
-/* ========================================
-   Card top action row — compact CTAs placed
-   directly under the title so they don't get
-   missed at the bottom of the card.
-   ======================================== */
-
-.portfolio__card-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  justify-content: center;
-  margin: 0 0 0.875rem;
-}
-
-.portfolio__card-action {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  line-height: 1.2;
-  text-decoration: none;
-  cursor: pointer;
-  border: 1px solid transparent;
-  transition:
-    background 0.15s ease,
-    color 0.15s ease,
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.portfolio__card-action__icon {
-  font-size: 0.85rem;
-  flex-shrink: 0;
-}
-
-.portfolio__card-action--primary {
-  /* Visually distinct from .tech-pill (bright solid #9333ea) which sits
-     directly below: deeper gradient + button silhouette + chevron. */
-  background: linear-gradient(135deg, #581c87, #7c3aed);
-  color: #ffffff;
-  border-radius: 8px;
-  padding: 0.35rem 0.85rem;
-  box-shadow: 0 2px 6px rgba(76, 29, 149, 0.35);
-}
-
-.portfolio__card-action--primary:hover,
-.portfolio__card-action--primary:focus-visible {
-  background: linear-gradient(135deg, #4c1d95, #6d28d9);
-  color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(76, 29, 149, 0.45);
-  text-decoration: none;
-}
-
-.portfolio__card-action__chevron {
-  font-size: 0.7rem;
-  margin-left: 0.1rem;
-  opacity: 0.85;
-  transition: transform 0.18s ease;
-  flex-shrink: 0;
-}
-
-.portfolio__card-action--primary:hover .portfolio__card-action__chevron,
-.portfolio__card-action--primary:focus-visible .portfolio__card-action__chevron {
-  transform: translateX(2px);
-}
-
-.portfolio__card-action--secondary {
-  background: transparent;
-  color: #7c3aed;
-  border-color: rgba(124, 58, 237, 0.4);
-}
-
-.portfolio__card-action--secondary:hover,
-.portfolio__card-action--secondary:focus-visible {
-  background: rgba(124, 58, 237, 0.08);
-  color: #6d28d9;
-  transform: translateY(-1px);
-  text-decoration: none;
-}
-
-.portfolio__card-action:focus-visible {
-  outline: 2px solid #9333ea;
-  outline-offset: 2px;
-}
-
-@media (prefers-color-scheme: dark) {
-  .portfolio__card-action--secondary {
-    color: #c4b5fd;
-    border-color: rgba(196, 181, 253, 0.4);
-  }
-
-  .portfolio__card-action--secondary:hover,
-  .portfolio__card-action--secondary:focus-visible {
-    background: rgba(196, 181, 253, 0.12);
-    color: #ddd6fe;
-  }
-}
-
-/* ========================================
-   Read More / Case Study Button Styles
-   ======================================== */
-
-.portfolio__read-more-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #9333ea, #7c3aed);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
-  width: 100%;
-}
-
-.portfolio__read-more-btn:hover {
-  background: linear-gradient(135deg, #7c3aed, #6b21a8);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(147, 51, 234, 0.4);
-}
-
-.portfolio__read-more-btn:focus-visible {
-  outline: 3px solid #9333ea;
-  outline-offset: 2px;
-}
-
-.portfolio__read-more-btn:active {
-  transform: translateY(0);
-}
-
-.portfolio__read-more-icon {
-  font-size: 1rem;
 }
 
 /* ========================================
@@ -1165,6 +385,9 @@ background: linear-gradient(white, white) padding-box,
 }
 
 .detail-modal-tech .tech-pill--modal {
+  /* Box properties folded in from the deleted base .tech-pill */
+  display: inline-block;
+  transition: all 0.2s ease;
   background: transparent !important;
   color: var(--cs-ink) !important;
   border: 1px solid var(--cs-gold-soft) !important;
@@ -1535,11 +758,6 @@ background: linear-gradient(white, white) padding-box,
     font-size: 0.95rem;
   }
 
-  .portfolio__read-more-btn {
-    padding: 0.65rem 1.25rem;
-    font-size: 0.9rem;
-  }
-
   .detail-modal-actions {
     padding: 0.5rem 1rem;
     gap: 0.4rem;
@@ -1581,17 +799,811 @@ background: linear-gradient(white, white) padding-box,
   color: var(--cs-ink);
 }
 
-/* Uniform card media + clamped titles (UX-REVIEW #8) */
-.portfolio__project-image img,
-.portfolio__project-image video {
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+/* ════════════════════════════════════════════════════════
+   Front Page & Ledger: the .pf-* grid layer
+   Tokens are scoped on #portfolio (top of this file). Two gold hairline
+   moments per card at most; no internal scrolling anywhere in the grid;
+   no infinite animations.
+   ════════════════════════════════════════════════════════ */
+
+/* Entry-count colophon near the filters */
+/* Entry colophon: opens the catalog the way the archive's "§ Earlier work"
+   rule closes it, so the section has a printed anchor at both ends. */
+.pf-count {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 1.5rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pf-body);
+  white-space: nowrap;
+}
+
+.pf-count::before,
+.pf-count::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--pf-line);
+}
+
+.pf-count .pf-count__mark {
+  color: var(--pf-gold);
+}
+
+/* Catalog ordinal before featured titles: the same gold mono index the
+   case-study modal puts on its section titles and the archive ledger puts
+   on its rows, so one numbering runs through the whole catalog. */
+.pf-ordinal {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--pf-gold);
+  margin-right: 0.6rem;
+  vertical-align: 0.35em;
+}
+
+/* ---- Grid ---- */
+
+.pf-grid {
+  margin-top: 2.25rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  /* start, not stretch: when a Details panel expands inside one card, its
+     row-mates must keep their natural height instead of inflating into
+     half-empty columns. Companion cards opt back into stretch below so
+     they still match their flagship's height while collapsed. */
+  align-items: start;
+}
+
+@media (min-width: 700px) {
+  .pf-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Flagships widen only at 3 columns: the featured order interleaves
+   flagship, index card, flagship, ... so each span-2 flagship plus the
+   index card after it tiles a full 3-column row. At 2 columns flagships
+   stay single-column (stacked media) so rows tile without voids. */
+@media (min-width: 1024px) {
+  .pf-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .pf-grid .pf-flagship {
+    grid-column: span 2;
+  }
+}
+
+/* ---- Card base ---- */
+
+.pf-card {
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-line);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(39, 21, 39, 0.04);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Kickers: mono editorial labels */
+.pf-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.pf-kicker--case {
+  color: var(--pf-kicker);
+}
+
+.pf-kicker--meta {
+  color: var(--pf-body);
+}
+
+.pf-kicker-rail {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons and badges */
+.pf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+.pf-btn--primary {
+  background: var(--pf-kicker);
+  color: var(--ivory, #f7f1e6);
+}
+
+.pf-btn--primary:hover,
+.pf-btn--primary:focus-visible {
+  background: var(--pf-accent);
+  color: var(--ivory, #f7f1e6);
+  text-decoration: none;
+}
+
+.pf-btn--ghost {
+  color: var(--pf-kicker);
+  border-color: var(--pf-line);
+}
+
+.pf-btn--ghost:hover,
+.pf-btn--ghost:focus-visible {
+  color: var(--pf-accent);
+  border-color: var(--pf-gold);
+  text-decoration: none;
+}
+
+.pf-btn--disclosure {
+  color: var(--pf-kicker);
+  border-color: var(--pf-line);
+}
+
+.pf-btn--disclosure:hover,
+.pf-btn--disclosure:focus-visible {
+  color: var(--pf-accent);
+  border-color: var(--pf-gold);
+}
+
+.pf-btn:focus-visible,
+.pf-row__toggle:focus-visible,
+.pf-archive__viewtoggle:focus-visible {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 2px;
+}
+
+.pf-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--pf-line);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-700, #8a6f3a);
+}
+
+/* Chevron: rotation only when motion is welcome */
+.pf-chevron {
+  font-size: 0.7em;
+  flex-shrink: 0;
+}
+
+.pf-chevron--open {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pf-chevron {
+    transition: transform 0.2s ease;
+  }
+}
+
+/* Mono dot-separated tech line */
+.pf-techline {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--pf-body);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Footer rail: hairline top rule, pinned to the card bottom */
+.pf-footer {
+  margin-top: auto;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--pf-line);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+/* ---- Tier 1: flagship feature card ---- */
+
+.pf-flagship {
+  /* Structural featured marker: the wide span + a static gold top border */
+  border-top: 3px solid var(--pf-gold);
+  overflow: hidden;
+}
+
+/* The poster is a floated figure in article flow (no dedicated media
+   column): the title runs full width, the standfirst and findings wrap
+   around the figure, and the footer clears. The SVG posters carry their
+   own dark plate, so no bed is painted behind them. */
+.pf-flagship__media {
+  margin: 0.35rem 0 1rem;
+}
+
+.pf-flagship__media img {
   width: 100%;
   height: auto;
+  display: block;
+  /* Raster screenshots get a framed 16:10 plate on the deep bed */
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border: 1px solid var(--pf-line);
+  border-radius: 8px;
+  background: var(--pf-deep);
 }
-.portfolio__project-title {
+
+/* SVG posters bring their own dark rounded plate: no frame, no crop */
+.pf-flagship__media--contain img {
+  aspect-ratio: auto;
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.pf-flagship__body {
+  /* Block flow, not flex: floats only wrap text in normal flow */
+  padding: 1.4rem 1.5rem 1.5rem;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  /* The figure floats to the card's outer edge (left card: left; right
+     card: right), keeping the media-outward zig-zag of the grid. Only at
+     span-2 width: below 1024px there is no room to wrap text. */
+  .pf-flagship__media {
+    float: left;
+    width: 46%;
+    margin: 0.4rem 1.5rem 0.75rem 0;
+  }
+
+  .pf-flagship--reverse .pf-flagship__media {
+    float: right;
+    margin: 0.4rem 0 0.75rem 1.5rem;
+  }
+}
+
+.pf-flagship__title {
+  margin: 0.55rem 0 0.7rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.7rem);
+  line-height: 1.15;
+  text-align: left;
+  color: var(--pf-ink);
+}
+
+.pf-flagship__summary {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--pf-body);
+}
+
+/* Findings: the modal's bullet grammar, clamped to three lines each */
+.pf-findings {
+  list-style: none;
+  margin: 0 0 0.95rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.pf-findings li {
+  position: relative;
+  padding-left: 1.3rem;
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--pf-body);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pf-findings li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  font-size: 0.55rem;
+  line-height: 2.2;
+  color: var(--pf-gold);
+}
+
+/* Key figure: 2px gold left rule */
+.pf-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin: 0 0 0.5rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--pf-gold);
+}
+
+/* In article flow the footer clears the floated figure and spaces itself
+   (margin-top: auto only works inside the index cards' flex column). */
+.pf-flagship .pf-footer {
+  clear: both;
+  margin-top: 1rem;
+}
+
+.pf-stat__value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--pf-accent);
+}
+
+.pf-stat .pf-stat__label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-body);
+}
+
+/* ---- Tier 2: index card ---- */
+
+.pf-index {
+  padding: 1.2rem 1.25rem 1.25rem;
+  gap: 0.55rem;
+}
+
+.pf-index__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.pf-index__head .pf-kicker--meta {
+  padding-top: 0.35rem;
+}
+
+.pf-index__stamp {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+  border-radius: 4px;
+  background: var(--pf-deep);
+  object-fit: cover;
+}
+
+/* Companion variant: the card shares a row with a tall flagship, so the
+   stamp grows into a full-bleed media plate and the equal-height slack
+   becomes imagery instead of whitespace. Companions are the one card type
+   that stretches to row height; everything else keeps natural height so an
+   expanded neighbor cannot inflate it. */
+.pf-card.pf-index--plate {
+  align-self: stretch;
+}
+
+/* Companions have flagship-height to spend: let the summary run its full
+   length instead of clamping at two lines. */
+.pf-index--plate .pf-index__summary {
+  -webkit-line-clamp: 4;
+}
+
+.pf-index__plate {
+  margin: -1.2rem -1.25rem 0.35rem;
+  aspect-ratio: 16 / 10;
+  background:
+    radial-gradient(
+      120% 90% at 12% 0%,
+      rgba(201, 169, 110, 0.12),
+      transparent 62%
+    ),
+    var(--pf-deep);
+  border-bottom: 1px solid var(--pf-line);
+  border-radius: 9px 9px 0 0;
+  overflow: hidden;
+}
+
+.pf-index__plate img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pf-index__plate--contain img {
+  object-fit: contain;
+  padding: 0.75rem;
+}
+
+.pf-index__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.12rem;
+  line-height: 1.25;
+  text-align: left;
+  color: var(--pf-ink);
+}
+
+.pf-index__summary {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--pf-body);
+  /* Two-line reserve keeps start-aligned rows close to even when one
+     summary runs a single line. */
+  min-height: calc(2 * 1.55em);
+  /* Safety clamp only; titles are never clamped */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.pf-index__stat {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--pf-body);
+}
+
+.pf-index__stat .pf-stat__value {
+  font-size: 0.85rem;
+}
+
+/* ---- Tier 3: archive ledger ---- */
+
+.pf-archive {
+  margin-top: 3rem;
+  /* This is an in-page group, not a page section: cancel the global
+     `section` padding that opened a ~7.6rem hole above the group row, and
+     its cool --color-light background that clashed with the warm stage. */
+  padding: 0;
+  background: transparent;
+}
+
+.pf-archive__head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Flanking gold hairlines around the group label */
+.pf-archive__head::before {
+  content: "";
+  flex: 0 0 2rem;
+  height: 1px;
+  background: var(--pf-line);
+}
+
+.pf-archive__rule {
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--pf-line);
+}
+
+.pf-archive__label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pf-kicker);
+  white-space: nowrap;
+}
+
+.pf-archive__viewtoggle {
+  flex-shrink: 0;
+}
+
+.pf-archive__list {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+
+.pf-grid--archive {
+  margin-top: 1.25rem;
+}
+
+.pf-row {
+  border-bottom: 1px solid var(--pf-line);
+}
+
+/* The whole head is the click target; the button inside stays the semantic
+   disclosure. Hover answers with a warm tint and a gold inset rule so the
+   affordance is unmistakable. */
+.pf-row__head {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 0.8rem 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pf-row__head:hover {
+  background-color: rgba(201, 169, 110, 0.1);
+  background-color: color-mix(in srgb, var(--pf-gold) 10%, transparent);
+  box-shadow: inset 2px 0 0 var(--pf-gold);
+}
+
+.pf-row__head:hover .pf-row__toggle,
+.pf-row__head:hover .pf-chevron {
+  color: var(--pf-accent);
+}
+
+.pf-row__summary,
+.pf-row__leader {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .pf-row__summary {
+    display: block;
+    flex: 0 1 auto;
+    min-width: 0;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.86rem;
+    color: var(--pf-body);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Dotted leader running to the year column, like a printed table of
+     contents; it absorbs the slack so title, summary, and year read as one
+     connected line instead of three floating columns. */
+  .pf-row__leader {
+    display: block;
+    flex: 1 1 2rem;
+    min-width: 1.5rem;
+    align-self: center;
+    border-bottom: 1px dotted color-mix(in srgb, var(--pf-gold) 55%, transparent);
+    transform: translateY(-0.18em);
+  }
+}
+
+.pf-row__ordinal {
+  flex: 0 0 2.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--gold-700, #8a6f3a);
+}
+
+.pf-row__heading {
+  margin: 0;
+  font-size: 1.02rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  /* Title hugs its text so the summary sits right after it; the leader
+     owns the slack. On mobile the heading grows to push the year right. */
+  .pf-row__heading {
+    flex: 0 1 auto;
+  }
+}
+
+.pf-row__toggle {
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.3;
+  color: var(--pf-ink);
+  transition: color 0.15s ease;
+}
+
+.pf-row__year {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--pf-body);
+}
+
+.pf-row__links {
+  display: inline-flex;
+  gap: 0.6rem;
+}
+
+.pf-row__links a {
+  color: var(--pf-kicker);
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.pf-row__links a:hover,
+.pf-row__links a:focus-visible {
+  color: var(--pf-accent);
+}
+
+.pf-row .pf-chevron {
+  color: var(--pf-body);
+  align-self: center;
+}
+
+/* ---- Shared details panel ---- */
+
+.pf-panel {
+  padding: 0.9rem 0.6rem 1.1rem;
+}
+
+.pf-panel[hidden] {
+  display: none;
+}
+
+/* Inside a card the panel reads as an attached drawer: hairline seam
+   under the footer, then the panel content. */
+.pf-index .pf-panel {
+  margin-top: 0.85rem;
+  border-top: 1px solid var(--pf-line);
+  padding: 0.9rem 0 0;
+}
+
+.pf-panel__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .pf-panel__inner {
+    /* Wider media column so demo videos read at a usable size instead of a
+       thumbnail (was 16rem); steps up again at >=1024px. */
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  /* Index cards are narrow columns: keep the panel stacked there */
+  .pf-index .pf-panel__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pf-panel__inner {
+    grid-template-columns: minmax(0, 28rem) minmax(0, 1fr);
+  }
+
+  .pf-index .pf-panel__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pf-panel__media img,
+.pf-panel__media video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  background: var(--pf-deep);
+  object-fit: contain;
+  border: 1px solid var(--pf-line);
+}
+
+/* Demo videos are the point of the row: give them a little lift */
+.pf-panel__media video {
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.55);
+}
+
+.pf-panel__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.pf-panel__meta {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pf-kicker);
+}
+
+.pf-panel__desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--pf-body);
+}
+
+.pf-panel__highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.pf-panel__highlights li {
+  position: relative;
+  padding-left: 1.3rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--pf-body);
+}
+
+.pf-panel__highlights li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  font-size: 0.55rem;
+  line-height: 2.2;
+  color: var(--pf-gold);
+}
+
+.pf-panel__tech {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--pf-body);
+  overflow-wrap: anywhere;
+}
+
+.pf-panel__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Metric emphasis inside panels (reuses the modal's .cs-metric grammar) */
+.pf-panel .cs-metric {
+  color: var(--pf-accent);
+}
+
+/* ---- Weather appendix band ---- */
+
+.pf-weather-band {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--pf-line);
 }

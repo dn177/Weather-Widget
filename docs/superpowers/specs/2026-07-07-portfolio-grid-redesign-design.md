@@ -24,15 +24,15 @@ At 1440x900 the grid renders 4 columns of 234px cards, each clamped to `max-heig
 
 Tier assignment from data: `getTier(p) = p.flagship ? 1 : p.featured ? 2 : 3`.
 
-- **Tier 1, flagship feature cards (4):** `ornith-optimization`, `dflash-retrain`, `belay`, `quantum-performance` get `flagship: true` (cap 2-4, enforced by comment in `portfolioData.js`).
+- **Tier 1, flagship feature cards (4):** `ornith-optimization`, `dflash-retrain`, `belay`, `quantum-performance` get `flagship: true` (cap 2-4, enforced by a data-integrity test in `portfolioData.test.js`, not by comment; review finding P2).
 - **Tier 2, index cards (~10):** remaining `featured: true` projects.
 - **Tier 3, archive ledger (16):** everything else, under an "Earlier work" group heading.
 
-Ordering is flagships-first at all widths, done in the array, never with CSS `order`. The judged-risky breakpoint-dependent DOM interleave (matchMedia hook) is deliberately dropped; DOM order = visual order = tab order everywhere.
+Ordering is a **static interleave with an alternating rhythm** (F1 i1 / i2 F2 / F3 i3 / i4 F4, then remaining index cards), done in the array, never with CSS `order` or dense flow, and identical at every width; DOM order = visual order = tab order everywhere. The judged-risky breakpoint-dependent DOM interleave (matchMedia hook) stays dropped. The interleave exists because a span-2 flagship plus its paired index card tiles a 3-column row exactly; plain flagships-first left the third column empty beside every flagship (observed in the live build). Design round 2 (user request): every other pair is flipped so flagships zig-zag down the page; right-side flagships also flip internally (media pane outward, `.pf-flagship--reverse`, >=1024px only) so the dark media plates frame the grid edges; the four "companion" index cards that share a flagship row trade their 54px stamp for a full 16:10 media plate, so the equal-height slack reads as imagery rather than whitespace; flagship findings skip highlights that restate the stat value, render first sentences only, and clamp at 3 lines. Design round 3 (eye guidance + color unification): catalog ordinals are computed from the full unfiltered display order (interleaved featured tiers, then archive) so the default view numbers 01-30 sequentially down the page, and featured card titles carry the gold mono ordinal (same grammar as the modal's numbered sections and the ledger rows); the entry-count colophon gets flanking gold hairlines and a gold section mark; #portfolio's background moves from the cool --color-light to the warm --ivory-deep so the ivory cards sit tonally; the two Ornith-series hero SVGs are repainted from the pre-refresh blue-slate/bright-violet palette to the dossier palette (deep royal gradient, gold bar and kicker, warm ivory headline, soft violet figures).
 
 ### Tier 1: flagship card anatomy
 
-Wide horizontal card spanning 2 of 3 grid columns at >=1024px (2 of 2 at 700-1023px, full-width stacked below 700px).
+Wide card spanning 2 of 3 grid columns at >=1024px, laid out as an article rather than two panes (design round 4, user idea): the kicker rail and title run the full card width, the poster floats to the card's outer edge (left card floats left, right card floats right, preserving the media-outward zig-zag) at ~46% width, the standfirst and findings wrap around it, and the stat and footer clear below. The dedicated dark media pane is gone; the SVG posters carry their own dark plate and sit as figures on the ivory, raster media gets a framed 16:10 plate. The reclaimed area funds a third finding. Below 1024px the figure is a full-width band under the title (no room to wrap); the body is block flow, not flex, because floats only wrap text in normal flow.
 
 | Slot | Content | Treatment |
 | --- | --- | --- |
@@ -65,18 +65,19 @@ The current "Show earlier (16)" hide/show expander is replaced:
 
 - The archive is **always visible** as a ledger: a `§ Earlier work · 16 entries` group row with flanking gold hairlines, then one compact row per project: stable catalog ordinal, title, one-line summary (>=768px), year, link icons, expand chevron.
 - Each row expands inline into the same `ProjectDetailsPanel` (media, full description, all highlights, tech line, all links).
-- **The former "Load more" button becomes a view toggle** for this section only: "Show as cards" re-renders the 16 archive projects as regular tier-2 index cards in the grid; "Show as list" collapses them back to ledger rows. Toggle state is component state (not persisted); default is the ledger. `aria-pressed` on the toggle; moving between views preserves each project's expanded/collapsed state keyed by id.
+- **The former "Load more" button becomes a view toggle** for this section only: "Show as cards" re-renders the 16 archive projects as regular tier-2 index cards in the grid; "Show as list" collapses them back to ledger rows. Toggle state is component state (not persisted); default is the ledger. `aria-pressed` on the toggle.
+- **Disclosure state is owned by `Projects.jsx`, not by cards/rows** (review finding P1): an `expandedProjectIds` set keyed by project id, plus `hasOpened` media-mount state keyed by id, passed down as `expanded`/`onToggle` with id-stable panel ids. This is what lets the rows-to-cards view switch preserve open panels across the unmount/remount.
 - Catalog ordinals are computed once from the full sortOrder-sorted list (01-30) and stay stable under filters and view modes, so filtered views show non-contiguous numbers like a real catalog.
 - The weather demo widget renders as a full-width "appendix" band at the end of the archive section, only while no tech filter is active, lazy-mounted via the existing `useInView` hook so it does not fetch on page load.
 
 ### Shared ProjectDetailsPanel
 
-One component serves tier-2 disclosures and tier-3 row expansions: media block (img, or `video controls preload="none" poster` for the 12 legacy videos) beside text at >=768px, stacked below; full `description` through the existing `emphasizeMetrics()`; all `highlights` with gold diamond markers; `technologies` joined as a mono dot-separated line (kills the pill wall); all links; date via `Intl.DateTimeFormat(i18n.language, {month: 'long', year: 'numeric'})`. Media mounts only after first open (`hasOpened` state) with `loading="lazy"`, so 16 collapsed rows fetch nothing.
+One component serves tier-2 disclosures and tier-3 row expansions: media block (img, or `video controls preload="none" poster` for the 12 legacy videos) beside text at >=768px, stacked below; full `description` through the existing `emphasizeMetrics()`; all `highlights` with gold diamond markers; `technologies` joined as a mono dot-separated line (kills the pill wall); all links; date via `Intl.DateTimeFormat(i18n.language, {month: 'long', year: 'numeric', timeZone: 'UTC'})` over `new Date(project.date + "T00:00:00Z")` so `YYYY-MM-DD` strings parse as calendar dates and never shift a month across time zones (review finding P2). Media mounts only after first open (`hasOpened` state, owned by `Projects.jsx`) with `loading="lazy"`, so 16 collapsed rows fetch nothing.
 
 ### Grid and responsive behavior
 
 - `.pf-grid`: 1 column below 700px (gap 1.25rem), 2 columns 700-1023px (gap 1.5rem), 3 columns >=1024px (gap 2rem). Flagships `grid-column: span 2` at >=700px. No 4-column tier; cards never drop below ~320px.
-- Card heights are natural; `align-items: stretch` + `margin-top: auto` footers align rows. **No element inside the grid may have `scrollHeight > clientHeight`.**
+- Card heights are natural; `align-items: stretch` + `margin-top: auto` footers align rows. **No card or container inside the grid may use internal scrolling**: no `overflow-y: auto|scroll`, no hover-conditional overflow, no fixed `max-height` clipping. (Line clamps on summaries/findings are allowed; the old scrollHeight assertion was wrong because clamping legitimately makes `scrollHeight > clientHeight`; review finding P1. Titles are never clamped and are asserted separately.)
 - Filters: tiers persist (a filtered flagship keeps its wide card; a filtered archive project stays a ledger row). The `§ Earlier work` group row renders whenever at least one archive project is visible, with its count reflecting the active filter. A live entry count near the filters ("{n} entries", mono colophon style) gives filter feedback.
 
 ### Visual language
@@ -92,6 +93,8 @@ Component-scoped tokens on `#portfolio`, consumed by every new rule: `--pf-surfa
 ### i18n
 
 New keys (en/de/pl/es, `defaultValue` fallback so EN-first is safe): `portfolio.projectCategories.*` (8 labels), `portfolio.details`, `portfolio.closedSource`, `portfolio.earlierWork`, `portfolio.entries` ("{{count}} entries"), `portfolio.showAsCards` / `portfolio.showAsList`, `portfolio.viewLive`. `getTranslatedProject` gains `summary` and `stat.label` lookups: `t('projects.<id>.summary', { defaultValue: project.summary || firstSentence(project.description) })`.
+
+Key ownership is explicit (review finding P2): `portfolio.categories.*` stays owned by the technology filter buttons and is not touched; `portfolio.projectCategories.*` is new and only for project category labels (`ml-systems`, `web-app`, ...); `portfolio.closedSource` is the new short badge label; `portfolio.closedSourceNotice` keeps serving the case-study modal unchanged.
 
 ## Data changes
 
@@ -127,9 +130,10 @@ sections/portfolio/
 
 - Preview at 375/768/1024/1440, light scheme, reduced-motion on and off.
 - Keyboard-only walk: filters, tier-2 disclosure, ledger row disclosure, view toggle, case-study modal in and out.
-- Assert no grid element has `scrollHeight > clientHeight`.
+- Assert no grid element uses internal scrolling (`overflow-y: auto|scroll`, hover-conditional overflow, `max-height` clipping); assert titles render untruncated (no clamp style on title elements).
+- Assert the archive view toggle preserves open panels: expand a row, switch to cards, the same project's panel is open.
 - Diff `.detail-modal-*` / `.modal-dialog` CSS blocks for zero changes before merge (the deletion pass shares the file).
-- `npm test` (data-integrity tests must pass with the new optional fields).
+- `npm test`: existing data-integrity tests plus new contract tests: `2 <= flagships.length <= 4` (exact ids asserted), flagship `summary` <= 220 chars and `stat: {value, label}` present, tier-2/3 `summary` <= 110 chars where present, `stat` shape valid where present.
 
 ## Risks and mitigations
 

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+  <rect width="720" height="440" rx="14" fill="#0f172a"/>
+  <text x="40" y="40" fill="#e2e8f0" font-size="20" font-weight="700">The three-way split catching a false positive</text>
+  <text x="40" y="62" fill="#94a3b8" font-size="13">Same vector and operating point &#183; coding pass@1 on the set it was tuned on vs the frozen set touched once</text>
+
+  <!-- divider -->
+  <line x1="380" y1="118" x2="380" y2="345" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- DEV panel -->
+  <text x="226" y="104" fill="#c084fc" font-size="13" font-weight="700" text-anchor="middle">DEV &#183; tuning slice (n=50)</text>
+  <g stroke="#1e293b" stroke-width="1">
+    <line x1="100" y1="125" x2="352" y2="125"/>
+    <line x1="100" y1="198" x2="352" y2="198"/>
+    <line x1="100" y1="272" x2="352" y2="272"/>
+  </g>
+  <line x1="100" y1="120" x2="100" y2="345" stroke="#334155" stroke-width="1.5"/>
+  <line x1="100" y1="345" x2="352" y2="345" stroke="#334155" stroke-width="1.5"/>
+  <g fill="#64748b" font-size="11.5" text-anchor="end">
+    <text x="94" y="129">0.82</text>
+    <text x="94" y="202">0.80</text>
+    <text x="94" y="276">0.78</text>
+    <text x="94" y="349">0.76</text>
+  </g>
+  <polyline points="165,272 300,198" fill="none" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="165" cy="272" r="4.5" fill="#c084fc"/>
+  <circle cx="300" cy="198" r="5.5" fill="#a855f7" stroke="#e9d5ff" stroke-width="2"/>
+  <text x="158" y="288" fill="#cbd5e1" font-size="12" text-anchor="end">0.78</text>
+  <text x="311" y="194" fill="#e9d5ff" font-size="13" font-weight="700">0.80</text>
+  <rect x="200" y="150" width="78" height="26" rx="6" fill="#6d28d9"/>
+  <text x="239" y="168" fill="#faf5ff" font-size="14" font-weight="700" text-anchor="middle">+2 pts</text>
+  <text x="226" y="371" fill="#94a3b8" font-size="12.5" text-anchor="middle">dev pass@1 (tuned here)</text>
+
+  <!-- FROZEN panel -->
+  <text x="560" y="104" fill="#fca5a5" font-size="13" font-weight="700" text-anchor="middle">FROZEN &#183; touched once (n=189)</text>
+  <g stroke="#1e293b" stroke-width="1">
+    <line x1="440" y1="166" x2="692" y2="166"/>
+    <line x1="440" y1="239" x2="692" y2="239"/>
+    <line x1="440" y1="312" x2="692" y2="312"/>
+  </g>
+  <line x1="440" y1="120" x2="440" y2="345" stroke="#334155" stroke-width="1.5"/>
+  <line x1="440" y1="345" x2="692" y2="345" stroke="#334155" stroke-width="1.5"/>
+  <g fill="#64748b" font-size="11.5" text-anchor="end">
+    <text x="434" y="170">0.93</text>
+    <text x="434" y="243">0.92</text>
+    <text x="434" y="316">0.91</text>
+  </g>
+  <polyline points="510,153 645,308" fill="none" stroke="#f87171" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="510" cy="153" r="4.5" fill="#fca5a5"/>
+  <circle cx="645" cy="308" r="6.5" fill="#f87171" stroke="#fee2e2" stroke-width="2"/>
+  <text x="503" y="150" fill="#cbd5e1" font-size="12" text-anchor="end">0.9312</text>
+  <text x="645" y="330" fill="#fecaca" font-size="13" font-weight="700" text-anchor="middle">0.9101</text>
+  <rect x="458" y="212" width="96" height="26" rx="6" fill="#b91c1c"/>
+  <text x="506" y="230" fill="#fee2e2" font-size="14" font-weight="700" text-anchor="middle">&#8722;2.1 pts</text>
+  <text x="458" y="255" fill="#94a3b8" font-size="11.5">McNemar p = 0.29</text>
+  <text x="458" y="271" fill="#94a3b8" font-size="11.5">95% CI includes 0</text>
+  <text x="560" y="371" fill="#94a3b8" font-size="12.5" text-anchor="middle">frozen pass@1 (touched once)</text>
+
+  <!-- footer -->
+  <text x="40" y="421" fill="#64748b" font-size="13">The +2 point gain on the tuning set reversed to &#8722;2 on the set touched exactly once &#183; flips: 2 fixed / 6 broken</text>
+</svg>

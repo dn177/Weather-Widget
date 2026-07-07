@@ -35,7 +35,25 @@
     "highlights": "Highlights",
     "closedSourceNotice": "Geschlossener Quellcode. Der Code steht unter NDA. Gerne erläutere ich die Implementierung in einem Interview.",
     "showEarlier": "Frühere Arbeiten",
-    "hideEarlier": "Frühere Arbeiten ausblenden"
+    "hideEarlier": "Frühere Arbeiten ausblenden",
+    "projectCategories": {
+      "web-app": "Web-App",
+      "website": "Website",
+      "desktop-app": "Desktop-App",
+      "mobile-app": "Mobile App",
+      "ml-systems": "ML-Systeme",
+      "component": "Komponente",
+      "demo": "Demo",
+      "portfolio": "Portfolio"
+    },
+    "details": "Details",
+    "closedSource": "Geschlossener Quellcode",
+    "earlierWork": "Frühere Arbeiten",
+    "entries_one": "{{count}} Eintrag",
+    "entries_other": "{{count}} Einträge",
+    "showAsCards": "Als Karten anzeigen",
+    "showAsList": "Als Liste anzeigen",
+    "viewLive": "Live ansehen"
   },
   "contact": {
     "title": "Kontaktiere mich",

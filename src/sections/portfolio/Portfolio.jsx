@@ -1,7 +1,6 @@
 import "./portfolio.css";
 import Projects from "./Projects";
 import ProjectsCategories from "./ProjectsCategories";
-import ScrollBehaviorToggle from "./ScrollBehaviorToggle";
 import { techCategories, getProjectsByTechnology } from "./portfolioData";
 import React, { useState, useCallback } from "react";
 import { useTranslation } from 'react-i18next';
@@ -13,7 +12,6 @@ const Portfolio = () => {
   const { t } = useTranslation();
   const [projects, setProjects] = useState(() => getProjectsByTechnology("all"));
   const [activeTech, setActiveTech] = useState("all");
-  const [scrollBehavior, setScrollBehavior] = useState("contain");
 
   // Get unique technologies for filtering
   const technologies = Object.keys(techCategories);
@@ -42,14 +40,23 @@ const Portfolio = () => {
       </a>
       <h2 className="h1 mt-5">{t('portfolio.title')}</h2>
       <div className="container portfolio__container">
-        <ScrollBehaviorToggle onChange={setScrollBehavior} />
         <ProjectsCategories
           categories={technologies}
           techCategories={techCategories}
           onFilterProjects={filterProjectsHandler}
           activeTech={activeTech}
         />
-        <Projects projects={projects} scrollBehavior={scrollBehavior} />
+        {/* Live filter feedback: entry count as a catalog colophon with
+            flanking gold hairlines (mirrors the archive group row) */}
+        <p className="pf-count" aria-live="polite">
+          <span>
+            <span className="pf-count__mark" aria-hidden="true">
+              §{" "}
+            </span>
+            {t('portfolio.entries', { count: projects.length })}
+          </span>
+        </p>
+        <Projects projects={projects} activeTech={activeTech} />
       </div>
       <h2 className="h1 mt-row">Input</h2>
       <div className="container portfolio__container">

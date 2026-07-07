@@ -16,6 +16,7 @@ const project = {
     "alt": "Markdown Downloader Raycast Extension"
   },
   "description": "A powerful Raycast extension that converts webpages to clean markdown files with advanced content extraction, image downloading, and customizable output options. Built for efficient knowledge management and content archiving.",
+  "summary": "A Raycast extension that converts webpages to clean markdown files, with image downloading built in.",
   "highlights": [
     "Intelligent content extraction with regex-based HTML parsing",
     "Local image downloading with automatic path conversion",

@@ -17,6 +17,8 @@ const project = {
     "alt": "Autonomous nutrition KB architecture diagram showing the daily research-ingestion loop, git push to Forgejo, and reindex into OpenWebUI"
   },
   "description": "A self-updating personal nutrition knowledge base. A nightly daemon walks the Obsidian vault, fetches new biomedical literature from Europe PMC for every food/supplement/compound in the stack, summarises each abstract through a local Qwen3.6-35B on vLLM, writes structured Markdown notes, commits and pushes to a private Forgejo repo. A Forgejo Action then diffs the push and reindexes only the changed files into OpenWebUI's BGE-M3 hybrid RAG. End-to-end on-premise; no third-party API except Europe PMC.",
+  "summary": "A self-updating nutrition knowledge base: a nightly daemon fetches, summarises, and reindexes new papers.",
+  "stat": { "value": "165", "label": "papers ingested per run" },
   "detailedContent": {
     "overview": "What started as an Obsidian vault for foods, supplements, and stack notes became a closed-loop system: edits in any direction (human or agent) hit git, the CI re-indexes the vector store, and the chat UI answers grounded questions with citations into the actual notes. The autonomous half (the part that closes the loop) is a daily ingestion daemon that turns the vault's own [[wikilink]] graph into a search plan over Europe PMC, summarises each new paper through a local LLM, and files the result back into the vault as a fully-cross-referenced Markdown note. Three weeks of design + iteration produced something I actually use every morning.",
     "sections": [

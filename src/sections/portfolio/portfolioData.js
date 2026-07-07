@@ -20,6 +20,17 @@ export const techCategories = {
   nextjs: { label: "Next.js", color: "#000000" },
 };
 
+// Grid tiers: 1 = flagship feature card, 2 = index card, 3 = archive ledger.
+export const getTier = (p) => (p.flagship ? 1 : p.featured ? 2 : 3);
+
+// First sentence of a text, used as the card one-liner fallback when a
+// project has no curated summary. Falls back to the whole string when
+// there is no ". " delimiter.
+export const firstSentence = (text) => {
+  if (!text) return "";
+  return text.split(". ")[0];
+};
+
 // Helper functions for filtering and sorting
 const bySortOrder = (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0);
 
