@@ -169,7 +169,8 @@
       },
       "links": {
         "0": "Explorar 33"
-      }
+      },
+      "summary": "Una experiencia 3D interactiva explorando el significado del número 33."
     },
     "quantum-performance": {
       "title": "Optimización de Rendimiento de CRM Empresarial y Migración a Vue 3",
@@ -178,7 +179,9 @@
         "0": "16ms INP promedio (vs umbral \"bueno\" de 200ms)",
         "1": "Vue 2 → Vue 3 migración completa",
         "2": "Implementación de scrolling virtual de 7.000+ elementos"
-      }
+      },
+      "summary": "Migración de un CRM empresarial multiinquilino de Vue 2 a Vue 3, y luego reducción del Interaction to Next Paint de hasta ~2,3 s a una media de 16 ms perfilando la reactividad de Vue y el JavaScript del hilo principal.",
+      "statLabel": "INP promedio, antes hasta ~2,3 s"
     },
     "release-radar": {
       "title": "Release Reader",
@@ -190,7 +193,8 @@
       },
       "links": {
         "0": "Abrir Release Reader"
-      }
+      },
+      "summary": "Una herramienta para encontrar cambios relevantes en las notas de lanzamiento de GitHub."
     },
     "markdown-downloader": {
       "title": "Markdown Downloader - Extensión de Raycast",
@@ -206,7 +210,8 @@
       },
       "links": {
         "0": "Ver en GitHub"
-      }
+      },
+      "summary": "Una extensión de Raycast que convierte páginas web en archivos Markdown limpios, con descarga de imágenes integrada."
     },
     "space-studio": {
       "title": "Space Studio - Educación Interactiva de Ciencia de Cohetes",
@@ -220,7 +225,9 @@
       },
       "links": {
         "0": "Lanzar Space Studio"
-      }
+      },
+      "summary": "Una web app interactiva que enseña ciencia de cohetes con simulaciones 3D y lecciones progresivas.",
+      "statLabel": "aceleración de física con WebAssembly"
     },
     "contao-website": {
       "title": "Sitio Web de Ejemplo Contao",
@@ -231,7 +238,8 @@
       },
       "links": {
         "0": "Ver el Sitio Web"
-      }
+      },
+      "summary": "Contao CMS con implementación especial de formulario de contacto usando grid-template-areas."
     },
     "inlearning": {
       "title": "Plataforma InLearning",
@@ -242,7 +250,8 @@
       },
       "links": {
         "0": "Ver el Sitio Web"
-      }
+      },
+      "summary": "Plataforma de aprendizaje con materiales para los temas: IA / ML, Python, React.js, Rust y Vue.js."
     },
     "pictureplatform": {
       "title": "Plataforma Picture Playground",
@@ -252,7 +261,8 @@
       },
       "links": {
         "0": "Ver el Sitio Web"
-      }
+      },
+      "summary": "Plataforma que muestra las mejoras de rendimiento de WebAssembly en tareas computacionalmente costosas."
     },
     "mathtron-vue": {
       "title": "Migración Mathtron Vue",
@@ -265,7 +275,8 @@
       },
       "links": {
         "0": "Abrir el proyecto"
-      }
+      },
+      "summary": "Migración de Mathtron a Vue.js con el framework UI Vuetify."
     },
     "learn2sort": {
       "title": "Learn2Sort",
@@ -276,7 +287,8 @@
       },
       "links": {
         "0": "Abrir el proyecto"
-      }
+      },
+      "summary": "Aplicación construida con React.js principalmente para visualizar algoritmos de ordenamiento."
     },
     "nextjs-portfolio": {
       "title": "Sitio Web Portfolio Next.js",
@@ -288,7 +300,8 @@
       "links": {
         "0": "Abrir el código del script en Github",
         "1": "Abrir el Next Portfolio"
-      }
+      },
+      "summary": "Portfolio alternativo construido con Next.js, con optimizaciones de exportación estática."
     },
     "mathtron": {
       "title": "Mathtron",
@@ -300,7 +313,8 @@
       },
       "links": {
         "0": "Ver en Github"
-      }
+      },
+      "summary": "Editor LaTeX para tomar apuntes de matemáticas y hacer ejercicios en el escritorio."
     },
     "private-blog": {
       "title": "Blog Privado",
@@ -312,7 +326,8 @@
       },
       "links": {
         "0": "Mis publicaciones en el blog Medium"
-      }
+      },
+      "summary": "Blog hecho a mano con autenticación y capacidades de edición de texto enriquecido."
     },
     "rest-fullstack": {
       "title": "Ejemplo de Código REST Fullstack",
@@ -324,7 +339,8 @@
       },
       "links": {
         "0": "Ver en Github"
-      }
+      },
+      "summary": "Aplicación full-stack que demuestra una arquitectura REST API limpia."
     },
     "e-commerce": {
       "title": "E-Commerce",
@@ -335,7 +351,8 @@
         "2": "Interfaz de usuario moderna con Tailwind CSS y shadcn/ui",
         "3": "Backend Strapi con REST API"
       },
-      "links": {}
+      "links": {},
+      "summary": "Plataforma de comercio electrónico moderna con autenticación segura y REST API."
     },
     "emmet-demo": {
       "title": "Demostración de Codificación en Vivo con Emmet",
@@ -344,7 +361,8 @@
         "0": "Flujo de trabajo eficiente HTML/CSS",
         "1": "Técnicas avanzadas de Emmet"
       },
-      "links": {}
+      "links": {},
+      "summary": "Demostración de codificación en vivo mostrando competencia con Emmet y atajos de CSS."
     },
     "kanban-board": {
       "title": "Tablero Kanban",
@@ -354,7 +372,8 @@
         "1": "Almacenamiento persistente con localStorage",
         "2": "Interfaz de usuario limpia e intuitiva"
       },
-      "links": {}
+      "links": {},
+      "summary": "Tablero Kanban con arrastrar y soltar para gestión de tareas."
     },
     "car-platform": {
       "title": "Plataforma de Venta de Autos",
@@ -364,7 +383,8 @@
         "1": "Considera todos los valores de entrada simultáneamente",
         "2": "Diseño responsivo con Bootstrap"
       },
-      "links": {}
+      "links": {},
+      "summary": "Prototipo inicial para una plataforma de venta de autos con filtrado avanzado."
     },
     "company-website": {
       "title": "Sitio Web Corporativo",
@@ -378,7 +398,8 @@
         "0": "Sitio Web \"Solar\"",
         "1": "Sitio Web \"Gala\"",
         "2": "Sitio Web \"Bau\""
-      }
+      },
+      "summary": "Presencia web corporativa multi-sitio con funcionalidad de formulario de contacto."
     },
     "chart": {
       "title": "Gráfico",
@@ -388,7 +409,8 @@
         "1": "Implementación de Chart.js",
         "2": "Diseño responsivo"
       },
-      "links": {}
+      "links": {},
+      "summary": "Gráfico interactivo con opciones para redibujar con diferentes unidades de tiempo."
     },
     "cdn-manager": {
       "title": "cdnManager versión jQuery",
@@ -398,7 +420,8 @@
         "1": "Construido para uso privado",
         "2": "Aplicación de escritorio Electron"
       },
-      "links": {}
+      "links": {},
+      "summary": "Proyecto privado que gestiona y almacena CDNs."
     },
     "molar": {
       "title": "Molar",
@@ -408,7 +431,8 @@
       },
       "links": {
         "0": "Ver Artículo"
-      }
+      },
+      "summary": "Experiencia mejorada de teclado bluetooth con dispositivos iOS."
     },
     "belay": {
       "title": "Belay: un tutor de IA que lee tu live state",
@@ -424,7 +448,9 @@
       "links": {
         "0": "Prueba la demo en vivo",
         "1": "Visita el sitio de Belay"
-      }
+      },
+      "summary": "Un tutor de IA que construye un espacio de práctica vivo y aislado, lee tu progreso real a través de un puente de estado estructurado y da ayuda graduada que se desvanece a medida que mejoras. Disponible como app de Electron y build web sin instalación.",
+      "statLabel": "plantillas de práctica en ocho dominios"
     },
     "selfhelp-rag": {
       "title": "SelfHelpRAG: RAG on-premise con retrieval híbrido",
@@ -433,7 +459,8 @@
         "0": "Retrieval híbrido: dense (Qdrant) + sparse (BM25) con reranking",
         "1": "Eval harness con set de preguntas etiquetado que puntúa retrieval + citación",
         "2": "System prompt consciente de inyecciones, con frase explícita de rechazo"
-      }
+      },
+      "summary": "Un sistema de Q&A con retrieval aumentado para la base de conocimiento de un ERP empresarial."
     },
     "nutrition-rag-autonomous": {
       "title": "Base de conocimiento nutricional autónoma: RAG autoactualizable",
@@ -442,7 +469,9 @@
         "0": "Ingesta de investigación autónoma diaria: 113 temas → Europe PMC → Qwen3.6 local → 165 papers/ejecución",
         "1": "Reindexado CI guiado por git: push → diff → KB de OpenWebUI actualizada en ~30 segundos",
         "2": "Retrieval híbrido (BGE-M3 + BM25 + BGE-reranker) ajustado empíricamente; 3 / 8 → 6 / 8 consultas sobre el umbral"
-      }
+      },
+      "summary": "Una base de conocimiento nutricional que se actualiza sola: un daemon nocturno trae, resume y reindexa papers nuevos.",
+      "statLabel": "papers ingeridos por ejecución"
     },
     "aichat": {
       "title": "AIChat: frontend de chat LLM on-premise",
@@ -451,7 +480,8 @@
         "0": "State machine de streaming SSE que separa narración / llamadas a herramientas / respuesta final",
         "1": "Integración MCP de primera clase con soporte de plugins + ephemeral_mcp",
         "2": "Corre por Tailscale hacia un DGX Spark autohosteado, sin dependencia de la nube"
-      }
+      },
+      "summary": "Un frontend de chat autohosteado para endpoints de LM Studio con MCP tool-calling de primera clase."
     },
     "mcp-servers": {
       "title": "Desarrollo de servidores MCP",
@@ -460,7 +490,9 @@
         "0": "design-perfect-mcp: 5 herramientas para implementación de diseño pixel-perfect",
         "1": "adobe-xd-mcp: extrae medidas directamente de archivos .xd",
         "2": "Varios servidores MCP de la comunidad forkeados y extendidos"
-      }
+      },
+      "summary": "Dos servidores MCP propios para flujos de diseño pixel-perfect, más extensiones de servidores MCP de la comunidad.",
+      "statLabel": "herramientas MCP para flujos de diseño"
     },
     "resource-orchestration": {
       "title": "Simulador de orquestación de recursos",
@@ -469,6 +501,32 @@
         "0": "REST API sobre Tokio + axum con scheduler de patrón estrategia",
         "1": "Task state machine modelada con enums de Rust: los estados inválidos son irrepresentables",
         "2": "Dashboard Vue 3 en vivo para envío de tareas, scheduling y métricas"
+      },
+      "summary": "Simulador de scheduling de datacenter con backend en Rust (~2.900 LOC) y dashboard en Vue 3."
+    },
+    "ornith-optimization": {
+      "title": "Optimización de un LLM de 397B en un DGX Spark (GB10)",
+      "description": "Dos experimentos guiados por mediciones sobre un LLM de 397B autoalojado (MoE de 2 bits) en un solo DGX Spark. El análisis roofline y el ajuste del decodificado especulativo elevaron el throughput de decodificado de código un 31%, hasta 24,3 tok/s. Un estudio prerregistrado de activation steering devolvió después un nulo limpio (un vector de control estático movió coding pass@1 en -2,1 puntos, el intervalo de confianza incluye el cero), con la partición triple atrapando un falso positivo y resultados negativos reportados con disciplina.",
+      "summary": "Dos experimentos guiados por mediciones sobre un LLM de 397B autoalojado (MoE de 2 bits) en un DGX Spark: el ajuste del decodificado especulativo elevó el throughput de decodificado de código un 31% y un estudio prerregistrado de steering devolvió un nulo limpio.",
+      "statLabel": "throughput de decodificado de código",
+      "highlights": {
+        "0": "+31% de throughput de decodificado de código (24,3 tok/s), +79% sobre la configuración de producción anterior, ajustando el decodificado especulativo sin reentrenar",
+        "1": "El 'acceptance rate' reportado se diagnosticó como artefacto de logging; la aceptación real en primera posición ≈ 87%",
+        "2": "El techo del megakernel se midió en ~0% de idle-gap antes de construirlo, convirtiendo un posible callejón sin salida en una decisión de un día",
+        "3": "El estudio prerregistrado de activation steering devolvió un nulo limpio: un vector de control estático movió coding pass@1 en -2,1 puntos, el intervalo de confianza incluye el cero",
+        "4": "La partición triple valió la pena: un resultado de +2 puntos en dev se invirtió a -2 puntos en el conjunto congelado de un solo uso, así que ajustar y reportar sobre un único conjunto habría enviado una regresión"
+      }
+    },
+    "dflash-retrain": {
+      "title": "Reentrenar el drafter especulativo de un LLM de 397B en un DGX Spark",
+      "description": "Reentrenamiento por self-distillation del drafter de decodificado especulativo de un LLM de 397B autoalojado (MoE de 2 bits): capturado del servidor de producción, entrenado, validado con gates y devuelto a producción en un día en un solo DGX Spark. El drafter reentrenado corre a 25,77 tok/s, +6,0% sobre la baseline ajustada de 24,3 tok/s, y una revisión adversarial de 15 agentes atrapó un bug de entrenamiento que habría falseado un nulo.",
+      "summary": "Reentrenamiento por self-distillation del drafter de decodificado especulativo de un LLM de 397B autoalojado: capturado, entrenado, validado y devuelto a producción en un día en un DGX Spark: 25,77 tok/s, +6,0% sobre la baseline ajustada.",
+      "statLabel": "tok/s de decodificado tras un reentrenamiento de 12 minutos",
+      "highlights": {
+        "0": "Reentrenó el drafter especulativo de 1,29B por self-distillation y lo llevó a producción el mismo día: de 24,3 a 25,77 tok/s (+6,0%), con unos 12 minutos de entrenamiento en GPU",
+        "1": "Una revisión adversarial de 15 agentes atrapó un AdamW en bf16 puro que redondeaba a cero el 87,2% de las actualizaciones de parámetros, un bug que habría falseado el nulo de 'la self-distillation no ayuda'",
+        "2": "La ganancia vino de la cola: la aceptación reentrenada decae despacio con la profundidad del draft, moviendo el n_max óptimo de 2 a 4 y monetizando drafts profundos que el drafter anterior no podía aprovechar",
+        "3": "Corrió end-to-end en una máquina de producción compartida, con un corpus 10× ahora capturado por ventanas nocturnas de cron que restauran el endpoint antes de las 07:00"
       }
     }
   }
