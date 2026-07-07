@@ -59,7 +59,8 @@
   },
   "contact": {
     "title": "Contáctame",
-    "description": "Envíame un mensaje si quieres trabajar conmigo o construir una pirámide en el paralelo 33."
+    "description": "Envíame un mensaje si quieres trabajar conmigo o construir una pirámide en el paralelo 33.",
+    "bgAlt": "Antigua pirámide escalonada en Zaculeu, Guatemala"
   },
   "pixelperfect": {
     "title": "Pixelperfect",
@@ -76,7 +77,10 @@
   "badges": {
     "title": "Insignias",
     "subtitle": "Recuerdos de paradas anteriores en el camino.",
-    "typewriter": "git reset --hard blablabla"
+    "typewriter": "git reset --hard blablabla",
+    "frontendBadgeAlt": "Insignia de frontend",
+    "jqueryBadgeAlt": "Insignia de jQuery",
+    "cssBadgeAlt": "Insignia de CSS"
   },
   "hustle": {
     "title": "Disciplina y Dedicación.",
@@ -162,6 +166,29 @@
     "error": "Error",
     "tryAgain": "Intentar de nuevo",
     "videoUnsupported": "Tu navegador no soporta la etiqueta de vídeo."
+  },
+  "a11y": {
+    "toggleNavigation": "Alternar navegación",
+    "closeModal": "Cerrar ventana",
+    "technologyFilters": "Filtros de tecnología",
+    "caseStudySections": "Secciones del caso de estudio",
+    "quickActions": "Acciones rápidas de {{title}}",
+    "shellCommandLink": "Enlace a la explicación del comando de shell",
+    "aiLearningSources": "Fuentes de aprendizaje de IA",
+    "stanfordChannel": "Canal de YouTube de Stanford Online",
+    "switchLanguage": {
+      "en": "Cambiar a inglés",
+      "de": "Cambiar a alemán",
+      "pl": "Cambiar a polaco",
+      "es": "Cambiar a español"
+    },
+    "social": {
+      "instagram": "Perfil de Instagram",
+      "twitter": "Perfil de Twitter",
+      "dribbble": "Perfil de Dribbble",
+      "github": "Repositorios de GitHub",
+      "huggingface": "Perfil de Hugging Face"
+    }
   },
   "projects": {
     "33": {

@@ -59,7 +59,8 @@
   },
   "contact": {
     "title": "Get In Touch",
-    "description": "Send me a message if you want to work with me or build a pyramid on the the 33rd parallel."
+    "description": "Send me a message if you want to work with me or build a pyramid on the the 33rd parallel.",
+    "bgAlt": "Ancient stepped pyramid at Zaculeu, Guatemala"
   },
   "pixelperfect": {
     "title": "Pixelperfect",
@@ -76,7 +77,10 @@
   "badges": {
     "title": "Badges",
     "subtitle": "Souvenirs from earlier stops on the road.",
-    "typewriter": "git reset --hard blablabla"
+    "typewriter": "git reset --hard blablabla",
+    "frontendBadgeAlt": "Frontend badge",
+    "jqueryBadgeAlt": "jQuery badge",
+    "cssBadgeAlt": "CSS badge"
   },
   "hustle": {
     "title": "Discipline & Dedication.",
@@ -162,6 +166,29 @@
     "error": "Error",
     "tryAgain": "Try Again",
     "videoUnsupported": "Your browser does not support the video tag."
+  },
+  "a11y": {
+    "toggleNavigation": "Toggle navigation",
+    "closeModal": "Close modal",
+    "technologyFilters": "Technology filters",
+    "caseStudySections": "Case study sections",
+    "quickActions": "{{title}} quick actions",
+    "shellCommandLink": "Shell command explanation link",
+    "aiLearningSources": "AI learning sources",
+    "stanfordChannel": "Stanford Online YouTube channel",
+    "switchLanguage": {
+      "en": "Switch to English",
+      "de": "Switch to German",
+      "pl": "Switch to Polish",
+      "es": "Switch to Spanish"
+    },
+    "social": {
+      "instagram": "Instagram profile",
+      "twitter": "Twitter profile",
+      "dribbble": "Dribbble profile",
+      "github": "GitHub repositories",
+      "huggingface": "Hugging Face profile"
+    }
   },
   "projects": {
     "space-studio": {

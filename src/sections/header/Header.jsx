@@ -89,7 +89,7 @@ const Header = () => {
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={item.label}
+              aria-label={t(`a11y.social.${item.key}`, item.label)}
             >
               {item.icon}
             </a>

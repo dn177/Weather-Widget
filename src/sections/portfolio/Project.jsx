@@ -123,7 +123,7 @@ const Project = ({
             <div
               className="detail-modal-actions"
               role="toolbar"
-              aria-label={`${translatedProject.title} quick actions`}
+              aria-label={t("a11y.quickActions", { title: translatedProject.title })}
             >
               {liveLinks.map((link, index) => (
                 <a
@@ -203,7 +203,7 @@ const Project = ({
 
             {/* Mini-TOC for long case studies (UX-REVIEW #7) */}
             {project.detailedContent.sections?.length >= 4 && (
-              <nav className="detail-modal-toc" aria-label="Case study sections">
+              <nav className="detail-modal-toc" aria-label={t("a11y.caseStudySections")}>
                 {project.detailedContent.sections.map((section, i) => (
                   <button
                     key={i}

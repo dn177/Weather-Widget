@@ -21,7 +21,7 @@ const Contact = () => {
         sizes="(max-width: 600px) 400px, 
             (max-width: 1200px) 800px, 
             1200px"
-        alt="Ancient stepped pyramid at Zaculeu, Guatemala"
+        alt={t("contact.bgAlt")}
         loading="lazy"
       />
       <div className="contact-wrapper">

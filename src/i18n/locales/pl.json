@@ -61,7 +61,8 @@
   },
   "contact": {
     "title": "Skontaktuj się",
-    "description": "Wyślij mi wiadomość, jeśli chcesz ze mną pracować lub zbudować piramidę na 33. równoleżniku."
+    "description": "Wyślij mi wiadomość, jeśli chcesz ze mną pracować lub zbudować piramidę na 33. równoleżniku.",
+    "bgAlt": "Starożytna piramida schodkowa w Zaculeu w Gwatemali"
   },
   "pixelperfect": {
     "title": "Pixelperfect",
@@ -78,7 +79,10 @@
   "badges": {
     "title": "Odznaki",
     "subtitle": "Pamiątki z wcześniejszych przystanków w drodze.",
-    "typewriter": "git reset --hard blablabla"
+    "typewriter": "git reset --hard blablabla",
+    "frontendBadgeAlt": "Odznaka Frontend",
+    "jqueryBadgeAlt": "Odznaka jQuery",
+    "cssBadgeAlt": "Odznaka CSS"
   },
   "hustle": {
     "title": "Dyscyplina i Poświęcenie.",
@@ -164,6 +168,29 @@
     "error": "Błąd",
     "tryAgain": "Spróbuj ponownie",
     "videoUnsupported": "Twoja przeglądarka nie obsługuje tagu wideo."
+  },
+  "a11y": {
+    "toggleNavigation": "Przełącz nawigację",
+    "closeModal": "Zamknij okno",
+    "technologyFilters": "Filtry technologii",
+    "caseStudySections": "Sekcje studium przypadku",
+    "quickActions": "Szybkie akcje dla {{title}}",
+    "shellCommandLink": "Link do wyjaśnienia polecenia powłoki",
+    "aiLearningSources": "Źródła nauki AI",
+    "stanfordChannel": "Kanał YouTube Stanford Online",
+    "switchLanguage": {
+      "en": "Przełącz na angielski",
+      "de": "Przełącz na niemiecki",
+      "pl": "Przełącz na polski",
+      "es": "Przełącz na hiszpański"
+    },
+    "social": {
+      "instagram": "Profil na Instagramie",
+      "twitter": "Profil na Twitterze",
+      "dribbble": "Profil na Dribbble",
+      "github": "Repozytoria GitHub",
+      "huggingface": "Profil na Hugging Face"
+    }
   },
   "projects": {
     "33": {

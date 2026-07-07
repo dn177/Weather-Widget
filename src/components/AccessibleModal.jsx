@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useTranslation } from "react-i18next";
 import "./accessibleModal.css";
 
 /**
@@ -26,6 +27,7 @@ const AccessibleModal = ({
   ariaDescribedBy,
   initialFocusRef,
 }) => {
+  const { t } = useTranslation();
   const [isClosing, setIsClosing] = useState(false);
   const modalRef = useRef(null);
   const closeButtonRef = useRef(null);
@@ -132,7 +134,7 @@ const AccessibleModal = ({
               ref={closeButtonRef}
               className="modal-close"
               onClick={handleClose}
-              aria-label="Close modal"
+              aria-label={t("a11y.closeModal")}
               type="button"
             >
               <svg

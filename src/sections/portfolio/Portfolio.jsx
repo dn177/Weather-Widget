@@ -29,7 +29,7 @@ const Portfolio = () => {
         target="_blank"
         rel="noreferrer"
         className="text-reset text-decoration-none text-center d-block typewriter-wrapper"
-        aria-label="Shell command explanation link"
+        aria-label={t("a11y.shellCommandLink")}
       >
         <Typewriter
           text={t('portfolio.typewriter')}

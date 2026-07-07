@@ -21,7 +21,7 @@ function Badges() {
           target="_blank"
           rel="noreferrer"
           className="text-reset text-decoration-none text-center d-block typewriter-wrapper"
-          aria-label="Shell command explanation link"
+          aria-label={t("a11y.shellCommandLink")}
         >
           <Typewriter
             text={t('badges.typewriter')}
@@ -39,20 +39,20 @@ function Badges() {
             loading="lazy"
             className="badge-img"
             src={FBadge}
-            alt="Frontend Badge"
+            alt={t("badges.frontendBadgeAlt")}
           />
           <img
             loading="lazy"
             className="badge-img"
             // src={require("../../assets/Badges/jQueryBadge.png")}
             src={JBadge}
-            alt="jQuery Badge"
+            alt={t("badges.jqueryBadgeAlt")}
           />
           <img
             loading="lazy"
             className="badge-img"
             src={CBadge}
-            alt="CSS Badge"
+            alt={t("badges.cssBadgeAlt")}
           />
         </div>
       </div>

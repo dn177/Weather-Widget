@@ -59,7 +59,8 @@
   },
   "contact": {
     "title": "Kontaktiere mich",
-    "description": "Sende mir eine Nachricht, wenn du mit mir arbeiten oder eine Pyramide auf dem 33. Breitengrad bauen möchtest."
+    "description": "Sende mir eine Nachricht, wenn du mit mir arbeiten oder eine Pyramide auf dem 33. Breitengrad bauen möchtest.",
+    "bgAlt": "Alte Stufenpyramide in Zaculeu, Guatemala"
   },
   "pixelperfect": {
     "title": "Pixelperfekt",
@@ -76,7 +77,10 @@
   "badges": {
     "title": "Abzeichen",
     "subtitle": "Souvenirs von früheren Stationen auf dem Weg.",
-    "typewriter": "git reset --hard blablabla"
+    "typewriter": "git reset --hard blablabla",
+    "frontendBadgeAlt": "Frontend-Badge",
+    "jqueryBadgeAlt": "jQuery-Badge",
+    "cssBadgeAlt": "CSS-Badge"
   },
   "hustle": {
     "title": "Disziplin & Hingabe.",
@@ -162,6 +166,29 @@
     "error": "Fehler",
     "tryAgain": "Erneut versuchen",
     "videoUnsupported": "Dein Browser unterstützt das Video-Tag nicht."
+  },
+  "a11y": {
+    "toggleNavigation": "Navigation umschalten",
+    "closeModal": "Dialog schließen",
+    "technologyFilters": "Technologie-Filter",
+    "caseStudySections": "Abschnitte der Fallstudie",
+    "quickActions": "Schnellaktionen für {{title}}",
+    "shellCommandLink": "Link zur Erklärung des Shell-Befehls",
+    "aiLearningSources": "KI-Lernquellen",
+    "stanfordChannel": "YouTube-Kanal von Stanford Online",
+    "switchLanguage": {
+      "en": "Zu Englisch wechseln",
+      "de": "Zu Deutsch wechseln",
+      "pl": "Zu Polnisch wechseln",
+      "es": "Zu Spanisch wechseln"
+    },
+    "social": {
+      "instagram": "Instagram-Profil",
+      "twitter": "Twitter-Profil",
+      "dribbble": "Dribbble-Profil",
+      "github": "GitHub-Repositories",
+      "huggingface": "Hugging-Face-Profil"
+    }
   },
   "projects": {
     "33": {
