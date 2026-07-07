@@ -7,9 +7,9 @@ const project = {
   "id": "contao-website",
   "title": "Example Contao Website",
   "category": "website",
-  "featured": false,
+  "featured": true,
   "date": "2024-12-01",
-  "sortOrder": 1,
+  "sortOrder": 2,
   "media": {
     "type": "video",
     "src": "/Portfolio/Video16.mp4",
