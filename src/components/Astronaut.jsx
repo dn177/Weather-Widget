@@ -21,7 +21,11 @@ const SpaceScene = () => {
   const asteroidFieldRef = useRef(null);
   const environmentMapRef = useRef(null);
   const animationFrameRef = useRef(null);
-  const cameraFrameRef = useRef(null);
+  const startLoopRef = useRef(null);
+  const stopLoopRef = useRef(null);
+  const renderFrameRef = useRef(null);
+  const prefersReducedMotionRef = useRef(false);
+  const isInViewRef = useRef(false);
   const resizeHandlerRef = useRef(null);
   const gsapCtxRef = useRef(null);
 
@@ -30,18 +34,48 @@ const SpaceScene = () => {
     // detached (react-hooks/exhaustive-deps guidance).
     const mountEl = mountRef.current;
 
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+    prefersReducedMotionRef.current = reducedMotionQuery.matches;
+
     // Initialize scene inside a gsap context so all timelines get killed on unmount
     gsapCtxRef.current = gsap.context(() => {
       initScene();
     });
 
+    // Under reduced motion the scene stays a static frame: freeze every
+    // tween at its initial pose (the loop is never started for it either).
+    if (prefersReducedMotionRef.current) {
+      pauseSceneTweens();
+    }
+
+    // Pause rendering while the scene is scrolled off-screen: the observer's
+    // initial callback also kicks off the animation loop in the first place.
+    const observer = new IntersectionObserver((entries) => {
+      isInViewRef.current = entries[entries.length - 1].isIntersecting;
+      syncPlayState();
+    });
+    if (mountEl) {
+      observer.observe(mountEl);
+    }
+
+    const handleMotionPreferenceChange = (event) => {
+      prefersReducedMotionRef.current = event.matches;
+      syncPlayState();
+    };
+    reducedMotionQuery.addEventListener("change", handleMotionPreferenceChange);
+
     // Clean up on unmount
     return () => {
-      if (animationFrameRef.current) {
+      observer.disconnect();
+      reducedMotionQuery.removeEventListener(
+        "change",
+        handleMotionPreferenceChange
+      );
+      if (animationFrameRef.current !== null) {
         cancelAnimationFrame(animationFrameRef.current);
-      }
-      if (cameraFrameRef.current) {
-        cancelAnimationFrame(cameraFrameRef.current);
+        animationFrameRef.current = null;
       }
       if (resizeHandlerRef.current) {
         window.removeEventListener("resize", resizeHandlerRef.current);
@@ -107,6 +141,47 @@ const SpaceScene = () => {
           uniform.value.dispose();
         }
       });
+    }
+  };
+
+  // Every tween and timeline in this scene is created inside the gsap
+  // context, so the context's data array is the full list to pause/resume.
+  const pauseSceneTweens = () => {
+    const ctx = gsapCtxRef.current;
+    if (!ctx) return;
+    ctx.data.forEach((animation) => {
+      if (animation && typeof animation.pause === "function") {
+        animation.pause();
+      }
+    });
+  };
+
+  const resumeSceneTweens = () => {
+    const ctx = gsapCtxRef.current;
+    if (!ctx) return;
+    ctx.data.forEach((animation) => {
+      if (animation && typeof animation.resume === "function") {
+        animation.resume();
+      }
+    });
+  };
+
+  // Single source of truth for whether the scene should be animating,
+  // driven by both visibility and the reduced-motion preference.
+  const syncPlayState = () => {
+    if (!isInViewRef.current) {
+      if (stopLoopRef.current) stopLoopRef.current();
+      pauseSceneTweens();
+      return;
+    }
+    if (prefersReducedMotionRef.current) {
+      if (stopLoopRef.current) stopLoopRef.current();
+      pauseSceneTweens();
+      // Keep the static frame visible and current.
+      if (renderFrameRef.current) renderFrameRef.current();
+    } else {
+      resumeSceneTweens();
+      if (startLoopRef.current) startLoopRef.current();
     }
   };
 
@@ -250,8 +325,9 @@ const SpaceScene = () => {
     // Add fog for atmosphere with better settings
     scene.fog = new THREE.FogExp2(0x000033, 0.0008);
 
-    // Add automatic camera animation
-    animateCamera(camera, scene);
+    // Add automatic camera animation; the returned updater runs once per
+    // frame inside the main animation loop below.
+    const updateCameraTarget = animateCamera(camera, scene);
 
     // Add lights, stars, astronaut, spaceship, and enhanced environment
     addLights(scene);
@@ -273,6 +349,12 @@ const SpaceScene = () => {
       const fxaaPass = composer.passes.find(pass => pass.uniforms && pass.uniforms['resolution']);
       if (fxaaPass) {
         fxaaPass.uniforms['resolution'].value.set(1 / window.innerWidth, 1 / window.innerHeight);
+      }
+
+      // While the loop is stopped (off-screen or reduced motion), keep the
+      // last painted frame sized correctly.
+      if (animationFrameRef.current === null && renderFrameRef.current) {
+        renderFrameRef.current();
       }
     };
     resizeHandlerRef.current = handleResize;
@@ -302,14 +384,50 @@ const SpaceScene = () => {
       // Update spaceship lights
       updateSpaceshipLights(delta);
 
+      // Keep the camera aimed at the astronaut/spaceship midpoint
+      updateCameraTarget();
+
       // Render with post-processing
       composer.render();
     };
 
-    animate();
+    const startLoop = () => {
+      // Guard against double-starting and never animate under reduced motion
+      if (animationFrameRef.current !== null || prefersReducedMotionRef.current) {
+        return;
+      }
+      // Discard the time spent paused so delta-based updates do not jump
+      clock.getDelta();
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    const stopLoop = () => {
+      if (animationFrameRef.current !== null) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+    };
+
+    // Render a single frame without starting the loop (static/reduced-motion
+    // rendering and resize repaints while paused).
+    const renderFrame = () => {
+      updateCameraTarget();
+      composer.render();
+    };
+
+    startLoopRef.current = startLoop;
+    stopLoopRef.current = stopLoop;
+    renderFrameRef.current = renderFrame;
+
+    // Paint one frame immediately so nothing flashes black; the
+    // IntersectionObserver in the mount effect starts the loop once the
+    // scene is actually on screen.
+    renderFrame();
   };
 
-  // Enhanced camera animation with dynamic movement
+  // Enhanced camera animation with dynamic movement. Returns the per-frame
+  // camera targeting updater; the main animation loop drives it instead of
+  // a second requestAnimationFrame loop.
   const animateCamera = (camera, scene) => {
     // Create a more complex camera path
     const timeline = gsap.timeline({ repeat: -1 });
@@ -371,10 +489,9 @@ const SpaceScene = () => {
       }
 
       camera.lookAt(centerPoint);
-      cameraFrameRef.current = requestAnimationFrame(updateCameraTarget);
     }
 
-    updateCameraTarget();
+    return updateCameraTarget;
   };
 
   // Enhanced lighting system
