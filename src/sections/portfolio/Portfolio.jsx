@@ -5,7 +5,6 @@ import { techCategories, getProjectsByTechnology } from "./portfolioData";
 import React, { useCallback, useMemo } from "react";
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from "react-router-dom";
-import Learning from "../learning/Learning";
 import Typewriter from "../../lib/Typewriter";
 // Assets are now in public directory
 
@@ -78,10 +77,6 @@ const Portfolio = () => {
           </span>
         </p>
         <Projects projects={projects} activeTech={activeTech} />
-      </div>
-      <h2 className="h1 mt-row">Input</h2>
-      <div className="container portfolio__container">
-        <Learning />
       </div>
     </section>
   );

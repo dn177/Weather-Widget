@@ -27,6 +27,12 @@ const Book11 = LEARNING_PATH + "Websocket.webp";
 const Site1 = LEARNING_PATH + "MediumLogo.png";
 const fem = LEARNING_PATH + "frontendmasters.svg";
 const ereact = LEARNING_PATH + "EpicReact.png";
+// Manual snapshots of third-party cards (issue #8): self-hosted so visitors
+// don't hit api.daily.dev / leetcard.jacoblin.cool. Refresh by re-running:
+//   curl -o public/Learning/devcard-snapshot.png "https://api.daily.dev/devcards/v2/oLymVhsGvNElARKJey2MR.png?type=default&r=6yt"
+//   curl -o public/Learning/leetcard-snapshot.svg "https://leetcard.jacoblin.cool/cdtio?font=Lora"
+const DevcardSnapshot = LEARNING_PATH + "devcard-snapshot.png";
+const LeetcardSnapshot = LEARNING_PATH + "leetcard-snapshot.svg";
 // const Site2 = LEARNING_PATH + "dailydev.png";
 // const Site3 = LEARNING_PATH + "freecodecamp.png";
 
@@ -207,11 +213,18 @@ function Learning() {
         <img src={Book4} alt="Learning React" loading="lazy" /> */}
       </div>
       <div className="devcard-wrapper">
-        <a href="https://app.daily.dev/cdic">
+        <a
+          href="https://app.daily.dev/cdic"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
-            src="https://api.daily.dev/devcards/v2/oLymVhsGvNElARKJey2MR.png?type=default&r=6yt"
+            src={DevcardSnapshot}
             className="devcard-img"
             alt="Daniel Marass's Dev Card"
+            loading="lazy"
+            width="648"
+            height="978"
           />
         </a>
         <a href="https://frontendmasters.com" target="_blank" rel="noreferrer">
@@ -247,11 +260,11 @@ function Learning() {
           aria-label="LeetCode stats card"
         >
           <img
-            src="https://leetcard.jacoblin.cool/cdtio?font=Lora"
+            src={LeetcardSnapshot}
             alt="LeetCode stats"
             loading="lazy"
-            width="100%"
-            height="auto"
+            width="500"
+            height="200"
           />
         </a>
       </div>

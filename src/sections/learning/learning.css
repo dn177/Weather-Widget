@@ -9,6 +9,13 @@
   text-align: center;
 }
 
+/* The width/height attributes on the card only pin the aspect ratio
+   (no layout shift while it loads); display width stays fluid. */
+.learning_sites img[alt="LeetCode stats"] {
+  width: 100%;
+  height: auto;
+}
+
 .learning_sites img[alt="Medium"] {
   width: clamp(140px, 18vw, 240px);
   height: auto;
