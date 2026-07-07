@@ -1,13 +1,8 @@
-import { useCallback } from "react";
 import { useTranslation } from 'react-i18next';
 import CategoryButton from "./CategoryButton";
 
 const ProjectsCategories = ({ categories, techCategories, onFilterProjects, activeTech }) => {
   const { t } = useTranslation();
-
-  const changeCategoryHandler = useCallback((tech) => {
-    onFilterProjects(tech);
-  }, [onFilterProjects]);
 
   // Deliberately NOT the ARIA tabs pattern: these buttons filter a grid
   // rather than switching panels, so they are toggle buttons in a group
@@ -20,8 +15,9 @@ const ProjectsCategories = ({ categories, techCategories, onFilterProjects, acti
           <CategoryButton
             key={tech}
             category={t(`portfolio.categories.${tech}`)}
+            techKey={tech}
             techColor={techInfo.color}
-            onChangeCategory={() => changeCategoryHandler(tech)}
+            onChangeCategory={onFilterProjects}
             className={`btn tech__btn ${
               activeTech === tech ? "active" : ""
             }`}
