@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "Przejdź do treści"
+  },
   "navbar": {
     "brand": "cd /tio/root",
     "portfolio": "portfolio",
@@ -128,6 +131,10 @@
   },
   "weather": {
     "headline": "Może warto sprawdzić pogodę.",
+    "labels": {
+      "city": "Miasto",
+      "country": "Kraj"
+    },
     "placeholders": {
       "city": "Wprowadź miasto",
       "country": "Wprowadź kraj (opcjonalnie)"
@@ -158,7 +165,11 @@
   "common": {
     "loading": "Ładowanie...",
     "error": "Błąd",
-    "tryAgain": "Spróbuj ponownie"
+    "tryAgain": "Spróbuj ponownie",
+    "errorBoundary": {
+      "message": "Coś poszło nie tak. Odśwież stronę.",
+      "reload": "Odśwież stronę"
+    }
   },
   "projects": {
     "33": {

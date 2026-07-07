@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "Zum Inhalt springen"
+  },
   "navbar": {
     "brand": "cd /tio/root",
     "portfolio": "Portfolio",
@@ -126,6 +129,10 @@
   },
   "weather": {
     "headline": "Vielleicht möchtest du einen Blick auf das Wetter werfen.",
+    "labels": {
+      "city": "Stadt",
+      "country": "Land"
+    },
     "placeholders": {
       "city": "Stadt eingeben",
       "country": "Land eingeben (optional)"
@@ -156,7 +163,11 @@
   "common": {
     "loading": "Lädt...",
     "error": "Fehler",
-    "tryAgain": "Erneut versuchen"
+    "tryAgain": "Erneut versuchen",
+    "errorBoundary": {
+      "message": "Etwas ist schiefgelaufen. Bitte lade die Seite neu.",
+      "reload": "Seite neu laden"
+    }
   },
   "projects": {
     "33": {

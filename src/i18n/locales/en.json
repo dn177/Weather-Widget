@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "Skip to content"
+  },
   "navbar": {
     "brand": "cd /tio/root",
     "portfolio": "portfolio",
@@ -126,6 +129,10 @@
   },
   "weather": {
     "headline": "Might want to take a look at the weather.",
+    "labels": {
+      "city": "City",
+      "country": "Country"
+    },
     "placeholders": {
       "city": "Enter city",
       "country": "Enter country (optional)"
@@ -156,7 +163,11 @@
   "common": {
     "loading": "Loading...",
     "error": "Error",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "errorBoundary": {
+      "message": "Something went wrong. Please reload the page.",
+      "reload": "Reload page"
+    }
   },
   "projects": {
     "space-studio": {

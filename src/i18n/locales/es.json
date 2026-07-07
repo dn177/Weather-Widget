@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "Saltar al contenido"
+  },
   "navbar": {
     "brand": "cd /tio/root",
     "portfolio": "portfolio",
@@ -126,6 +129,10 @@
   },
   "weather": {
     "headline": "Quizás quieras echar un vistazo al clima.",
+    "labels": {
+      "city": "Ciudad",
+      "country": "País"
+    },
     "placeholders": {
       "city": "Ingresa ciudad",
       "country": "Ingresa país (opcional)"
@@ -156,7 +163,11 @@
   "common": {
     "loading": "Cargando...",
     "error": "Error",
-    "tryAgain": "Intentar de nuevo"
+    "tryAgain": "Intentar de nuevo",
+    "errorBoundary": {
+      "message": "Algo salió mal. Recarga la página.",
+      "reload": "Recargar página"
+    }
   },
   "projects": {
     "33": {
