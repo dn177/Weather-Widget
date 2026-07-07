@@ -90,7 +90,7 @@ function Learning() {
         >
           <span className="ai-sources__featured-tag">
             <span className="ai-sources__featured-no">00</span>
-            <span className="ai-sources__featured-text">Featured</span>
+            <span className="ai-sources__featured-text">{t("learning.featured")}</span>
           </span>
           <img
             src={StanfordLogo}

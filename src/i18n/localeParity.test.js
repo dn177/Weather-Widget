@@ -15,7 +15,13 @@ const ENGLISH_BY_DESIGN = [];
 
 // UI keys introduced by the i18n consistency fix. Grown by later tasks;
 // every locale must carry every one of them.
-const REQUIRED_UI_KEYS = [];
+const REQUIRED_UI_KEYS = [
+  "portfolio.caseStudyKicker",
+  "portfolio.inputTitle",
+  "learning.featured",
+  "learning.aiSourcesTitle",
+  "common.videoUnsupported",
+];
 
 const flatten = (obj, prefix = "") =>
   Object.entries(obj).reduce((acc, [key, value]) => {

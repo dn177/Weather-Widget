@@ -51,7 +51,7 @@ const ProjectDetailsPanel = ({
                 aria-label={media.alt || translatedProject.title}
               >
                 <source src={media.src} type="video/mp4" />
-                Your browser does not support the video tag.
+                {t("common.videoUnsupported")}
               </video>
             ) : (
               <img

@@ -15,6 +15,8 @@
   },
   "portfolio": {
     "title": "Projekty",
+    "caseStudyKicker": "Studium przypadku",
+    "inputTitle": "Źródła",
     "leetcode": "Leetcode",
     "typewriter": "curl -sv https://www.cdtio.com/ --stderr - | grep Projekty",
     "leetcodeSolutionText": "Początkowe rozwiązanie odwracania liczby całkowitej po 5 minutach. Możliwa dalsza optymalizacja.",
@@ -153,12 +155,15 @@
     }
   },
   "learning": {
-    "mediumArticlesText": "Kliknij logo, aby zobaczyć moje ulubione artykuły na Medium"
+    "mediumArticlesText": "Kliknij logo, aby zobaczyć moje ulubione artykuły na Medium",
+    "featured": "Wyróżnione",
+    "aiSourcesTitle": "Źródła AI"
   },
   "common": {
     "loading": "Ładowanie...",
     "error": "Błąd",
-    "tryAgain": "Spróbuj ponownie"
+    "tryAgain": "Spróbuj ponownie",
+    "videoUnsupported": "Twoja przeglądarka nie obsługuje tagu wideo."
   },
   "projects": {
     "33": {

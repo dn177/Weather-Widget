@@ -92,7 +92,7 @@ const Project = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            {link.label || "View Live"}
+            {link.label || t("portfolio.viewLive")}
           </a>
         ))}
       </div>
@@ -137,7 +137,7 @@ const Project = ({
                     aria-hidden="true"
                     className="detail-modal-action__icon"
                   />
-                  <span>{link.label || "View Live"}</span>
+                  <span>{link.label || t("portfolio.viewLive")}</span>
                 </a>
               ))}
               {githubLinks.map((link, index) => (
@@ -263,7 +263,7 @@ const Project = ({
                       aria-label={section.videoAlt || section.title}
                     >
                       <source src={section.video} type="video/mp4" />
-                      Your browser does not support the video tag.
+                      {t("common.videoUnsupported")}
                     </video>
                     {section.videoAlt && (
                       <figcaption className="detail-modal-figcaption">

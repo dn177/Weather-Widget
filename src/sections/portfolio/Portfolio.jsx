@@ -58,7 +58,7 @@ const Portfolio = () => {
         </p>
         <Projects projects={projects} activeTech={activeTech} />
       </div>
-      <h2 className="h1 mt-row">Input</h2>
+      <h2 className="h1 mt-row">{t("portfolio.inputTitle")}</h2>
       <div className="container portfolio__container">
         <Learning />
       </div>

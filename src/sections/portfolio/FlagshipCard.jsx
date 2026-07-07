@@ -57,7 +57,7 @@ const FlagshipCard = ({
         <div className="pf-kicker-rail">
           <span className="pf-kicker pf-kicker--case">
             <span aria-hidden="true">§ </span>
-            Case study
+            {t("portfolio.caseStudyKicker")}
           </span>
           <span className="pf-kicker pf-kicker--meta">
             {categoryLabel} · {year}

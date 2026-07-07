@@ -53,7 +53,9 @@
     "entries_other": "{{count}} entries",
     "showAsCards": "Show as cards",
     "showAsList": "Show as list",
-    "viewLive": "View live"
+    "viewLive": "View live",
+    "caseStudyKicker": "Case study",
+    "inputTitle": "Input"
   },
   "contact": {
     "title": "Get In Touch",
@@ -151,12 +153,15 @@
     }
   },
   "learning": {
-    "mediumArticlesText": "Click the logo to view my favorite Medium articles"
+    "mediumArticlesText": "Click the logo to view my favorite Medium articles",
+    "featured": "Featured",
+    "aiSourcesTitle": "AI Input Sources"
   },
   "common": {
     "loading": "Loading...",
     "error": "Error",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "videoUnsupported": "Your browser does not support the video tag."
   },
   "projects": {
     "space-studio": {
