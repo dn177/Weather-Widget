@@ -115,4 +115,44 @@ describe("Project case-study modal", () => {
     expect(document.body.style.overflow).toBe("");
     expect(document.body.style.paddingRight).toBe("");
   });
+
+  it("keeps the modal subtree out of the DOM until opened, and removes it after close completes (issue #21)", async () => {
+    const user = userEvent.setup({
+      advanceTimers: (ms) => vi.advanceTimersByTime(ms),
+    });
+    render(
+      <Project
+        project={CASE_STUDY_PROJECT}
+        expanded={false}
+        hasOpened={false}
+        onToggle={() => {}}
+        panelId="pf-panel-cs-1"
+        ordinal="07"
+      />,
+    );
+
+    // Closed card: no dialog and none of the case-study content is rendered.
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(screen.queryByText("Approach")).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("Cut render time from 300 ms to 40 ms."),
+    ).not.toBeInTheDocument();
+
+    // Open: dialog and case-study content appear.
+    await user.click(screen.getByRole("button", { name: "Read Case Study" }));
+    expect(
+      screen.getByRole("dialog", { name: "Case Study Fixture" }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Approach")).toBeInTheDocument();
+
+    // Close via the close button: the subtree stays mounted through the
+    // 200ms closing animation, then unmounts entirely.
+    await user.click(screen.getByRole("button", { name: "Close modal" }));
+    expect(screen.getByText("Approach")).toBeInTheDocument();
+    act(() => {
+      vi.advanceTimersByTime(200);
+    });
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(screen.queryByText("Approach")).not.toBeInTheDocument();
+  });
 });

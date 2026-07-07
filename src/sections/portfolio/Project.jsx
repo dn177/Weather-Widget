@@ -35,27 +35,46 @@ const Project = ({
   // t stands in for the language: react-i18next swaps the t state on its
   // languageChanged binding (and on resource loads), so a language switch
   // re-renders this card past the memo AND re-derives here via the new t.
-  const { translatedProject, links } = useMemo(() => {
-    const translated = getTranslatedProject(project, t);
+  const { translatedProject, links, year, categoryLabel, firstLink } =
+    useMemo(() => {
+      const translated = getTranslatedProject(project, t);
 
-    // Separate GitHub links, live links, and other links
-    return {
-      translatedProject: translated,
-      links: {
+      // Separate GitHub links, live links, and other links
+      const groupedLinks = {
         github: translated.links.filter((link) => link.type === "github"),
         live: translated.links.filter((link) => link.type === "live"),
         other: translated.links.filter(
           (link) => link.type !== "github" && link.type !== "live",
         ),
-      },
-    };
-  }, [project, t]);
+      };
+
+      return {
+        translatedProject: translated,
+        links: groupedLinks,
+        // Shared card-face derivations, computed once here instead of in
+        // every tier component: the year kicker, the localized category
+        // label, and the single face link (live wins over github wins
+        // over other).
+        year: project.date ? project.date.slice(0, 4) : "",
+        categoryLabel: t(`portfolio.projectCategories.${project.category}`, {
+          defaultValue: project.category,
+        }),
+        firstLink: [
+          ...groupedLinks.live,
+          ...groupedLinks.github,
+          ...groupedLinks.other,
+        ][0],
+      };
+    }, [project, t]);
 
   const tier = getTier(project);
   const cardProps = {
     project,
     translatedProject,
     links,
+    year,
+    categoryLabel,
+    firstLink,
     onOpenCaseStudy: project.detailedContent ? detailModal.open : null,
     expanded,
     hasOpened,
@@ -74,8 +93,13 @@ const Project = ({
         <ArchiveRow {...cardProps} ordinal={ordinal} />
       )}
 
-      {/* Detailed Case Study Modal */}
-      {project.detailedContent && (
+      {/* Detailed Case Study Modal. Also gated on isOpen so the ~30 closed
+          cards skip building the full modal element tree on every render;
+          AccessibleModal keeps isOpen true through its 200ms isClosing
+          transition and only calls onClose (unmounting this subtree, which
+          runs the focus-restore cleanup) afterward, so the close animation
+          still plays. */}
+      {project.detailedContent && detailModal.isOpen && (
         <CaseStudyModal
           key={`detail-modal-${project.id}`}
           translatedProject={translatedProject}

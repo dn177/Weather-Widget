@@ -9,7 +9,9 @@ import { firstSentence } from "./portfolioData";
 const FlagshipCard = ({
   project,
   translatedProject,
-  links,
+  year,
+  categoryLabel,
+  firstLink,
   onOpenCaseStudy,
   mediaSide = "left",
   ordinal,
@@ -19,11 +21,6 @@ const FlagshipCard = ({
   const { media, technologies } = translatedProject;
   const mediaSrc = media.type === "video" ? media.poster : media.src;
   const isSvg = typeof mediaSrc === "string" && mediaSrc.endsWith(".svg");
-
-  const categoryLabel = t(`portfolio.projectCategories.${project.category}`, {
-    defaultValue: project.category,
-  });
-  const year = project.date ? project.date.slice(0, 4) : "";
 
   // The stat block already carries the headline number, and the hero SVGs
   // repeat it too; skip highlights that restate it so the two findings add
@@ -43,10 +40,8 @@ const FlagshipCard = ({
   const shownTech = technologies.slice(0, 4);
   const extraTech = technologies.length - shownTech.length;
 
-  // At most one link on the flagship face; every link stays available in the
-  // case-study modal.
-  const firstLink = [...links.live, ...links.github, ...links.other][0];
-
+  // At most one link on the flagship face (the firstLink prop from Project);
+  // every link stays available in the case-study modal.
   return (
     <article
       className={`pf-card pf-flagship${
