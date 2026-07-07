@@ -18,8 +18,11 @@ export default defineConfig({
     outDir: "build",
   },
   test: {
-    // Data-integrity tests run in node; switch to jsdom per-file when
-    // component tests arrive (see CODE-REVIEW.md roadmap #7).
+    // Data-integrity tests run in node; component tests opt into jsdom
+    // per-file via a "@vitest-environment jsdom" docblock.
     environment: "node",
+    // jest-dom matchers + an English i18n test instance + an
+    // IntersectionObserver stub (see the file's comments).
+    setupFiles: ["./src/test/setup.js"],
   },
 });
