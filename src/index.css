@@ -76,8 +76,49 @@ html {
   scroll-padding-top: calc(var(--navbar-height) + 0.5rem);
 }
 
+/* Slim scrollbar in the site palette, keep the position indicator instead of hiding it */
+html {
+  scrollbar-color: var(--purple-400, #9c5fc9) var(--purple-950, #0d011e);
+  scrollbar-width: thin;
+}
+
 body::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--purple-950, #0d011e);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--purple-400, #9c5fc9);
+  border-radius: var(--border-radius-3);
+  border: 2px solid var(--purple-950, #0d011e);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--gold-500, #c9a96e);
+}
+
+/* Visually hidden until focused, first focusable element on the page */
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 0.75rem;
+  z-index: 1000;
+  padding: 0.6rem 1.25rem;
+  background: var(--purple-900, #1a0330);
+  color: var(--ivory, #f7f1e6);
+  border: 1px solid var(--gold-500, #c9a96e);
+  border-radius: var(--border-radius-3);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.skip-link:focus {
+  top: 0.75rem;
 }
 
 main {
@@ -96,8 +137,6 @@ body {
   line-height: 1.6;
   letter-spacing: -0.02em;
   /* text-shadow: 0 0 0.3rem black; */
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   -webkit-text-size-adjust: 100%;
 }
 
