@@ -76,7 +76,7 @@ function Learning() {
 
   return (
     <div>
-      <div className="ai-sources" aria-label="AI learning sources" role="region">
+      <div className="ai-sources" aria-label={t("a11y.aiLearningSources")} role="region">
         <div className="ai-sources__header">
           <span className="ai-sources__rule" aria-hidden="true" />
           <p className="ai-sources__eyebrow">
@@ -92,11 +92,11 @@ function Learning() {
           target="_blank"
           rel="noopener noreferrer"
           className="ai-sources__stanford"
-          aria-label="Stanford Online YouTube channel"
+          aria-label={t("a11y.stanfordChannel")}
         >
           <span className="ai-sources__featured-tag">
             <span className="ai-sources__featured-no">00</span>
-            <span className="ai-sources__featured-text">Featured</span>
+            <span className="ai-sources__featured-text">{t("learning.featured")}</span>
           </span>
           <img
             src={StanfordLogo}

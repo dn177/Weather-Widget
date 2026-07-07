@@ -46,7 +46,7 @@ const Navbar = () => {
         onClick={() => setOpen((v) => !v)}
         aria-controls="navbarSupportedContent"
         aria-expanded={open}
-        aria-label="Toggle navigation"
+        aria-label={t("a11y.toggleNavigation")}
       >
         <span className="navbar-toggler-icon"></span>
       </button>

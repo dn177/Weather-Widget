@@ -4,14 +4,14 @@ import { SUPPORTED_LANGUAGES } from "../../i18n/languages";
 import "./languageSelector.css";
 
 const LANGUAGE_LABELS = {
-  en: { label: "EN", aria: "Switch to English" },
-  de: { label: "DE", aria: "Switch to German" },
-  pl: { label: "PL", aria: "Switch to Polish" },
-  es: { label: "ES", aria: "Switch to Spanish" },
+  en: { label: "EN" },
+  de: { label: "DE" },
+  pl: { label: "PL" },
+  es: { label: "ES" },
 };
 
 const LanguageSelector = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   // resolvedLanguage is always a supported base code (load: "languageOnly"),
   // so the active state also works when the browser reports e.g. "en-GB".
   const activeLanguage = i18n.resolvedLanguage || i18n.language;
@@ -24,7 +24,7 @@ const LanguageSelector = () => {
           <button
             className={`lang-btn ${activeLanguage === lng ? "active" : ""}`}
             onClick={() => i18n.changeLanguage(lng)}
-            aria-label={LANGUAGE_LABELS[lng].aria}
+            aria-label={t(`a11y.switchLanguage.${lng}`)}
           >
             {LANGUAGE_LABELS[lng].label}
           </button>

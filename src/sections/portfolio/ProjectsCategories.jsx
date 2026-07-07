@@ -8,7 +8,7 @@ const ProjectsCategories = ({ categories, onFilterProjects, activeTech }) => {
   // rather than switching panels, so they are toggle buttons in a group
   // (aria-pressed) — simpler and honest to assistive tech.
   return (
-    <div className="portfolio__categories" role="group" aria-label="Technology filters">
+    <div className="portfolio__categories" role="group" aria-label={t("a11y.technologyFilters")}>
       {categories.map((tech) => {
         return (
           <CategoryButton

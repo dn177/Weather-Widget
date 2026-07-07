@@ -1,7 +1,24 @@
 {
   "a11y": {
     "skipToContent": "Zum Inhalt springen",
-    "opensExplainshell": "öffnet explainshell.com in einem neuen Tab"
+    "opensExplainshell": "öffnet explainshell.com in einem neuen Tab",
+    "toggleNavigation": "Navigation umschalten",
+    "closeModal": "Dialog schließen",
+    "technologyFilters": "Technologie-Filter",
+    "caseStudySections": "Abschnitte der Fallstudie",
+    "quickActions": "Schnellaktionen für {{title}}",
+    "aiLearningSources": "KI-Lernquellen",
+    "stanfordChannel": "YouTube-Kanal von Stanford Online",
+    "switchLanguage": {
+      "en": "Zu Englisch wechseln",
+      "de": "Zu Deutsch wechseln",
+      "pl": "Zu Polnisch wechseln",
+      "es": "Zu Spanisch wechseln"
+    },
+    "social": {
+      "github": "GitHub-Repositories",
+      "huggingface": "Hugging-Face-Profil"
+    }
   },
   "navbar": {
     "brand": "cd /tio/root",
@@ -57,11 +74,15 @@
     "entries_other": "{{count}} Einträge",
     "showAsCards": "Als Karten anzeigen",
     "showAsList": "Als Liste anzeigen",
-    "viewLive": "Live ansehen"
+    "viewLive": "Live ansehen",
+    "caseStudyKicker": "Fallstudie",
+    "caseStudyEnglishNote": "Fallstudie auf Englisch verfügbar.",
+    "inputTitle": "Input"
   },
   "contact": {
     "title": "Kontaktiere mich",
-    "description": "Sende mir eine Nachricht, wenn du mit mir arbeiten oder eine Pyramide auf dem 33. Breitengrad bauen möchtest."
+    "description": "Sende mir eine Nachricht, wenn du mit mir arbeiten oder eine Pyramide auf dem 33. Breitengrad bauen möchtest.",
+    "bgAlt": "Alte Stufenpyramide in Zaculeu, Guatemala"
   },
   "pixelperfect": {
     "title": "Pixelperfekt",
@@ -78,7 +99,10 @@
   "badges": {
     "title": "Abzeichen",
     "subtitle": "Souvenirs von früheren Stationen auf dem Weg.",
-    "typewriter": "git reset --hard blablabla"
+    "typewriter": "git reset --hard blablabla",
+    "frontendBadgeAlt": "Frontend-Badge",
+    "jqueryBadgeAlt": "jQuery-Badge",
+    "cssBadgeAlt": "CSS-Badge"
   },
   "hustle": {
     "title": "Disziplin & Hingabe.",
@@ -160,7 +184,9 @@
   },
   "learning": {
     "sectionTitle": "Wovon ich lerne",
-    "mediumArticlesText": "Klicke auf das Logo, um meine Lieblings-Medium-Artikel anzusehen"
+    "mediumArticlesText": "Klicke auf das Logo, um meine Lieblings-Medium-Artikel anzusehen",
+    "featured": "Empfohlen",
+    "aiSourcesTitle": "KI-Quellen"
   },
   "common": {
     "loading": "Lädt...",
@@ -169,7 +195,8 @@
     "errorBoundary": {
       "message": "Etwas ist schiefgelaufen. Bitte lade die Seite neu.",
       "reload": "Seite neu laden"
-    }
+    },
+    "videoUnsupported": "Dein Browser unterstützt das Video-Tag nicht."
   },
   "projects": {
     "33": {
@@ -182,7 +209,8 @@
       },
       "links": {
         "0": "33 erkunden"
-      }
+      },
+      "summary": "Ein interaktives 3D-Erlebnis zur Bedeutung der Zahl 33."
     },
     "quantum-performance": {
       "title": "Enterprise CRM Performance-Optimierung & Vue 3 Migration",
@@ -191,7 +219,9 @@
         "0": "16ms durchschnittliche INP (vs 200ms \"gut\"-Schwelle)",
         "1": "Vue 2 → Vue 3 vollständige Migration",
         "2": "7.000+ Elemente virtuelles Scrolling"
-      }
+      },
+      "summary": "Migration eines mandantenfähigen Unternehmens-CRM von Vue 2 auf Vue 3, danach Interaction to Next Paint von bis zu ~2,3 s auf durchschnittlich 16 ms gesenkt, durch Profiling der Vue-Reaktivität und des Main-Thread-JavaScripts.",
+      "statLabel": "mittlerer INP, runter von bis zu ~2,3 s"
     },
     "release-radar": {
       "title": "Release Reader",
@@ -203,7 +233,8 @@
       },
       "links": {
         "0": "Release Reader öffnen"
-      }
+      },
+      "summary": "Ein Tool zum Finden relevanter Änderungen in GitHub Release Notes."
     },
     "markdown-downloader": {
       "title": "Markdown Downloader - Raycast Erweiterung",
@@ -219,7 +250,8 @@
       },
       "links": {
         "0": "Auf GitHub ansehen"
-      }
+      },
+      "summary": "Eine Raycast-Erweiterung, die Webseiten in saubere Markdown-Dateien umwandelt, mit eingebautem Bild-Download."
     },
     "space-studio": {
       "title": "Space Studio - Interaktive Raketenforschungs-Bildung",
@@ -233,7 +265,9 @@
       },
       "links": {
         "0": "Space Studio starten"
-      }
+      },
+      "summary": "Eine interaktive Web-App, die Raketentechnik über 3D-Simulationen und aufeinander aufbauende Lektionen vermittelt.",
+      "statLabel": "schnellere Physik durch WebAssembly"
     },
     "contao-website": {
       "title": "Beispiel Contao Website",
@@ -244,7 +278,8 @@
       },
       "links": {
         "0": "Website ansehen"
-      }
+      },
+      "summary": "Contao CMS mit spezieller Kontaktformular-Implementierung unter Verwendung von grid-template-areas."
     },
     "inlearning": {
       "title": "InLearning Plattform",
@@ -255,7 +290,8 @@
       },
       "links": {
         "0": "Website ansehen"
-      }
+      },
+      "summary": "Lernplattform mit Materialien für die Themen: KI / ML, Python, React.js, Rust und Vue.js."
     },
     "pictureplatform": {
       "title": "Picture Playground Plattform",
@@ -265,7 +301,8 @@
       },
       "links": {
         "0": "Website ansehen"
-      }
+      },
+      "summary": "Plattform, die die Performance-Gewinne von WebAssembly bei rechenintensiven Aufgaben zeigt."
     },
     "mathtron-vue": {
       "title": "Mathtron Vue Migration",
@@ -278,7 +315,8 @@
       },
       "links": {
         "0": "Projekt öffnen"
-      }
+      },
+      "summary": "Vue.js Migration von Mathtron mit Vuetify UI Framework."
     },
     "learn2sort": {
       "title": "Learn2Sort",
@@ -289,7 +327,8 @@
       },
       "links": {
         "0": "Projekt öffnen"
-      }
+      },
+      "summary": "App mit React.js erstellt, hauptsächlich zur Visualisierung von Sortieralgorithmen."
     },
     "nextjs-portfolio": {
       "title": "Next.js Portfolio Website",
@@ -301,7 +340,8 @@
       "links": {
         "0": "Skript-Code auf Github öffnen",
         "1": "Next Portfolio öffnen"
-      }
+      },
+      "summary": "Alternatives Portfolio mit Next.js erstellt, mit statischen Export-Optimierungen."
     },
     "mathtron": {
       "title": "Mathtron",
@@ -313,7 +353,8 @@
       },
       "links": {
         "0": "Auf Github ansehen"
-      }
+      },
+      "summary": "LaTeX-Editor für Mathe-Notizen und Übungen auf dem Desktop."
     },
     "private-blog": {
       "title": "Privater Blog",
@@ -325,7 +366,8 @@
       },
       "links": {
         "0": "Meine Medium Blog-Beiträge"
-      }
+      },
+      "summary": "Selbstgemachter Blog mit Authentifizierung und Rich-Text-Bearbeitungsfunktionen."
     },
     "rest-fullstack": {
       "title": "REST Fullstack Code-Beispiel",
@@ -337,7 +379,8 @@
       },
       "links": {
         "0": "Auf Github ansehen"
-      }
+      },
+      "summary": "Full-Stack-Anwendung, die saubere REST-API-Architektur demonstriert."
     },
     "e-commerce": {
       "title": "E-Commerce",
@@ -348,7 +391,8 @@
         "2": "Moderne UI mit Tailwind CSS und shadcn/ui",
         "3": "Strapi Backend mit REST API"
       },
-      "links": {}
+      "links": {},
+      "summary": "Moderne E-Commerce-Plattform mit sicherer Authentifizierung und REST API."
     },
     "emmet-demo": {
       "title": "Emmet Live Coding Demo",
@@ -357,7 +401,8 @@
         "0": "Effizienter HTML/CSS-Workflow",
         "1": "Fortgeschrittene Emmet-Techniken"
       },
-      "links": {}
+      "links": {},
+      "summary": "Live-Coding-Demonstration, die Kompetenz mit Emmet und CSS-Shortcuts zeigt."
     },
     "kanban-board": {
       "title": "Kanban Board",
@@ -367,7 +412,8 @@
         "1": "Persistente Speicherung mit localStorage",
         "2": "Saubere und intuitive Benutzeroberfläche"
       },
-      "links": {}
+      "links": {},
+      "summary": "Drag-and-Drop Kanban Board für Aufgabenverwaltung."
     },
     "car-platform": {
       "title": "Auto-Verkaufsplattform",
@@ -377,7 +423,8 @@
         "1": "Berücksichtigt alle Eingabewerte gleichzeitig",
         "2": "Responsives Design mit Bootstrap"
       },
-      "links": {}
+      "links": {},
+      "summary": "Erster Prototyp für eine Auto-Verkaufsplattform mit erweiterten Filterfunktionen."
     },
     "company-website": {
       "title": "Firmenwebsite",
@@ -391,7 +438,8 @@
         "0": "\"Solar\" Website",
         "1": "\"Gala\" Website",
         "2": "\"Bau\" Website"
-      }
+      },
+      "summary": "Multi-Site Firmenpräsenz mit Kontaktformular-Funktionalität."
     },
     "chart": {
       "title": "Diagramm",
@@ -401,7 +449,8 @@
         "1": "Chart.js Implementierung",
         "2": "Responsives Design"
       },
-      "links": {}
+      "links": {},
+      "summary": "Interaktives Diagramm mit Optionen zum Neuzeichnen mit verschiedenen Zeiteinheiten."
     },
     "cdn-manager": {
       "title": "cdnManager jQuery Version",
@@ -411,7 +460,8 @@
         "1": "Für private Nutzung erstellt",
         "2": "Electron Desktop-App"
       },
-      "links": {}
+      "links": {},
+      "summary": "Privates Projekt, das CDNs verwaltet und speichert."
     },
     "molar": {
       "title": "Molar",
@@ -421,7 +471,8 @@
       },
       "links": {
         "0": "Artikel ansehen"
-      }
+      },
+      "summary": "Erweiterte Bluetooth-Tastatur-Erfahrung mit iOS-Geräten."
     },
     "belay": {
       "title": "Belay: Ein KI-Tutor, der deinen Live-State liest",
@@ -437,7 +488,9 @@
       "links": {
         "0": "Live-Demo ausprobieren",
         "1": "Belay-Website besuchen"
-      }
+      },
+      "summary": "Ein KI-Tutor, der einen laufenden, isolierten Übungsraum aufbaut, echten Fortschritt über eine strukturierte State-Bridge liest und abgestufte Hilfe gibt, die mit wachsendem Können ausblendet. Erscheint als Electron-App und als Web-Build ohne Installation.",
+      "statLabel": "Übungsvorlagen in acht Domänen"
     },
     "selfhelp-rag": {
       "title": "SelfHelpRAG: On-Premise-RAG mit hybridem Retrieval",
@@ -446,7 +499,8 @@
         "0": "Hybrides Retrieval: dense (Qdrant) + sparse (BM25) mit Reranking",
         "1": "Eval-Harness mit gelabeltem Fragenkatalog, bewertet Retrieval + Zitation",
         "2": "Injection-bewusster System-Prompt mit explizitem Verweigerungssatz"
-      }
+      },
+      "summary": "Ein Retrieval-augmentiertes Q&A-System für die Wissensbasis eines Enterprise-ERP."
     },
     "nutrition-rag-autonomous": {
       "title": "Autonome Ernährungs-Wissensbasis: selbstaktualisierendes RAG",
@@ -455,7 +509,9 @@
         "0": "Tägliche autonome Research-Ingestion: 113 Themen → Europe PMC → lokales Qwen3.6 → 165 Paper/Lauf",
         "1": "Git-getriebener CI-Reindex: Push → Diff → OpenWebUI-KB in ~30 Sekunden aktualisiert",
         "2": "Hybrides Retrieval (BGE-M3 + BM25 + BGE-Reranker) empirisch getunt; 3 / 8 → 6 / 8 Queries über Schwellwert"
-      }
+      },
+      "summary": "Eine sich selbst aktualisierende Ernährungs-Wissensbasis: ein nächtlicher Daemon holt, fasst zusammen und reindexiert neue Paper.",
+      "statLabel": "eingelesene Paper pro Lauf"
     },
     "aichat": {
       "title": "AIChat: On-Premise-LLM-Chat-Frontend",
@@ -464,7 +520,8 @@
         "0": "Streaming-SSE-State-Machine, die Erzählung / Tool-Calls / finale Antwort trennt",
         "1": "Erstklassige MCP-Integration mit Plugin- + ephemeral_mcp-Support",
         "2": "Läuft über Tailscale auf einem selbst gehosteten DGX Spark. Keine Cloud-Abhängigkeit"
-      }
+      },
+      "summary": "Ein selbst gehostetes Chat-Frontend für LM-Studio-Endpoints mit erstklassigem MCP-Tool-Calling."
     },
     "mcp-servers": {
       "title": "MCP-Server-Entwicklung",
@@ -473,7 +530,9 @@
         "0": "design-perfect-mcp: 5 Tools für pixelgenaue Design-Umsetzung",
         "1": "adobe-xd-mcp: Maße direkt aus .xd-Dateien extrahieren",
         "2": "Mehrere Community-MCP-Server geforkt und erweitert"
-      }
+      },
+      "summary": "Zwei eigene MCP-Server für Pixel-perfekte Design-Workflows, plus Erweiterungen für Community-MCP-Server.",
+      "statLabel": "MCP-Tools für Design-Workflows"
     },
     "resource-orchestration": {
       "title": "Resource-Orchestration-Simulator",
@@ -482,6 +541,32 @@
         "0": "Tokio-+-axum-REST-API mit Strategy-Pattern-Scheduler",
         "1": "Task-State-Machine mit Rust-Enums modelliert; ungültige Zustände sind nicht darstellbar",
         "2": "Live-Vue-3-Dashboard für Submission, Scheduling und Metriken"
+      },
+      "summary": "Datacenter-Scheduling-Simulator mit Rust-Backend (~2.900 LOC) und Vue-3-Dashboard."
+    },
+    "ornith-optimization": {
+      "title": "Optimierung eines 397B-LLM auf einem DGX Spark (GB10)",
+      "description": "Zwei messgetriebene Experimente an einem self-hosted 397B-LLM (2-Bit-MoE) auf einem einzelnen DGX Spark. Roofline-Analyse und Tuning des spekulativen Decodings hoben den Coding-Decode-Durchsatz um 31% auf 24,3 tok/s. Eine vorregistrierte Activation-Steering-Studie lieferte anschließend ein sauberes Nullergebnis (ein statischer Kontrollvektor verschob coding pass@1 um -2,1 Punkte, das Konfidenzintervall schließt null ein); der dreigeteilte Split fing ein falsch positives Ergebnis ab, negative Resultate wurden durchgehend diszipliniert berichtet.",
+      "summary": "Zwei messgetriebene Experimente an einem self-hosted 397B-LLM (2-Bit-MoE) auf einem DGX Spark: Tuning des spekulativen Decodings hob den Coding-Decode-Durchsatz um 31%, eine vorregistrierte Steering-Studie lieferte ein sauberes Nullergebnis.",
+      "statLabel": "Coding-Decode-Durchsatz",
+      "highlights": {
+        "0": "+31% Coding-Decode-Durchsatz (24,3 tok/s), +79% gegenüber der vorherigen Produktionskonfiguration, durch Tuning des spekulativen Decodings ohne Retraining",
+        "1": "Die berichtete 'Acceptance Rate' als Logging-Artefakt diagnostiziert; echte Akzeptanz an erster Position ≈ 87%",
+        "2": "Die Megakernel-Obergrenze vor dem Bau bei ~0% Idle-Gap gemessen und damit eine potenzielle Sackgasse in eine Ein-Tages-Entscheidung verwandelt",
+        "3": "Vorregistrierte Activation-Steering-Studie mit sauberem Nullergebnis: ein statischer Kontrollvektor verschob coding pass@1 um -2,1 Punkte, das Konfidenzintervall schließt null ein",
+        "4": "Der dreigeteilte Split hat sich bezahlt gemacht: ein +2-Punkte-Ergebnis auf dem Dev-Set kehrte sich auf dem einmal angefassten Frozen-Set zu -2 Punkten um; Tuning und Reporting auf einem einzigen Set hätte eine Regression ausgeliefert"
+      }
+    },
+    "dflash-retrain": {
+      "title": "Retraining des spekulativen Drafters eines 397B-LLM auf einem DGX Spark",
+      "description": "Self-Distillation-Retraining des Speculative-Decoding-Drafters für ein self-hosted 397B-LLM (2-Bit-MoE): vom Produktionsserver mitgeschnitten, trainiert, durch Qualitäts-Gates geprüft und am selben Tag auf einem DGX Spark zurück in Produktion gebracht. Der neu trainierte Drafter läuft mit 25,77 tok/s, +6,0% über der getunten 24,3-tok/s-Baseline, und ein adversariales Review mit 15 Agenten fing einen Trainings-Bug ab, der ein Nullergebnis vorgetäuscht hätte.",
+      "summary": "Self-Distillation-Retraining des Speculative-Decoding-Drafters für ein self-hosted 397B-LLM, mitgeschnitten, trainiert, durch Gates geprüft und in einem Tag auf einem DGX Spark zurück in Produktion: 25,77 tok/s, +6,0% über der getunten Baseline.",
+      "statLabel": "Decode-tok/s nach 12 Minuten Retraining",
+      "highlights": {
+        "0": "Den 1,29B-Speculative-Drafter per Self-Distillation neu trainiert und noch am selben Tag in Produktion gebracht: 24,3 auf 25,77 tok/s (+6,0%), mit rund 12 Minuten GPU-Training",
+        "1": "Ein adversariales Review mit 15 Agenten fing einen reinen bf16-AdamW ab, der 87,2% der Parameter-Updates auf null rundete, ein Bug, der ein 'Self-Distillation bringt nichts'-Nullergebnis vorgetäuscht hätte",
+        "2": "Der Gewinn kam aus dem Tail: die Akzeptanz nach dem Retraining fällt mit der Draft-Tiefe nur langsam ab, verschob das optimale n_max von 2 auf 4 und machte tiefe Drafts nutzbar, die der ausgelieferte Drafter nicht verwerten konnte",
+        "3": "End-to-end auf einer geteilten Produktionsmaschine, mit einem 10×-Korpus, den jetzt nächtliche Cron-Fenster einsammeln und den Endpoint per Trap-Restore bis 07:00 wiederherstellen"
       }
     }
   }

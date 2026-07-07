@@ -15,7 +15,9 @@ const CaseStudyLinkRow = ({ variant, type, links }) => {
 
   const Icon = type === "github" ? FaGithub : FaExternalLinkAlt;
   const labelFor = (link) =>
-    type === "github" ? t("portfolio.viewCode") : link.label || "View Live";
+    type === "github"
+      ? t("portfolio.viewCode")
+      : link.label || t("portfolio.viewLive");
 
   if (variant === "toolbar") {
     const modifier = type === "github" ? "code" : "live";
@@ -56,7 +58,7 @@ const CaseStudyLinkRow = ({ variant, type, links }) => {
 // modal body (hero, tech pills, overview, TOC, sections, link rows); the
 // open/close state stays with the parent's useModal instance.
 const CaseStudyModal = ({ translatedProject, links, isOpen, onClose }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const githubLinks = links.github;
   const liveLinks = links.live;
@@ -74,12 +76,15 @@ const CaseStudyModal = ({ translatedProject, links, isOpen, onClose }) => {
       title={translatedProject.title}
       className="portfolio-detail-modal"
       ariaDescribedBy={overviewTextId}
+      headerKicker={t("portfolio.caseStudyKicker")}
     >
       {(githubLinks.length > 0 || liveLinks.length > 0) && (
         <div
           className="detail-modal-actions"
           role="toolbar"
-          aria-label={`${translatedProject.title} quick actions`}
+          aria-label={t("a11y.quickActions", {
+            title: translatedProject.title,
+          })}
         >
           <CaseStudyLinkRow variant="toolbar" type="live" links={liveLinks} />
           <CaseStudyLinkRow
@@ -112,6 +117,13 @@ const CaseStudyModal = ({ translatedProject, links, isOpen, onClose }) => {
           ))}
         </div>
 
+        {/* English case-study notice */}
+        {i18n.resolvedLanguage !== "en" && (
+          <p className="detail-modal-lang-note">
+            {t("portfolio.caseStudyEnglishNote")}
+          </p>
+        )}
+
         {/* Overview Section */}
         <div className="detail-modal-overview">
           <h3 className="detail-modal-section-title">
@@ -132,7 +144,10 @@ const CaseStudyModal = ({ translatedProject, links, isOpen, onClose }) => {
 
         {/* Mini-TOC for long case studies (UX-REVIEW #7) */}
         {detailedContent.sections?.length >= 4 && (
-          <nav className="detail-modal-toc" aria-label="Case study sections">
+          <nav
+            className="detail-modal-toc"
+            aria-label={t("a11y.caseStudySections")}
+          >
             {detailedContent.sections.map((section, i) => (
               <button
                 key={i}
@@ -192,7 +207,7 @@ const CaseStudyModal = ({ translatedProject, links, isOpen, onClose }) => {
                   aria-label={section.videoAlt || section.title}
                 >
                   <source src={section.video} type="video/mp4" />
-                  Your browser does not support the video tag.
+                  {t("common.videoUnsupported")}
                 </video>
                 {section.videoAlt && (
                   <figcaption className="detail-modal-figcaption">

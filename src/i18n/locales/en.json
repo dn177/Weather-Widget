@@ -1,7 +1,24 @@
 {
   "a11y": {
     "skipToContent": "Skip to content",
-    "opensExplainshell": "opens explainshell.com in a new tab"
+    "opensExplainshell": "opens explainshell.com in a new tab",
+    "toggleNavigation": "Toggle navigation",
+    "closeModal": "Close modal",
+    "technologyFilters": "Technology filters",
+    "caseStudySections": "Case study sections",
+    "quickActions": "{{title}} quick actions",
+    "aiLearningSources": "AI learning sources",
+    "stanfordChannel": "Stanford Online YouTube channel",
+    "switchLanguage": {
+      "en": "Switch to English",
+      "de": "Switch to German",
+      "pl": "Switch to Polish",
+      "es": "Switch to Spanish"
+    },
+    "social": {
+      "github": "GitHub repositories",
+      "huggingface": "Hugging Face profile"
+    }
   },
   "navbar": {
     "brand": "cd /tio/root",
@@ -57,11 +74,15 @@
     "entries_other": "{{count}} entries",
     "showAsCards": "Show as cards",
     "showAsList": "Show as list",
-    "viewLive": "View live"
+    "viewLive": "View live",
+    "caseStudyKicker": "Case study",
+    "caseStudyEnglishNote": "Case study available in English.",
+    "inputTitle": "Input"
   },
   "contact": {
     "title": "Get In Touch",
-    "description": "Send me a message if you want to work with me or build a pyramid on the the 33rd parallel."
+    "description": "Send me a message if you want to work with me or build a pyramid on the the 33rd parallel.",
+    "bgAlt": "Ancient stepped pyramid at Zaculeu, Guatemala"
   },
   "pixelperfect": {
     "title": "Pixelperfect",
@@ -78,7 +99,10 @@
   "badges": {
     "title": "Badges",
     "subtitle": "Souvenirs from earlier stops on the road.",
-    "typewriter": "git reset --hard blablabla"
+    "typewriter": "git reset --hard blablabla",
+    "frontendBadgeAlt": "Frontend badge",
+    "jqueryBadgeAlt": "jQuery badge",
+    "cssBadgeAlt": "CSS badge"
   },
   "hustle": {
     "title": "Discipline & Dedication.",
@@ -160,7 +184,9 @@
   },
   "learning": {
     "sectionTitle": "What I learn from",
-    "mediumArticlesText": "Click the logo to view my favorite Medium articles"
+    "mediumArticlesText": "Click the logo to view my favorite Medium articles",
+    "featured": "Featured",
+    "aiSourcesTitle": "AI Input Sources"
   },
   "common": {
     "loading": "Loading...",
@@ -169,7 +195,8 @@
     "errorBoundary": {
       "message": "Something went wrong. Please reload the page.",
       "reload": "Reload page"
-    }
+    },
+    "videoUnsupported": "Your browser does not support the video tag."
   },
   "projects": {
     "space-studio": {

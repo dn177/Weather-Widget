@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useTranslation } from "react-i18next";
 import "./accessibleModal.css";
 
 /**
@@ -25,7 +26,9 @@ const AccessibleModal = ({
   showCloseButton = true,
   ariaDescribedBy,
   initialFocusRef,
+  headerKicker,
 }) => {
+  const { t } = useTranslation();
   const [isClosing, setIsClosing] = useState(false);
   const modalRef = useRef(null);
   const closeButtonRef = useRef(null);
@@ -126,7 +129,7 @@ const AccessibleModal = ({
         onMouseDown={(e) => e.stopPropagation()}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="modal-header">
+        <div className="modal-header" data-kicker={headerKicker || undefined}>
           <h2 id={titleId} className="modal-title">
             {title}
           </h2>
@@ -135,7 +138,7 @@ const AccessibleModal = ({
               ref={closeButtonRef}
               className="modal-close"
               onClick={handleClose}
-              aria-label="Close modal"
+              aria-label={t("a11y.closeModal")}
               type="button"
             >
               <svg
