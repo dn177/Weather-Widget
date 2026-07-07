@@ -12,6 +12,7 @@ const FlagshipCard = ({
   links,
   onOpenCaseStudy,
   mediaSide = "left",
+  ordinal,
 }) => {
   const { t } = useTranslation();
 
@@ -65,7 +66,14 @@ const FlagshipCard = ({
             {categoryLabel} · {year}
           </span>
         </div>
-        <h3 className="pf-flagship__title">{translatedProject.title}</h3>
+        <h3 className="pf-flagship__title">
+          {ordinal && (
+            <span className="pf-ordinal" aria-hidden="true">
+              {ordinal}
+            </span>
+          )}
+          {translatedProject.title}
+        </h3>
         {translatedProject.summary && (
           <p className="pf-flagship__summary">{translatedProject.summary}</p>
         )}

@@ -1,6 +1,8 @@
 #portfolio {
-  background-color: var(--color-light);
-  /* background-color: var(--color-main); */
+  /* Warm paper stage: the cards are warm ivory, so the section ground is
+     the deeper paper tone from the same family. The old --color-light is a
+     cool gray-lavender that made warm cards read as a mismatch. */
+  background-color: var(--ivory-deep);
 
   /* Grid-scoped tokens (Front Page & Ledger). Every .pf-* rule consumes
      these; a dark-mode pass for the grid is a one-block follow-up here. */
@@ -805,15 +807,44 @@ h4 {
    ════════════════════════════════════════════════════════ */
 
 /* Entry-count colophon near the filters */
+/* Entry colophon: opens the catalog the way the archive's "§ Earlier work"
+   rule closes it, so the section has a printed anchor at both ends. */
 .pf-count {
-  margin: 1.25rem 0 0;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 1.5rem 0 0;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--pf-body);
+  white-space: nowrap;
+}
+
+.pf-count::before,
+.pf-count::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--pf-line);
+}
+
+.pf-count .pf-count__mark {
+  color: var(--pf-gold);
+}
+
+/* Catalog ordinal before featured titles: the same gold mono index the
+   case-study modal puts on its section titles and the archive ledger puts
+   on its rows, so one numbering runs through the whole catalog. */
+.pf-ordinal {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--pf-gold);
+  margin-right: 0.6rem;
+  vertical-align: 0.35em;
 }
 
 /* ---- Grid ---- */

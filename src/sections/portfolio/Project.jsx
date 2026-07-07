@@ -52,6 +52,7 @@ const Project = ({
     hasOpened,
     onToggle,
     panelId,
+    ordinal,
   };
 
   // Render GitHub links section

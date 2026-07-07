@@ -46,9 +46,15 @@ const Portfolio = () => {
           onFilterProjects={filterProjectsHandler}
           activeTech={activeTech}
         />
-        {/* Live filter feedback: entry count in mono colophon style */}
+        {/* Live filter feedback: entry count as a catalog colophon with
+            flanking gold hairlines (mirrors the archive group row) */}
         <p className="pf-count" aria-live="polite">
-          {t('portfolio.entries', { count: projects.length })}
+          <span>
+            <span className="pf-count__mark" aria-hidden="true">
+              §{" "}
+            </span>
+            {t('portfolio.entries', { count: projects.length })}
+          </span>
         </p>
         <Projects projects={projects} activeTech={activeTech} />
       </div>

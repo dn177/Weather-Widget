@@ -18,6 +18,7 @@ const IndexCard = ({
   onToggle,
   panelId,
   companion = false,
+  ordinal,
 }) => {
   const { t } = useTranslation();
 
@@ -60,7 +61,14 @@ const IndexCard = ({
           />
         )}
       </div>
-      <h3 className="pf-index__title">{translatedProject.title}</h3>
+      <h3 className="pf-index__title">
+        {ordinal && (
+          <span className="pf-ordinal" aria-hidden="true">
+            {ordinal}
+          </span>
+        )}
+        {translatedProject.title}
+      </h3>
       {translatedProject.summary && (
         <p className="pf-index__summary">{translatedProject.summary}</p>
       )}
