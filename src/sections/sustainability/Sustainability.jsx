@@ -46,27 +46,27 @@ function Sustainability() {
           {t('sustainability.onPremNote')}
         </p>
         <div className="sustainability__principles-entry mb-4">
-          <p className="h2">{t('sustainability.carbonEfficiency.title')}</p>
+          <h3 className="h2">{t('sustainability.carbonEfficiency.title')}</h3>
           <p>{t('sustainability.carbonEfficiency.description')}</p>
         </div>
         <div className="sustainability__principles-entry mb-4">
-          <p className="h2">{t('sustainability.electricityEfficiency.title')}</p>
+          <h3 className="h2">{t('sustainability.electricityEfficiency.title')}</h3>
           <p>{t('sustainability.electricityEfficiency.description')}</p>
         </div>
         <div className="sustainability__principles-entry mb-4">
-          <p className="h2">{t('sustainability.carbonAwareness.title')}</p>
+          <h3 className="h2">{t('sustainability.carbonAwareness.title')}</h3>
           <p>{t('sustainability.carbonAwareness.description')}</p>
         </div>
         <div className="sustainability__principles-entry mb-4">
-          <p className="h2">{t('sustainability.hardwareEfficiency.title')}</p>
+          <h3 className="h2">{t('sustainability.hardwareEfficiency.title')}</h3>
           <p>{t('sustainability.hardwareEfficiency.description')}</p>
         </div>
         <div className="sustainability__principles-entry mb-4">
-          <p className="h2">{t('sustainability.measurement.title')}</p>
+          <h3 className="h2">{t('sustainability.measurement.title')}</h3>
           <p>{t('sustainability.measurement.description')}</p>
         </div>
         <div className="sustainability__principles-entry mb-4">
-          <p className="h2">{t('sustainability.climateCommitments.title')}</p>
+          <h3 className="h2">{t('sustainability.climateCommitments.title')}</h3>
           <p>{t('sustainability.climateCommitments.description')}</p>
         </div>
       </div>

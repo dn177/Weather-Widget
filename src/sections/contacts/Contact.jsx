@@ -25,7 +25,7 @@ const Contact = () => {
         loading="lazy"
       />
       <div className="contact-wrapper">
-        <h6 className="h1 text-center">{t('contact.title')}</h6>
+        <h2 className="h1 text-center">{t('contact.title')}</h2>
         <p className="mt-3 text-center">
           {t('contact.description')}
         </p>
