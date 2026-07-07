@@ -55,11 +55,6 @@
     min-height: 100vh;
   }
 
-  [alt="Zacuelu"] {
-    max-height: calc(100vh - var(--navbar-height));
-    object-fit: cover;
-  }
-
   .contact-wrapper {
     width: 100vw;
   }

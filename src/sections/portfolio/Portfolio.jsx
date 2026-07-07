@@ -62,7 +62,6 @@ const Portfolio = () => {
       <div className="container portfolio__container">
         <ProjectsCategories
           categories={technologies}
-          techCategories={techCategories}
           onFilterProjects={filterProjectsHandler}
           activeTech={activeTech}
         />

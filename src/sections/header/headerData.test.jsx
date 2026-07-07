@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import data from "./data";
 
 describe("header social data", () => {
-  const heroSocials = data.slice(3, 5);
+  const heroSocials = data.slice(0, 2);
 
   it("shows GitHub and Hugging Face as the hero social links", () => {
     expect(heroSocials.map((item) => item.link)).toEqual([

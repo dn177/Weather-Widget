@@ -2,7 +2,6 @@
 
 :root {
   /* Legacy tokens — kept for backwards compatibility with section CSS */
-  --color-tertiary: #004a99;
   --navbar-height: 70px;
   --margin-form: 2.5rem;
   --primary-hue: 270;

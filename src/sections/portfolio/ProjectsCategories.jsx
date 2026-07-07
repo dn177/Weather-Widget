@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import CategoryButton from "./CategoryButton";
 
-const ProjectsCategories = ({ categories, techCategories, onFilterProjects, activeTech }) => {
+const ProjectsCategories = ({ categories, onFilterProjects, activeTech }) => {
   const { t } = useTranslation();
 
   // Deliberately NOT the ARIA tabs pattern: these buttons filter a grid
@@ -10,13 +10,11 @@ const ProjectsCategories = ({ categories, techCategories, onFilterProjects, acti
   return (
     <div className="portfolio__categories" role="group" aria-label="Technology filters">
       {categories.map((tech) => {
-        const techInfo = techCategories[tech];
         return (
           <CategoryButton
             key={tech}
             category={t(`portfolio.categories.${tech}`)}
             techKey={tech}
-            techColor={techInfo.color}
             onChangeCategory={onFilterProjects}
             className={`btn tech__btn ${
               activeTech === tech ? "active" : ""

@@ -11,7 +11,6 @@ const Contact = () => {
   
   return (
     <section id="contact" className="position-relative">
-      {/* <img src={Zacuelu} alt="Zacuelu" loading="lazy" /> */}
       <img
         className="bg-img"
         src={`${PUBLIC_URL}/Zacuelu_800w.jpg`}
