@@ -2,9 +2,12 @@ import { useTranslation } from "react-i18next";
 import { FaGithub, FaExternalLinkAlt, FaChevronDown } from "react-icons/fa";
 import ProjectDetailsPanel from "./ProjectDetailsPanel";
 
-// Tier 3: compact ledger row. The title is an h3-wrapped disclosure button
-// with a stretched hit area over the row head; aside links keep their own
-// z-index so they stay independently clickable.
+// Tier 3: compact ledger row. The whole row head is the click target (a
+// stretched ::after on the button does not work: buttons are containing
+// blocks for absolute descendants, so the pseudo collapses to the title).
+// The h3-wrapped button stays the semantic disclosure for keyboard and
+// screen readers; the head's onClick ignores clicks on inner controls so
+// the aside links and the button itself never double-fire.
 const ArchiveRow = ({
   project,
   translatedProject,
@@ -22,7 +25,13 @@ const ArchiveRow = ({
 
   return (
     <li className="pf-row">
-      <div className="pf-row__head">
+      <div
+        className="pf-row__head"
+        onClick={(e) => {
+          if (e.target.closest("a, button")) return;
+          onToggle(project.id);
+        }}
+      >
         <span className="pf-row__ordinal" aria-hidden="true">
           {ordinal}
         </span>
@@ -38,6 +47,7 @@ const ArchiveRow = ({
           </button>
         </h3>
         <span className="pf-row__summary">{translatedProject.summary}</span>
+        <span className="pf-row__leader" aria-hidden="true" />
         <span className="pf-row__year">{year}</span>
         <span className="pf-row__links">
           {asideLinks.map((link, index) => (
