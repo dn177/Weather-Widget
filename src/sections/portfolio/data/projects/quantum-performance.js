@@ -138,7 +138,7 @@ const project = {
     "7,000+ item virtual scrolling implementation"
   ],
   "technologies": [
-    "Vue 3.4",
+    "Vue 3",
     "Vuetify 3",
     "Pinia",
     "TypeScript",

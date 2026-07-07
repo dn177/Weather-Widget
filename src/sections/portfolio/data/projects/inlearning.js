@@ -21,7 +21,7 @@ const project = {
     "Live preview of compiled code"
   ],
   "technologies": [
-    "Vue.js",
+    "Vue 3",
     "Pinia",
     "TypeScript",
     "Monaco Editor"

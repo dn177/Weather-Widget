@@ -28,7 +28,7 @@ const project = {
     "NextAuth",
     "React",
     "TypeScript",
-    "TailwindCSS",
+    "Tailwind CSS",
     "shadcn/ui",
     "Strapi"
   ],

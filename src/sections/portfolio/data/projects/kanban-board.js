@@ -23,7 +23,7 @@ const project = {
     "Real-time updates"
   ],
   "technologies": [
-    "Vue.js",
+    "Vue 3",
     "Express.js",
     "Node.js",
     "Bootstrap"
