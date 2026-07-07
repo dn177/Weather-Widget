@@ -7,6 +7,7 @@ import Contact from "../sections/contacts/Contact";
 import Sustainability from "../sections/sustainability/Sustainability";
 import PageLoader from "./PageLoader";
 import useInView from "../hooks/useInView";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 // Lazy load heavier components
 const Pixelperfect = lazy(() =>
@@ -34,9 +35,13 @@ const Home = () => {
       {/* Placeholder keeps the page height stable until the scene mounts. */}
       <div ref={astronautRef} style={{ minHeight: "100vh" }}>
         {astronautInView && (
-          <Suspense fallback={null}>
-            <Astronaut />
-          </Suspense>
+          // A failed WebGL context or a stale chunk should just leave empty
+          // space here, not take down the rest of the page.
+          <ErrorBoundary fallback={null}>
+            <Suspense fallback={null}>
+              <Astronaut />
+            </Suspense>
+          </ErrorBoundary>
         )}
       </div>
     </>
