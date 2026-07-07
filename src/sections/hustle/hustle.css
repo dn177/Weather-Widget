@@ -1,5 +1,6 @@
 #hustle {
-  background-color: #4169e1;
+  background-color: var(--purple-900, #1a0330);
+  border-top: 3px solid var(--gold-500, #c9a96e);
   overflow: hidden;
 }
 

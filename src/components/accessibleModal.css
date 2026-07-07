@@ -281,8 +281,8 @@
 /* Portfolio modal has regular header styling */
 .modal-dialog.portfolio-image-modal .modal-header {
   position: relative;
-  background: #9333ea;
-  border-bottom: none;
+  background: var(--purple-700, #4f0a8c);
+  border-bottom: 1px solid var(--gold-500, #c9a96e);
   padding: 1.5rem 2rem;
 }
 
@@ -401,12 +401,12 @@
 
 /* Ensure good contrast for portfolio modal content */
 .modal-dialog.portfolio-image-modal .modal-highlights li::before {
-  color: #9333ea;
+  color: var(--purple-600, #690cc6);
 }
 
 /* Portfolio modal links styling */
 .modal-dialog.portfolio-image-modal .portfolio__github-link {
-  color: #9333ea;
+  color: var(--purple-600, #690cc6);
 }
 
 .modal-dialog.portfolio-image-modal .portfolio__github-link:hover {

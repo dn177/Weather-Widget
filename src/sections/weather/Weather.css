@@ -1,12 +1,14 @@
 .weather-widget {
-  background-color: #70a1ff;
-  color: white;
-  padding-top: 1rem;
+  background-color: var(--purple-950, #0d011e);
+  color: var(--ivory, #f7f1e6);
+  padding: 1.5rem 1.25rem 1.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--gold-500, #c9a96e);
 }
 
 .weather-widget__headline {
   text-align: center;
-  color: white;
+  color: var(--ivory, #f7f1e6);
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
 }
@@ -18,19 +20,20 @@
 
 .weather-widget input {
   background-color: transparent;
-  border: 2px solid white;
+  border: 2px solid var(--gold-500, #c9a96e);
   border-radius: 10px;
   margin-right: 1rem;
   height: 40px;
   font-size: 18px;
-  color: white;
+  color: var(--ivory, #f7f1e6);
   text-align: center;
 }
 
 .weather-widget input::placeholder {
   text-align: center;
   font-size: 18px;
-  color: white;
+  color: var(--ivory, #f7f1e6);
+  opacity: 0.75;
 }
 
 .weathergrid {
@@ -74,8 +77,8 @@
 
 .github-btn {
   padding: 5px 10px;
-  color: white;
-  border: 2px solid white;
+  color: var(--ivory, #f7f1e6);
+  border: 2px solid var(--gold-500, #c9a96e);
   border-radius: 5px;
   background-color: transparent;
   float: right;
@@ -84,8 +87,8 @@
 }
 
 .github-btn:hover {
-  background-color: white;
-  color: #70a1ff;
+  background-color: var(--gold-500, #c9a96e);
+  color: var(--purple-950, #0d011e);
 }
 
 .github-btn a {
