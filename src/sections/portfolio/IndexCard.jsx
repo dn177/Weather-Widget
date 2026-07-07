@@ -5,7 +5,9 @@ import ProjectDetailsPanel from "./ProjectDetailsPanel";
 // Tier 2: uniform vertical index card. Every index card carries a "Details"
 // disclosure that expands the shared ProjectDetailsPanel inline; disclosure
 // state lives in Projects.jsx (keyed by project id) so it survives the
-// archive rows-to-cards view switch.
+// archive rows-to-cards view switch. A "companion" card shares its row with
+// a tall flagship, so it trades the 54px stamp for a full media plate: the
+// equal-height slack becomes evidence instead of whitespace.
 const IndexCard = ({
   project,
   translatedProject,
@@ -15,11 +17,13 @@ const IndexCard = ({
   hasOpened,
   onToggle,
   panelId,
+  companion = false,
 }) => {
   const { t } = useTranslation();
 
   const { media } = translatedProject;
   const stampSrc = media.poster ?? media.src;
+  const isSvg = typeof stampSrc === "string" && stampSrc.endsWith(".svg");
 
   const categoryLabel = t(`portfolio.projectCategories.${project.category}`, {
     defaultValue: project.category,
@@ -29,19 +33,32 @@ const IndexCard = ({
   const firstLink = [...links.live, ...links.github, ...links.other][0];
 
   return (
-    <article className="pf-card pf-index">
+    <article
+      className={`pf-card pf-index${companion ? " pf-index--plate" : ""}`}
+    >
+      {companion && (
+        <div
+          className={`pf-index__plate${
+            isSvg ? " pf-index__plate--contain" : ""
+          }`}
+        >
+          <img src={stampSrc} alt="" loading="lazy" />
+        </div>
+      )}
       <div className="pf-index__head">
         <span className="pf-kicker pf-kicker--meta">
           {categoryLabel} · {year}
         </span>
-        <img
-          className="pf-index__stamp"
-          src={stampSrc}
-          alt=""
-          loading="lazy"
-          width="54"
-          height="54"
-        />
+        {!companion && (
+          <img
+            className="pf-index__stamp"
+            src={stampSrc}
+            alt=""
+            loading="lazy"
+            width="54"
+            height="54"
+          />
+        )}
       </div>
       <h3 className="pf-index__title">{translatedProject.title}</h3>
       {translatedProject.summary && (

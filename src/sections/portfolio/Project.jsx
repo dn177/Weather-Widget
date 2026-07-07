@@ -22,6 +22,8 @@ const Project = ({
   panelId,
   ordinal,
   archiveView = "list",
+  companion = false,
+  mediaSide = "left",
 }) => {
   const { t } = useTranslation();
   const detailModal = useModal();
@@ -99,9 +101,9 @@ const Project = ({
   return (
     <>
       {tier === 1 ? (
-        <FlagshipCard {...cardProps} />
+        <FlagshipCard {...cardProps} mediaSide={mediaSide} />
       ) : tier === 2 || archiveView === "cards" ? (
-        <IndexCard {...cardProps} />
+        <IndexCard {...cardProps} companion={companion} />
       ) : (
         <ArchiveRow {...cardProps} ordinal={ordinal} />
       )}

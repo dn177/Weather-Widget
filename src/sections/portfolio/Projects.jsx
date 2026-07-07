@@ -56,15 +56,28 @@ const Projects = ({ projects, activeTech = "all" }) => {
   const indexCards = projects.filter((p) => getTier(p) === 2);
   const archive = projects.filter((p) => getTier(p) === 3);
 
-  // Static interleave (F1, I1, F2, I2, ..., then the rest): a span-2
-  // flagship plus the following index card tile each 3-column row without
-  // leaving the third column empty. The array is identical at every width
-  // (DOM = visual = tab order); below 1024px flagships drop to one column
-  // with stacked media, so 2-column rows tile cleanly as well.
+  // Static interleave with an alternating rhythm: each flagship pairs with
+  // one index card ("companion") to tile a 3-column row, and every other
+  // pair is flipped so the flagship zig-zags left/right down the page.
+  // Right-side flagships also flip internally (media pane outward), so the
+  // dark media plates frame the grid edges. The array is identical at every
+  // width (DOM = visual = tab order); below 1024px flagships drop to one
+  // column with stacked media, so 2-column rows tile cleanly as well.
   const featuredOrder = [];
+  const companionIds = new Set();
+  const mediaRightIds = new Set();
   for (let i = 0; i < Math.max(flagships.length, indexCards.length); i++) {
-    if (flagships[i]) featuredOrder.push(flagships[i]);
-    if (indexCards[i]) featuredOrder.push(indexCards[i]);
+    const pair = [];
+    if (flagships[i]) pair.push(flagships[i]);
+    if (indexCards[i]) pair.push(indexCards[i]);
+    if (flagships[i] && indexCards[i]) {
+      companionIds.add(indexCards[i].id);
+      if (i % 2 === 1) {
+        pair.reverse();
+        mediaRightIds.add(flagships[i].id);
+      }
+    }
+    featuredOrder.push(...pair);
   }
 
   const projectProps = (project) => ({
@@ -81,7 +94,12 @@ const Projects = ({ projects, activeTech = "all" }) => {
       {(flagships.length > 0 || indexCards.length > 0) && (
         <div className="pf-grid">
           {featuredOrder.map((project) => (
-            <Project key={project.id} {...projectProps(project)} />
+            <Project
+              key={project.id}
+              {...projectProps(project)}
+              companion={companionIds.has(project.id)}
+              mediaSide={mediaRightIds.has(project.id) ? "right" : "left"}
+            />
           ))}
         </div>
       )}

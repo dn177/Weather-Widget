@@ -1006,7 +1006,16 @@ h4 {
 }
 
 .pf-flagship__media {
-  background: var(--pf-deep);
+  /* Quotes the case-study modal header: a faint gold radial over the deep
+     bed, so a contained SVG reads as a plate in an atmosphere rather than
+     a small image on flat black. */
+  background:
+    radial-gradient(
+      120% 90% at 12% 0%,
+      rgba(201, 169, 110, 0.14),
+      transparent 62%
+    ),
+    var(--pf-deep);
   aspect-ratio: 16 / 9;
   min-height: 0;
 }
@@ -1038,10 +1047,28 @@ h4 {
     flex-direction: row;
   }
 
+  /* Alternating rows flip the pane to the right edge, so the dark media
+     plates always face outward and the grid reads as a magazine spread.
+     Scoped to >=1024px: below it the card is a column (media band on top)
+     and must not become column-reverse. */
+  .pf-flagship--reverse {
+    flex-direction: row-reverse;
+  }
+
   .pf-flagship__media {
     flex: 0 0 40%;
     width: 40%;
     aspect-ratio: auto;
+  }
+
+  .pf-flagship--reverse .pf-flagship__media {
+    background:
+      radial-gradient(
+        120% 90% at 88% 0%,
+        rgba(201, 169, 110, 0.14),
+        transparent 62%
+      ),
+      var(--pf-deep);
   }
 }
 
@@ -1081,7 +1108,7 @@ h4 {
   line-height: 1.55;
   color: var(--pf-body);
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -1146,6 +1173,36 @@ h4 {
   border-radius: 4px;
   background: var(--pf-deep);
   object-fit: cover;
+}
+
+/* Companion variant: the card shares a row with a tall flagship, so the
+   stamp grows into a full-bleed media plate and the equal-height slack
+   becomes imagery instead of whitespace. */
+.pf-index__plate {
+  margin: -1.2rem -1.25rem 0.35rem;
+  aspect-ratio: 16 / 10;
+  background:
+    radial-gradient(
+      120% 90% at 12% 0%,
+      rgba(201, 169, 110, 0.12),
+      transparent 62%
+    ),
+    var(--pf-deep);
+  border-bottom: 1px solid var(--pf-line);
+  border-radius: 9px 9px 0 0;
+  overflow: hidden;
+}
+
+.pf-index__plate img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pf-index__plate--contain img {
+  object-fit: contain;
+  padding: 0.75rem;
 }
 
 .pf-index__title {

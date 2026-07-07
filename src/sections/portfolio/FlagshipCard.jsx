@@ -1,10 +1,18 @@
 import { useTranslation } from "react-i18next";
 import { FaGithub, FaExternalLinkAlt, FaBook } from "react-icons/fa";
+import { firstSentence } from "./portfolioData";
 
-// Tier 1: wide horizontal feature card. Spans two grid columns at >=700px;
+// Tier 1: wide horizontal feature card. Spans two grid columns at >=1024px;
 // the featured marker is structural (span + static gold top border), no
-// gradient borders or glow animations.
-const FlagshipCard = ({ project, translatedProject, links, onOpenCaseStudy }) => {
+// gradient borders or glow animations. `mediaSide` flips the pane to the
+// right edge on alternating rows so the dark plates frame the grid.
+const FlagshipCard = ({
+  project,
+  translatedProject,
+  links,
+  onOpenCaseStudy,
+  mediaSide = "left",
+}) => {
   const { t } = useTranslation();
 
   const { media, technologies } = translatedProject;
@@ -16,7 +24,19 @@ const FlagshipCard = ({ project, translatedProject, links, onOpenCaseStudy }) =>
   });
   const year = project.date ? project.date.slice(0, 4) : "";
 
-  const findings = (translatedProject.highlights || []).slice(0, 2);
+  // The stat block already carries the headline number, and the hero SVGs
+  // repeat it too; skip highlights that restate it so the two findings add
+  // information. First sentence only: a bullet cut mid-thought by the
+  // 2-line clamp reads worse than a shorter complete one.
+  const highlights = translatedProject.highlights || [];
+  const nonStatHighlights = translatedProject.stat
+    ? highlights.filter((h) => !h.includes(translatedProject.stat.value))
+    : highlights;
+  const findings = (
+    nonStatHighlights.length >= 2 ? nonStatHighlights : highlights
+  )
+    .slice(0, 2)
+    .map(firstSentence);
   const shownTech = technologies.slice(0, 4);
   const extraTech = technologies.length - shownTech.length;
 
@@ -25,7 +45,11 @@ const FlagshipCard = ({ project, translatedProject, links, onOpenCaseStudy }) =>
   const firstLink = [...links.live, ...links.github, ...links.other][0];
 
   return (
-    <article className="pf-card pf-flagship">
+    <article
+      className={`pf-card pf-flagship${
+        mediaSide === "right" ? " pf-flagship--reverse" : ""
+      }`}
+    >
       <div
         className={`pf-flagship__media${isSvg ? " pf-flagship__media--contain" : ""}`}
       >
