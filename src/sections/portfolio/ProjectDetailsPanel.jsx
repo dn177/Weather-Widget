@@ -6,13 +6,17 @@ import emphasizeMetrics from "./emphasizeMetrics";
 // Visibility is driven by the `hidden` attribute (state lives in Projects.jsx
 // so it survives the archive rows-to-cards view switch); media mounts only
 // after the panel has been opened once (`hasOpened`), so collapsed rows fetch
-// nothing.
+// nothing. `showMedia`/`showCategory` let the host card suppress what its
+// face already displays (a companion card's plate is this same image, and
+// every index card's kicker already names the category).
 const ProjectDetailsPanel = ({
   project,
   translatedProject,
   panelId,
   expanded,
   hasOpened,
+  showMedia = true,
+  showCategory = true,
 }) => {
   const { t, i18n } = useTranslation();
 
@@ -35,7 +39,7 @@ const ProjectDetailsPanel = ({
   return (
     <div className="pf-panel" id={panelId} hidden={!expanded}>
       <div className="pf-panel__inner">
-        {hasOpened && (
+        {showMedia && hasOpened && (
           <div className="pf-panel__media">
             {media.type === "video" ? (
               <video
@@ -60,8 +64,9 @@ const ProjectDetailsPanel = ({
         )}
         <div className="pf-panel__text">
           <p className="pf-panel__meta">
-            {categoryLabel}
-            {dateLabel && <> · {dateLabel}</>}
+            {showCategory && categoryLabel}
+            {showCategory && dateLabel && <> · </>}
+            {dateLabel}
           </p>
           <p className="pf-panel__desc">
             {emphasizeMetrics(translatedProject.description)}

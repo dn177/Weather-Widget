@@ -132,6 +132,8 @@ const IndexCard = ({
         panelId={panelId}
         expanded={expanded}
         hasOpened={hasOpened}
+        showMedia={!companion}
+        showCategory={false}
       />
     </article>
   );

@@ -854,7 +854,11 @@ h4 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
-  align-items: stretch;
+  /* start, not stretch: when a Details panel expands inside one card, its
+     row-mates must keep their natural height instead of inflating into
+     half-empty columns. Companion cards opt back into stretch below so
+     they still match their flagship's height while collapsed. */
+  align-items: start;
 }
 
 @media (min-width: 700px) {
@@ -1208,7 +1212,13 @@ h4 {
 
 /* Companion variant: the card shares a row with a tall flagship, so the
    stamp grows into a full-bleed media plate and the equal-height slack
-   becomes imagery instead of whitespace. */
+   becomes imagery instead of whitespace. Companions are the one card type
+   that stretches to row height; everything else keeps natural height so an
+   expanded neighbor cannot inflate it. */
+.pf-card.pf-index--plate {
+  align-self: stretch;
+}
+
 .pf-index__plate {
   margin: -1.2rem -1.25rem 0.35rem;
   aspect-ratio: 16 / 10;
@@ -1252,6 +1262,9 @@ h4 {
   font-size: 0.92rem;
   line-height: 1.55;
   color: var(--pf-body);
+  /* Two-line reserve keeps start-aligned rows close to even when one
+     summary runs a single line. */
+  min-height: calc(2 * 1.55em);
   /* Safety clamp only; titles are never clamped */
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -1462,7 +1475,11 @@ h4 {
   display: none;
 }
 
+/* Inside a card the panel reads as an attached drawer: hairline seam
+   under the footer, then the panel content. */
 .pf-index .pf-panel {
+  margin-top: 0.85rem;
+  border-top: 1px solid var(--pf-line);
   padding: 0.9rem 0 0;
 }
 
