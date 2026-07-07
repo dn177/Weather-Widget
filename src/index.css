@@ -1,3 +1,5 @@
+@import "./fonts.css";
+
 :root {
   /* Legacy tokens — kept for backwards compatibility with section CSS */
   --color-tertiary: #004a99;

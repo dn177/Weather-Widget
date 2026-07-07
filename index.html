@@ -45,12 +45,27 @@
          the old CDN copy (5.0.1) duplicated it and blocked rendering.
          Font Awesome was unused (icons come from react-icons). -->
 
-    <!-- Fonts: Lora (body) + Fraunces (editorial display) + JetBrains Mono (technical labels) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts: Lora (body) + Fraunces (editorial display) + JetBrains Mono
+         (technical labels) are self-hosted from public/fonts (see
+         src/fonts.css) instead of loaded from fonts.googleapis.com /
+         fonts.gstatic.com, so there is no more third-party request on
+         every page load, which also keeps this GDPR-baked-in claim
+         honest. Preload
+         the two above-the-fold faces (hero heading + body copy); the
+         mono face loads lazily with the rest of the stylesheet. -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/fraunces-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/lora-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
   </head>
   <body>
