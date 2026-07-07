@@ -8,7 +8,7 @@ const project = {
   "title": "Kanban Board",
   "category": "web-app",
   "featured": false,
-  "date": "2024-05-10",
+  "date": "2023-05-10",
   "sortOrder": 12,
   "media": {
     "type": "video",
@@ -23,7 +23,7 @@ const project = {
     "Real-time updates"
   ],
   "technologies": [
-    "Vue.js",
+    "Vue 3",
     "Express.js",
     "Node.js",
     "Bootstrap"

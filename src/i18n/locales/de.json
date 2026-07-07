@@ -1,4 +1,8 @@
 {
+  "a11y": {
+    "skipToContent": "Zum Inhalt springen",
+    "opensExplainshell": "öffnet explainshell.com in einem neuen Tab"
+  },
   "navbar": {
     "brand": "cd /tio/root",
     "portfolio": "Portfolio",
@@ -126,6 +130,10 @@
   },
   "weather": {
     "headline": "Vielleicht möchtest du einen Blick auf das Wetter werfen.",
+    "labels": {
+      "city": "Stadt",
+      "country": "Land"
+    },
     "placeholders": {
       "city": "Stadt eingeben",
       "country": "Land eingeben (optional)"
@@ -151,12 +159,17 @@
     }
   },
   "learning": {
+    "sectionTitle": "Wovon ich lerne",
     "mediumArticlesText": "Klicke auf das Logo, um meine Lieblings-Medium-Artikel anzusehen"
   },
   "common": {
     "loading": "Lädt...",
     "error": "Fehler",
-    "tryAgain": "Erneut versuchen"
+    "tryAgain": "Erneut versuchen",
+    "errorBoundary": {
+      "message": "Etwas ist schiefgelaufen. Bitte lade die Seite neu.",
+      "reload": "Seite neu laden"
+    }
   },
   "projects": {
     "33": {

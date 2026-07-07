@@ -12,6 +12,8 @@ const ArchiveRow = ({
   project,
   translatedProject,
   links,
+  year,
+  categoryLabel,
   expanded,
   hasOpened,
   onToggle,
@@ -20,7 +22,6 @@ const ArchiveRow = ({
 }) => {
   const { t } = useTranslation();
 
-  const year = project.date ? project.date.slice(0, 4) : "";
   const asideLinks = [...links.github, ...links.live].slice(0, 2);
 
   return (
@@ -78,6 +79,7 @@ const ArchiveRow = ({
       <ProjectDetailsPanel
         project={project}
         translatedProject={translatedProject}
+        categoryLabel={categoryLabel}
         panelId={panelId}
         expanded={expanded}
         hasOpened={hasOpened}

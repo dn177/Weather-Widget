@@ -15,15 +15,15 @@ const project = {
     "src": "/Portfolio/PPP.webp",
     "alt": "Picture Playground Platform"
   },
-  "description": "Platform initially developed for showcasing performance improvements by using Webassembly for computationally expensive tasks, later on added C++, Java and Scala.",
+  "description": "Platform initially developed for showcasing performance improvements by using WebAssembly for computationally expensive tasks, later on added C++, Java and Scala.",
   "summary": "Platform showcasing WebAssembly performance gains on computationally expensive tasks.",
   "highlights": [
     "Comparison of Rust, C++, Java and Scala and JS Performance"
   ],
   "technologies": [
-    "React.js",
+    "React",
     "Rust",
-    "Webassembly",
+    "WebAssembly",
     "C++",
     "Java",
     "Scala"

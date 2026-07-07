@@ -8,7 +8,7 @@ const project = {
   "title": "Car Selling Platform",
   "category": "web-app",
   "featured": false,
-  "date": "2024-04-05",
+  "date": "2022-04-05",
   "sortOrder": 13,
   "media": {
     "type": "video",

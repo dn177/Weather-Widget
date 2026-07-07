@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { portfolioProjects, techCategories } from "./portfolioData";
+import { portfolioProjects, techCategories, getTier } from "./portfolioData";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = join(here, "..", "..", "..", "public");
@@ -127,5 +127,46 @@ describe("portfolioData integrity", () => {
       }
     }
     expect(missing).toEqual([]);
+  });
+
+  it("gives every project link a known type and a non-empty url", () => {
+    const knownTypes = new Set(["github", "live", "article"]);
+    const violations = [];
+    for (const project of portfolioProjects) {
+      for (const link of project.links ?? []) {
+        if (!knownTypes.has(link.type))
+          violations.push(`${project.id}: unknown link type "${link.type}"`);
+        if (typeof link.url !== "string" || !link.url.trim())
+          violations.push(`${project.id}: link "${link.type}" has no url`);
+      }
+    }
+    expect(violations).toEqual([]);
+  });
+
+  it("keeps highlights and links as arrays on every project", () => {
+    const violations = [];
+    for (const project of portfolioProjects) {
+      if (!Array.isArray(project.highlights))
+        violations.push(`${project.id}: highlights is not an array`);
+      if (!Array.isArray(project.links))
+        violations.push(`${project.id}: links is not an array`);
+    }
+    expect(violations).toEqual([]);
+  });
+
+  it("resolves every project to a valid grid tier", () => {
+    const violations = portfolioProjects
+      .filter((p) => ![1, 2, 3].includes(getTier(p)))
+      .map((p) => `${p.id}: getTier returned ${getTier(p)}`);
+    expect(violations).toEqual([]);
+  });
+
+  it("gives every project a numeric sortOrder", () => {
+    const violations = portfolioProjects
+      .filter(
+        (p) => typeof p.sortOrder !== "number" || Number.isNaN(p.sortOrder)
+      )
+      .map((p) => `${p.id}: sortOrder is not a number`);
+    expect(violations).toEqual([]);
   });
 });

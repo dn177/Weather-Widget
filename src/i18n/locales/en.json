@@ -1,4 +1,8 @@
 {
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "opensExplainshell": "opens explainshell.com in a new tab"
+  },
   "navbar": {
     "brand": "cd /tio/root",
     "portfolio": "portfolio",
@@ -126,6 +130,10 @@
   },
   "weather": {
     "headline": "Might want to take a look at the weather.",
+    "labels": {
+      "city": "City",
+      "country": "Country"
+    },
     "placeholders": {
       "city": "Enter city",
       "country": "Enter country (optional)"
@@ -151,12 +159,17 @@
     }
   },
   "learning": {
+    "sectionTitle": "What I learn from",
     "mediumArticlesText": "Click the logo to view my favorite Medium articles"
   },
   "common": {
     "loading": "Loading...",
     "error": "Error",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "errorBoundary": {
+      "message": "Something went wrong. Please reload the page.",
+      "reload": "Reload page"
+    }
   },
   "projects": {
     "space-studio": {

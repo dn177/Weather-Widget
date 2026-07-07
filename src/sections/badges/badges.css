@@ -1,10 +1,11 @@
 #badges {
-  background-color: var(--color-secondary);
+  background-color: var(--ivory-deep, #ede4d0);
+  border-top: 1px solid var(--gold-500, #c9a96e);
 }
 
 #badges h5 {
-  color: white;
-  text-shadow: var(--text-shadow);
+  color: var(--ink, #1b0a26);
+  text-shadow: none;
 }
 
 .img-wrapper {

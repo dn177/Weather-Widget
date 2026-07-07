@@ -7,9 +7,9 @@ const project = {
   "id": "inlearning",
   "title": "InLearning Platform",
   "category": "website",
-  "featured": true,
+  "featured": false,
   "date": "2025-06-01",
-  "sortOrder": 2,
+  "sortOrder": 1,
   "media": {
     "type": "image",
     "src": "/Portfolio/InLearning.webp",
@@ -21,7 +21,7 @@ const project = {
     "Live preview of compiled code"
   ],
   "technologies": [
-    "Vue.js",
+    "Vue 3",
     "Pinia",
     "TypeScript",
     "Monaco Editor"

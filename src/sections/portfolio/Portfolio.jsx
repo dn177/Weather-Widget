@@ -2,25 +2,45 @@ import "./portfolio.css";
 import Projects from "./Projects";
 import ProjectsCategories from "./ProjectsCategories";
 import { techCategories, getProjectsByTechnology } from "./portfolioData";
-import React, { useState, useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useTranslation } from 'react-i18next';
-import Learning from "../learning/Learning";
+import { useSearchParams } from "react-router-dom";
 import Typewriter from "../../lib/Typewriter";
 // Assets are now in public directory
 
+// Get unique technologies for filtering
+const technologies = Object.keys(techCategories);
+
 const Portfolio = () => {
   const { t } = useTranslation();
-  const [projects, setProjects] = useState(() => getProjectsByTechnology("all"));
-  const [activeTech, setActiveTech] = useState("all");
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  // Get unique technologies for filtering
-  const technologies = Object.keys(techCategories);
+  // ?tech= backs the active filter so a filtered view survives a reload or
+  // share; an unrecognized value falls back to "all" (mirrors ?lang=, see
+  // src/i18n/urlLanguageDetector.js).
+  const requestedTech = searchParams.get("tech");
+  const activeTech = technologies.includes(requestedTech) ? requestedTech : "all";
 
-  const filterProjectsHandler = useCallback((technology) => {
-    setActiveTech(technology);
-    const filteredProjects = getProjectsByTechnology(technology);
-    setProjects(filteredProjects);
-  }, []);
+  const projects = useMemo(
+    () => getProjectsByTechnology(activeTech),
+    [activeTech],
+  );
+
+  const filterProjectsHandler = useCallback(
+    (technology) => {
+      // Functional update preserves other params (e.g. ?lang=) already in
+      // the URL. "all" is the default, so omit the param entirely for it.
+      setSearchParams((params) => {
+        if (technology === "all") {
+          params.delete("tech");
+        } else {
+          params.set("tech", technology);
+        }
+        return params;
+      });
+    },
+    [setSearchParams],
+  );
 
   return (
     <section id="portfolio">
@@ -28,8 +48,8 @@ const Portfolio = () => {
         href="https://explainshell.com/explain?cmd=curl+-sv+https%3A%2F%2Fwww.cdtio.com%2F+--stderr+-+%7C+grep+Portfolio"
         target="_blank"
         rel="noreferrer"
-        className="text-reset text-decoration-none text-center d-block typewriter-wrapper"
-        aria-label="Shell command explanation link"
+        className="text-center d-block typewriter-wrapper"
+        aria-label={`${t('portfolio.typewriter')} (${t('a11y.opensExplainshell')})`}
       >
         <Typewriter
           text={t('portfolio.typewriter')}
@@ -42,7 +62,6 @@ const Portfolio = () => {
       <div className="container portfolio__container">
         <ProjectsCategories
           categories={technologies}
-          techCategories={techCategories}
           onFilterProjects={filterProjectsHandler}
           activeTech={activeTech}
         />
@@ -57,10 +76,6 @@ const Portfolio = () => {
           </span>
         </p>
         <Projects projects={projects} activeTech={activeTech} />
-      </div>
-      <h2 className="h1 mt-row">Input</h2>
-      <div className="container portfolio__container">
-        <Learning />
       </div>
     </section>
   );

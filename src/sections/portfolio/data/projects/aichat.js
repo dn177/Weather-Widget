@@ -52,10 +52,10 @@ const project = {
     "Runs over Tailscale to a self-hosted DGX Spark (no cloud dependency)"
   ],
   "technologies": [
-    "React 19",
+    "React",
     "TypeScript",
-    "Vite 6",
-    "Tailwind 4",
+    "Vite",
+    "Tailwind CSS",
     "MCP",
     "LM Studio"
   ],

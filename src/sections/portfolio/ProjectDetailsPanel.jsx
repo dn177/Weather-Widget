@@ -12,6 +12,7 @@ import emphasizeMetrics from "./emphasizeMetrics";
 const ProjectDetailsPanel = ({
   project,
   translatedProject,
+  categoryLabel,
   panelId,
   expanded,
   hasOpened,
@@ -29,10 +30,6 @@ const ProjectDetailsPanel = ({
         timeZone: "UTC",
       }).format(new Date(project.date + "T00:00:00Z"))
     : null;
-
-  const categoryLabel = t(`portfolio.projectCategories.${project.category}`, {
-    defaultValue: project.category,
-  });
 
   const { media } = translatedProject;
 

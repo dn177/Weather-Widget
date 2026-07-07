@@ -8,7 +8,7 @@ const project = {
   "title": "cdnManager jQuery Version",
   "category": "desktop-app",
   "featured": false,
-  "date": "2024-01-10",
+  "date": "2018-01-10",
   "sortOrder": 16,
   "media": {
     "type": "video",

@@ -104,6 +104,9 @@ function WeatherGrid() {
     <div className="weather-widget">
       <h2 className="weather-widget__headline">{t("weather.headline")}</h2>
       <div className="input-wrapper">
+        <label htmlFor="city" className="visually-hidden">
+          {t("weather.labels.city")}
+        </label>
         <input
           type="text"
           name="city"
@@ -111,6 +114,9 @@ function WeatherGrid() {
           placeholder={t("weather.placeholders.city")}
           onChange={(e) => setCity(e.target.value)}
         />
+        <label htmlFor="country" className="visually-hidden">
+          {t("weather.labels.country")}
+        </label>
         <input
           type="text"
           name="country"
@@ -146,15 +152,16 @@ function WeatherGrid() {
       ) : (
         <p>{t(errorKey)}</p>
       )}
-      <button className="github-btn">
+      <div className="weather-widget__footer">
         <a
+          className="github-btn"
           target="_blank"
           rel="noreferrer"
           href="https://github.com/dn177/Weather-Widget"
         >
           {t("weather.githubButton")}
         </a>
-      </button>
+      </div>
     </div>
   );
 }

@@ -11,7 +11,9 @@ import ProjectDetailsPanel from "./ProjectDetailsPanel";
 const IndexCard = ({
   project,
   translatedProject,
-  links,
+  year,
+  categoryLabel,
+  firstLink,
   onOpenCaseStudy,
   expanded,
   hasOpened,
@@ -25,13 +27,6 @@ const IndexCard = ({
   const { media } = translatedProject;
   const stampSrc = media.poster ?? media.src;
   const isSvg = typeof stampSrc === "string" && stampSrc.endsWith(".svg");
-
-  const categoryLabel = t(`portfolio.projectCategories.${project.category}`, {
-    defaultValue: project.category,
-  });
-  const year = project.date ? project.date.slice(0, 4) : "";
-
-  const firstLink = [...links.live, ...links.github, ...links.other][0];
 
   return (
     <article
@@ -129,6 +124,7 @@ const IndexCard = ({
       <ProjectDetailsPanel
         project={project}
         translatedProject={translatedProject}
+        categoryLabel={categoryLabel}
         panelId={panelId}
         expanded={expanded}
         hasOpened={hasOpened}

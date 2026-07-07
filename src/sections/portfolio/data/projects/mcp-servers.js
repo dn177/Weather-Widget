@@ -8,7 +8,7 @@ const project = {
   "title": "MCP Server Development",
   "category": "desktop-app",
   "featured": true,
-  "date": "2026-02-10",
+  "date": "2025-02-10",
   "sortOrder": -3.4,
   "closedSource": true,
   "media": {

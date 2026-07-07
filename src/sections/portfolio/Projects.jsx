@@ -62,36 +62,37 @@ const Projects = ({ projects, activeTech = "all" }) => {
     return map;
   }, []);
 
-  const flagships = projects.filter((p) => getTier(p) === 1);
-  const indexCards = projects.filter((p) => getTier(p) === 2);
-  const archive = projects.filter((p) => getTier(p) === 3);
-
   // Strict importance order: flagships first (each spans the full grid
   // width), then the medium plate cards. Poster figures alternate sides by
   // flagship position; the alternation is CSS-only, so DOM = visual = tab
-  // order at every width.
-  const featuredOrder = [...flagships, ...indexCards];
-  const mediaRightIds = new Set(
-    flagships.filter((_, i) => i % 2 === 1).map((p) => p.id),
-  );
-
-  const projectProps = (project) => ({
-    project,
-    expanded: expandedProjectIds.has(project.id),
-    hasOpened: hasOpenedIds.has(project.id),
-    onToggle: toggleProject,
-    panelId: `pf-panel-${project.id}`,
-    ordinal: ordinals.get(project.id),
-  });
+  // order at every width. Memoized on the projects array (stable between
+  // disclosure toggles, new identity on category/tech filter changes) so a
+  // toggle re-render skips the tier passes.
+  const { featuredOrder, archive, mediaRightIds } = useMemo(() => {
+    const flagships = projects.filter((p) => getTier(p) === 1);
+    const indexCards = projects.filter((p) => getTier(p) === 2);
+    return {
+      featuredOrder: [...flagships, ...indexCards],
+      archive: projects.filter((p) => getTier(p) === 3),
+      mediaRightIds: new Set(
+        flagships.filter((_, i) => i % 2 === 1).map((p) => p.id),
+      ),
+    };
+  }, [projects]);
 
   return (
     <>
-      {(flagships.length > 0 || indexCards.length > 0) && (
+      {featuredOrder.length > 0 && (
         <div className="pf-grid">
           {featuredOrder.map((project) => (
             <Project
               key={project.id}
-              {...projectProps(project)}
+              project={project}
+              expanded={expandedProjectIds.has(project.id)}
+              hasOpened={hasOpenedIds.has(project.id)}
+              onToggle={toggleProject}
+              panelId={`pf-panel-${project.id}`}
+              ordinal={ordinals.get(project.id)}
               plate
               mediaSide={mediaRightIds.has(project.id) ? "right" : "left"}
             />
@@ -129,7 +130,12 @@ const Projects = ({ projects, activeTech = "all" }) => {
               {archive.map((project) => (
                 <Project
                   key={project.id}
-                  {...projectProps(project)}
+                  project={project}
+                  expanded={expandedProjectIds.has(project.id)}
+                  hasOpened={hasOpenedIds.has(project.id)}
+                  onToggle={toggleProject}
+                  panelId={`pf-panel-${project.id}`}
+                  ordinal={ordinals.get(project.id)}
                   archiveView="list"
                 />
               ))}
@@ -139,7 +145,12 @@ const Projects = ({ projects, activeTech = "all" }) => {
               {archive.map((project) => (
                 <Project
                   key={project.id}
-                  {...projectProps(project)}
+                  project={project}
+                  expanded={expandedProjectIds.has(project.id)}
+                  hasOpened={hasOpenedIds.has(project.id)}
+                  onToggle={toggleProject}
+                  panelId={`pf-panel-${project.id}`}
+                  ordinal={ordinals.get(project.id)}
                   archiveView="cards"
                 />
               ))}

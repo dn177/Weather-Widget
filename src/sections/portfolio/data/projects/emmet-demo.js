@@ -8,7 +8,7 @@ const project = {
   "title": "Emmet Live Coding Demo",
   "category": "demo",
   "featured": false,
-  "date": "2024-06-15",
+  "date": "2023-06-15",
   "sortOrder": 11,
   "media": {
     "type": "video",

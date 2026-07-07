@@ -15,13 +15,13 @@ const project = {
     "src": "/Portfolio/Learn2Sort.webp",
     "alt": "Learn2Sort"
   },
-  "description": "App build with React.js mainly to visualize sorting algorithms.",
+  "description": "App built with React mainly to visualize sorting algorithms.",
   "highlights": [
-    "Shows important information about the respective algirthm at the bottom.",
+    "Shows important information about the respective algorithm at the bottom",
     "Adjustable speed for learning purposes"
   ],
   "technologies": [
-    "React.js"
+    "React"
   ],
   "mainTech": "react",
   "links": [

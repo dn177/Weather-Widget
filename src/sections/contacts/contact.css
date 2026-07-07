@@ -1,10 +1,11 @@
 #contact {
-  background-color: var(--color-main);
+  background-color: var(--ivory-deep, #ede4d0);
+  border-top: 1px solid var(--gold-500, #c9a96e);
   padding: 0rem 0;
   max-height: calc(100vh - var(--navbar-height));
 }
 
-#contact h6,
+#contact h2,
 #contact p {
   color: black;
 }
@@ -52,11 +53,6 @@
 @media screen and (max-width: 600px) {
   #contact {
     min-height: 100vh;
-  }
-
-  [alt="Zacuelu"] {
-    max-height: calc(100vh - var(--navbar-height));
-    object-fit: cover;
   }
 
   .contact-wrapper {

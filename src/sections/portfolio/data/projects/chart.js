@@ -8,7 +8,7 @@ const project = {
   "title": "Chart",
   "category": "component",
   "featured": false,
-  "date": "2024-02-15",
+  "date": "2021-02-15",
   "sortOrder": 15,
   "media": {
     "type": "video",

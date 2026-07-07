@@ -4,18 +4,28 @@ header {
   min-height: calc(100vh - var(--navbar-height));
   display: grid;
   place-items: center;
-  transition: opacity 0.3s ease-in-out;
-  /* background-image moved to inline style in component */
+  /* Background-color shows instantly; the photo layers on top once it
+     decodes, so there is no JS-gated flash of unstyled purple. */
+  background-color: #7b219f;
+  background-image: url("/1-desktop-480w.webp");
   background-size: cover;
   background-position: top;
   /* Removed background-attachment: fixed for better performance */
   color: white;
-  opacity: 0.95; /* Slight opacity to help with perceived performance */
 }
 
-/* Smooth transition when image loads */
-header.image-loaded {
-  opacity: 1;
+/* Responsive hero variants, matched to the srcset breakpoints used
+   elsewhere (Hustle, Contact) and to the preload in index.html. */
+@media (min-width: 601px) {
+  header {
+    background-image: url("/1-desktop-960w.webp");
+  }
+}
+
+@media (min-width: 1201px) {
+  header {
+    background-image: url("/1-desktop-1440w.webp");
+  }
 }
 
 /* #header h3 {

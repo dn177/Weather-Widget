@@ -1,13 +1,8 @@
-const CategoryButton = ({ category, className, onChangeCategory, techColor, isActive }) => {
-  const buttonStyle = {
-    '--tech-color': techColor || '#6b7280'
-  };
-
+const CategoryButton = ({ category, techKey, className, onChangeCategory, isActive }) => {
   return (
     <button
       className={className}
-      onClick={() => onChangeCategory(category)}
-      style={buttonStyle}
+      onClick={() => onChangeCategory(techKey)}
       aria-pressed={isActive}
     >
       {category}

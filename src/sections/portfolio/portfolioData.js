@@ -10,14 +10,14 @@ export { portfolioProjects };
 
 // Define main technology categories
 export const techCategories = {
-  all: { label: "All", color: "#6b7280" },
-  "ai-ml": { label: "AI/ML", color: "#9333ea" },
-  react: { label: "React", color: "#61DAFB" },
-  vue: { label: "Vue.js", color: "#4FC08D" },
-  nodejs: { label: "Node.js", color: "#339933" },
-  php: { label: "PHP", color: "#777BB4" },
-  electron: { label: "Electron", color: "#47848F" },
-  nextjs: { label: "Next.js", color: "#000000" },
+  all: { label: "All" },
+  "ai-ml": { label: "AI/ML" },
+  react: { label: "React" },
+  vue: { label: "Vue.js" },
+  nodejs: { label: "Node.js" },
+  php: { label: "PHP" },
+  electron: { label: "Electron" },
+  nextjs: { label: "Next.js" },
 };
 
 // Grid tiers: 1 = flagship feature card, 2 = index card, 3 = archive ledger.
@@ -45,22 +45,3 @@ export const getProjectsByTechnology = (tech) => {
         });
   return [...filtered].sort(bySortOrder);
 };
-
-export const getAllTechnologies = () => {
-  const techSet = new Set();
-  portfolioProjects.forEach((project) => {
-    project.technologies.forEach((tech) => techSet.add(tech));
-  });
-  return Array.from(techSet).sort();
-};
-
-export const getProjectsByCategory = (category) =>
-  portfolioProjects.filter((project) => project.category === category);
-
-export const getFeaturedProjects = () =>
-  portfolioProjects.filter((project) => project.featured);
-
-export const sortProjectsByDate = (projects) =>
-  [...projects].sort((a, b) => new Date(b.date) - new Date(a.date));
-
-export default portfolioProjects;

@@ -20,8 +20,8 @@ function Badges() {
           href="https://explainshell.com/explain?cmd=git+reset+--hard+blablabla"
           target="_blank"
           rel="noreferrer"
-          className="text-reset text-decoration-none text-center d-block typewriter-wrapper"
-          aria-label="Shell command explanation link"
+          className="text-center d-block typewriter-wrapper"
+          aria-label={`${t('badges.typewriter')} (${t('a11y.opensExplainshell')})`}
         >
           <Typewriter
             text={t('badges.typewriter')}

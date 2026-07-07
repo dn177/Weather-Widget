@@ -11,10 +11,10 @@ function Hustle() {
   return (
     <section id="hustle">
       <div className="container-2 mx-auto">
-        <h6 className="text-center text-white h1 mb-headline">
+        <h2 className="text-center text-white h1">
           {t('hustle.title')}
-          <p className="fs-4 mt-4">{t('hustle.subtitle')}</p>
-        </h6>
+        </h2>
+        <p className="text-center text-white fs-4 mt-4 mb-headline">{t('hustle.subtitle')}</p>
         <div className="row mb-row">
           <div className="flip-wrapper">
             {/* <img

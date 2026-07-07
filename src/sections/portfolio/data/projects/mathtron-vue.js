@@ -20,10 +20,10 @@ const project = {
     "Migrated from React to Vue.js",
     "Modern Material Design with Vuetify",
     "Improved performance and user experience",
-    "Sanitized user input, don't try your luck"
+    "Sanitized user input before rendering"
   ],
   "technologies": [
-    "Vue.js",
+    "Vue 3",
     "Vuetify",
     "Electron",
     "JavaScript"

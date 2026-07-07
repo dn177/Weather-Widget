@@ -22,8 +22,30 @@
   margin-bottom: 2rem;
 }
 
+/* The typewriter lines are real external links to explainshell.com (here
+   and in #badges), so let them read as links: mono, underlined, with a
+   small external-link arrow. The arrow glyph stays out of the accessible
+   name because the anchor carries an aria-label. */
 .typewriter-wrapper {
   min-height: 35px;
+  font-family: var(--font-mono);
+  color: var(--purple-600, #690cc6);
+  text-decoration: underline;
+  text-decoration-color: var(--purple-300, #b88adc);
+  text-underline-offset: 0.2em;
+}
+
+.typewriter-wrapper:hover,
+.typewriter-wrapper:focus-visible {
+  color: var(--purple-500, #7b219f);
+  text-decoration-color: var(--gold-500, #c9a96e);
+}
+
+.typewriter-wrapper::after {
+  content: "\2197";
+  font-size: 0.75em;
+  margin-left: 0.35em;
+  vertical-align: super;
 }
 
 .typewriter {
@@ -176,13 +198,13 @@ h4 {
 }
 
 .portfolio__github-link {
-  color: #9333ea !important;
+  color: var(--purple-600, #690cc6) !important;
   gap: 0.5rem !important;
 }
 
 .portfolio__github-link:hover {
   text-decoration: underline !important;
-  color: #7c3aed !important;
+  color: var(--purple-700, #4f0a8c) !important;
   transform: none !important;
 }
 
@@ -208,7 +230,7 @@ h4 {
 }
 
 .portfolio__live-link {
-  color: #9333ea;
+  color: var(--purple-600, #690cc6);
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
@@ -227,13 +249,13 @@ h4 {
 }
 
 .portfolio__live-link {
-  color: #9333ea !important;
+  color: var(--purple-600, #690cc6) !important;
   gap: 0.5rem !important;
 }
 
 .portfolio__live-link:hover {
   text-decoration: underline !important;
-  color: #7c3aed !important;
+  color: var(--purple-700, #4f0a8c) !important;
   transform: none !important;
 }
 
@@ -657,20 +679,20 @@ h4 {
 
 .detail-modal-action--code {
   background: transparent;
-  color: #7c3aed;
-  border: 1px solid rgba(124, 58, 237, 0.45);
+  color: var(--purple-600, #690cc6);
+  border: 1px solid color-mix(in srgb, var(--purple-600, #690cc6) 45%, transparent);
 }
 
 .detail-modal-action--code:hover,
 .detail-modal-action--code:focus-visible {
-  background: rgba(124, 58, 237, 0.08);
-  color: #6d28d9;
+  background: color-mix(in srgb, var(--purple-600, #690cc6) 8%, transparent);
+  color: var(--purple-700, #4f0a8c);
   transform: translateY(-1px);
   text-decoration: none;
 }
 
 .detail-modal-action:focus-visible {
-  outline: 2px solid #9333ea;
+  outline: 2px solid var(--purple-600, #690cc6);
   outline-offset: 2px;
 }
 
