@@ -64,6 +64,12 @@ for word).
 Visible text:
 
 - `FlagshipCard.jsx` "Case study" kicker: `t("portfolio.caseStudyKicker")`
+- `portfolio.css:286` case-study modal header label, currently a CSS
+  pseudo-element (`content: "§ Case study"`): the rule becomes
+  `content: "§ " attr(data-kicker)`, with the modal dialog carrying
+  `data-kicker={t("portfolio.caseStudyKicker")}` (same key as the card
+  kicker). This is the only language-bearing `content:` value in the
+  stylesheet; the counter and ornament rules stay.
 - `Project.jsx` "View Live" fallbacks (2x), "Overview" literal fallback,
   "quick actions" aria suffix, video fallback line
 - `ProjectDetailsPanel.jsx` video fallback line
@@ -107,9 +113,14 @@ Rejected alternatives:
 Extend the existing vitest setup (`portfolioData.test.js` runs in node env)
 with a locale-parity suite:
 
-- every project id exported by the data layer has `projects.<id>` keys in
-  pl, de, and es, except ids on an explicit `ENGLISH_BY_DESIGN` allowlist
-  (empty after this fix lands);
+- for every project id exported by the data layer (except ids on an explicit
+  `ENGLISH_BY_DESIGN` allowlist, empty after this fix lands), pl, de, and es
+  each contain every key path `getTranslatedProject()` consumes for that
+  project, derived from the source data shape: `projects.<id>.title`,
+  `.description`, `.summary`, `.highlights.<i>` for each highlight,
+  `.links.<i>` for each link, and `.statLabel` when the project has a stat.
+  A top-level presence check is not enough: the fallback is per field, so a
+  partial block would still leak English;
 - pl/de/es remain key supersets of `en.json` for shared namespaces
   (allowing plural-form variants);
 - no locale value is an empty string;
@@ -117,6 +128,11 @@ with a locale-parity suite:
   four locales.
 
 This turns the silent-English-fallback class of bug into a CI failure.
+
+The field-level check is stricter than the audit's block-level coverage scan,
+so it may expose partial gaps (a missing `summary` or `statLabel` key, say) in
+projects counted as fully translated. Any such gaps get filled as part of
+this work; the test must pass with an empty allowlist before the PR opens.
 
 ### 5. Suspect-value review list
 
