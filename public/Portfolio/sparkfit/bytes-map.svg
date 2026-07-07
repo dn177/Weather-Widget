@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="ui-monospace,'SF Mono','Cascadia Code',Menlo,Consolas,monospace">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12021f"/>
+      <stop offset="1" stop-color="#22053a"/>
+    </linearGradient>
+    <linearGradient id="downbar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#cba4ff"/>
+      <stop offset="1" stop-color="#9d6fe8"/>
+    </linearGradient>
+    <clipPath id="plate2"><rect width="720" height="400" rx="14"/></clipPath>
+  </defs>
+
+  <rect width="720" height="400" rx="14" fill="url(#bg2)"/>
+  <rect x="0" y="0" width="6" height="400" fill="#b08c4e" clip-path="url(#plate2)" opacity="0.9"/>
+
+  <!-- header -->
+  <text x="44" y="52" fill="#c8ac72" font-size="12" font-weight="700" letter-spacing="2.2">WHERE THE BYTES ARE · 397B PARAMETERS BY TENSOR CLASS</text>
+  <text x="44" y="76" fill="#b9a7b7" font-size="12.5" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Bar length is parameter count. 97% of the model is routed experts, so quality is a question of expert bit-width.</text>
+
+  <!-- scale: 397B params over 560px, bars start x=110 -->
+
+  <!-- row 1: gate+up experts, 257.7B -->
+  <text x="44" y="122" fill="#f4ead9" font-size="12" font-weight="600">routed gate+up experts</text>
+  <rect x="44" y="132" width="363" height="30" rx="4" fill="#5e4a78"/>
+  <text x="54" y="152" fill="#efe6ff" font-size="12" font-weight="700">257.70B params</text>
+  <text x="419" y="146" fill="#c3b0c1" font-size="11">iq1_kt · 1.75 bpw</text>
+  <text x="419" y="161" fill="#8d7f88" font-size="10.5">&#8776; 56.4 GB · unchanged</text>
+
+  <!-- row 2: down experts, 128.85B, THE CHANGE -->
+  <text x="44" y="196" fill="#efe6ff" font-size="12" font-weight="700">routed down experts</text>
+  <rect x="44" y="206" width="182" height="30" rx="4" fill="url(#downbar)"/>
+  <text x="54" y="226" fill="#12021f" font-size="12" font-weight="800">128.85B params</text>
+  <text x="238" y="220" fill="#cba4ff" font-size="11.5" font-weight="700">iq2_kt &#8594; iq2_kl · 2.125 &#8594; 2.6875 bpw</text>
+  <text x="238" y="235" fill="#c3b0c1" font-size="10.5">the one changed line: +8.44 GiB, all 60 layers</text>
+
+  <!-- row 3: everything else, ~10.5B -->
+  <text x="44" y="270" fill="#f4ead9" font-size="12" font-weight="600">attention · SSM · shared experts · embeddings</text>
+  <rect x="44" y="280" width="15" height="30" rx="3" fill="#5e4a78"/>
+  <text x="69" y="294" fill="#c3b0c1" font-size="11">~10.5B params · kept at 4&#8211;8.5 bpw</text>
+  <text x="69" y="309" fill="#8d7f88" font-size="10.5">a rounding error in bytes, so it stays high-precision</text>
+
+  <!-- divider -->
+  <rect x="44" y="336" width="632" height="1" fill="#c9a96e" opacity="0.18"/>
+  <rect x="44" y="335" width="32" height="2" fill="#c9a96e" opacity="0.9"/>
+
+  <!-- footer: the arithmetic -->
+  <text x="44" y="366" fill="#f4ead9" font-size="13" font-weight="600">size = &#931; params &#215; bpw / 8  &#8594;  predicted 106.83 GB, built 106,574,034,240 B = 106.6 GB</text>
+  <text x="44" y="384" fill="#8d7f88" font-size="11.5">down experts are the steepest documented quality sensitivity at half the gate+up parameter count: the cheapest sensitive target</text>
+</svg>

@@ -568,6 +568,18 @@
         "2": "La ganancia vino de la cola: la aceptación reentrenada decae despacio con la profundidad del draft, moviendo el n_max óptimo de 2 a 4 y monetizando drafts profundos que el drafter anterior no podía aprovechar",
         "3": "Corrió end-to-end en una máquina de producción compartida, con un corpus 10× ahora capturado por ventanas nocturnas de cron que restauran el endpoint antes de las 07:00"
       }
+    },
+    "sparkfit-quant": {
+      "title": "Cuantizar un MoE de 397B en un presupuesto de memoria de 121 GiB",
+      "description": "Diseño y construcción de un quant custom de clase 2-bit de un MoE de 397B autoalojado (SPARKFIT-v2) en un solo DGX Spark. La receta de la baseline en producción se cambió en exactamente una línea, todo el diseño se presupuestó por aritmética antes de gastar un solo ciclo de cómputo, y el artefacto construido quedó a un 0,24% de su tamaño predicho, en 106,6 GB, tras 37 minutos sobre los núcleos ARM de la máquina. Una escalera predeclarada de seis gates lo lleva hacia producción; los gates de calidad y de memoria están corriendo ahora.",
+      "summary": "Quant custom de clase 2-bit de un MoE de 397B autoalojado en un solo DGX Spark: presupuestado por aritmética antes de gastar cómputo, llevado por una escalera de gates predeclarada y construido a un 0,24% de su tamaño predicho, en 106,6 GB.",
+      "statLabel": "respecto al tamaño predicho sobre el papel, en 106,6 GB",
+      "highlights": [
+        "Presupuestó una receta de quant de 397B sobre el papel a partir de una tabla de bits-per-weight y un ancla de memoria medida; el artefacto construido quedó en 106,6 GB, un 0,24% por debajo de lo predicho, tras 37 minutos sobre 16 hilos ARM",
+        "Cambió exactamente una línea de la receta respecto a la baseline en producción (expertos de down-projection, de 2,125 a 2,6875 bpw, +8,44 GiB) para que cada delta de calidad siga siendo atribuible",
+        "Escalera predeclarada de seis gates ordenada de barato a caro; el gate de compatibilidad atrapó dos bloqueadores reales en segundos que de otro modo habrían costado toda la ventana de construcción",
+        "Los gates de calidad corren contra un corpus held-out fijado por sha256, con un builder protegido contra sobrescritura; la métrica KLD, inviable aquí, se reemplazó por una sustitución declarada antes de que llegaran los resultados"
+      ]
     }
   }
 }

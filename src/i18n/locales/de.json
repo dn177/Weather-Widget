@@ -568,6 +568,18 @@
         "2": "Der Gewinn kam aus dem Tail: die Akzeptanz nach dem Retraining fällt mit der Draft-Tiefe nur langsam ab, verschob das optimale n_max von 2 auf 4 und machte tiefe Drafts nutzbar, die der ausgelieferte Drafter nicht verwerten konnte",
         "3": "End-to-end auf einer geteilten Produktionsmaschine, mit einem 10×-Korpus, den jetzt nächtliche Cron-Fenster einsammeln und den Endpoint per Trap-Restore bis 07:00 wiederherstellen"
       }
+    },
+    "sparkfit-quant": {
+      "title": "Quantisierung eines 397B-MoE in ein 121-GiB-Speicherbudget",
+      "description": "Design und Build eines eigenen 2-Bit-Quants eines self-hosted 397B-MoE (SPARKFIT-v2) auf einem DGX Spark. Das ausgelieferte Baseline-Rezept wurde um exakt eine Zeile geändert, das ganze Design per Arithmetik durchgerechnet, bevor Rechenzeit floss, und das gebaute Artefakt landete 0,24% neben seiner vorhergesagten Größe bei 106,6 GB, nach 37 Minuten auf den ARM-Kernen der Maschine. Eine vorab deklarierte Sechs-Gate-Leiter trägt es Richtung Produktion; die Qualitäts- und Speicher-Gates laufen jetzt.",
+      "summary": "Eigener 2-Bit-Quant eines self-hosted 397B-MoE auf einem DGX Spark: per Arithmetik durchgerechnet, bevor Rechenzeit floss, über eine vorab deklarierte Gate-Leiter geführt und auf 0,24% genau an der vorhergesagten Größe von 106,6 GB gebaut.",
+      "statLabel": "neben der auf Papier vorhergesagten Größe, bei 106,6 GB",
+      "highlights": [
+        "Ein 397B-Quant-Rezept auf Papier aus einer Bits-per-Weight-Tabelle und einem gemessenen Speicher-Anker durchgerechnet; das gebaute Artefakt landete bei 106,6 GB, 0,24% unter der Vorhersage, nach 37 Minuten auf 16 ARM-Threads",
+        "Exakt eine Rezeptzeile gegenüber der ausgelieferten Baseline geändert (Down-Projection-Experten, 2,125 auf 2,6875 bpw, +8,44 GiB), damit jedes Qualitäts-Delta zuordenbar bleibt",
+        "Vorab deklarierte Sechs-Gate-Leiter, von billig nach teuer geordnet; das Kompatibilitäts-Gate fing zwei echte Blocker in Sekunden ab, die sonst das Build-Fenster gekostet hätten",
+        "Qualitäts-Gates laufen gegen einen sha256-gepinnten Held-out-Korpus mit einem überschreibungsgeschützten Builder; die nicht durchführbare KLD-Metrik wurde durch eine vor Eintreffen der Ergebnisse deklarierte Ersatzlösung ersetzt"
+      ]
     }
   }
 }

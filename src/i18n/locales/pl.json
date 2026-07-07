@@ -570,6 +570,18 @@
         "2": "Zysk przyszedł z ogona: akceptacja po retreningu spada powoli z głębokością draftu, przesuwając optymalne n_max z 2 na 4 i monetyzując głębokie drafty, których dotychczasowy drafter nie umiał wykorzystać",
         "3": "Całość end-to-end na współdzielonej maszynie produkcyjnej, z 10× większym korpusem zbieranym teraz przez nocne okna crona, które przywracają endpoint do 07:00"
       }
+    },
+    "sparkfit-quant": {
+      "title": "Kwantyzacja MoE 397B do budżetu pamięci 121 GiB",
+      "description": "Projekt i budowa własnego quanta klasy 2-bitowej dla self-hostowanego MoE 397B (SPARKFIT-v2) na jednym DGX Spark. Produkcyjna receptura bazowa została zmieniona dokładnie o jedną linię, cały projekt wyceniono arytmetyką, zanim zużyto jakikolwiek compute, a zbudowany artefakt wypadł 0,24% od przewidzianego rozmiaru, na 106,6 GB, po 37 minutach na rdzeniach ARM tej maszyny. Prezadeklarowana drabina sześciu bramek prowadzi go ku produkcji; bramki jakości i pamięci działają teraz.",
+      "summary": "Własny quant klasy 2-bitowej dla self-hostowanego MoE 397B na jednym DGX Spark: wyceniony arytmetyką przed jakimkolwiek compute, przeprowadzony przez prezadeklarowaną drabinę bramek i zbudowany w granicach 0,24% przewidzianego rozmiaru, na 106,6 GB.",
+      "statLabel": "od rozmiaru przewidzianego na papierze, na 106,6 GB",
+      "highlights": [
+        "Wyceniono recepturę quanta 397B na papierze z tabeli bits-per-weight i zmierzonej kotwicy pamięci; zbudowany artefakt wypadł na 106,6 GB, 0,24% poniżej predykcji, po 37 minutach na 16 wątkach ARM",
+        "Zmieniono dokładnie jedną linię receptury względem produkcyjnej bazy (eksperci down-projection, 2,125 do 2,6875 bpw, +8,44 GiB), tak by każda delta jakości pozostała przypisywalna",
+        "Prezadeklarowana drabina sześciu bramek uporządkowana od taniej do drogiej; bramka kompatybilności wychwyciła w sekundy dwa realne blokery, które inaczej kosztowałyby okno budowy",
+        "Bramki jakości działają na przypiętym po sha256 wydzielonym korpusie z builderem zabezpieczonym przed nadpisaniem; niewykonalną metrykę KLD zastąpiono podstawieniem zadeklarowanym, zanim pojawiły się wyniki"
+      ]
     }
   }
 }
