@@ -31,8 +31,15 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Hero preload -->
-    <link rel="preload" as="image" href="/1-desktop.webp" fetchpriority="high" />
+    <!-- Hero preload: matches the responsive background set in header.css -->
+    <link
+      rel="preload"
+      as="image"
+      href="/1-desktop-960w.webp"
+      imagesrcset="/1-desktop-480w.webp 480w, /1-desktop-960w.webp 960w, /1-desktop-1440w.webp 1440w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
 
     <!-- Bootstrap ships once, bundled from node_modules (see src/App.jsx) —
          the old CDN copy (5.0.1) duplicated it and blocked rendering.

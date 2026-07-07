@@ -3,20 +3,11 @@ import { useTranslation } from 'react-i18next';
 import data from "./data";
 import "./header.css";
 
-const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
-
 const Header = () => {
   const { t } = useTranslation();
   const crownRef = useRef(null);
   const intersectionRef = useRef(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = `${PUBLIC_URL}/1-desktop.webp`;
-    img.onload = () => setImageLoaded(true);
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,16 +33,7 @@ const Header = () => {
   }, [isIntersecting]);
 
   return (
-    <header
-      id="header"
-      className={imageLoaded ? "image-loaded" : ""}
-      style={{
-        backgroundImage: imageLoaded
-          ? `url(${PUBLIC_URL}/1-desktop.webp)`
-          : "none",
-        backgroundColor: imageLoaded ? "transparent" : "#7b219f",
-      }}
-    >
+    <header id="header">
       <div className="thirtythree">
         <p>33</p>
       </div>
