@@ -33,10 +33,12 @@ const FlagshipCard = ({
   const nonStatHighlights = translatedProject.stat
     ? highlights.filter((h) => !h.includes(translatedProject.stat.value))
     : highlights;
+  // Three findings: the floated-figure layout reclaims the old media
+  // column, so the card face carries one more piece of evidence.
   const findings = (
     nonStatHighlights.length >= 2 ? nonStatHighlights : highlights
   )
-    .slice(0, 2)
+    .slice(0, 3)
     .map(firstSentence);
   const shownTech = technologies.slice(0, 4);
   const extraTech = technologies.length - shownTech.length;
@@ -51,11 +53,6 @@ const FlagshipCard = ({
         mediaSide === "right" ? " pf-flagship--reverse" : ""
       }`}
     >
-      <div
-        className={`pf-flagship__media${isSvg ? " pf-flagship__media--contain" : ""}`}
-      >
-        <img src={mediaSrc} alt={media.alt || ""} loading="lazy" />
-      </div>
       <div className="pf-flagship__body">
         <div className="pf-kicker-rail">
           <span className="pf-kicker pf-kicker--case">
@@ -74,6 +71,13 @@ const FlagshipCard = ({
           )}
           {translatedProject.title}
         </h3>
+        {/* Floated figure: the title runs full width above, the standfirst
+            and findings wrap around the poster, and the footer clears. */}
+        <figure
+          className={`pf-flagship__media${isSvg ? " pf-flagship__media--contain" : ""}`}
+        >
+          <img src={mediaSrc} alt={media.alt || ""} loading="lazy" />
+        </figure>
         {translatedProject.summary && (
           <p className="pf-flagship__summary">{translatedProject.summary}</p>
         )}

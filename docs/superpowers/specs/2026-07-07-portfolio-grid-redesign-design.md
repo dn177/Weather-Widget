@@ -32,7 +32,7 @@ Ordering is a **static interleave with an alternating rhythm** (F1 i1 / i2 F2 / 
 
 ### Tier 1: flagship card anatomy
 
-Wide horizontal card spanning 2 of 3 grid columns at >=1024px with the 40% media pane beside the text. Below 1024px the flagship is a single-column card with the media stacked as a 16:9 band (same as mobile), so 2-column tablet rows tile without voids; the gold top rule and the taller anatomy keep it visually distinct from index cards there.
+Wide card spanning 2 of 3 grid columns at >=1024px, laid out as an article rather than two panes (design round 4, user idea): the kicker rail and title run the full card width, the poster floats to the card's outer edge (left card floats left, right card floats right, preserving the media-outward zig-zag) at ~46% width, the standfirst and findings wrap around it, and the stat and footer clear below. The dedicated dark media pane is gone; the SVG posters carry their own dark plate and sit as figures on the ivory, raster media gets a framed 16:10 plate. The reclaimed area funds a third finding. Below 1024px the figure is a full-width band under the title (no room to wrap); the body is block flow, not flex, because floats only wrap text in normal flow.
 
 | Slot | Content | Treatment |
 | --- | --- | --- |

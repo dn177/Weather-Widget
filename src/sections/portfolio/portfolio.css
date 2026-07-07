@@ -1040,75 +1040,59 @@ h4 {
   overflow: hidden;
 }
 
+/* The poster is a floated figure in article flow (no dedicated media
+   column): the title runs full width, the standfirst and findings wrap
+   around the figure, and the footer clears. The SVG posters carry their
+   own dark plate, so no bed is painted behind them. */
 .pf-flagship__media {
-  /* Quotes the case-study modal header: a faint gold radial over the deep
-     bed, so a contained SVG reads as a plate in an atmosphere rather than
-     a small image on flat black. */
-  background:
-    radial-gradient(
-      120% 90% at 12% 0%,
-      rgba(201, 169, 110, 0.14),
-      transparent 62%
-    ),
-    var(--pf-deep);
-  aspect-ratio: 16 / 9;
-  min-height: 0;
+  margin: 0.35rem 0 1rem;
 }
 
 .pf-flagship__media img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
+  /* Raster screenshots get a framed 16:10 plate on the deep bed */
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border: 1px solid var(--pf-line);
+  border-radius: 8px;
+  background: var(--pf-deep);
 }
 
-/* SVG heroes read as diagrams: contain with an inset on the deep bed */
+/* SVG posters bring their own dark rounded plate: no frame, no crop */
 .pf-flagship__media--contain img {
+  aspect-ratio: auto;
   object-fit: contain;
-  padding: 1rem;
+  border: none;
+  border-radius: 0;
+  background: transparent;
 }
 
 .pf-flagship__body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
+  /* Block flow, not flex: floats only wrap text in normal flow */
   padding: 1.4rem 1.5rem 1.5rem;
-  flex: 1 1 auto;
   min-width: 0;
 }
 
 @media (min-width: 1024px) {
-  .pf-flagship {
-    flex-direction: row;
-  }
-
-  /* Alternating rows flip the pane to the right edge, so the dark media
-     plates always face outward and the grid reads as a magazine spread.
-     Scoped to >=1024px: below it the card is a column (media band on top)
-     and must not become column-reverse. */
-  .pf-flagship--reverse {
-    flex-direction: row-reverse;
-  }
-
+  /* The figure floats to the card's outer edge (left card: left; right
+     card: right), keeping the media-outward zig-zag of the grid. Only at
+     span-2 width: below 1024px there is no room to wrap text. */
   .pf-flagship__media {
-    flex: 0 0 40%;
-    width: 40%;
-    aspect-ratio: auto;
+    float: left;
+    width: 46%;
+    margin: 0.4rem 1.5rem 0.75rem 0;
   }
 
   .pf-flagship--reverse .pf-flagship__media {
-    background:
-      radial-gradient(
-        120% 90% at 88% 0%,
-        rgba(201, 169, 110, 0.14),
-        transparent 62%
-      ),
-      var(--pf-deep);
+    float: right;
+    margin: 0.4rem 0 0.75rem 1.5rem;
   }
 }
 
 .pf-flagship__title {
-  margin: 0;
+  margin: 0.55rem 0 0.7rem;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(1.35rem, 1.1rem + 1vw, 1.7rem);
@@ -1118,17 +1102,17 @@ h4 {
 }
 
 .pf-flagship__summary {
-  margin: 0;
+  margin: 0 0 0.85rem;
   font-family: var(--font-body);
   font-size: 1.02rem;
   line-height: 1.6;
   color: var(--pf-body);
 }
 
-/* Findings: the modal's bullet grammar, clamped to two lines each */
+/* Findings: the modal's bullet grammar, clamped to three lines each */
 .pf-findings {
   list-style: none;
-  margin: 0;
+  margin: 0 0 0.95rem;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -1163,8 +1147,16 @@ h4 {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
+  margin: 0 0 0.5rem;
   padding-left: 0.9rem;
   border-left: 2px solid var(--pf-gold);
+}
+
+/* In article flow the footer clears the floated figure and spaces itself
+   (margin-top: auto only works inside the index cards' flex column). */
+.pf-flagship .pf-footer {
+  clear: both;
+  margin-top: 1rem;
 }
 
 .pf-stat__value {
@@ -1217,6 +1209,12 @@ h4 {
    expanded neighbor cannot inflate it. */
 .pf-card.pf-index--plate {
   align-self: stretch;
+}
+
+/* Companions have flagship-height to spend: let the summary run its full
+   length instead of clamping at two lines. */
+.pf-index--plate .pf-index__summary {
+  -webkit-line-clamp: 4;
 }
 
 .pf-index__plate {
