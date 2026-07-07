@@ -2,7 +2,28 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { MemoryRouter, useSearchParams } from "react-router-dom";
 import Portfolio from "./Portfolio";
+
+// Portfolio backs its active filter with useSearchParams, which requires a
+// router context; a bare MemoryRouter (no route config) is enough since the
+// component never navigates by path, only by search params.
+//
+// LocationDisplay renders the current search string so tests can assert on
+// URL params (e.g. that ?lang= survives a filter change) without reaching
+// into router internals.
+const LocationDisplay = () => {
+  const [searchParams] = useSearchParams();
+  return <div data-testid="location-search">{searchParams.toString()}</div>;
+};
+
+const renderPortfolio = (initialEntries = ["/"]) =>
+  render(
+    <MemoryRouter initialEntries={initialEntries}>
+      <Portfolio />
+      <LocationDisplay />
+    </MemoryRouter>,
+  );
 
 // Synthetic catalog (same technique as pureFunctions.test.js): two react
 // projects and one vue project, all tier 2 (featured, no flagship), so the
@@ -60,7 +81,7 @@ vi.mock("../../lib/Typewriter", () => ({
 
 describe("Portfolio category filter", () => {
   it("shows the full catalog and its entry count by default", () => {
-    render(<Portfolio />);
+    renderPortfolio();
 
     expect(
       screen.getByRole("heading", { name: /React Alpha/ }),
@@ -80,7 +101,7 @@ describe("Portfolio category filter", () => {
 
   it("clicking a category swaps the visible projects and the entry count", async () => {
     const user = userEvent.setup();
-    render(<Portfolio />);
+    renderPortfolio();
 
     await user.click(screen.getByRole("button", { name: "Vue.js" }));
 
@@ -112,5 +133,41 @@ describe("Portfolio category filter", () => {
       screen.getByRole("heading", { name: /React Alpha/ }),
     ).toBeInTheDocument();
     expect(screen.getByText(/3 entries/)).toBeInTheDocument();
+  });
+
+  it("preselects the filter from an existing ?tech= param", () => {
+    renderPortfolio(["/?tech=vue"]);
+
+    expect(
+      screen.getByRole("heading", { name: /Vue Gamma/ }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: /React Alpha/ }),
+    ).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Vue.js" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+  });
+
+  it("writes ?tech= on filter and preserves an existing ?lang= param", async () => {
+    const user = userEvent.setup();
+    renderPortfolio(["/?lang=de"]);
+
+    await user.click(screen.getByRole("button", { name: "Vue.js" }));
+
+    const search = new URLSearchParams(
+      screen.getByTestId("location-search").textContent,
+    );
+    expect(search.get("tech")).toBe("vue");
+    expect(search.get("lang")).toBe("de");
+
+    // Back to "all" drops ?tech= but keeps ?lang=.
+    await user.click(screen.getByRole("button", { name: "All" }));
+    const searchAfterReset = new URLSearchParams(
+      screen.getByTestId("location-search").textContent,
+    );
+    expect(searchAfterReset.has("tech")).toBe(false);
+    expect(searchAfterReset.get("lang")).toBe("de");
   });
 });
