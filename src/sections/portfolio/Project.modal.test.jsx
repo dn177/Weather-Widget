@@ -76,6 +76,23 @@ describe("Project case-study modal", () => {
     expect(document.body.style.overflow).toBe("hidden");
     expect(screen.getByText("Approach")).toBeInTheDocument();
 
+    // aria-describedby points at the short overview paragraph, not the
+    // whole case study, and every id in the open modal is unique (issue
+    // #10: duplicate id="detail-modal-content" on the modal-body wrapper
+    // and the inner content div).
+    const describedById = dialog.getAttribute("aria-describedby");
+    expect(describedById).toBeTruthy();
+    const describedByEl = document.getElementById(describedById);
+    expect(describedByEl).toHaveTextContent(
+      "Cut render time from 300 ms to 40 ms.",
+    );
+    expect(describedByEl.textContent.length).toBeLessThan(200);
+    const idCounts = {};
+    dialog.querySelectorAll("[id]").forEach((el) => {
+      idCounts[el.id] = (idCounts[el.id] || 0) + 1;
+    });
+    Object.values(idCounts).forEach((count) => expect(count).toBe(1));
+
     // Focus lands on the close button only after the 50ms mount delay.
     const closeButton = screen.getByRole("button", { name: "Close modal" });
     expect(closeButton).not.toHaveFocus();

@@ -61,6 +61,11 @@ const CaseStudyModal = ({ translatedProject, links, isOpen, onClose }) => {
   const githubLinks = links.github;
   const liveLinks = links.live;
   const { detailedContent } = translatedProject;
+  // Per-project id: the dialog description should point at the short
+  // overview paragraph, not the whole (often thousands-of-words) case
+  // study, and must stay unique if several project cards each mount their
+  // own modal instance.
+  const overviewTextId = `detail-modal-overview-text-${translatedProject.id}`;
 
   return (
     <AccessibleModal
@@ -68,7 +73,7 @@ const CaseStudyModal = ({ translatedProject, links, isOpen, onClose }) => {
       onClose={onClose}
       title={translatedProject.title}
       className="portfolio-detail-modal"
-      ariaDescribedBy="detail-modal-content"
+      ariaDescribedBy={overviewTextId}
     >
       {(githubLinks.length > 0 || liveLinks.length > 0) && (
         <div
@@ -84,7 +89,7 @@ const CaseStudyModal = ({ translatedProject, links, isOpen, onClose }) => {
           />
         </div>
       )}
-      <div className="detail-modal-content" id="detail-modal-content">
+      <div className="detail-modal-content">
         {/* Hero Image */}
         <div className="detail-modal-hero">
           <img
@@ -112,7 +117,7 @@ const CaseStudyModal = ({ translatedProject, links, isOpen, onClose }) => {
           <h3 className="detail-modal-section-title">
             {t("portfolio.overview") || "Overview"}
           </h3>
-          <p className="detail-modal-overview-text">
+          <p className="detail-modal-overview-text" id={overviewTextId}>
             {emphasizeMetrics(detailedContent.overview)}
           </p>
         </div>

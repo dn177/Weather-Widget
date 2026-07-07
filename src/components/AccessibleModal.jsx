@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./accessibleModal.css";
 
@@ -30,6 +30,9 @@ const AccessibleModal = ({
   const modalRef = useRef(null);
   const closeButtonRef = useRef(null);
   const previouslyFocusedElement = useRef(null);
+  // Per-instance id so multiple mounted modals (e.g. several case-study
+  // cards, each owning an AccessibleModal) never collide on "modal-title".
+  const titleId = `modal-title-${useId()}`;
 
   // Handle closing animation
   const handleClose = useCallback(() => {
@@ -118,13 +121,13 @@ const AccessibleModal = ({
         className={`modal-dialog ${className} ${isClosing ? "modal-dialog-closing" : ""}`}
         role="dialog"
         aria-modal="true"
-        aria-labelledby="modal-title"
+        aria-labelledby={titleId}
         aria-describedby={ariaDescribedBy}
         onMouseDown={(e) => e.stopPropagation()}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-header">
-          <h2 id="modal-title" className="modal-title">
+          <h2 id={titleId} className="modal-title">
             {title}
           </h2>
           {showCloseButton && (
@@ -152,9 +155,7 @@ const AccessibleModal = ({
             </button>
           )}
         </div>
-        <div className="modal-body" id={ariaDescribedBy}>
-          {children}
-        </div>
+        <div className="modal-body">{children}</div>
       </div>
     </div>
   );
