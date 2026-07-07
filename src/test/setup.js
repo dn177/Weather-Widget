@@ -42,3 +42,21 @@ if (typeof window !== "undefined" && !window.IntersectionObserver) {
     }
   };
 }
+
+// jsdom ships no matchMedia either. Typewriter checks
+// (prefers-reduced-motion: reduce) through it; "no preference" is the
+// honest default for tests.
+if (typeof window !== "undefined" && !window.matchMedia) {
+  window.matchMedia = (query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addEventListener() {},
+    removeEventListener() {},
+    addListener() {},
+    removeListener() {},
+    dispatchEvent() {
+      return false;
+    },
+  });
+}

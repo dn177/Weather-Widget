@@ -1,6 +1,7 @@
 {
   "a11y": {
-    "skipToContent": "Zum Inhalt springen"
+    "skipToContent": "Zum Inhalt springen",
+    "opensExplainshell": "öffnet explainshell.com in einem neuen Tab"
   },
   "navbar": {
     "brand": "cd /tio/root",

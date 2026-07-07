@@ -78,6 +78,22 @@ html {
   scroll-padding-top: calc(var(--navbar-height) + 0.5rem);
 }
 
+/* Global reduced-motion guard: no animated anchor jumps, and stop the
+   session-long blink loops on the header "33" and its crown
+   (src/sections/header/header.css). The page loader spinner guards itself
+   in src/ui/PageLoader.css; the typewriter handles reduced motion in JS
+   (src/lib/Typewriter.jsx). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .thirtythree,
+  .intersect {
+    animation: none;
+  }
+}
+
 /* Slim scrollbar in the site palette, keep the position indicator instead of hiding it */
 html {
   scrollbar-color: var(--purple-400, #9c5fc9) var(--purple-950, #0d011e);

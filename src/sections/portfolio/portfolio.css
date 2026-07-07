@@ -22,8 +22,30 @@
   margin-bottom: 2rem;
 }
 
+/* The typewriter lines are real external links to explainshell.com (here
+   and in #badges), so let them read as links: mono, underlined, with a
+   small external-link arrow. The arrow glyph stays out of the accessible
+   name because the anchor carries an aria-label. */
 .typewriter-wrapper {
   min-height: 35px;
+  font-family: var(--font-mono);
+  color: var(--purple-600, #690cc6);
+  text-decoration: underline;
+  text-decoration-color: var(--purple-300, #b88adc);
+  text-underline-offset: 0.2em;
+}
+
+.typewriter-wrapper:hover,
+.typewriter-wrapper:focus-visible {
+  color: var(--purple-500, #7b219f);
+  text-decoration-color: var(--gold-500, #c9a96e);
+}
+
+.typewriter-wrapper::after {
+  content: "\2197";
+  font-size: 0.75em;
+  margin-left: 0.35em;
+  vertical-align: super;
 }
 
 .typewriter {

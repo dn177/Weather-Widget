@@ -48,8 +48,8 @@ const Portfolio = () => {
         href="https://explainshell.com/explain?cmd=curl+-sv+https%3A%2F%2Fwww.cdtio.com%2F+--stderr+-+%7C+grep+Portfolio"
         target="_blank"
         rel="noreferrer"
-        className="text-reset text-decoration-none text-center d-block typewriter-wrapper"
-        aria-label="Shell command explanation link"
+        className="text-center d-block typewriter-wrapper"
+        aria-label={`${t('portfolio.typewriter')} (${t('a11y.opensExplainshell')})`}
       >
         <Typewriter
           text={t('portfolio.typewriter')}
