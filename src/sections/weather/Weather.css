@@ -76,6 +76,7 @@
 }
 
 .github-btn {
+  display: inline-block;
   padding: 5px 10px;
   color: var(--ivory, #f7f1e6);
   border: 2px solid var(--gold-500, #c9a96e);
@@ -84,6 +85,7 @@
   float: right;
   margin-right: 4rem;
   margin-bottom: 1rem;
+  text-decoration: none;
 }
 
 .github-btn:hover {
@@ -91,9 +93,15 @@
   color: var(--purple-950, #0d011e);
 }
 
-.github-btn a {
-  text-decoration: none;
-  color: inherit;
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 @media screen and (max-width: 600px) {
