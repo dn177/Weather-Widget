@@ -8,7 +8,7 @@ const project = {
   "title": "Kanban Board",
   "category": "web-app",
   "featured": false,
-  "date": "2024-05-10",
+  "date": "2023-05-10",
   "sortOrder": 12,
   "media": {
     "type": "video",

@@ -8,7 +8,7 @@ const project = {
   "title": "Company Website",
   "category": "website",
   "featured": false,
-  "date": "2024-03-20",
+  "date": "2022-03-20",
   "sortOrder": 14,
   "media": {
     "type": "video",
