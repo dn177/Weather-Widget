@@ -1489,11 +1489,23 @@ h4 {
 
 @media (min-width: 768px) {
   .pf-panel__inner {
-    grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+    /* Wider media column so demo videos read at a usable size instead of a
+       thumbnail (was 16rem); steps up again at >=1024px. */
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
     align-items: start;
   }
 
   /* Index cards are narrow columns: keep the panel stacked there */
+  .pf-index .pf-panel__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pf-panel__inner {
+    grid-template-columns: minmax(0, 28rem) minmax(0, 1fr);
+  }
+
   .pf-index .pf-panel__inner {
     grid-template-columns: 1fr;
   }
@@ -1504,9 +1516,15 @@ h4 {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 6px;
+  border-radius: 8px;
   background: var(--pf-deep);
   object-fit: contain;
+  border: 1px solid var(--pf-line);
+}
+
+/* Demo videos are the point of the row: give them a little lift */
+.pf-panel__media video {
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.55);
 }
 
 .pf-panel__text {
