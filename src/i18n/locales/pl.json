@@ -572,15 +572,17 @@
       }
     },
     "sparkfit-quant": {
-      "title": "Kwantyzacja MoE 397B do budżetu pamięci 121 GiB",
-      "description": "Projekt i budowa własnego quanta klasy 2-bitowej dla self-hostowanego MoE 397B (SPARKFIT-v2) na jednym DGX Spark. Produkcyjna receptura bazowa została zmieniona dokładnie o jedną linię, cały projekt wyceniono arytmetyką, zanim zużyto jakikolwiek compute, a zbudowany artefakt wypadł 0,24% od przewidzianego rozmiaru, na 106,6 GB, po 37 minutach na rdzeniach ARM tej maszyny. Prezadeklarowana drabina sześciu bramek prowadzi go ku produkcji; bramki jakości i pamięci działają teraz.",
-      "summary": "Własny quant klasy 2-bitowej dla self-hostowanego MoE 397B na jednym DGX Spark: wyceniony arytmetyką przed jakimkolwiek compute, przeprowadzony przez prezadeklarowaną drabinę bramek i zbudowany w granicach 0,24% przewidzianego rozmiaru, na 106,6 GB.",
-      "statLabel": "od rozmiaru przewidzianego na papierze, na 106,6 GB",
+      "title": "Zaprojektowanie quanta MoE 397B pod budżet 121 GiB",
+      "description": "Własny cut klasy 2-bitowej self-hostowanego modelu Mixture-of-Experts 397B, zaprojektowany tak, by zmieścić się w stałej skrzynce 121 GiB pamięci zunifikowanej. Receptura zmieniła dokładnie jedną linię względem produkcyjnej bazy i przewidziała własny rozmiar pliku arytmetyką, +8,44 GiB, cel 106,8 GB, zanim zużyto compute; build wypadł na 106,57 GB, 0,24% obok, w 37 minut. Każdy krok przebiegał za prezadeklarowaną, uporządkowaną od taniej do drogiej drabiną bramek, której wczesne kontrole wychwyciły dwa realne blokery toolchainu w sekundy, a cały przebieg projektowy odbył się bez zakłócania usługi produkcyjnej.",
+      "summary": "Własny 2-bitowy cut self-hostowanego MoE 397B, zaprojektowany pod twardy budżet 121 GiB i wymiarowany arytmetyką w granicach 0,24% przewidzianego rozmiaru 106,8 GB; zbudowany i zweryfikowany rozmiarowo w 37 minut.",
+      "statLabel": "rozmiar przewidziany vs. zbudowany",
       "highlights": [
-        "Wyceniono recepturę quanta 397B na papierze z tabeli bits-per-weight i zmierzonej kotwicy pamięci; zbudowany artefakt wypadł na 106,6 GB, 0,24% poniżej predykcji, po 37 minutach na 16 wątkach ARM",
-        "Zmieniono dokładnie jedną linię receptury względem produkcyjnej bazy (eksperci down-projection, 2,125 do 2,6875 bpw, +8,44 GiB), tak by każda delta jakości pozostała przypisywalna",
-        "Prezadeklarowana drabina sześciu bramek uporządkowana od taniej do drogiej; bramka kompatybilności wychwyciła w sekundy dwa realne blokery, które inaczej kosztowałyby okno budowy",
-        "Bramki jakości działają na przypiętym po sha256 wydzielonym korpusie z builderem zabezpieczonym przed nadpisaniem; niewykonalną metrykę KLD zastąpiono podstawieniem zadeklarowanym, zanim pojawiły się wyniki"
+        "Zaprojektował 2-bitowy cut MoE 397B pod twardy budżet pamięci 121 GiB i wymiarował go arytmetyką w granicach 0,24% przewidzianych 106,8 GB",
+        "Przewidział rozmiar pliku przed jakimkolwiek compute: +0,5625 bpw × 128,85B ruteowanych parametrów = +8,44 GiB, zbudowany do 106,57 GB w 37 minut",
+        "Zmienił dokładnie jedną linię receptury względem produkcyjnej bazy, tak by każdy dalszy efekt był przypisywalny do jednej decyzji",
+        "Prezadeklarował drabinę bramek od taniej do drogiej, której bramka kompatybilności wychwyciła dwa realne blokery toolchainu w sekundy",
+        "Zastąpił niewykonalną metrykę teacher-KLD bramką perplexity na przypiętym po sha256 korpusie, ustaloną z góry z builderem zabezpieczonym przed nadpisaniem",
+        "Utrzymał produkcję nietkniętą przez cały czas dzięki trap-restore'om z jawnie przypiętymi konfiguracjami serving"
       ]
     }
   }

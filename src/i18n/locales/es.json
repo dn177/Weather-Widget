@@ -570,15 +570,17 @@
       }
     },
     "sparkfit-quant": {
-      "title": "Cuantizar un MoE de 397B en un presupuesto de memoria de 121 GiB",
-      "description": "Diseño y construcción de un quant custom de clase 2-bit de un MoE de 397B autoalojado (SPARKFIT-v2) en un solo DGX Spark. La receta de la baseline en producción se cambió en exactamente una línea, todo el diseño se presupuestó por aritmética antes de gastar un solo ciclo de cómputo, y el artefacto construido quedó a un 0,24% de su tamaño predicho, en 106,6 GB, tras 37 minutos sobre los núcleos ARM de la máquina. Una escalera predeclarada de seis gates lo lleva hacia producción; los gates de calidad y de memoria están corriendo ahora.",
-      "summary": "Quant custom de clase 2-bit de un MoE de 397B autoalojado en un solo DGX Spark: presupuestado por aritmética antes de gastar cómputo, llevado por una escalera de gates predeclarada y construido a un 0,24% de su tamaño predicho, en 106,6 GB.",
-      "statLabel": "respecto al tamaño predicho sobre el papel, en 106,6 GB",
+      "title": "Diseñar el quant de un MoE de 397B para un presupuesto de 121 GiB",
+      "description": "Un corte custom de clase 2-bit de un modelo Mixture-of-Experts de 397B autoalojado, diseñado para caber en una caja fija de 121 GiB de memoria unificada. La receta cambió exactamente una línea respecto a la baseline en producción y predijo su propio tamaño de archivo por aritmética, +8,44 GiB, un objetivo de 106,8 GB, antes de gastar cómputo; el build quedó en 106,57 GB, un 0,24% de diferencia, en 37 minutos. Cada paso corrió tras una escalera de gates predeclarada y ordenada de barato a caro, cuyas comprobaciones tempranas atraparon dos bloqueadores reales de toolchain en segundos, y toda la pasada de diseño corrió sin perturbar el servicio en producción.",
+      "summary": "Un corte custom de 2-bit de un MoE de 397B autoalojado, diseñado para un presupuesto estricto de 121 GiB y dimensionado por aritmética a un 0,24% de su tamaño predicho de 106,8 GB; construido y verificado en tamaño en 37 minutos.",
+      "statLabel": "tamaño predicho vs. construido",
       "highlights": [
-        "Presupuestó una receta de quant de 397B sobre el papel a partir de una tabla de bits-per-weight y un ancla de memoria medida; el artefacto construido quedó en 106,6 GB, un 0,24% por debajo de lo predicho, tras 37 minutos sobre 16 hilos ARM",
-        "Cambió exactamente una línea de la receta respecto a la baseline en producción (expertos de down-projection, de 2,125 a 2,6875 bpw, +8,44 GiB) para que cada delta de calidad siga siendo atribuible",
-        "Escalera predeclarada de seis gates ordenada de barato a caro; el gate de compatibilidad atrapó dos bloqueadores reales en segundos que de otro modo habrían costado toda la ventana de construcción",
-        "Los gates de calidad corren contra un corpus held-out fijado por sha256, con un builder protegido contra sobrescritura; la métrica KLD, inviable aquí, se reemplazó por una sustitución declarada antes de que llegaran los resultados"
+        "Diseñó un corte de 2-bit de un MoE de 397B para un presupuesto estricto de memoria de 121 GiB y lo dimensionó por aritmética a un 0,24% de los 106,8 GB predichos",
+        "Predijo el tamaño del archivo antes de gastar cómputo: +0,5625 bpw × 128,85B parámetros ruteados = +8,44 GiB, construido a 106,57 GB en 37 minutos",
+        "Cambió exactamente una línea de la receta respecto a la baseline en producción para que cada efecto posterior sea atribuible a una sola decisión",
+        "Predeclaró una escalera de gates de barato a caro cuyo gate de compatibilidad atrapó dos bloqueadores reales de toolchain en segundos",
+        "Sustituyó una métrica teacher-KLD inviable por un gate de perplejidad sobre un corpus fijado por sha256, fijado de antemano con un builder protegido contra sobrescritura",
+        "Mantuvo la producción intacta en todo momento mediante trap-restores con configuraciones de serving fijadas explícitamente"
       ]
     }
   }

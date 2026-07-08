@@ -570,15 +570,17 @@
       }
     },
     "sparkfit-quant": {
-      "title": "Quantisierung eines 397B-MoE in ein 121-GiB-Speicherbudget",
-      "description": "Design und Build eines eigenen 2-Bit-Quants eines self-hosted 397B-MoE (SPARKFIT-v2) auf einem DGX Spark. Das ausgelieferte Baseline-Rezept wurde um exakt eine Zeile geändert, das ganze Design per Arithmetik durchgerechnet, bevor Rechenzeit floss, und das gebaute Artefakt landete 0,24% neben seiner vorhergesagten Größe bei 106,6 GB, nach 37 Minuten auf den ARM-Kernen der Maschine. Eine vorab deklarierte Sechs-Gate-Leiter trägt es Richtung Produktion; die Qualitäts- und Speicher-Gates laufen jetzt.",
-      "summary": "Eigener 2-Bit-Quant eines self-hosted 397B-MoE auf einem DGX Spark: per Arithmetik durchgerechnet, bevor Rechenzeit floss, über eine vorab deklarierte Gate-Leiter geführt und auf 0,24% genau an der vorhergesagten Größe von 106,6 GB gebaut.",
-      "statLabel": "neben der auf Papier vorhergesagten Größe, bei 106,6 GB",
+      "title": "Ein 397B-MoE-Quant, entworfen auf ein 121-GiB-Budget",
+      "description": "Ein eigener 2-Bit-Klasse-Schnitt eines self-hosted 397B-Mixture-of-Experts-Modells, entworfen, um in eine feste 121-GiB-Unified-Memory-Box zu passen. Das Rezept änderte gegenüber der ausgelieferten Baseline exakt eine Zeile und sagte seine eigene Dateigröße per Arithmetik voraus, +8,44 GiB, ein Ziel von 106,8 GB, bevor Rechenzeit floss; der Build landete bei 106,57 GB, 0,24% daneben, in 37 Minuten. Jeder Schritt lief hinter einer vorab deklarierten, von billig nach teuer geordneten Gate-Leiter, deren frühe Prüfungen zwei echte Toolchain-Blocker in Sekunden abfingen, und der ganze Design-Durchlauf lief, ohne den Produktionsdienst zu stören.",
+      "summary": "Ein eigener 2-Bit-Schnitt eines self-hosted 397B-MoE, entworfen auf ein hartes 121-GiB-Budget und per Arithmetik auf 0,24% genau an seiner vorhergesagten Größe von 106,8 GB bemessen; in 37 Minuten gebaut und in der Größe verifiziert.",
+      "statLabel": "vorhergesagte vs. gebaute Größe",
       "highlights": [
-        "Ein 397B-Quant-Rezept auf Papier aus einer Bits-per-Weight-Tabelle und einem gemessenen Speicher-Anker durchgerechnet; das gebaute Artefakt landete bei 106,6 GB, 0,24% unter der Vorhersage, nach 37 Minuten auf 16 ARM-Threads",
-        "Exakt eine Rezeptzeile gegenüber der ausgelieferten Baseline geändert (Down-Projection-Experten, 2,125 auf 2,6875 bpw, +8,44 GiB), damit jedes Qualitäts-Delta zuordenbar bleibt",
-        "Vorab deklarierte Sechs-Gate-Leiter, von billig nach teuer geordnet; das Kompatibilitäts-Gate fing zwei echte Blocker in Sekunden ab, die sonst das Build-Fenster gekostet hätten",
-        "Qualitäts-Gates laufen gegen einen sha256-gepinnten Held-out-Korpus mit einem überschreibungsgeschützten Builder; die nicht durchführbare KLD-Metrik wurde durch eine vor Eintreffen der Ergebnisse deklarierte Ersatzlösung ersetzt"
+        "Einen 2-Bit-Schnitt eines 397B-MoE auf ein hartes 121-GiB-Speicherbudget entworfen und per Arithmetik auf 0,24% genau an die vorhergesagten 106,8 GB bemessen",
+        "Die Dateigröße vor jeder Rechenzeit vorhergesagt: +0,5625 bpw × 128,85B geroutete Parameter = +8,44 GiB, gebaut auf 106,57 GB in 37 Minuten",
+        "Exakt eine Rezeptzeile gegenüber der ausgelieferten Baseline geändert, damit jeder nachgelagerte Effekt einer einzigen Entscheidung zuordenbar bleibt",
+        "Eine von billig nach teuer geordnete Gate-Leiter vorab deklariert, deren Kompatibilitäts-Gate zwei echte Toolchain-Blocker in Sekunden abfing",
+        "Eine nicht durchführbare Teacher-KLD-Metrik durch ein Perplexity-Gate auf einem sha256-gepinnten Korpus ersetzt, vorab fixiert mit einem überschreibungsgeschützten Builder",
+        "Die Produktion durchgehend unangetastet gelassen, über Trap-Restores mit explizit gepinnten Serving-Konfigurationen"
       ]
     }
   }
