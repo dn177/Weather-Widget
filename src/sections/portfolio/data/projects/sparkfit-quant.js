@@ -16,7 +16,7 @@ const project = {
   "media": {
     "type": "image",
     "src": "/Portfolio/sparkfit/sparkfit-hero.svg",
-    "alt": "A custom 2-bit cut of a 397B MoE designed to a 121 GiB budget: predicted-vs-built size within 0.24%, the four design moves (read the budget, change one recipe line, price it on paper, build and size-check), and the reusable price → gate-ladder → verify method — production never disrupted"
+    "alt": "A custom 2-bit cut of a 397B MoE designed to a 121 GiB budget: predicted-vs-built size within 0.24%, the four design moves (read the budget, retune one tensor class from 2.125 to 2.6875 bpw, price it on paper, build it within ±3%), and the reusable price → gate-ladder → verify method — production never disrupted"
   },
   "description": "A custom 2-bit-class cut of a self-hosted 397B mixture-of-experts model, designed to fit a fixed 121 GiB unified-memory box. The recipe changed exactly one line against the served baseline and predicted its own file size by arithmetic — +8.44 GiB, a 106.8 GB target — before spending any compute; the build landed at 106.57 GB, 0.24% off, in 37 minutes. Every step ran behind a pre-declared, cheap-to-expensive gate ladder whose early checks caught two real toolchain blockers in seconds, and the whole design pass ran without disrupting the production service.",
   "detailedContent": {
