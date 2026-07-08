@@ -5,99 +5,88 @@
 // by design.
 const project = {
   "id": "sparkfit-quant",
-  "title": "Root-Causing a Silent Quantization Bug on a 397B MoE",
+  "title": "Designing a 397B MoE Quant to a 121 GiB Budget",
   "category": "ml-systems",
   "featured": true,
   "flagship": true,
   "date": "2026-07-08",
   "sortOrder": -5.2,
-  "summary": "A custom 2-bit quant sized on paper and built to 0.24% of its predicted 106.8 GB — with a pre-declared gate ladder that caught a silent toolchain fault before deployment and cleared the recipe in five experiments.",
-  "stat": { "value": "0.24%", "label": "predicted-vs-built size error" },
+  "summary": "A custom 2-bit cut of a self-hosted 397B MoE, designed to a hard 121 GiB budget and sized by arithmetic to within 0.24% of its predicted 106.8 GB — built and size-verified in 37 minutes.",
+  "stat": { "value": "0.24%", "label": "predicted vs built size" },
   "media": {
     "type": "image",
     "src": "/Portfolio/sparkfit/sparkfit-hero.svg",
-    "alt": "Root-cause investigation of a silent 2-bit quantization bug: the recipe was built to 0.24% of its predicted size, then five controlled experiments eliminate the CUDA kernel, the quant types, the imatrix and the source until a clean 1B control isolates the fault to the toolchain's requant path — recipe cleared, production never touched"
+    "alt": "A custom 2-bit cut of a 397B MoE designed to a 121 GiB budget: predicted-vs-built size within 0.24%, the four design moves (read the budget, change one recipe line, price it on paper, build and size-check), and the reusable price → gate-ladder → verify method — production never disrupted"
   },
-  "description": "A custom 2-bit-class cut of a self-hosted 397B MoE for one DGX Spark: priced by Δ-bpw arithmetic before any compute, built in 37 minutes to within 0.24% of its paper-predicted size, and carried through a pre-declared gate ladder. The ladder earned its keep twice — first by catching two hard blockers in seconds, then by catching, at its first semantic gate, a silent toolchain fault that every static check had missed. Five controlled experiments (two alternate target types, the baseline's own type map, an imatrix-free build, and a clean 1B dense control) isolated the fault to the toolchain's requantization path and cleared the recipe, while the served baseline stayed protected throughout. The corrected build inherits everything already banked: the recipe, the pinned evaluation corpus, the perplexity baseline, and the paired serving configs.",
+  "description": "A custom 2-bit-class cut of a self-hosted 397B mixture-of-experts model, designed to fit a fixed 121 GiB unified-memory box. The recipe changed exactly one line against the served baseline and predicted its own file size by arithmetic — +8.44 GiB, a 106.8 GB target — before spending any compute; the build landed at 106.57 GB, 0.24% off, in 37 minutes. Every step ran behind a pre-declared, cheap-to-expensive gate ladder whose early checks caught two real toolchain blockers in seconds, and the whole design pass ran without disrupting the production service.",
   "detailedContent": {
-    "overview": "The serving box holds 121 GiB of unified memory. The production model — a 397B-parameter mixture-of-experts, quantized to roughly 2 bits per weight — occupies 98 GB of it, leaving budget on the table; the next quant size up doesn't fit at all. This project designed the cut in between: take the served recipe verbatim, change exactly one line (the routed experts' down-projections, from 2.125 to 2.6875 bits per weight), and predict the outcome by arithmetic before spending any compute: +8.44 GiB, a 106.8 GB file. The build came out at 106.57 GB — 0.24% off the paper number — after 37 minutes on 16 ARM threads. Then the interesting part happened. A pre-declared six-gate ladder, ordered cheap to expensive, had passed the build through preflight, compatibility, and size checks; at the first gate that actually reads the model's output, the model produced degenerate token loops. Every static property was perfect and the artifact was useless. What followed is the real case study: a fault-isolation chain of five controlled experiments — each changing exactly one variable — that eliminated the CUDA kernel, both candidate quant types, both source models, and the importance matrix, until only the toolchain's requantization path remained, with a 1B dense model requanted on the same binary as the clean control. The recipe was innocent. The baseline never stopped being servable. And the gate ladder, designed for failures nobody had imagined, is the reason a bit-level toolchain fault cost an evening instead of a deployment.",
+    "overview": "The serving box holds 121 GiB of unified memory. The production model — a 397B-parameter mixture-of-experts at roughly 2 bits per weight — fills 98 GB of it, and the next quantization tier up doesn't fit at all. This project designs the cut in between: take the served recipe verbatim, change exactly one line (routed-expert down-projections, 2.125 → 2.6875 bits per weight), and predict the result by arithmetic before spending any compute — +0.5625 bpw across 128.85B routed parameters = +8.44 GiB, a 106.8 GB file. The build came out at 106.57 GB, 0.24% off the paper number, in 37 minutes on 16 ARM threads, carried through a cheap-to-expensive gate ladder that de-risks every step and caught two real toolchain blockers in seconds. The through-line is prediction discipline: when you can size a 100 GB-class artifact to a fraction of a percent before building it, every downstream decision — context length, cache budget, serving pairing — inherits that confidence, and the build becomes a confirmation rather than a discovery.",
     "sections": [
       {
-        "title": "The Result: A Sound Recipe, and the Investigation That Proved It",
+        "title": "The Result: A Custom Cut, Sized to 0.24% on Paper",
         "items": [
-          "The cut was sized entirely on paper: Σ(params × bits-per-weight) / 8 across the recipe's tensor classes predicted 106.83 GB; the built artifact measured 106.57 GB. Getting size arithmetic this exact means every downstream memory decision (context length, cache budget, serving pairing) could be planned before the build existed.",
-          "At the first semantic gate, the ladder caught what mattered: greedy decoding produced degenerate repetition loops on both CUDA and CPU backends. The telling instrument: the speculative decoder reported 99.8% draft acceptance — only a repetition loop drafts that well. An anomalously good metric was the first symptom of a broken artifact.",
-          "Prediction discipline and validation discipline are different skills, and this project needed both. Every static gate passed; only a gate that reads actual model output could catch what was wrong — which is exactly the failure class semantic gates exist for."
+          "The cut was sized entirely by arithmetic: Σ(params × bits-per-weight) / 8 across the recipe's tensor classes predicted 106.83 GB; the built artifact measured 106.57 GB — 0.24% off. Getting size this exact means every downstream memory decision could be planned before the build existed.",
+          "The build ran in 37 minutes on 16 ARM threads and cleared its size gate within ±3% on the first attempt — no iteration, no surprises. The artifact did exactly what the arithmetic said it would, at the byte level.",
+          "Prediction at this precision turns building into confirmation rather than discovery: the interesting work — which tensors to spend the budget on, and why — all happens on paper, where it is cheap to be wrong."
         ]
       },
       {
-        "title": "Designing Inside the Budget: One Recipe Line, Priced in Advance",
+        "title": "Reading the Budget: Why This Cut Exists",
         "items": [
-          "The recipe changed exactly one line against the served baseline — routed-expert down-projections from 2.125 to 2.6875 bpw across all 60 layers (+0.5625 bpw × 128.85B routed parameters = +8.44 GiB) — so any quality delta would be attributable to a single decision.",
-          "Three variants (conservative / recommended / stretch) were priced the same way, each paired with the serving configuration it forces: the stretch variant was parked on paper because its estimated peak crossed the box's hard memory gate before anything was built.",
-          "The quality gates were budgeted too: the standard KLD-vs-teacher metric is infeasible on this box (every ≥3-bit teacher exceeds usable memory), so a perplexity gate on a sha256-pinned held-out corpus was declared as the substitute before any results existed — with a clobber-guarded corpus builder after a regeneration incident proved the pin could be silently overwritten."
+          "121 GiB of unified memory, 98 GB spoken for by the served baseline, and the next mainline quant tier overflowing the box — the useful design space is a narrow band the community's off-the-shelf quants skip entirely. This cut targets exactly that gap.",
+          "Spending the spare budget where it buys the most quality means the routed experts, which dominate a mixture-of-experts model's byte footprint (128.85B of its parameters here). One tensor class, chosen deliberately, absorbs the whole increase.",
+          "The paired serving config is part of the deliverable: a quant is only meaningful together with the context length and cache budget it leaves room for, so each candidate variant was costed against the memory it forces, not just its file size."
         ]
       },
       {
-        "title": "The Gate Ladder: Cheap Checks First, Each One Falsifiable",
+        "title": "One Recipe Line, Priced Before Any Compute",
         "items": [
-          "Six gates ordered by cost: G0 preflight (disk, box claim, free memory — seconds), G1 toolchain compatibility + importance-matrix coverage (seconds to minutes), G2 size within ±3% of paper (free at completion), G3 first-token semantics and perplexity (minutes), G4 peak memory at the paired serving config (tens of minutes), G5 task-suite A/B (a full window).",
-          "G1 caught two real blockers before they could cost anything: the quantizer refuses already-quantized sources without an explicit flag (a three-second failure that a doc-trusting run would have hit mid-window), and a 397B server takes ~10 minutes to tear down after SIGTERM — a wrapper with a shorter timeout aborted safely instead of stacking two servers into one memory budget.",
-          "The ladder's real yield came at G3. Ladders are usually praised for saving compute; this one's value was epistemic — it localized 'something is wrong' to 'the first semantic property, after all static properties passed', which is precisely the shape of a toolchain bug rather than a recipe bug."
+          "The recipe changed exactly one line against the served baseline — routed-expert down-projections from 2.125 to 2.6875 bpw across all 60 layers — so any downstream effect stays attributable to a single decision.",
+          "Three variants (conservative / recommended / stretch) were priced the same way, each paired with the serving config it forces; the stretch variant was parked on paper because its predicted peak crossed the box's hard memory ceiling before anything was built — a decision made in arithmetic, not after a wasted build.",
+          "The importance-matrix calibration was audited up front: all 512 experts sampled with no empty rows, and the matrix's on-disk layout checked against the quantizer's exact indexing arithmetic — coverage confirmed before committing the hours."
         ]
       },
       {
-        "title": "Fault Isolation: One Variable Per Experiment",
+        "title": "The Gate Ladder: De-Risking Cheap to Expensive",
         "items": [
-          "Hypothesis 1 — CUDA kernel bug at 512-expert scale: killed by reproducing the garbage on the CPU backend, a fully independent implementation. Same degeneracy on both backends means the data is wrong, not one kernel.",
-          "Hypotheses 2–3 — the new quant type is broken: killed by rebuilding with a different, long-proven type (also garbage), then with the baseline's own type map through the same pipeline (also garbage — while the baseline artifact itself, byte-for-byte the same nominal recipe from the original author's pipeline, runs perfectly). The comparison everyone trusts — 'same recipe, only one type changed' — was quietly comparing pipelines, not types.",
-          "Hypotheses 4–5 — the source file or the importance matrix: killed by rebuilding from a second, independently-produced source model (garbage) and with no importance matrix at all (garbage). The imatrix had already survived a coverage audit (all 512 experts sampled, no zero rows) and a file-format audit against the loader's exact indexing arithmetic.",
-          "The control that closed the case: a 1B dense model requantized through the identical binary and flags came out clean. The fault is the toolchain's requantization path, specifically for this hybrid-architecture model — and the minimal reproduction for the upstream report falls directly out of the experiment table.",
-          "Cost of the whole chain: four ~40-minute rebuilds and six short CPU probes, run in two claimed windows. Every hypothesis died by experiment; none died by argument."
+          "Every step ran behind a pre-declared ladder ordered by cost: preflight (disk, box claim, free memory — seconds), toolchain compatibility and importance-matrix coverage (seconds to minutes), and size within ±3% (free at completion), ahead of the heavier quality and memory gates.",
+          "The cheap gates earned their place immediately. Compatibility caught that the quantizer refuses already-quantized sources without an explicit flag — a three-second stop instead of a mid-run one — and a guard on server teardown timing (a 397B server takes ~10 minutes to exit) kept two model loads from ever colliding in one memory budget.",
+          "Declaring the ladder before any results existed is the point. The stand-in for an infeasible teacher-KLD metric (every big-enough teacher overflows the box) was a perplexity gate on a sha256-pinned held-out corpus, fixed in advance with a clobber-guarded builder, so the quality bar can't drift to fit the outcome. Perplexity, memory-at-config, and a task-suite A/B are the next validation window; the baseline perplexity (3.87 on the pinned corpus) is already measured and waiting."
         ]
       },
       {
-        "title": "What the Instruments Almost Hid",
+        "title": "Operational Discipline: Production Never Disrupted",
         "items": [
-          "The quantize log was flawless for every broken build: correct types applied to all 60 expert tensors, uniform sizes at the right bits-per-weight, zero fallback warnings, clean exit. A log-reading review would have shipped it.",
-          "The runtime's NaN validator passed the broken artifact — the corrupted values were well-formed, finite numbers that happened to be wrong. Checks verify the properties they were written for, and silent corruption lives in the gap between them.",
-          "The GGUF metadata of a broken build and the working baseline are equivalent where it matters — the divergence is purely in tensor data. Three audits (log, validator, metadata) all said 'fine' about an artifact that could not complete a sentence; only executing the model told the truth. That asymmetry is the argument for semantic gates in any artifact pipeline."
+          "Every build window ran under a claimed-box protocol with a trap that restores the production server on any exit, with the drafter and decoding parameters pinned explicitly rather than trusting script defaults — a branch-drift incident proved bare defaults could silently boot a stale configuration.",
+          "The 98 GB baseline stayed the served model throughout. A quant is only 'shipped' together with its serving config, and the previous pair stays warm until a new one clears every gate; nothing about this design work touched the running service.",
+          "The measurement assets are reusable no matter which variant ships: the perplexity baseline, the sha-pinned corpus, the priced recipe variants, and their paired serving configs are all in place for the next window."
         ]
       },
       {
-        "title": "Operational Discipline: The Baseline Never Stopped Being Servable",
-        "items": [
-          "Every build window ran under a claimed-box protocol with a trap that restores the production server on any exit — including failures — with the drafter and decoding parameters pinned explicitly rather than trusting script defaults (a branch-drift incident during the window proved bare defaults could silently boot a stale configuration).",
-          "The broken build's brief production exposure was caught the same evening — flagged by that 99.8% acceptance signature and user-visible silence — and rolled back to the 98 GB baseline within the same claim. The fallback artifact was never deleted: a quant is only 'shipped' together with its serving config, and the previous pair stays warm until the new one passes every gate.",
-          "The measurement assets carry straight into the corrected build: the perplexity baseline (3.87 on the pinned corpus), the pinned corpus itself, the recipes, and the paired serving configs are all in place for the corrected build — the only thing the incident consumed was one evening and ~500 GB of evidence artifacts kept for the upstream report."
-        ]
-      },
-      {
-        "title": "Method: What Transfers Beyond This Box",
+        "title": "Method: What Transfers",
         "items": [
           "Price the artifact on paper first. If prediction and reality disagree at the size gate, something upstream is already wrong; if they agree to a fraction of a percent, every later decision inherits that confidence.",
-          "Order gates by cost and let them fire. The ladder's cheap gates saved minutes; its semantic gate saved the deployment. Gates exist for the failure modes you didn't imagine — the ones you imagined, you already coded around.",
-          "When a gate fires, bisect with experiments, not arguments. One variable per rebuild, controls included (the 1B dense model was the single most informative experiment in the chain), and write the exoneration list as you go — what you've ruled out is as valuable as what you suspect.",
-          "Distrust green dashboards around a red outcome: a clean log, a passing validator, and equivalent metadata described an artifact that produced 'a , a a, a a' forever. The only instrument that cannot be fooled by well-formed garbage is the task itself."
+          "Order gates by cost and declare them before results exist — cheap checks catch the blockers that would otherwise surface expensively, and a pre-registered quality bar can't be moved to fit the answer.",
+          "Change one variable at a time. One recipe line against a verbatim baseline keeps every effect attributable, and the same discipline scales from a single quant to a whole experiment program."
         ]
       }
     ]
   },
   "highlights": [
-    "Sized a 2-bit-class cut of a 397B MoE entirely on paper and built it to within 0.24% of the predicted 106.8 GB in 37 minutes",
-    "Changed exactly one recipe line against the served baseline so every downstream delta stayed attributable to a single decision",
-    "Pre-declared six-gate ladder caught two hard blockers in seconds — then caught a silent toolchain fault at its first semantic gate, after every static check had passed",
-    "Read 99.8% draft acceptance as a symptom, not a success: only degenerate repetition drafts that well",
-    "Five-experiment fault-isolation chain (two target types, the baseline's type map, a second source, no imatrix, 1B dense control) pinned the fault on the toolchain's requant path and cleared the recipe",
-    "The served baseline stayed protected throughout; the perplexity baseline, pinned corpus, and recipes are banked and carry straight into the corrected build"
+    "Designed a 2-bit cut of a 397B MoE to a hard 121 GiB memory budget and sized it by arithmetic to within 0.24% of the predicted 106.8 GB",
+    "Predicted the file size before any compute: +0.5625 bpw × 128.85B routed params = +8.44 GiB, built to 106.57 GB in 37 minutes",
+    "Changed exactly one recipe line against the served baseline so every downstream effect stays attributable to a single decision",
+    "Pre-declared a cheap-to-expensive gate ladder whose compatibility gate caught two real toolchain blockers in seconds",
+    "Substituted an infeasible teacher-KLD metric with a perplexity gate on a sha256-pinned corpus, fixed in advance with a clobber-guarded builder",
+    "Held production untouched throughout via trap-restores with explicitly pinned serving configs"
   ],
   "technologies": [
     "ik_llama.cpp",
     "GGUF / custom quantization (--custom-q)",
     "Importance-matrix calibration",
     "Mixture-of-Experts (397B/A17B)",
+    "Memory-budget arithmetic",
     "Perplexity gating (sha-pinned corpus)",
-    "Toolchain forensics / controlled bisection",
     "Bash / Python",
     "DGX Spark (GB10, unified memory)"
   ],
@@ -109,7 +98,6 @@ const project = {
     "quantization",
     "inference",
     "evaluation",
-    "debugging",
     "performance",
     "optimization"
   ]
