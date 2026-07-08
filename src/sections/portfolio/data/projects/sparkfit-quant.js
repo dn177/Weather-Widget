@@ -5,7 +5,7 @@
 // by design.
 const project = {
   "id": "sparkfit-quant",
-  "title": "Quantizing a 397B MoE Into a 121 GiB Memory Budget",
+  "title": "Root-Causing a Silent Quantization Bug on a 397B MoE",
   "category": "ml-systems",
   "featured": true,
   "flagship": true,
@@ -16,14 +16,14 @@ const project = {
   "media": {
     "type": "image",
     "src": "/Portfolio/sparkfit/sparkfit-hero.svg",
-    "alt": "SPARKFIT quant of a 397B MoE: 0.24% predicted-vs-built size error; the gate ladder passes G0–G2 and catches a silent toolchain fault at the first-token semantic gate; a five-experiment fault-isolation chain ends in a clean 1B control — recipe cleared, baseline protected"
+    "alt": "Root-cause investigation of a silent 2-bit quantization bug: the recipe was built to 0.24% of its predicted size, then five controlled experiments eliminate the CUDA kernel, the quant types, the imatrix and the source until a clean 1B control isolates the fault to the toolchain's requant path — recipe cleared, production never touched"
   },
   "description": "A custom 2-bit-class cut of a self-hosted 397B MoE for one DGX Spark: priced by Δ-bpw arithmetic before any compute, built in 37 minutes to within 0.24% of its paper-predicted size, and carried through a pre-declared gate ladder. The ladder earned its keep twice — first by catching two hard blockers in seconds, then by catching, at its first semantic gate, a silent toolchain fault that every static check had missed. Five controlled experiments (two alternate target types, the baseline's own type map, an imatrix-free build, and a clean 1B dense control) isolated the fault to the toolchain's requantization path and cleared the recipe, while the served baseline stayed protected throughout. The corrected build inherits everything already banked: the recipe, the pinned evaluation corpus, the perplexity baseline, and the paired serving configs.",
   "detailedContent": {
     "overview": "The serving box holds 121 GiB of unified memory. The production model — a 397B-parameter mixture-of-experts, quantized to roughly 2 bits per weight — occupies 98 GB of it, leaving budget on the table; the next quant size up doesn't fit at all. This project designed the cut in between: take the served recipe verbatim, change exactly one line (the routed experts' down-projections, from 2.125 to 2.6875 bits per weight), and predict the outcome by arithmetic before spending any compute: +8.44 GiB, a 106.8 GB file. The build came out at 106.57 GB — 0.24% off the paper number — after 37 minutes on 16 ARM threads. Then the interesting part happened. A pre-declared six-gate ladder, ordered cheap to expensive, had passed the build through preflight, compatibility, and size checks; at the first gate that actually reads the model's output, the model produced degenerate token loops. Every static property was perfect and the artifact was useless. What followed is the real case study: a fault-isolation chain of five controlled experiments — each changing exactly one variable — that eliminated the CUDA kernel, both candidate quant types, both source models, and the importance matrix, until only the toolchain's requantization path remained, with a 1B dense model requanted on the same binary as the clean control. The recipe was innocent. The baseline never stopped being servable. And the gate ladder, designed for failures nobody had imagined, is the reason a bit-level toolchain fault cost an evening instead of a deployment.",
     "sections": [
       {
-        "title": "The Result: Predicted to 0.24%, and a Gate That Earned Its Keep",
+        "title": "The Result: A Sound Recipe, and the Investigation That Proved It",
         "items": [
           "The cut was sized entirely on paper: Σ(params × bits-per-weight) / 8 across the recipe's tensor classes predicted 106.83 GB; the built artifact measured 106.57 GB. Getting size arithmetic this exact means every downstream memory decision (context length, cache budget, serving pairing) could be planned before the build existed.",
           "At the first semantic gate, the ladder caught what mattered: greedy decoding produced degenerate repetition loops on both CUDA and CPU backends. The telling instrument: the speculative decoder reported 99.8% draft acceptance — only a repetition loop drafts that well. An anomalously good metric was the first symptom of a broken artifact.",
