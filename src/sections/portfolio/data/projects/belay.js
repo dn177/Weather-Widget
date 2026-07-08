@@ -14,9 +14,10 @@ const project = {
   "summary": "An AI tutor that builds a live, sandboxed practice space, reads your real progress over a structured state bridge, and gives graded help that fades as you improve. Ships as an Electron app and a zero-install web build.",
   "stat": { "value": "80", "label": "practice templates across eight domains" },
   "media": {
-    "type": "image",
-    "src": "/Portfolio/belay/belay-hero.webp",
-    "alt": "Belay's two-pane tutor workspace: the chat/tutor on the left, a live binary-search practice environment on the right, with graded Hint / One-step / Solution controls in the dark Anodized theme"
+    "type": "video",
+    "src": "https://www.cdtio.com/belay/tour/belay-tour-extended.mp4",
+    "poster": "/Portfolio/belay/belay-hero.webp",
+    "alt": "Extended demo tour of Belay's two-pane tutor workspace: the chat/tutor on the left, a live practice environment on the right, with graded Hint / One-step / Solution controls in the dark Anodized theme"
   },
   "description": "An interactive AI tutor that builds you a live, sandboxed practice space, reads your real progress from inside it over a structured state bridge, and hands you graded help that fades as you improve. Not a chatbot that writes HTML: it locates you in the task from live state before it says a word. One Vue 3 + TypeScript renderer ships as an Electron desktop app and a zero-install web build, runs hosted or fully on-device (transformers.js + ONNX Runtime), and opens onto an 80-template catalog across eight domains. It reads your papers too (box a formula in a PDF and pin the typeset answer to that exact spot), and a bounded in-app browser puts the real tool (ComfyUI, a fine-tuning studio on your own box) beside the tutor.",
   "detailedContent": {

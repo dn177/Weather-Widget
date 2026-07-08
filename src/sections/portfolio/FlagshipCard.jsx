@@ -19,7 +19,8 @@ const FlagshipCard = ({
   const { t } = useTranslation();
 
   const { media, technologies } = translatedProject;
-  const mediaSrc = media.type === "video" ? media.poster : media.src;
+  const isVideo = media.type === "video";
+  const mediaSrc = isVideo ? media.poster : media.src;
   const isSvg = typeof mediaSrc === "string" && mediaSrc.endsWith(".svg");
 
   // The stat block already carries the headline number, and the hero SVGs
@@ -71,7 +72,20 @@ const FlagshipCard = ({
         <figure
           className={`pf-flagship__media${isSvg ? " pf-flagship__media--contain" : ""}`}
         >
-          <img src={mediaSrc} alt={media.alt || ""} loading="lazy" />
+          {isVideo ? (
+            // A real player on the card face: the poster stands in until the
+            // viewer presses play, then the demo runs with full controls.
+            <video
+              src={media.src}
+              poster={media.poster}
+              controls
+              playsInline
+              preload="metadata"
+              aria-label={media.alt || undefined}
+            />
+          ) : (
+            <img src={mediaSrc} alt={media.alt || ""} loading="lazy" />
+          )}
         </figure>
         {translatedProject.summary && (
           <p className="pf-flagship__summary">{translatedProject.summary}</p>

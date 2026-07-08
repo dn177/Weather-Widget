@@ -1076,11 +1076,12 @@ h4 {
   margin: 0.35rem 0 1rem;
 }
 
-.pf-flagship__media img {
+.pf-flagship__media img,
+.pf-flagship__media video {
   width: 100%;
   height: auto;
   display: block;
-  /* Raster screenshots get a framed 16:10 plate on the deep bed */
+  /* Raster screenshots and demo videos get a framed 16:10 plate on the deep bed */
   aspect-ratio: 16 / 10;
   object-fit: cover;
   border: 1px solid var(--pf-line);
