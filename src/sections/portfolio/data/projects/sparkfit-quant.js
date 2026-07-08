@@ -11,23 +11,23 @@ const project = {
   "flagship": true,
   "date": "2026-07-08",
   "sortOrder": -5.2,
-  "summary": "A custom 2-bit quant sized on paper and built to 0.24% of its predicted 106.8 GB — then falsified by its first token, with a five-experiment chain isolating a silent toolchain fault the recipe was innocent of.",
+  "summary": "A custom 2-bit quant sized on paper and built to 0.24% of its predicted 106.8 GB — with a pre-declared gate ladder that caught a silent toolchain fault before deployment and cleared the recipe in five experiments.",
   "stat": { "value": "0.24%", "label": "predicted-vs-built size error" },
   "media": {
     "type": "image",
     "src": "/Portfolio/sparkfit/sparkfit-hero.svg",
-    "alt": "SPARKFIT quant of a 397B MoE: 0.24% predicted-vs-built size error, gate ladder passing G0–G2 and failing the first-token semantic gate, and a five-experiment falsification chain ending in a clean 1B control — verdict: toolchain, not recipe"
+    "alt": "SPARKFIT quant of a 397B MoE: 0.24% predicted-vs-built size error; the gate ladder passes G0–G2 and catches a silent toolchain fault at the first-token semantic gate; a five-experiment fault-isolation chain ends in a clean 1B control — recipe cleared, baseline protected"
   },
-  "description": "A custom 2-bit-class cut of a self-hosted 397B MoE for one DGX Spark: priced by Δ-bpw arithmetic before any compute, built in 37 minutes to within 0.24% of its paper-predicted size, and carried through a pre-declared gate ladder. The ladder earned its keep twice — first by catching two hard blockers in seconds, then by failing the build at its first semantic gate despite every static check passing. Five controlled experiments (two alternate target types, the baseline's own type map, an imatrix-free build, and a clean 1B dense control) isolated the fault to the toolchain's requantization path and fully exonerated the recipe, while the served baseline was restored the same evening and never lost.",
+  "description": "A custom 2-bit-class cut of a self-hosted 397B MoE for one DGX Spark: priced by Δ-bpw arithmetic before any compute, built in 37 minutes to within 0.24% of its paper-predicted size, and carried through a pre-declared gate ladder. The ladder earned its keep twice — first by catching two hard blockers in seconds, then by catching, at its first semantic gate, a silent toolchain fault that every static check had missed. Five controlled experiments (two alternate target types, the baseline's own type map, an imatrix-free build, and a clean 1B dense control) isolated the fault to the toolchain's requantization path and cleared the recipe, while the served baseline stayed protected throughout. The corrected build inherits everything already banked: the recipe, the pinned evaluation corpus, the perplexity baseline, and the paired serving configs.",
   "detailedContent": {
-    "overview": "The serving box holds 121 GiB of unified memory. The production model — a 397B-parameter mixture-of-experts, quantized to roughly 2 bits per weight — occupies 98 GB of it, leaving budget on the table; the next quant size up doesn't fit at all. This project designed the cut in between: take the served recipe verbatim, change exactly one line (the routed experts' down-projections, from 2.125 to 2.6875 bits per weight), and predict the outcome by arithmetic before spending any compute: +8.44 GiB, a 106.8 GB file. The build came out at 106.57 GB — 0.24% off the paper number — after 37 minutes on 16 ARM threads. Then the interesting part happened. A pre-declared six-gate ladder, ordered cheap to expensive, had passed the build through preflight, compatibility, and size checks; at the first gate that actually reads the model's output, the model produced degenerate token loops. Every static property was perfect and the artifact was useless. What followed is the real case study: a falsification chain of five controlled experiments — each changing exactly one variable — that eliminated the CUDA kernel, both candidate quant types, both source models, and the importance matrix, until only the toolchain's requantization path remained, with a 1B dense model requanted on the same binary as the clean control. The recipe was innocent. The baseline never stopped being servable. And the gate ladder, designed for failures nobody had imagined, is the reason a bit-level toolchain fault cost an evening instead of a deployment.",
+    "overview": "The serving box holds 121 GiB of unified memory. The production model — a 397B-parameter mixture-of-experts, quantized to roughly 2 bits per weight — occupies 98 GB of it, leaving budget on the table; the next quant size up doesn't fit at all. This project designed the cut in between: take the served recipe verbatim, change exactly one line (the routed experts' down-projections, from 2.125 to 2.6875 bits per weight), and predict the outcome by arithmetic before spending any compute: +8.44 GiB, a 106.8 GB file. The build came out at 106.57 GB — 0.24% off the paper number — after 37 minutes on 16 ARM threads. Then the interesting part happened. A pre-declared six-gate ladder, ordered cheap to expensive, had passed the build through preflight, compatibility, and size checks; at the first gate that actually reads the model's output, the model produced degenerate token loops. Every static property was perfect and the artifact was useless. What followed is the real case study: a fault-isolation chain of five controlled experiments — each changing exactly one variable — that eliminated the CUDA kernel, both candidate quant types, both source models, and the importance matrix, until only the toolchain's requantization path remained, with a 1B dense model requanted on the same binary as the clean control. The recipe was innocent. The baseline never stopped being servable. And the gate ladder, designed for failures nobody had imagined, is the reason a bit-level toolchain fault cost an evening instead of a deployment.",
     "sections": [
       {
-        "title": "The Result: Predicted to 0.24% — and Falsified by One Token",
+        "title": "The Result: Predicted to 0.24%, and a Gate That Earned Its Keep",
         "items": [
           "The cut was sized entirely on paper: Σ(params × bits-per-weight) / 8 across the recipe's tensor classes predicted 106.83 GB; the built artifact measured 106.57 GB. Getting size arithmetic this exact means every downstream memory decision (context length, cache budget, serving pairing) could be planned before the build existed.",
-          "The same build failed its first semantic gate: greedy decoding produced degenerate repetition loops on both CUDA and CPU backends. The telling instrument: the speculative decoder reported 99.8% draft acceptance — only a repetition loop drafts that well. An anomalously good metric was the first symptom of a broken model.",
-          "The headline is deliberately double-edged: prediction discipline and validation discipline are different skills, and this project needed both. Every static gate passed; only a gate that reads actual model output could catch what was wrong."
+          "At the first semantic gate, the ladder caught what mattered: greedy decoding produced degenerate repetition loops on both CUDA and CPU backends. The telling instrument: the speculative decoder reported 99.8% draft acceptance — only a repetition loop drafts that well. An anomalously good metric was the first symptom of a broken artifact.",
+          "Prediction discipline and validation discipline are different skills, and this project needed both. Every static gate passed; only a gate that reads actual model output could catch what was wrong — which is exactly the failure class semantic gates exist for."
         ]
       },
       {
@@ -47,7 +47,7 @@ const project = {
         ]
       },
       {
-        "title": "The Falsification Chain: One Variable Per Experiment",
+        "title": "Fault Isolation: One Variable Per Experiment",
         "items": [
           "Hypothesis 1 — CUDA kernel bug at 512-expert scale: killed by reproducing the garbage on the CPU backend, a fully independent implementation. Same degeneracy on both backends means the data is wrong, not one kernel.",
           "Hypotheses 2–3 — the new quant type is broken: killed by rebuilding with a different, long-proven type (also garbage), then with the baseline's own type map through the same pipeline (also garbage — while the baseline artifact itself, byte-for-byte the same nominal recipe from the original author's pipeline, runs perfectly). The comparison everyone trusts — 'same recipe, only one type changed' — was quietly comparing pipelines, not types.",
@@ -69,7 +69,7 @@ const project = {
         "items": [
           "Every build window ran under a claimed-box protocol with a trap that restores the production server on any exit — including failures — with the drafter and decoding parameters pinned explicitly rather than trusting script defaults (a branch-drift incident during the window proved bare defaults could silently boot a stale configuration).",
           "The broken build's brief production exposure was caught the same evening — flagged by that 99.8% acceptance signature and user-visible silence — and rolled back to the 98 GB baseline within the same claim. The fallback artifact was never deleted: a quant is only 'shipped' together with its serving config, and the previous pair stays warm until the new one passes every gate.",
-          "The measurement assets survive the failed artifact: the perplexity baseline (3.87 on the pinned corpus), the pinned corpus itself, the recipes, and the paired serving configs are all in place for the corrected build — the only thing the incident consumed was one evening and ~500 GB of evidence artifacts kept for the upstream report."
+          "The measurement assets carry straight into the corrected build: the perplexity baseline (3.87 on the pinned corpus), the pinned corpus itself, the recipes, and the paired serving configs are all in place for the corrected build — the only thing the incident consumed was one evening and ~500 GB of evidence artifacts kept for the upstream report."
         ]
       },
       {
@@ -86,10 +86,10 @@ const project = {
   "highlights": [
     "Sized a 2-bit-class cut of a 397B MoE entirely on paper and built it to within 0.24% of the predicted 106.8 GB in 37 minutes",
     "Changed exactly one recipe line against the served baseline so every downstream delta stayed attributable to a single decision",
-    "Pre-declared six-gate ladder caught two hard blockers in seconds — then failed the build at its first semantic gate after every static check passed",
+    "Pre-declared six-gate ladder caught two hard blockers in seconds — then caught a silent toolchain fault at its first semantic gate, after every static check had passed",
     "Read 99.8% draft acceptance as a symptom, not a success: only degenerate repetition drafts that well",
-    "Five-experiment falsification chain (two target types, the baseline's type map, a second source, no imatrix, 1B dense control) isolated a silent toolchain requant fault and fully exonerated the recipe",
-    "The served baseline was restored the same evening and never lost; the perplexity baseline, pinned corpus, and recipes all survive for the corrected build"
+    "Five-experiment fault-isolation chain (two target types, the baseline's type map, a second source, no imatrix, 1B dense control) pinned the fault on the toolchain's requant path and cleared the recipe",
+    "The served baseline stayed protected throughout; the perplexity baseline, pinned corpus, and recipes are banked and carry straight into the corrected build"
   ],
   "technologies": [
     "ik_llama.cpp",
