@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" font-family="ui-monospace,'SF Mono','Cascadia Code',Menlo,Consolas,monospace">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12021f"/>
+      <stop offset="1" stop-color="#26073f"/>
+    </linearGradient>
+    <linearGradient id="rail2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dcbf88"/>
+      <stop offset="1" stop-color="#b08c4e"/>
+    </linearGradient>
+    <marker id="arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8f74b5"/>
+    </marker>
+  </defs>
+
+  <rect width="720" height="380" fill="url(#bg2)"/>
+  <text x="32" y="40" fill="#dcbf88" font-size="16" font-weight="700" letter-spacing="1">SCRAPE ARCHITECTURE: one box, three layers</text>
+
+  <!-- exporters column -->
+  <text x="118" y="76" text-anchor="middle" fill="#7d63a0" font-size="11" font-weight="600" letter-spacing="1">EXPORTERS</text>
+  <g font-size="12" fill="#e7d9f5">
+    <rect x="32" y="90" width="172" height="46" rx="8" fill="#1b0733" stroke="#5a3487"/>
+    <text x="46" y="112" fill="#cba4ff" font-weight="600">llama-server</text>
+    <text x="46" y="128" fill="#9a7fb0" font-size="10.5">:1234 / :8080 /metrics</text>
+
+    <rect x="32" y="146" width="172" height="46" rx="8" fill="#1b0733" stroke="#5a3487"/>
+    <text x="46" y="168" fill="#cba4ff" font-weight="600">node_exporter</text>
+    <text x="46" y="184" fill="#9a7fb0" font-size="10.5">:9100 host mem/swap</text>
+
+    <rect x="32" y="202" width="172" height="52" rx="8" fill="#1b0733" stroke="#5a3487"/>
+    <text x="46" y="224" fill="#cba4ff" font-weight="600">gpu textfile</text>
+    <text x="46" y="240" fill="#9a7fb0" font-size="10.5">systemd user timer 15s</text>
+  </g>
+
+  <!-- prometheus -->
+  <g>
+    <rect x="286" y="120" width="148" height="104" rx="10" fill="#241041" stroke="url(#rail2)" stroke-width="1.5"/>
+    <text x="360" y="150" text-anchor="middle" fill="#dcbf88" font-size="14" font-weight="700">Prometheus</text>
+    <text x="360" y="170" text-anchor="middle" fill="#c9b6e6" font-size="10.5">:9090 · pull /15s</text>
+    <text x="360" y="188" text-anchor="middle" fill="#9a7fb0" font-size="10.5">TSDB · 90d</text>
+    <text x="360" y="206" text-anchor="middle" fill="#9a7fb0" font-size="10.5">PromQL · 6 rules</text>
+  </g>
+
+  <!-- arrows exporters -> prometheus -->
+  <g stroke="#8f74b5" stroke-width="1.6" fill="none">
+    <path d="M204,113 C250,113 250,150 284,158" marker-end="url(#arw)"/>
+    <path d="M204,169 L284,172" marker-end="url(#arw)"/>
+    <path d="M204,224 C250,224 250,196 284,188" marker-end="url(#arw)"/>
+  </g>
+
+  <!-- grafana + alerts -->
+  <g>
+    <rect x="516" y="96" width="172" height="60" rx="10" fill="#1b0733" stroke="#5a3487"/>
+    <text x="602" y="122" text-anchor="middle" fill="#cba4ff" font-size="14" font-weight="700">Grafana</text>
+    <text x="602" y="140" text-anchor="middle" fill="#9a7fb0" font-size="10.5">:3002 · 9-panel dashboard</text>
+
+    <rect x="516" y="188" width="172" height="60" rx="10" fill="#1b0733" stroke="#5a3487"/>
+    <text x="602" y="214" text-anchor="middle" fill="#ff9e6b" font-size="14" font-weight="700">alerts</text>
+    <text x="602" y="232" text-anchor="middle" fill="#9a7fb0" font-size="10.5">symptom-based · ntfy push</text>
+  </g>
+
+  <g stroke="#8f74b5" stroke-width="1.6" fill="none">
+    <path d="M434,158 C480,158 480,126 514,126" marker-end="url(#arw)"/>
+    <path d="M434,186 C480,186 480,218 514,218" marker-end="url(#arw)"/>
+  </g>
+
+  <!-- footer note -->
+  <text x="32" y="300" fill="#c9b6e6" font-size="11.5" font-weight="600">The one rule: monitor the serving layer, not the OS.</text>
+  <text x="32" y="320" fill="#7d63a0" font-size="10.5">KV occupancy · queue depth · per-slot context headroom · tokens/s, none visible in btop.</text>
+  <text x="32" y="340" fill="#7d63a0" font-size="10.5">Host networking · no sudo (user units) · Grafana on 3002 (3000 = Forgejo) · Tailscale-only exposure.</text>
+</svg>
