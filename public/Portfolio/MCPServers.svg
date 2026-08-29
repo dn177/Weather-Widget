@@ -6,10 +6,10 @@
       .subtitle { font: 13px "Inter", sans-serif; fill: #94a3b8; }
       .hub { fill: #1e3a8a; stroke: #60a5fa; stroke-width: 2; }
       .hub-title { font: 700 18px "Inter", sans-serif; fill: #ffffff; text-anchor: middle; }
-      .hub-sub { font: 12px "Menlo", monospace; fill: #cbd5e1; text-anchor: middle; }
+      .hub-sub { font: 11px "Menlo", monospace; fill: #cbd5e1; text-anchor: middle; }
       .tool-box { fill: #1e293b; stroke: #475569; stroke-width: 1.5; }
       .tool-title { font: 600 13px "Inter", sans-serif; fill: #f1f5f9; }
-      .tool-sub { font: 11px "Menlo", monospace; fill: #94a3b8; }
+      .tool-sub { font: 10px "Menlo", monospace; fill: #94a3b8; }
       .group-label { font: 600 11px "Inter", sans-serif; fill: #fbbf24; }
       .arrow-line { stroke: #475569; stroke-width: 1.5; }
       .client-box { fill: #312e81; stroke: #6366f1; stroke-width: 1.5; }
@@ -20,18 +20,18 @@
   <rect class="bg" width="800" height="450"/>
   <text class="title" x="40" y="42">MCP Server Development</text>
   <text class="subtitle" x="40" y="62">TypeScript &#183; Node &#183; stdio transport &#183; custom tools for design + screenshot workflows</text>
-  <g transform="translate(320, 90)"><rect class="client-box" width="160" height="48" rx="6"/><text class="client-title" x="80" y="22">MCP Client</text><text class="client-sub" x="80" y="38">Claude Desktop &#183; LM Studio</text></g>
+  <g transform="translate(310, 90)"><rect class="client-box" width="180" height="48" rx="6"/><text class="client-title" x="90" y="22">MCP Client</text><text class="client-sub" x="90" y="38">Claude Desktop &#183; LM Studio</text></g>
   <line class="arrow-line" x1="400" y1="138" x2="400" y2="170"/>
-  <g transform="translate(290, 170)"><rect class="hub" width="220" height="80" rx="8"/><text class="hub-title" x="110" y="32">design-perfect-mcp</text><text class="hub-sub" x="110" y="52">5 tools &#183; pixel-perfect implementation</text><text class="hub-sub" x="110" y="68">capture &#183; compare &#183; measure &#183; overlay &#183; colors</text></g>
+  <g transform="translate(230, 170)"><rect class="hub" width="340" height="80" rx="8"/><text class="hub-title" x="170" y="32">design-perfect-mcp</text><text class="hub-sub" x="170" y="52">5 tools &#183; pixel-perfect implementation</text><text class="hub-sub" x="170" y="68">capture &#183; compare &#183; measure &#183; overlay &#183; colors</text></g>
   <text class="group-label" x="40" y="290">design-perfect-mcp tools</text>
   <g transform="translate(40, 300)"><rect class="tool-box" width="170" height="44" rx="5"/><text class="tool-title" x="12" y="20">capture-artifact</text><text class="tool-sub" x="12" y="36">screenshot HTML artifact</text></g>
   <g transform="translate(220, 300)"><rect class="tool-box" width="170" height="44" rx="5"/><text class="tool-title" x="12" y="20">compare-design</text><text class="tool-sub" x="12" y="36">pixel-diff vs mockup</text></g>
   <g transform="translate(400, 300)"><rect class="tool-box" width="170" height="44" rx="5"/><text class="tool-title" x="12" y="20">extract-measurements</text><text class="tool-sub" x="12" y="36">computed CSS values</text></g>
   <g transform="translate(580, 300)"><rect class="tool-box" width="170" height="44" rx="5"/><text class="tool-title" x="12" y="20">generate-overlay</text><text class="tool-sub" x="12" y="36">&#945;-blend HTML on design</text></g>
   <text class="group-label" x="40" y="376">adobe-xd-mcp</text>
-  <g transform="translate(40, 386)"><rect class="tool-box" width="220" height="44" rx="5"/><text class="tool-title" x="12" y="20">extract-from-xd</text><text class="tool-sub" x="12" y="36">measurements from .xd files</text></g>
-  <g transform="translate(280, 386)"><rect class="tool-box" width="220" height="44" rx="5"/><text class="tool-title" x="12" y="20">enhanced measurements</text><text class="tool-sub" x="12" y="36">positioning, spacing, typography</text></g>
-  <g transform="translate(520, 386)"><rect class="tool-box" width="230" height="44" rx="5"/><text class="tool-title" x="12" y="20">+ extended community servers</text><text class="tool-sub" x="12" y="36">chrome-devtools, screenshot, automation</text></g>
+  <g transform="translate(40, 386)"><rect class="tool-box" width="190" height="44" rx="5"/><text class="tool-title" x="12" y="20">extract-from-xd</text><text class="tool-sub" x="12" y="36">measurements from .xd files</text></g>
+  <g transform="translate(245, 386)"><rect class="tool-box" width="225" height="44" rx="5"/><text class="tool-title" x="12" y="20">enhanced measurements</text><text class="tool-sub" x="12" y="36">positioning, spacing, typography</text></g>
+  <g transform="translate(485, 386)"><rect class="tool-box" width="265" height="44" rx="5"/><text class="tool-title" x="12" y="20">+ extended community servers</text><text class="tool-sub" x="12" y="36">chrome-devtools, screenshot, automation</text></g>
   <g class="arrow-line">
     <line x1="400" y1="250" x2="125" y2="300"/>
     <line x1="400" y1="250" x2="305" y2="300"/>

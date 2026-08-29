@@ -293,7 +293,7 @@
       "links": {
         "0": "Zobacz stronę"
       },
-      "summary": "Platforma edukacyjna z materiałami na tematy: AI / ML, Python, React.js, Rust i Vue.js."
+      "summary": "Platforma edukacyjna w Vue 3 z edytorem Monaco w przeglądarce i podglądem skompilowanego kodu na żywo."
     },
     "pictureplatform": {
       "title": "Platforma Picture Playground",
@@ -319,18 +319,6 @@
         "0": "Otwórz projekt"
       },
       "summary": "Migracja Vue.js Mathtron z frameworkiem UI Vuetify."
-    },
-    "learn2sort": {
-      "title": "Learn2Sort",
-      "description": "Aplikacja zbudowana z React.js głównie do wizualizacji algorytmów sortowania.",
-      "highlights": {
-        "0": "Pokazuje ważne informacje o odpowiednim algorytmie na dole.",
-        "1": "Regulowana prędkość do celów edukacyjnych"
-      },
-      "links": {
-        "0": "Otwórz projekt"
-      },
-      "summary": "Aplikacja zbudowana z React.js głównie do wizualizacji algorytmów sortowania."
     },
     "nextjs-portfolio": {
       "title": "Strona Portfolio Next.js",
@@ -383,28 +371,6 @@
         "0": "Zobacz na Github"
       },
       "summary": "Aplikacja full-stack demonstrujące czystą architekturę REST API."
-    },
-    "e-commerce": {
-      "title": "E-Commerce",
-      "description": "Nowoczesna platforma e-commerce z bezpiecznym uwierzytelnianiem i REST API.",
-      "highlights": {
-        "0": "Bezpieczne uwierzytelnianie z NextAuth",
-        "1": "Wstępnie haszowane hasła z base64 i bcrypt",
-        "2": "Nowoczesny interfejs użytkownika z Tailwind CSS i shadcn/ui",
-        "3": "Backend Strapi z REST API"
-      },
-      "links": {},
-      "summary": "Nowoczesna platforma e-commerce z bezpiecznym uwierzytelnianiem i REST API."
-    },
-    "emmet-demo": {
-      "title": "Demonstracja kodowania na żywo Emmet",
-      "description": "Demonstracja kodowania na żywo pokazująca biegłość w Emmet i skrótach CSS.",
-      "highlights": {
-        "0": "Efektywny przepływ pracy HTML/CSS",
-        "1": "Zaawansowane techniki Emmet"
-      },
-      "links": {},
-      "summary": "Demonstracja kodowania na żywo pokazująca biegłość w Emmet i skrótach CSS."
     },
     "kanban-board": {
       "title": "Tablica Kanban",
@@ -574,7 +540,7 @@
     "sparkfit-quant": {
       "title": "Zaprojektowanie quanta MoE 397B pod budżet 121 GiB",
       "description": "Własny cut klasy 2-bitowej self-hostowanego modelu Mixture-of-Experts 397B, zaprojektowany tak, by zmieścić się w stałej skrzynce 121 GiB pamięci zunifikowanej. Receptura zmieniła dokładnie jedną linię względem produkcyjnej bazy i przewidziała własny rozmiar pliku arytmetyką, +8,44 GiB, cel 106,8 GB, zanim zużyto compute; build wypadł na 106,57 GB, 0,24% obok, w 37 minut. Każdy krok przebiegał za prezadeklarowaną, uporządkowaną od taniej do drogiej drabiną bramek, której wczesne kontrole wychwyciły dwa realne blokery toolchainu w sekundy, a cały przebieg projektowy odbył się bez zakłócania usługi produkcyjnej.",
-      "summary": "Własny 2-bitowy cut self-hostowanego MoE 397B, zaprojektowany pod twardy budżet 121 GiB i wymiarowany arytmetyką w granicach 0,24% przewidzianego rozmiaru 106,8 GB; zbudowany i zweryfikowany rozmiarowo w 37 minut.",
+      "summary": "Własny 2-bitowy cut self-hostowanego MoE 397B, zaprojektowany pod budżet 121 GiB, z błędem 0,24%.",
       "statLabel": "rozmiar przewidziany vs. zbudowany",
       "highlights": [
         "Zaprojektował 2-bitowy cut MoE 397B pod twardy budżet pamięci 121 GiB i wymiarował go arytmetyką w granicach 0,24% przewidzianych 106,8 GB",
@@ -584,6 +550,19 @@
         "Zastąpił niewykonalną metrykę teacher-KLD bramką perplexity na przypiętym po sha256 korpusie, ustaloną z góry z builderem zabezpieczonym przed nadpisaniem",
         "Utrzymał produkcję nietkniętą przez cały czas dzięki trap-restore'om z jawnie przypiętymi konfiguracjami serving"
       ]
+    },
+    "monitoring-observability": {
+      "title": "Obserwowalność produkcyjna dla self-hostowanego LLM 397B",
+      "description": "Stack obserwowalności złożony z Prometheusa i Grafany dla self-hostowanego LLM 397B parametrów (2-bitowy MoE) na jednym DGX Spark, zbudowany na zasadzie, że inferencja zawodzi na warstwie serving, zanim będzie widoczna w systemie operacyjnym. Scrapuje własne metryki silnika (zajętość KV-cache, głębokość kolejki, przepustowość dekodowania/prefill) razem z pamięcią GPU hosta i na proces, z sześcioma regułami alertowymi, których progi i czasy trwania są dostrojone na podstawie dwóch prawdziwych incydentów produkcyjnych. Zorganizowany od początku do końca przez wielomodelowy workflow agentowy (generowanie, recenzja adwersarialna, wdrożenie, weryfikacja), na maszynie, która przez cały czas obsługiwała żywy przebieg generowania danych treningowych.",
+      "summary": "Prometheus i Grafana obserwują warstwę serving self-hostowanego LLM 397B, nie tylko system operacyjny.",
+      "statLabel": "pamięć GPU, której nie widzi podgląd procesów systemu operacyjnego",
+      "highlights": {
+        "0": "Pokazuje sygnały warstwy serving, których btop nie widzi (zajętość KV-cache, głębokość kolejki, tok/s dekodowania/prefill), plus pamięć GPU na proces (footprint 10x, który pamięć zunifikowana ukrywa przed systemem operacyjnym)",
+        "1": "Sześć opartych na symptomach reguł alertowych, których czasy for: są dostrojone na podstawie dwóch prawdziwych incydentów, w tym 20-minutowe okno zawieszenia, które przechodzi przez pułapkę licznika na granicy kroku",
+        "2": "Eksporter GPU na proces jako 12-liniowy skrypt textfile na timerze użytkownika systemd, standardowe obejście tam, gdzie DCGM i --query-gpu nie działają na GB10",
+        "3": "Wdrożony jako nieinwazyjny side-car wokół żywego przebiegu generowania danych treningowych dla 397B: bez sudo, bez zabitych procesów, porty 1234/8080 nietknięte",
+        "4": "Zorganizowany przez wielomodelowy workflow agentowy (generowanie, recenzja adwersarialna, wdrożenie, weryfikacja), z próbą ogniową node_exporter dowodzącą, że pipeline alertów faktycznie się wyzwala"
+      }
     }
   }
 }

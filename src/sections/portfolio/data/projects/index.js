@@ -19,19 +19,15 @@ import p_contao_website from "./contao-website.js";
 import p_inlearning from "./inlearning.js";
 import p_pictureplatform from "./pictureplatform.js";
 import p_mathtron_vue from "./mathtron-vue.js";
-import p_learn2sort from "./learn2sort.js";
 import p_nextjs_portfolio from "./nextjs-portfolio.js";
-import p_mathtron from "./mathtron.js";
-import p_private_blog from "./private-blog.js";
 import p_rest_fullstack from "./rest-fullstack.js";
-import p_e_commerce from "./e-commerce.js";
-import p_emmet_demo from "./emmet-demo.js";
-import p_kanban_board from "./kanban-board.js";
-import p_car_platform from "./car-platform.js";
 import p_company_website from "./company-website.js";
-import p_chart from "./chart.js";
-import p_cdn_manager from "./cdn-manager.js";
 import p_molar from "./molar.js";
+
+// Retired from the visible lineup on 2026-07-25: car-platform.js, cdn-manager.js,
+// chart.js, kanban-board.js, mathtron.js, private-blog.js. Their data files,
+// locale blocks and assets are kept, so restoring one is an import plus an entry
+// in rawProjects below.
 
 // Each per-project file references its public assets by root-absolute path
 // (e.g. "/Portfolio/belay/belay-hero.webp"). The site deploys under a subpath
@@ -74,18 +70,9 @@ const rawProjects = [
   p_inlearning,
   p_pictureplatform,
   p_mathtron_vue,
-  p_learn2sort,
   p_nextjs_portfolio,
-  p_mathtron,
-  p_private_blog,
   p_rest_fullstack,
-  p_e_commerce,
-  p_emmet_demo,
-  p_kanban_board,
-  p_car_platform,
   p_company_website,
-  p_chart,
-  p_cdn_manager,
   p_molar,
 ];
 

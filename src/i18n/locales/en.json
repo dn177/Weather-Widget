@@ -258,17 +258,6 @@
         "0": "Open the project"
       }
     },
-    "learn2sort": {
-      "title": "Learn2Sort",
-      "description": "App build with React.js mainly to visualize sorting algorithms.",
-      "highlights": {
-        "0": "Shows important information about the respective algirthm at the bottom.",
-        "1": "Adjustable speed for learning purposes"
-      },
-      "links": {
-        "0": "Open the project"
-      }
-    },
     "nextjs-portfolio": {
       "title": "Next.js Portfolio Website",
       "description": "Alternative portfolio built with Next.js, featuring static export optimizations.",
@@ -316,26 +305,6 @@
       "links": {
         "0": "View on Github"
       }
-    },
-    "e-commerce": {
-      "title": "E-Commerce",
-      "description": "Modern e-commerce platform with secure authentication and REST API.",
-      "highlights": {
-        "0": "Secure authentication with NextAuth",
-        "1": "Pre-hashed passwords with base64 and bcrypt",
-        "2": "Modern UI with Tailwind CSS and shadcn/ui",
-        "3": "Strapi Backend with REST API"
-      },
-      "links": {}
-    },
-    "emmet-demo": {
-      "title": "Emmet Live Coding Demo",
-      "description": "Live coding demonstration showing proficiency with Emmet and CSS shortcuts.",
-      "highlights": {
-        "0": "Efficient HTML/CSS workflow",
-        "1": "Advanced Emmet techniques"
-      },
-      "links": {}
     },
     "kanban-board": {
       "title": "Kanban Board",

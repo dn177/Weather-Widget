@@ -16,6 +16,7 @@ const project = {
     "alt": "InLearning Platform"
   },
   "description": "Learning platform with materials for the topics: AI / ML, Python, React.js, Rust and Vue.js.",
+  "summary": "Vue 3 learning platform with an in-browser Monaco editor and live compiled preview.",
   "highlights": [
     "In-browser code completion and syntax highlighting",
     "Live preview of compiled code"

@@ -64,7 +64,6 @@ describe("portfolioData integrity", () => {
         "nutrition-rag-autonomous",
         "ornith-optimization",
         "quantum-performance",
-        "sparkfit-quant",
       ].sort()
     );
   });

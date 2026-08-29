@@ -37,7 +37,7 @@ const project = {
         "items": [
           "Extracts measurements directly from .xd files, with no need to round-trip through PNG exports",
           "Enhanced measurement tooling: positioning, spacing, typography, and component-level metadata",
-          "Tested against real client design files (millwood, labor) used during freelance work"
+          "Tested against real client design files from two freelance engagements"
         ]
       },
       {

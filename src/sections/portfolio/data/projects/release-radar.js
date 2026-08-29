@@ -7,7 +7,7 @@ const project = {
   "id": "release-radar",
   "title": "Release Reader",
   "category": "web-app",
-  "featured": true,
+  "featured": false,
   "date": "2025-12-07",
   "sortOrder": -2,
   "media": {

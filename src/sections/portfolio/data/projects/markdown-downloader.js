@@ -7,7 +7,7 @@ const project = {
   "id": "markdown-downloader",
   "title": "Markdown Downloader - Raycast Extension",
   "category": "desktop-app",
-  "featured": true,
+  "featured": false,
   "date": "2025-07-06",
   "sortOrder": -1,
   "media": {

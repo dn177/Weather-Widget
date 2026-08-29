@@ -7,7 +7,7 @@ const project = {
   "id": "contao-website",
   "title": "Example Contao Website",
   "category": "website",
-  "featured": true,
+  "featured": false,
   "date": "2024-12-01",
   "sortOrder": 2,
   "media": {

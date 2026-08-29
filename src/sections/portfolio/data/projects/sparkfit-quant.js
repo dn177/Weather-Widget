@@ -7,10 +7,10 @@ const project = {
   "title": "Designing a 397B MoE Quant to a 121 GiB Budget",
   "category": "ml-systems",
   "featured": true,
-  "flagship": true,
+  "flagship": false,
   "date": "2026-07-08",
   "sortOrder": -5.2,
-  "summary": "A custom 2-bit cut of a self-hosted 397B MoE, designed to a hard 121 GiB budget and sized by arithmetic to within 0.24% of its predicted 106.8 GB — built and size-verified in 37 minutes.",
+  "summary": "A custom 2-bit cut of a self-hosted 397B MoE, designed to a 121 GiB budget and sized to 0.24% on paper.",
   "stat": { "value": "0.24%", "label": "predicted vs built size" },
   "media": {
     "type": "image",

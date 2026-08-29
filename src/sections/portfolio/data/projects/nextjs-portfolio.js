@@ -7,7 +7,7 @@ const project = {
   "id": "nextjs-portfolio",
   "title": "Next.js Portfolio Website",
   "category": "portfolio",
-  "featured": true,
+  "featured": false,
   "date": "2024-11-15",
   "sortOrder": 6,
   "media": {
