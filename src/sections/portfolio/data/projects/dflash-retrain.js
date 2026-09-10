@@ -1,7 +1,7 @@
 // Card fields (title, description, highlights, link labels) are the
 // English source text; locale overrides live in src/i18n/locales/*.json
-// under "projects.dflash-retrain" (none yet; English is the source).
-// Case-study (detailedContent) text is English by design for now.
+// under "projects.dflash-retrain". Case-study (detailedContent) text is
+// English by design for now.
 const project = {
   "id": "dflash-retrain",
   "title": "Retraining a 397B LLM's Speculative Drafter on a DGX Spark",
@@ -69,6 +69,14 @@ const project = {
           "Prompt variance is large and real: at the ship config one prompt runs 29.8 tok/s while another drags at 21.9, so only means over the fixed 8-prompt held-out set are allowed to decide anything. Total cost was one day, about 4 hours of production downtime, 12 minutes of GPU training, and roughly 1.5M tokens of review and verification agents, with no cloud and no second machine.",
           "Scaling is now unattended. The trainer overfit the M1 data by step 300, which marks data as the binding constraint, so a 10× corpus (10,000 prompts, seed-42 reproducible, hash-deduplicated and overlap-checked against the held-out bench) is captured by nightly cron windows that claim the box at 23:00, write to an external SSD, and trap-restore production by 07:00, with guards that refuse to touch prod if the disk is missing or the window is running short."
         ]
+      },
+      {
+        "title": "The Program: One Box, Five Days",
+        "items": [
+          "This retrain was the second of four pieces of work on one machine over five days in July 2026. The box was the same DGX Spark (GB10) throughout, serving Ornith-397B (2-bit MoE) through ik_llama.cpp. The other three are 'Optimizing a 397B LLM on a DGX Spark (GB10)', 'Designing a 397B MoE Quant to a 121 GiB Budget', and 'Production Observability for a Self-Hosted 397B LLM'.",
+          "The decode tuning came the day before. It settled the serving configuration and left the 24.3 tok/s coding baseline that this retrain measures against. The quant design followed two days later and left the running service untouched. The observability stack went in on the last day, with alert rules that cover the nightly capture endpoint alongside production.",
+          "Two artifacts from the program are public, at huggingface.co/cdtio33. The Ornith 1.0 drafter model card documents this retrain: the pre-registered A/B across repeated boots, a prompt-level confidence interval, and the SHA-256 of the measured file. The Ornith 1.5 drafter model card documents a follow-up retrain against the Ornith 1.5 target. The quant and the monitoring stack have no public artifact yet."
+        ]
       }
     ]
   },
@@ -90,7 +98,18 @@ const project = {
     "DGX Spark (GB10)"
   ],
   "mainTech": "ai-ml",
-  "links": [],
+  "links": [
+    {
+      "type": "live",
+      "url": "https://huggingface.co/cdtio33/Ornith-1.0-397B-IQ2_KS-DFlash-Drafter-GGUF",
+      "label": "Open the Ornith 1.0 drafter on Hugging Face"
+    },
+    {
+      "type": "live",
+      "url": "https://huggingface.co/cdtio33/Ornith-1.5-397B-IQ2_XXS-DFlash-Drafter-GGUF",
+      "label": "Open the Ornith 1.5 drafter on Hugging Face"
+    }
+  ],
   "tags": [
     "ai-ml",
     "llm",

@@ -107,6 +107,14 @@ const project = {
           "Cost was roughly a day of wall-clock on one desktop, zero training, and zero new C++ beyond a throwaway 54-line activation-dump patch, across two 91-GiB model loads. Determinism held throughout: 10/10 byte-identical baseline regenerations under greedy decoding, so the paired comparisons are exact.",
           "What survives the null: the two vectors, 12.4 GB of per-pair per-layer activation dumps (enough to build and test better static variants entirely offline with no further GPU load), the full paired-statistics eval harness, and the 25 private tasks. The honest next step is an RL-trained per-layer steering vector optimized against the unit-test reward, for which this harness already provides the reward signal."
         ]
+      },
+      {
+        "title": "The Program: One Box, Five Days",
+        "items": [
+          "This work opened a five-day program on one machine in July 2026. The box was the same DGX Spark (GB10) throughout, serving Ornith-397B (2-bit MoE) through ik_llama.cpp. Three further pieces of work followed on it: 'Retraining a 397B LLM's Speculative Drafter on a DGX Spark', 'Designing a 397B MoE Quant to a 121 GiB Budget', and 'Production Observability for a Self-Hosted 397B LLM'.",
+          "The decode tuning came first and settled the serving configuration at n_max=2. The drafter retrain started the next day. It took the 24.3 tok/s coding baseline and the benchmark protocol from this work as its starting point. The quant design and the observability stack followed on the same served model over the next three days.",
+          "Two artifacts from the program are public, at huggingface.co/cdtio33. The Ornith 1.0 drafter model card carries the benchmark protocol and the n_max sweep from this work. The Ornith 1.5 drafter model card documents a later retrain against the Ornith 1.5 target. The quant and the monitoring stack have no public artifact yet."
+        ]
       }
     ]
   },
@@ -131,7 +139,13 @@ const project = {
     "pass@1 / HumanEval+ / MBPP+"
   ],
   "mainTech": "ai-ml",
-  "links": [],
+  "links": [
+    {
+      "type": "live",
+      "url": "https://huggingface.co/cdtio33/Ornith-1.0-397B-IQ2_KS-DFlash-Drafter-GGUF",
+      "label": "Open the drafter on Hugging Face"
+    }
+  ],
   "tags": [
     "ai-ml",
     "performance",

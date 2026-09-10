@@ -523,6 +523,9 @@
         "2": "Zmierzono sufit megakernela na ~0% przerw bezczynności zanim cokolwiek zbudowano, zamieniając potencjalny ślepy zaułek w decyzję podjętą w jeden dzień",
         "3": "Prerejestrowane badanie sterowania aktywacjami zwróciło czysty wynik zerowy: statyczny wektor kontrolny zmienił coding pass@1 o -2,1 punktu, przedział ufności obejmuje zero",
         "4": "Trójdzielny podział się opłacił: wynik +2 punkty na zbiorze dev odwrócił się do -2 punktów na zamrożonym zbiorze dotykanym raz, więc strojenie i raportowanie na jednym zbiorze wypuściłoby regresję"
+      },
+      "links": {
+        "0": "Otwórz drafter na Hugging Face"
       }
     },
     "dflash-retrain": {
@@ -535,6 +538,10 @@
         "1": "15-agentowa recenzja adwersarialna wychwyciła czysto-bf16 AdamW zaokrąglający 87,2% aktualizacji parametrów do zera, błąd, który sfałszowałby wniosek 'self-distillation nie pomaga'",
         "2": "Zysk przyszedł z ogona: akceptacja po retreningu spada powoli z głębokością draftu, przesuwając optymalne n_max z 2 na 4 i monetyzując głębokie drafty, których dotychczasowy drafter nie umiał wykorzystać",
         "3": "Całość end-to-end na współdzielonej maszynie produkcyjnej, z 10× większym korpusem zbieranym teraz przez nocne okna crona, które przywracają endpoint do 07:00"
+      },
+      "links": {
+        "0": "Otwórz drafter Ornith 1.0 na Hugging Face",
+        "1": "Otwórz drafter Ornith 1.5 na Hugging Face"
       }
     },
     "sparkfit-quant": {

@@ -521,6 +521,9 @@
         "2": "El techo del megakernel se midió en ~0% de idle-gap antes de construirlo, convirtiendo un posible callejón sin salida en una decisión de un día",
         "3": "El estudio prerregistrado de activation steering devolvió un nulo limpio: un vector de control estático movió coding pass@1 en -2,1 puntos, el intervalo de confianza incluye el cero",
         "4": "La partición triple valió la pena: un resultado de +2 puntos en dev se invirtió a -2 puntos en el conjunto congelado de un solo uso, así que ajustar y reportar sobre un único conjunto habría enviado una regresión"
+      },
+      "links": {
+        "0": "Abrir el drafter en Hugging Face"
       }
     },
     "dflash-retrain": {
@@ -533,6 +536,10 @@
         "1": "Una revisión adversarial de 15 agentes atrapó un AdamW en bf16 puro que redondeaba a cero el 87,2% de las actualizaciones de parámetros, un bug que habría falseado el nulo de 'la self-distillation no ayuda'",
         "2": "La ganancia vino de la cola: la aceptación reentrenada decae despacio con la profundidad del draft, moviendo el n_max óptimo de 2 a 4 y monetizando drafts profundos que el drafter anterior no podía aprovechar",
         "3": "Corrió end-to-end en una máquina de producción compartida, con un corpus 10× ahora capturado por ventanas nocturnas de cron que restauran el endpoint antes de las 07:00"
+      },
+      "links": {
+        "0": "Abrir el drafter Ornith 1.0 en Hugging Face",
+        "1": "Abrir el drafter Ornith 1.5 en Hugging Face"
       }
     },
     "sparkfit-quant": {

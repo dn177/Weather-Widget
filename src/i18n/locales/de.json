@@ -521,6 +521,9 @@
         "2": "Die Megakernel-Obergrenze vor dem Bau bei ~0% Idle-Gap gemessen und damit eine potenzielle Sackgasse in eine Ein-Tages-Entscheidung verwandelt",
         "3": "Vorregistrierte Activation-Steering-Studie mit sauberem Nullergebnis: ein statischer Kontrollvektor verschob coding pass@1 um -2,1 Punkte, das Konfidenzintervall schließt null ein",
         "4": "Der dreigeteilte Split hat sich bezahlt gemacht: ein +2-Punkte-Ergebnis auf dem Dev-Set kehrte sich auf dem einmal angefassten Frozen-Set zu -2 Punkten um; Tuning und Reporting auf einem einzigen Set hätte eine Regression ausgeliefert"
+      },
+      "links": {
+        "0": "Drafter auf Hugging Face öffnen"
       }
     },
     "dflash-retrain": {
@@ -533,6 +536,10 @@
         "1": "Ein adversariales Review mit 15 Agenten fing einen reinen bf16-AdamW ab, der 87,2% der Parameter-Updates auf null rundete, ein Bug, der ein 'Self-Distillation bringt nichts'-Nullergebnis vorgetäuscht hätte",
         "2": "Der Gewinn kam aus dem Tail: die Akzeptanz nach dem Retraining fällt mit der Draft-Tiefe nur langsam ab, verschob das optimale n_max von 2 auf 4 und machte tiefe Drafts nutzbar, die der ausgelieferte Drafter nicht verwerten konnte",
         "3": "End-to-end auf einer geteilten Produktionsmaschine, mit einem 10×-Korpus, den jetzt nächtliche Cron-Fenster einsammeln und den Endpoint per Trap-Restore bis 07:00 wiederherstellen"
+      },
+      "links": {
+        "0": "Ornith-1.0-Drafter auf Hugging Face öffnen",
+        "1": "Ornith-1.5-Drafter auf Hugging Face öffnen"
       }
     },
     "sparkfit-quant": {

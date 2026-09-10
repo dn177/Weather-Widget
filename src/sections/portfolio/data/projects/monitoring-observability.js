@@ -63,6 +63,14 @@ const project = {
           "Alertmanager is intentionally absent: on one box, grouping/routing/silencing have nothing to organize, so firing alerts are visible in the Prometheus UI and phone push is one optional Grafana webhook to ntfy. The escalation path (Alertmanager, remote-write to Thanos, distributed tracing) is documented as the growth story, not built prematurely.",
           "Shipped with two detailed companion docs (a Prometheus reference and a Grafana reference), each grounded in this stack's actual queries, panels, and alert expressions rather than generic tutorials, so the dashboards are dashboard-as-code and reproducible after any wipe."
         ]
+      },
+      {
+        "title": "The Program: One Box, Five Days",
+        "items": [
+          "This stack closed a five-day program on one machine in July 2026. The box was the same DGX Spark (GB10) throughout, serving Ornith-397B (2-bit MoE) through ik_llama.cpp. The three pieces of work before it were 'Optimizing a 397B LLM on a DGX Spark (GB10)', 'Retraining a 397B LLM's Speculative Drafter on a DGX Spark', and 'Designing a 397B MoE Quant to a 121 GiB Budget'.",
+          "The decode tuning and the drafter retrain made the served model faster. The quant design priced a larger cut into the box's spare memory. It left the served baseline in place, because that cut still has its quality and memory gates ahead of it. The monitoring went in the day after the quant, as a side-car around the capture server that was generating a training corpus on the box. Its alert rules cover that capture endpoint alongside the production endpoint.",
+          "Two artifacts from the program are public, at huggingface.co/cdtio33: the Ornith 1.0 and Ornith 1.5 drafter model cards. The Ornith 1.0 card carries the benchmark protocol and the pre-registered A/B for the drafter retrain. The Ornith 1.5 card documents a follow-up retrain with its own confidence interval. The quant and this monitoring stack have no public artifact yet."
+        ]
       }
     ]
   },

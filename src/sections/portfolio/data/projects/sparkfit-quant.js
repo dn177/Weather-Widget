@@ -68,6 +68,14 @@ const project = {
           "Order gates by cost and declare them before results exist — cheap checks catch the blockers that would otherwise surface expensively, and a pre-registered quality bar can't be moved to fit the answer.",
           "Change one variable at a time. One recipe line against a verbatim baseline keeps every effect attributable, and the same discipline scales from a single quant to a whole experiment program."
         ]
+      },
+      {
+        "title": "The Program: One Box, Five Days",
+        "items": [
+          "This design pass was the third of four pieces of work on one machine over five days in July 2026. The box was the same DGX Spark (GB10) throughout, serving Ornith-397B (2-bit MoE) through ik_llama.cpp. The other three are 'Optimizing a 397B LLM on a DGX Spark (GB10)', 'Retraining a 397B LLM's Speculative Drafter on a DGX Spark', and 'Production Observability for a Self-Hosted 397B LLM'.",
+          "The decode tuning came three days before this design and the drafter retrain two days before. They settled the speed side of the served pair before this design began. Every build window here pinned its own drafter and decoding parameters explicitly. The observability stack went in the next day. It scrapes the production endpoint and the nightly capture endpoint on this box. The cut designed here has not been served; its quality and memory gates are the next validation window.",
+          "Two artifacts from the program are public, at huggingface.co/cdtio33. The Ornith 1.0 drafter model card carries the benchmark protocol and the pre-registered A/B for the drafter retrain. The Ornith 1.5 drafter model card carries a follow-up retrain against the Ornith 1.5 target. This quant has no public artifact yet."
+        ]
       }
     ]
   },
